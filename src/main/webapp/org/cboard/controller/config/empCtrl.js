@@ -11,13 +11,13 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
 
     ///表格的头部
     $scope.headerInfos = [
-        {'name': '工号', 'col': 'id'},
+        {'name': '员工工号', 'col': 'id'},
         {'name': '员工姓名', 'col': 'userName'},
-        {'name': '生日', 'col': 'userName'},
+        {'name': '员工生日', 'col': 'userName'},
         {'name': '登录密码', 'col': 'userName'},
         {'name': '所属部门', 'col': 'roleName'},
         {'name': '是否在职', 'col': 'description'},
-        {'name': '允许/禁止使用本系统', 'col': 'enabled'},
+        {'name': '允许/禁止使用系统', 'col': 'enabled'},
         {'name': '操作'}
     ];
 
@@ -66,7 +66,6 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
             $scope.selPage = page;
             $scope.setData();
             $scope.isActivePage(page);
-            //console.log("选择的页：" + page);
         }
     };
 
@@ -84,8 +83,6 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
      * @constructor
      */
     $scope.Previous = function () {
-        console.log("Previous...")
-        console.log($scope.selPage - 1);
         $scope.selectPage($scope.selPage - 1);
     };
 
@@ -94,8 +91,6 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
      * @constructor
      */
     $scope.Next = function () {
-        console.log("Next...")
-        console.log($scope.selPage + 1);
         $scope.selectPage($scope.selPage + 1);
     };
 
@@ -168,11 +163,11 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
      */
     $scope.addEmp = function (current, $event) {
         $uibModal.open({
-            templateUrl: 'org/cboard/view/config/modal/addUser.html',
+            templateUrl: 'org/cboard/view/config/modal/addEmp.html',
             //windowTemplateUrl: 'org/cboard/view/util/modal/window.html',
             backdrop: false,
             controller: function ($scope, $uibModalInstance, $http) {
-                $http({
+                /*$http({
                     method: 'get',
                     url: './role/roleLoad.do'
                 }).success(function (response) {
@@ -180,14 +175,14 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
                     console,log($scope.roleList_1);
                 }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                     ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-                });
+                });*/
                 $scope.close = function () {
                     $uibModalInstance.close();
                 };
                 $scope.save = function () {
                     $http({
                         method: 'POST',
-                        url: './user/addUser.do',
+                        url: './employee/insertEmp.do',
                         data:{
                             name: $scope.newUserName,
                             role: $scope.newUserRole,
