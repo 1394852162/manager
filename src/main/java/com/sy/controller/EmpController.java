@@ -118,15 +118,19 @@ public class EmpController {
     @ResponseBody
     public int insertEmp() {
 
-        System.out.println("分支：李俊朋");
+       // System.out.println("分支：李俊朋");
         HashMap<String,Object> map = new HashMap<String,Object>();
-     //   map.put("EmpName",EmpName);
+        map.put("EmpName","海翔");
+        map.put("EmpPassword","31002828");
+        map.put("DeptId",1);
+        map.put("EmpBirth","19980101");
+        map.put("EmpStatus1",1);
+        map.put("EmpStatus2",1);
 
         int result = iEmpService.insertEmp(map);
         System.out.println("********"+result);
         return result;
     }
-
 
 
 }
