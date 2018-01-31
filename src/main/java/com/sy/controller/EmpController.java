@@ -132,6 +132,8 @@ public class EmpController {
         System.out.println("********"+result);
         return result;
     }
-
+    public static void main(String args[]){
+        System.out.println("大多数");
+    }
 
 }
