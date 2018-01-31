@@ -35,8 +35,8 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
      * @param item
      */
     $scope.initPageSort = function (item) {
-        $scope.data = item;
-        // $scope.data = item.data;
+        // $scope.data = item;
+        $scope.data = item.data;
         $scope.pages = Math.ceil($scope.data.length / $scope.pageSize); //分页数
         $scope.newPages = $scope.pages > 5 ? 5 : $scope.pages;
         $scope.pageList = [];
