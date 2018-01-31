@@ -25,8 +25,8 @@
     "MY_DASHBOARD": "我的仪表盘",
     "MY_REPORTER": "我的报表",
     "CONFIG": {
-      "MENU": "权限配置",
-      "MENU_USER": "人员维护",
+      "MENU": "管理界面",
+      "MENU_USER": "员工维护",
       "MENU_ROLE": "角色维护",
       "MENU_ROLE_MENU": "角色菜单维护",
       "MENU_ROLE_MENU_TREE": "角色菜单树",
@@ -46,7 +46,7 @@
   },
   "CONFIG": {
     "MENU_USER": {
-      "USER_NAME": "用户名",
+      "USER_NAME": "员工姓名查询",
       "USER_SEARCH": "---请输入---",
       "ADD_USER": "新增",
       "PRINT": "打印",

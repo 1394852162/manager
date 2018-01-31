@@ -3,7 +3,7 @@
  */
 angular.module('cBoard').config(['$stateProvider', function ($stateProvider) {
     $stateProvider
-        .state('user', {
+        /*.state('user', {
             url: '/user',
             abstract: true,
             template: '<div ui-view></div>'
@@ -35,21 +35,21 @@ angular.module('cBoard').config(['$stateProvider', function ($stateProvider) {
             params: {id: null},
             templateUrl: 'org/cboard/view/dashboard/view.html',
             controller: 'dashboardViewCtrl'
-        })
-        //权限控制路由配置
+        })*/
+        //管理界面控制路由配置
         .state('config', {
             url: '/config',
             abstract: true,
             template: '<div ui-view></div>'
         })
-        //用户路由配置
-        .state('config.user', {
-            url: '/user',
-            templateUrl: 'org/cboard/view/config/user.html',
-            controller: 'userCtrl'
+        //员工路由配置
+        .state('config.emp', {
+            url: '/emp',
+            templateUrl: 'org/cboard/view/config/emp.html',
+            controller: 'empCtrl'
         })
         //角色路由配置
-        .state('config.role', {
+        /*.state('config.role', {
             url: '/role',
             templateUrl: 'org/cboard/view/config/role.html',
             controller: 'roleCtrl'
@@ -143,7 +143,7 @@ angular.module('cBoard').config(['$stateProvider', function ($stateProvider) {
             url: '/date',
             templateUrl: 'org/cboard/view/config/date.html',
             controller: 'dateCtrl'
-        });
+        })*/;
     }
 ]);
 

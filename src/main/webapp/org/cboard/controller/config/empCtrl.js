@@ -1,7 +1,7 @@
 /**
  * Created by 陶鹏飞 on 2017/8/4.
  */
-cBoard.controller('userCtrl', function ($rootScope, $scope, $http, dataService, $uibModal, ModalUtils, $filter, chartService) {
+cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $uibModal, ModalUtils, $filter, chartService) {
 
     var translate = $filter('translate');
     $scope.optFlag = 'none';
@@ -11,11 +11,13 @@ cBoard.controller('userCtrl', function ($rootScope, $scope, $http, dataService, 
 
     ///表格的头部
     $scope.headerInfos = [
-        {'name': '序号', 'col': 'id'},
-        {'name': '用户名', 'col': 'userName'},
-        {'name': '角色名称', 'col': 'roleName'},
-        {'name': '描述', 'col': 'description'},
-        {'name': '状态', 'col': 'enabled'},
+        {'name': '工号', 'col': 'id'},
+        {'name': '员工姓名', 'col': 'userName'},
+        {'name': '生日', 'col': 'userName'},
+        {'name': '登录密码', 'col': 'userName'},
+        {'name': '所属部门', 'col': 'roleName'},
+        {'name': '是否在职', 'col': 'description'},
+        {'name': '允许/禁止使用本系统', 'col': 'enabled'},
         {'name': '操作'}
     ];
 
@@ -28,10 +30,13 @@ cBoard.controller('userCtrl', function ($rootScope, $scope, $http, dataService, 
      *    2、需要后台配合，后台对改数据做分页处理，页面每次只请求需要展示的该页面的数据，换页时需要二次请求，这种方式是比较推荐的
      */
 
-    //分页
+    /**
+     * 分页
+     * @param item
+     */
     $scope.initPageSort = function (item) {
-        //$scope.data = item;
-        $scope.data = item.data;
+        $scope.data = item;
+        // $scope.data = item.data;
         $scope.pages = Math.ceil($scope.data.length / $scope.pageSize); //分页数
         $scope.newPages = $scope.pages > 5 ? 5 : $scope.pages;
         $scope.pageList = [];
@@ -65,33 +70,45 @@ cBoard.controller('userCtrl', function ($rootScope, $scope, $http, dataService, 
         }
     };
 
-    //设置当前选中页样式
+    /**
+     * 设置当前选中页样式
+     * @param page
+     * @returns {boolean}
+     */
     $scope.isActivePage = function (page) {
         return $scope.selPage == page;
     };
 
-    //上一页
+    /**
+     * 上一页
+     * @constructor
+     */
     $scope.Previous = function () {
         console.log("Previous...")
         console.log($scope.selPage - 1);
         $scope.selectPage($scope.selPage - 1);
     };
 
-    //下一页
+    /**
+     * 下一页
+     * @constructor
+     */
     $scope.Next = function () {
         console.log("Next...")
         console.log($scope.selPage + 1);
         $scope.selectPage($scope.selPage + 1);
     };
 
-    //初始化
+    /**
+     * 初始化
+     */
     var getUserList = function () {
         $http({
             method: 'get',
-            url: './user/queryUser.do',
-            params: {
+            url: './employee/getEmpList.do'//,
+            /*params: {
                 userName: $scope.userName
-            }
+            }*/
         }).success(function (response) {
             console.log(response);
             //$scope.userList = response;
@@ -108,7 +125,7 @@ cBoard.controller('userCtrl', function ($rootScope, $scope, $http, dataService, 
     };
     getUserList();
 
-    var getRoleList = function () {
+    /*var getRoleList = function () {
         $http({
             method: 'get',
             url: './role/roleLoad.do'
@@ -117,7 +134,7 @@ cBoard.controller('userCtrl', function ($rootScope, $scope, $http, dataService, 
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
         });
-    }
+    }*/
 
     //查询用户
     /*
@@ -125,7 +142,10 @@ cBoard.controller('userCtrl', function ($rootScope, $scope, $http, dataService, 
      console.log("查询用户...");
      };
      */
-    //数据双向绑定+监听机制
+
+    /**
+     * 数据双向绑定+监听机制
+     */
     $scope.$watch("userName", function () {
         $http({
             method: 'post',
@@ -141,8 +161,12 @@ cBoard.controller('userCtrl', function ($rootScope, $scope, $http, dataService, 
         })
     })
 
-    //增加用户
-    $scope.addUser = function (current, $event) {
+    /**
+     * 增加用户
+     * @param current
+     * @param $event
+     */
+    $scope.addEmp = function (current, $event) {
         $uibModal.open({
             templateUrl: 'org/cboard/view/config/modal/addUser.html',
             //windowTemplateUrl: 'org/cboard/view/util/modal/window.html',
@@ -189,13 +213,22 @@ cBoard.controller('userCtrl', function ($rootScope, $scope, $http, dataService, 
         });
     };
 
-    //删除用户
-   /* $scope.delUser = function (current, $event) {
-     console.log("删除用户...");
-     };*/
 
-    //修改用户
-    $scope.modifyUser = function (current, $event) {
+    /**
+     * 删除用户
+     * @param current
+     * @param $event
+     */
+    $scope.delEmp = function (current, $event) {
+     console.log("删除用户...");
+     };
+
+    /**
+     * 修改用户
+     * @param current
+     * @param $event
+     */
+    $scope.editEmp = function (current, $event) {
         console.log("修改用户...");
         console.log(current);
         $uibModal.open({
@@ -249,8 +282,12 @@ cBoard.controller('userCtrl', function ($rootScope, $scope, $http, dataService, 
         });
     };
 
-    //启动/淘汰用户
-    $scope.enableUser = function (current, $event) {
+    /**
+     * 状态
+     * @param current
+     * @param $event
+     */
+    $scope.enableEmp = function (current, $event) {
         $http({
             method: 'post',
             url: './user/updateUser.do',

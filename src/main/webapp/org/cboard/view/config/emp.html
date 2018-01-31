@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="pull-right" style="margin-top: 10xp;">
-                <button type="button" class="btn btn-primary " id='addEmp' ng-click="addUser()">{{'CONFIG.MENU_USER.ADD_USER'|translate}}</button>
+                <button type="button" class="btn btn-primary " id='addEmp' ng-click="addEmp()">{{'CONFIG.MENU_USER.ADD_USER'|translate}}</button>
                 <!--<button type="button" class="btn btn-primary" id='delRole' ng-click="printUser()">{{// 'CONFIG.MENU_USER.PRINT'|translate}}</button>-->
             </div>
         </div>
@@ -39,26 +39,23 @@
                     <td>{{ $index + 1 }}</td>
                     ng-class="{true:‘zhende‘,false:‘jiade‘}[x.enabled]"
                     -->
-                    <td ng-bind="outerIndex+1"></td>
-                    <td>{{ row.userName }}</td>
-                    <td>{{ row.roleName }}</td>
-                    <td>{{ row.description }}</td>
-                    <td ng-model="enabled">{{ row.enabled ? "启用" : "淘汰" }}</td>
+                    <!--<td ng-bind="outerIndex+1"></td>-->
+                    <td>{{ row.empNo }}</td>
+                    <td>{{ row.empName }}</td>
+                    <td>{{ row.empBirth }}</td>
+                    <td>{{ row.empPassword }}</td>
+                    <td>{{ row.deptId }}</td>
+                    <td>{{ (row.empStatus1 == '1') ? "在职" : "离职" }}</td>
+                    <td>{{ (row.empStatus2 == '1') ? "允许" : "禁止" }}</td>
+
+                    <!--<td ng-model="enabled">{{ row.enabled ? "是" : "否" }}</td>-->
                     <td>
-                        <button type="button" class="btn btn-info btn-xs" ng-click="modifyUser(row, $event)">
+                        <button type="button" class="btn btn-info btn-xs" ng-click="editEmp(row, $event)">
                             <span class="glyphicon glyphicon-pencil"></span>{{'CONFIG.MENU_USER.MODIFY'|translate}}
                         </button>
-                        <button type="button" class="btn btn-success btn-xs"
-                                ng-class="{true:'trueClass',false:'falseClass'}[row.enabled]"
-                                ng-disabled="{{ row.enabled ? 'true' : 'false' }}"
-                                ng-click="enableUser(row, $event)">
-                            <span class="glyphicon glyphicon-ok-circle"></span>{{'CONFIG.MENU_USER.ENABLE_OK'|translate}}
-                        </button>
                         <button type="button" class="btn btn-danger btn-xs"
-                                ng-class="{true:'falseClass',false:'trueClass'}[row.enabled]"
-                                ng-disabled="{{ row.enabled ? 'false' : 'true' }}"
-                                ng-click="enableUser(row, $event)">
-                            <span class="glyphicon glyphicon-remove-circle"></span>{{'CONFIG.MENU_USER.ENABLE_NO'|translate}}
+                                ng-click="delEmp(row, $event)">
+                            <span class="glyphicon glyphicon-remove-circle"></span>{{'CONFIG.MENU_PLACE.PLACE_DEL'|translate}}
                         </button>
                     </td>
                 </tr>
