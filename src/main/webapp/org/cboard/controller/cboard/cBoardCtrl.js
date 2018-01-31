@@ -47,14 +47,14 @@ cBoard.controller('cBoardCtrl', function ($rootScope, $scope, $location, $http, 
 
                     $http({
                         method: 'POST',
-                        url: './user/updatePassword.do',
+                        url: './employee/updatepwd.do',
                         data : {
-                            userName : current.name,
-                            oldPassword : $scope.curPwd,
-                            newPassword : $scope.newPwd
+                            // userName : current.name,
+                            // oldPassword : $scope.curPwd,
+                            password : $scope.newPwd
                         }
                     }).success(function (response) {
-                        ModalUtils.alert(translate(response.msg), "modal-success", "sm");
+                        // ModalUtils.alert(translate(response.msg), "modal-success", "sm");
                         $uibModalInstance.close();
                     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                         ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
