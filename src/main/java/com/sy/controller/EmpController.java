@@ -127,6 +127,7 @@ public class EmpController {
         map.put("EmpStatus1",1);
         map.put("EmpStatus2",1);
 
+
         int result = iEmpService.insertEmp(map);
         System.out.println("********"+result);
         return result;
