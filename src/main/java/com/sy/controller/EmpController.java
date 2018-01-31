@@ -74,8 +74,6 @@ public class EmpController {
         emp.setEmpName(username);
         emp.setEmpPassword(password);
         List<Employee> list = iEmpService.getEmpInfo(emp);
-        System.out.println(list);
-        System.out.println("*************"+list.get(0).getCreateTime());
     return list;
     }
 
@@ -95,17 +93,17 @@ public class EmpController {
      */
     @RequestMapping("/getEmpList.do")
     @ResponseBody
-    public JSONArray getEmpList() {
+    public Map<String,Object> getEmpList() {
+        Map<String,Object> resultmap = new HashMap<String,Object>();
         List<Employee> list = iEmpService.getEmpList();
-        JSONArray jsonArray = new JSONArray();
-        if (list==null ||list.isEmpty()) {
-            return jsonArray;
+        if(list != null & list.size()>0) {
+            resultmap.put("data", list);
+            resultmap.put("code", 1);
+        }else{
+            resultmap.put("code", 0);
+            resultmap.put("data", "无数据!");
         }
-        for (Object object : list) {
-            jsonArray.add(object);
-        }
-        System.out.println("********"+list);
-        return jsonArray;
+        return resultmap;
     }
 
 
@@ -126,14 +124,29 @@ public class EmpController {
         map.put("EmpBirth","19980101");
         map.put("EmpStatus1",1);
         map.put("EmpStatus2",1);
-
-
         int result = iEmpService.insertEmp(map);
-        System.out.println("********"+result);
         return result;
     }
-    public static void main(String args[]){
-        System.out.println("大多数");
+
+    /**
+     * 用户修改
+     * @return
+     */
+    @RequestMapping("/updateEmp.do")
+    @ResponseBody
+    public int updateByPrimaryKey( ){
+        HashMap<String,Object> map = new HashMap<String,Object>();
+        map.put("EmpId",1);
+        map.put("EmpNo","1001");
+        map.put("EmpName","lijp");
+        map.put("EmpPassword","31002828");
+        map.put("DeptId",1);
+        map.put("EmpBirth","19980101");
+        map.put("EmpStatus1",1);
+        map.put("EmpStatus2",1);
+        int result  = iEmpService.updateByPrimaryKey(map);
+        return result;
     }
+
 
 }

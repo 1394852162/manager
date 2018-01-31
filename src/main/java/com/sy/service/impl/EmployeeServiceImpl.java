@@ -42,4 +42,9 @@ public class EmployeeServiceImpl implements IEmployeeService{
     public int insertEmp(HashMap<String,Object> map) {
         return this.iEmployeeDao.insertEmp(map);
     }
+
+    @Override
+    public int updateByPrimaryKey(HashMap<String, Object> map) {
+        return this.iEmployeeDao.updateByPrimaryKey(map);
+    }
 }

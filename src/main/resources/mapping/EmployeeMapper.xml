@@ -12,6 +12,7 @@
     <result property="EmpStatus2" column="EmpStatus2"  jdbcType="INTEGER" />
     <result property="CreateTime" column="CreateTime"  jdbcType="DATE" />
     <result property="UpdateTime" column="UpdateTime"  jdbcType="DATE" />
+    <result property="DeptName" column="DeptName"  jdbcType="VARCHAR" />
   </resultMap>
 
   <select id="ifExist" parameterType="com.sy.pojo.Employee" resultType="boolean">
@@ -27,11 +28,12 @@
     and EmpPassword =#{EmpPassword,jdbcType=VARCHAR}
   </select>
 
+
   <select id="getEmpList" resultMap="BaseResultMap">
-    SELECT *
-    FROM Tbb_Employee
-    where EmpStatus1=1
-    and EmpStatus2=1
+    SELECT a.*,b.DeptName
+    FROM Tbb_Employee a,Tbb_Dept b
+    where EmpStatus1 !=2
+    and a.DeptId=b.DeptId
   </select>
 
   <update id="updatepwd" parameterType="com.sy.pojo.Employee" >
@@ -58,19 +60,29 @@
   </insert>
 
 
-  <update id="updateByPrimaryKeySelective" parameterType="java.util.HashMap" >
+  <update id="updateByPrimaryKey" parameterType="java.util.HashMap" >
     update Tbb_Employee
     <set >
-      <if test="userName != null" >
-        userName = #{userName,jdbcType=VARCHAR},
+      <if test="EmpNo != null" >
+        EmpNo = #{EmpNo,jdbcType=VARCHAR},
       </if>
-      <if test="password != null" >
-        password = #{password,jdbcType=VARCHAR},
+      <if test="EmpName != null" >
+        EmpName = #{EmpName,jdbcType=VARCHAR},
+      </if>
+      <if test="EmpPassword != null" >
+        EmpPassword = #{EmpPassword,jdbcType=VARCHAR},
       </if>
       <if test="DeptId != null" >
         DeptId = #{DeptId,jdbcType=INTEGER},
       </if>
+      <if test="EmpStatus1 != null" >
+        EmpStatus1 = #{EmpStatus1,jdbcType=INTEGER},
+      </if>
+      <if test="EmpStatus2 != null" >
+        EmpStatus2 = #{EmpStatus2,jdbcType=INTEGER},
+      </if>
     </set>
+    ,UpdateTime = getdate()
     where EmpId = #{EmpId,jdbcType=INTEGER}
   </update>
 </mapper>

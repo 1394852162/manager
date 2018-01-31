@@ -20,5 +20,7 @@ public interface IEmployeeService {
 
     public int insertEmp(HashMap<String,Object> map);
 
+    public int updateByPrimaryKey(HashMap<String,Object> map);
+
 
 }

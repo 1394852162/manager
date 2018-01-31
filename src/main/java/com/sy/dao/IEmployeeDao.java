@@ -46,9 +46,9 @@ public interface IEmployeeDao {
 
     /**
      * 修改用户信息
-     * @param record
+     * @param map
      * @return
      */
-    int updateByPrimaryKey(Employee record);
+    int updateByPrimaryKey(HashMap<String,Object> map);
 
 }
