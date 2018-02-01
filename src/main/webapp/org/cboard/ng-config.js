@@ -48,6 +48,11 @@ angular.module('cBoard').config(['$stateProvider', function ($stateProvider) {
             templateUrl: 'org/cboard/view/config/emp.html',
             controller: 'empCtrl'
         })
+        .state('config.dept', {
+            url: '/dept',
+            templateUrl: 'org/cboard/view/config/dept.html',
+            controller: 'deptCtrl'
+        })
         //角色路由配置
         /*.state('config.role', {
             url: '/role',

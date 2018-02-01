@@ -27,6 +27,7 @@
     "CONFIG": {
       "MENU": "管理界面",
       "MENU_USER": "员工维护",
+      "MENU_DEPT": "部门维护",
       "MENU_ROLE": "角色维护",
       "MENU_ROLE_MENU": "角色菜单维护",
       "MENU_ROLE_MENU_TREE": "角色菜单树",
@@ -74,6 +75,24 @@
       "STATUS2_N": "禁止",
       "PLEASE_SELECT": "---请选择部门---",
       "EDIT_USER": "修改员工"
+    },
+    "MENU_DEPT": {
+      "DEPT_NAME": "查询部门",
+      "DEPT_SEARCH": "---请输入部门名称---",
+      "ADD_DEPT": "添加部门",
+      "ADD_DEPT_NO": " 部门号",
+      "ADD_DEPT_NAME": "部门名称",
+      "ADD_DEPT_STATUS": "部门状态",
+      "EDIT_DEPT": "修改部门",
+
+
+      "PRINT": "打印",
+      "MODIFY": "修改",
+      "DELETE": "删除",
+      "DEPT_PLACEHOLDER": "请确定输入的角色名称是否已经存在!",
+      "IF_ROLE": "* 角色已存在！",
+      "DESC": "描述",
+      "SAVE": "保存"
     },
     "MENU_ROLE": {
       "ROLE_NAME": "角色名称",
