@@ -58,10 +58,10 @@
     <script type="text/javascript" src="plugins/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
 
     <!-- ztree -->
-    <script type="text/javascript" src="plugins/zTree_v3/js/jquery.ztree.all.min.js"></script>
+    <!--<script type="text/javascript" src="plugins/zTree_v3/js/jquery.ztree.all.min.js"></script>
     <script type="text/javascript" src="plugins/zTree_v3/js/jquery.ztree.core.js"></script>
     <script type="text/javascript" src="plugins/zTree_v3/js/jquery.ztree.excheck.js"></script>
-    <script type="text/javascript" src="plugins/zTree_v3/js/jquery.ztree.exedit.js"></script>
+    <script type="text/javascript" src="plugins/zTree_v3/js/jquery.ztree.exedit.js"></script>-->
     <!--<script type="text/javascript" src="plugins/zTree_v3/js/jquery.ztree.excheck.min.js"></script>
     <script type="text/javascript" src="plugins/zTree_v3/js/jquery.ztree.exedit.min.js"></script>-->
 
@@ -256,6 +256,13 @@
 
     </style>
     <link rel="stylesheet" href="plugins/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css">
+
+    <!-- jquery-custom-scrollbar -->
+    <!--<link rel="stylesheet" href="plugins/jquery-custom-scrollbar/css/style.css">-->
+    <!--<link rel="stylesheet" href="plugins/jquery-custom-scrollbar/css/jquery.mCustomScrollbar.css">-->
+    <!--<script src="plugins/jquery-custom-scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>-->
+
+
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -302,13 +309,72 @@ desired effect
         <!--</section>-->
 
         <!-- Main content -->
-        <section ui-view class="content"></section>
+        <!--<div id="content-1">-->
+            <section ui-view class="content" ></section>
+        <!--</div>-->
+
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
 
     <!-- Main Footer -->
-    <footer class="main-footer" ng-include="'starter/main-footer.html'"></footer>
+    <!--<footer class="main-footer" ng-include="'starter/main-footer.html'"></footer>-->
+    <script type="application/javascript">
+        /*(function($){
+            $(window).on("load",function(){
+
+                var content=$("#content-1"),autoScrollTimer=8000,autoScrollTimerAdjust,autoScroll;
+
+                content.mCustomScrollbar({
+                    scrollButtons:{enable:true},
+                    callbacks:{
+                        whileScrolling:function(){
+                            autoScrollTimerAdjust=autoScrollTimer*this.mcs.topPct/100;
+                        },
+                        onScroll:function(){
+                            if($(this).data("mCS").trigger==="internal"){AutoScrollOff();}
+                        }
+                    }
+                });
+
+                content.addClass("auto-scrolling-on auto-scrolling-to-bottom");
+                AutoScrollOn("bottom");
+
+                $(".auto-scrolling-toggle").click(function(e){
+                    e.preventDefault();
+                    if(content.hasClass("auto-scrolling-on")){
+                        AutoScrollOff();
+                    }else{
+                        if(content.hasClass("auto-scrolling-to-top")){
+                            AutoScrollOn("top",autoScrollTimerAdjust);
+                        }else{
+                            AutoScrollOn("bottom",autoScrollTimer-autoScrollTimerAdjust);
+                        }
+                    }
+                });
+
+                function AutoScrollOn(to,timer){
+                    if(!timer){timer=autoScrollTimer;}
+                    content.addClass("auto-scrolling-on").mCustomScrollbar("scrollTo",to,{scrollInertia:timer,scrollEasing:"easeInOutSmooth"});
+                    autoScroll=setTimeout(function(){
+                        if(content.hasClass("auto-scrolling-to-top")){
+                            AutoScrollOn("bottom",autoScrollTimer-autoScrollTimerAdjust);
+                            content.removeClass("auto-scrolling-to-top").addClass("auto-scrolling-to-bottom");
+                        }else{
+                            AutoScrollOn("top",autoScrollTimerAdjust);
+                            content.removeClass("auto-scrolling-to-bottom").addClass("auto-scrolling-to-top");
+                        }
+                    },timer);
+                }
+
+                function AutoScrollOff(){
+                    clearTimeout(autoScroll);
+                    content.removeClass("auto-scrolling-on").mCustomScrollbar("stop");
+                }
+
+            });
+        })(jQuery);*/
+    </script>
 
 </div>
 <!-- ./wrapper -->
@@ -362,11 +428,11 @@ desired effect
 <!--<script src="org/cboard/directive/dashboard/dashboardWidget.js"></script>-->
 <script src="org/cboard/directive/config/tm.pagination.js"></script>
 <script src="org/cboard/directive/config/ensureRoleUnique.js"></script>
-<script src="org/cboard/directive/config/brandTree.js"></script>
+<!--<script src="org/cboard/directive/config/brandTree.js"></script>
 <script src="org/cboard/directive/config/areaTree.js"></script>
 <script src="org/cboard/directive/config/withMenu.js"></script>
 <script src="org/cboard/directive/config/withoutMenu.js"></script>
-<script src="org/cboard/directive/config/itemcategoryTree.js"></script>
+<script src="org/cboard/directive/config/itemcategoryTree.js"></script>-->
 <script src="org/cboard/directive/config/pwCheck.js"></script>
 <script src="org/cboard/directive/config/peakCheck.js"></script>
 <script src="org/cboard/directive/config/intervalCheck.js"></script>
@@ -374,7 +440,7 @@ desired effect
 <script src="org/cboard/directive/config/ngDatepicker.js"></script>
 
 
-<script type="text/ng-template" id="echartContent">
+<!--<script type="text/ng-template" id="echartContent">
     <div class="col-md-{{widget.width}}">
         <div class="box">
             <div class="box-header">
@@ -427,7 +493,7 @@ desired effect
             </div>
         </div>
     </div>
-</script>
+</script>-->
 
 <!-- iCheck -->
 <script src="plugins/iCheck/icheck.min.js"></script>

@@ -105,7 +105,7 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
                 userName: $scope.userName
             }*/
         }).success(function (response) {
-            console.log(response);
+            // console.log(response);
             //$scope.userList = response;
             $scope.initPageSort(response);
             /*
@@ -142,7 +142,7 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
      * 数据双向绑定+监听机制
      */
     $scope.$watch("userName", function () {
-        $http({
+        /*$http({
             method: 'post',
             url: './user/queryUser.do',
             data: {
@@ -153,7 +153,7 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
             $scope.initPageSort($scope.userList);
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-        })
+        })*/
     })
 
     /**
@@ -167,6 +167,9 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
             //windowTemplateUrl: 'org/cboard/view/util/modal/window.html',
             backdrop: false,
             controller: function ($scope, $uibModalInstance, $http) {
+                /**
+                 * 部门载入
+                 */
                 /*$http({
                     method: 'get',
                     url: './role/roleLoad.do'
@@ -206,6 +209,7 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
                 }
             }
         });
+        // $event.stopPropagation();//阻止冒泡
     };
 
 
@@ -215,7 +219,8 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
      * @param $event
      */
     $scope.delEmp = function (current, $event) {
-     console.log("删除用户...");
+        console.log("删除用户...");
+        $event.stopPropagation();//阻止冒泡
      };
 
     /**
@@ -224,16 +229,22 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
      * @param $event
      */
     $scope.editEmp = function (current, $event) {
-        console.log("修改用户...");
-        console.log(current);
         $uibModal.open({
-            templateUrl: 'org/cboard/view/config/modal/modifyUser.html',
+            templateUrl: 'org/cboard/view/config/modal/editEmp.html',
             //windowTemplateUrl: 'org/cboard/view/util/modal/window.html',
             backdrop: false,
             controller: function ($scope, $uibModalInstance, $http) {
+
+                $scope.editEmpNo = current.empNo;
+                $scope.editEmpName = current.empName;
+                $scope.editEmpBirth = current.empBirth;
+                $scope.editEmpPwd = current.empPassword;
+                $scope.editEmpDept = current.deptName;
+                $scope.editEmpStatus1 = current.empStatus1;
+                $scope.editEmpStatus2 = current.empStatus2;
                 //getRoleList();
-                console.log($uibModalInstance);
-                $http({
+                // console.log($uibModalInstance);
+                /*$http({
                     method: 'get',
                     url: './role/roleLoad.do'
                 }).success(function (response) {
@@ -243,12 +254,12 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
                     $scope.roleList_2 = response;
                 }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                     ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-                });
+                });*/
                 $scope.close = function () {
                     $uibModalInstance.close();
                 };
                 $scope.save = function () {
-                    $http({
+                    /*$http({
                         method: 'POST',
                         url: './user/updateUser.do',
                         data:{
@@ -256,8 +267,8 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
                             password: $scope.modifyUserPwd,
                             role: $scope.modifyUserRole,
                             oldRole: current.password,
-                            desc: $scope.modifyUserName/*,
-                            enabled:current.enabled*/
+                            desc: $scope.modifyUserName/!*,
+                            enabled:current.enabled*!/
                         }
                     }).success(function (response) {
                         if (response.code === 0) {
@@ -270,11 +281,12 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
                         getUserList();
                     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                         ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-                    });
+                    });*/
                     $uibModalInstance.close();
                 }
             }
         });
+        $event.stopPropagation();//阻止冒泡
     };
 
     /**

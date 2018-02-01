@@ -121,7 +121,7 @@ public class EmpController {
         map.put("EmpName","海翔");
         map.put("EmpPassword","31002828");
         map.put("DeptId",1);
-        map.put("EmpBirth","19980101");
+        map.put("EmpBirth","1998-01-01");
         map.put("EmpStatus1",1);
         map.put("EmpStatus2",1);
         int result = iEmpService.insertEmp(map);
@@ -141,7 +141,7 @@ public class EmpController {
         map.put("EmpName","lijp");
         map.put("EmpPassword","31002828");
         map.put("DeptId",1);
-        map.put("EmpBirth","19980101");
+        map.put("EmpBirth","1998-01-01");
         map.put("EmpStatus1",1);
         map.put("EmpStatus2",1);
         int result  = iEmpService.updateByPrimaryKey(map);

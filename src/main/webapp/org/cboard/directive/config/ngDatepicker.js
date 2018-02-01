@@ -28,7 +28,7 @@ cBoard.directive('ngTime',function () {
                 // startView: 2,
                 startView: 4,
                 minView: 2,
-                forceParse: 0,
+                forceParse: 1,
                 pickerPosition:  'bottom-left'
             });
             /*$('.form_time').datetimepicker({

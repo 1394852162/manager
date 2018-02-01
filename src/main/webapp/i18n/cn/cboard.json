@@ -72,7 +72,8 @@
       "STATUS1_N": "离职",
       "STATUS2_Y": "允许",
       "STATUS2_N": "禁止",
-      "PLEASE_SELECT": "---请选择部门---"
+      "PLEASE_SELECT": "---请选择部门---",
+      "EDIT_USER": "修改员工"
     },
     "MENU_ROLE": {
       "ROLE_NAME": "角色名称",

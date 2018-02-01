@@ -1,0 +1,166 @@
+<!-- usrMgrForm
+   Created by 陶鹏飞 on 2017/8/3.
+-->
+<form id="editEmpForm" class="form-horizontal" role="form" name="editEmpForm" ng-submit="ctrl.submit()">
+    <!-- 模态框header -->
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="close()">
+            <span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">{{'CONFIG.MENU_USER.EDIT_USER'|translate}}</h4>
+    </div>
+
+    <!-- 模态框body -->
+    <div class="modal-body">
+        <div class="row">
+            <!-- 员工工号 -->
+            <div class="col-lg-6 col-md-6 col-xs-6 col-xs-12 column">
+                <div class="input-group has-feedback">
+                    <span class="input-group-addon">{{'CONFIG.MENU_USER.EMP_NO'|translate}}</span>
+                    <input type="text" class="form-control" id="editEmpNo" name="editEmpNo"
+                           placeholder="{{'CONFIG.MENU_USER.SEARCH'|translate}}"
+                           ng-model="editEmpNo" required>
+                </div>
+            </div>
+            <!-- 员工姓名 -->
+            <div class="col-lg-6 col-md-6 col-xs-6 col-xs-12 column">
+                <div class="input-group has-feedback">
+                    <span class="input-group-addon">{{'CONFIG.MENU_USER.EMP_NAME'|translate}}</span>
+                    <input type="text" class="form-control" id="editEmpName" name="editEmpName"
+                           placeholder="{{'CONFIG.MENU_USER.SEARCH'|translate}}"
+                           ng-model="editEmpName" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1></h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- 员工生日 -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="input-group has-feedback">
+                    <div  ng-model='timepickerTest'  ng-time class="input-group date form_date col-md-12" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                        <span class="input-group-addon">{{'CONFIG.MENU_USER.NEW_BIRTH'|translate}}</span>
+                        <input class="form-control" size="11" type="text" value=""  id="editEmpBirth" name="editEmpBirth"
+                               placeholder="{{'CONFIG.MENU_USER.SEARCH'|translate}}"
+                               ng-model="editEmpBirth" readonly>
+                        <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
+                        <span class="input-group-addon" style="background-color: white;">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    <!--<input type="hidden" id="dtp_input2" value="" /><br/>-->
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1></h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- 员工密码 -->
+            <div class="col-lg-6 col-md-6 col-xs-6 col-xs-12">
+                <div class="input-group has-feedback">
+                    <span class="input-group-addon">{{'CONFIG.MENU_USER.NEW_PWD'|translate}}</span>
+                    <input type="password" class="form-control" id="editEmpPwd" name="editEmpPwd"
+                           placeholder="{{'CONFIG.MENU_USER.SEARCH'|translate}}" ng-model="editEmpPwd">
+                </div>
+            </div>
+            <!-- 所属部门 -->
+            <div class="col-lg-6 col-md-6 col-xs-6 col-xs-12 column">
+                <div class="input-group">
+                    <span class="input-group-addon">{{'CONFIG.MENU_USER.NEW_DEPT'|translate}}</span>
+                    <select class="form-control" id="editEmpDept" ng-model="editEmpDept">
+                        <option value="">{{'CONFIG.MENU_USER.PLEASE_SELECT'|translate}}</option>
+                        <!-- 直接用模型值第一个会为空，所以这里填充第一个 -->
+                        <option ng-repeat="x in roleList_1.data" value="{{x}}">{{x}}</option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1></h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- 是否在职 -->
+            <div class="col-lg-6 col-md-6 col-xs-6 col-xs-12">
+                <div class="input-group has-feedback"
+                     ng-class="{'has-success' : !addItemDeptForm.newItemDeptmentStatus.$pristine && addItemDeptForm.newItemDeptmentStatus.$valid,
+                              'has-error' : !addItemDeptForm.newItemDeptmentStatus.$pristine && addItemDeptForm.newItemDeptmentStatus.$invalid }">
+                    <span class="input-group-addon">{{'CONFIG.MENU_USER.STATUS1'|translate}}</span>
+                    <div class="panel-heading form-control" style="
+                                    padding: 5px 15px;
+                                    border-top-left-radius: 0px;
+                                    border-top-right-radius: 0px;">
+                        <input tabindex="1" type="radio" id="editEmpStatus1_Y" value="1" name="editEmpStatus1"
+                               ng-value=1
+                               ng-model="editEmpStatus1"
+                               ng-icheck>
+                        <label for="editEmpStatus1_Y" style="font-weight: normal;">{{'CONFIG.MENU_USER.STATUS1_Y'|translate}}</label>
+                        <input tabindex="0" type="radio" id="editEmpStatus1_N" value="0" name="editEmpStatus1"
+                               ng-value=0
+                               ng-model="editEmpStatus1"
+                               ng-icheck>
+                        <label for="editEmpStatus1_N" style="font-weight: normal;">{{'CONFIG.MENU_USER.STATUS1_N'|translate}}</label>
+                    </div>
+                </div>
+                <div style="color: red" ng-show="addItemDeptForm.editEmpStatus1.$invalid">
+                    <span ng-show="addItemDeptForm.editEmpStatus1.$error.required">
+                        {{'CONFIG.MENU_GUESTGRADETYPE.MUST_INPUT'|translate}}
+                    </span>
+                </div>
+            </div>
+            <!-- 是否使用本系统 -->
+            <div class="col-lg-6 col-md-6 col-xs-6 col-xs-12">
+                <div class="input-group has-feedback"
+                     ng-class="{'has-success' : !addItemDeptForm.newItemDeptmentStatus.$pristine && addItemDeptForm.newItemDeptmentStatus.$valid,
+                              'has-error' : !addItemDeptForm.newItemDeptmentStatus.$pristine && addItemDeptForm.newItemDeptmentStatus.$invalid }">
+                    <span class="input-group-addon">{{'CONFIG.MENU_USER.STATUS2'|translate}}</span>
+                    <div class="panel-heading form-control" style="
+                                    padding: 5px 15px;
+                                    border-top-left-radius: 0px;
+                                    border-top-right-radius: 0px;">
+                        <input tabindex="1" type="radio" id="editEmpStatus2_Y" value="1" name="editEmpStatus2"
+                               ng-value=1
+                               ng-model="editEmpStatus2"
+                               ng-icheck>
+                        <label for="editEmpStatus2_Y" style="font-weight: normal;">{{'CONFIG.MENU_USER.STATUS2_Y'|translate}}</label>
+                        <input tabindex="0" type="radio" id="editEmpStatus2_N" value="0" name="editEmpStatus2"
+                               ng-value=0
+                               ng-model="editEmpStatus2"
+                               ng-icheck>
+                        <label for="editEmpStatus2_N" style="font-weight: normal;">{{'CONFIG.MENU_USER.STATUS2_N'|translate}}</label>
+                    </div>
+                </div>
+                <div style="color: red" ng-show="addItemDeptForm.newEmpStatus2.$invalid">
+                    <span ng-show="addItemDeptForm.newEmpStatus2.$error.required">
+                        {{'CONFIG.MENU_GUESTGRADETYPE.MUST_INPUT'|translate}}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 模态框footer ng-disabled="userForm.$invalid" -->
+    <div class="modal-footer">
+        <button type="submit" name="submit" class="btn btn-primary" id="btn_save"
+                ng-disabled="!editEmpForm.confirmUserPwd.$pristine && editEmpForm.confirmUserPwd.$invalid"
+                ng-click="save()">
+            {{'CONFIG.MENU_USER.SAVE'|translate}}
+        </button>
+    </div>
+</form>

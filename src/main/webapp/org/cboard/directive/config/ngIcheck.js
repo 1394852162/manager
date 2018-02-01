@@ -22,10 +22,6 @@ cBoard.directive('ngIcheck', function($compile) {
         restrict : 'A',
         require : '?ngModel',
         link : function($scope, $element, $attrs, $ngModel) {
-            // console.log($scope);
-            console.log($element);
-            // console.log($attrs);
-            // console.log($ngModel);
             /*if($ngModel.$attr.checked === true){
                 $($element).iCheck('check');
             }*/
@@ -54,8 +50,6 @@ cBoard.directive('ngIcheck', function($compile) {
                     });
                 }
             }).on('ifChecked', function(event) {
-                console.log($attrs);
-                console.log($ngModel);
                 /*if ($attrs.type == "checkbox") { ifClicked
                     $scope.$apply(function() {
                         return $ngModel.$setViewValue(event.target.checked);

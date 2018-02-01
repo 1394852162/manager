@@ -27,13 +27,13 @@ cBoard.controller('cBoardCtrl', function ($rootScope, $scope, $location, $http, 
         url: './employee/getSessionUsername.do'
     }).success(function (response) {
         $scope.sessionUser = response.code;
-        console.log($scope.sessionUser);
+        // console.log($scope.sessionUser);
     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
         ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
     });
 
     $scope.changePwd = function (current, $event) {
-        console.log(current);
+        // console.log(current);
         $uibModal.open({
             templateUrl: 'org/cboard/view/config/modal/changePwd.html',
             windowTemplateUrl: 'org/cboard/view/util/modal/window.html',
