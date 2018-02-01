@@ -109,11 +109,11 @@
         }
         $(document).ready(function(){
             $("#btn-login").click(function(){
-                console.log(statusLang);
+//                console.log(statusLang);
                 var username = $("#username").val();
                 var pwd = $("#pwd").val();
 
-                alert(username);
+//                alert(username);
                 $("#btn-login").button('loading');
                 $.ajax({
                     type:"GET",
@@ -128,9 +128,9 @@
                     },
                     success:function(data,textStatus){
                         if(data){
-                            console.log(data);
+//                            console.log(data);
                             var notecode = data.IfExit;
-                            alert(notecode);
+//                            alert(notecode);
                             $("#btn-login").button('reset');
                             if(notecode == "true"){
                                 document.location.href= "starter.html?lang=" + "cn";
@@ -140,9 +140,9 @@
                         }
                     },
                     error:function(XMLHttpRequest, textStatus, errorThrown){
-                        console.log(XMLHttpRequest);
+                        /*console.log(XMLHttpRequest);
                         console.log(textStatus);
-                        console.log(errorThrown);
+                        console.log(errorThrown);*/
 
                         if($("#btnClose").length > 0){
                             $("#btnClose").trigger("click");
