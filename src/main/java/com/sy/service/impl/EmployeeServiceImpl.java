@@ -47,4 +47,14 @@ public class EmployeeServiceImpl implements IEmployeeService{
     public int updateByPrimaryKey(HashMap<String, Object> map) {
         return this.iEmployeeDao.updateByPrimaryKey(map);
     }
+
+    @Override
+    public int deleteEmp(int EmpId) {
+        return this.iEmployeeDao.deleteEmp(EmpId);
+    }
+
+    @Override
+    public List<Employee> getNameQueryList(String EmpName) {
+        return this.iEmployeeDao.getNameQueryList(EmpName);
+    }
 }

@@ -1,53 +1,85 @@
 package com.sy.pojo;
 
+import java.util.Date;
+
 /**
  * Created by haswell on 2018/1/25.
  */
 public class Dept {
-    private int deptId;
-    private String deptNo;
-    private String deptName;
-    private String deptType;
+    private int DeptId;
+    private String DeptNo;
+    private String DeptName;
+    private int Status;
+    private String DeptNote;
+    private Date CreateTime;
+    private Date UpdateTime;
 
     @Override
     public String toString() {
         return "Dept{" +
-                "deptId=" + deptId +
-                ", deptNo='" + deptNo + '\'' +
-                ", deptName='" + deptName + '\'' +
-                ", deptType='" + deptType + '\'' +
+                "DeptId=" + DeptId +
+                ", DeptNo='" + DeptNo + '\'' +
+                ", DeptName='" + DeptName + '\'' +
+                ", Status=" + Status +
+                ", DeptNote='" + DeptNote + '\'' +
+                ", CreateTime=" + CreateTime +
+                ", UpdateTime=" + UpdateTime +
                 '}';
     }
 
     public int getDeptId() {
-        return deptId;
+        return DeptId;
     }
 
     public void setDeptId(int deptId) {
-        this.deptId = deptId;
+        DeptId = deptId;
     }
 
     public String getDeptNo() {
-        return deptNo;
+        return DeptNo;
     }
 
     public void setDeptNo(String deptNo) {
-        this.deptNo = deptNo;
+        DeptNo = deptNo;
     }
 
     public String getDeptName() {
-        return deptName;
+        return DeptName;
     }
 
     public void setDeptName(String deptName) {
-        this.deptName = deptName;
+        DeptName = deptName;
     }
 
-    public String getDeptType() {
-        return deptType;
+    public int getStatus() {
+        return Status;
     }
 
-    public void setDeptType(String deptType) {
-        this.deptType = deptType;
+    public void setStatus(int status) {
+        Status = status;
+    }
+
+    public String getDeptNote() {
+        return DeptNote;
+    }
+
+    public void setDeptNote(String deptNote) {
+        DeptNote = deptNote;
+    }
+
+    public Date getCreateTime() {
+        return CreateTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        CreateTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return UpdateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        UpdateTime = updateTime;
     }
 }

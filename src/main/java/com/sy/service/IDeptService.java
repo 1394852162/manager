@@ -10,4 +10,6 @@ import java.util.List;
 public interface IDeptService {
     public Dept getUserById(int id);
     public List<Dept> GetDeptList(int deptid);
+
+    public List<Dept> GetQueryDeptList();
 }

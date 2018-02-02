@@ -22,5 +22,7 @@ public interface IEmployeeService {
 
     public int updateByPrimaryKey(HashMap<String,Object> map);
 
+    public int deleteEmp(int EmpId);
 
+    public List<Employee> getNameQueryList(String EmpName);
 }

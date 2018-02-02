@@ -21,6 +21,9 @@
     and EmpPassword =#{EmpPassword,jdbcType=VARCHAR}
   </select>
 
+
+
+
   <select id="getEmpInfo" resultMap="BaseResultMap">
     SELECT *
     FROM Tbb_Employee
@@ -32,9 +35,20 @@
   <select id="getEmpList" resultMap="BaseResultMap">
     SELECT a.*,b.DeptName
     FROM Tbb_Employee a,Tbb_Dept b
-    where EmpStatus1 !=2
+    where EmpStatus1 !=-1
     and a.DeptId=b.DeptId
   </select>
+
+
+  <select id="getNameQueryList"  parameterType="String"  resultMap="BaseResultMap">
+    SELECT a.*,b.DeptName
+    FROM Tbb_Employee a,Tbb_Dept b
+    where EmpStatus1 !=-1
+    and a.DeptId=b.DeptId
+    and EmpName like '%'+rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))=''
+  </select>
+
+
 
   <update id="updatepwd" parameterType="com.sy.pojo.Employee" >
     update Tbb_Employee
@@ -85,4 +99,12 @@
     ,UpdateTime = getdate()
     where EmpId = #{EmpId,jdbcType=INTEGER}
   </update>
+
+
+  <update id="deleteEmp" parameterType="INTEGER" >
+    update Tbb_Employee
+    set EmpStatus1=-1
+    where EmpId = #{EmpId,jdbcType=INTEGER}
+  </update>
+
 </mapper>

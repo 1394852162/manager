@@ -25,4 +25,9 @@ public class DeptServiceImpl implements IDeptService {
     public List<Dept> GetDeptList(int deptid) {
         return this.deptdao.getListById(deptid);
     }
+
+    @Override
+    public List<Dept> GetQueryDeptList() {
+        return this.deptdao.getDeptList();
+    }
 }

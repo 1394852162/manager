@@ -107,25 +107,44 @@ public class EmpController {
     }
 
 
-
     /**
      * 添加用户 参数待定
      * @return
      */
     @RequestMapping("/insertEmp.do")
     @ResponseBody
-    public int insertEmp() {
-
-       // System.out.println("分支：李俊朋");
+    public  Map<String,Object> insertEmp(@RequestParam("EmpName") String EmpName,@RequestParam("EmpPassword") String EmpPassword,
+                         @RequestParam("DeptId") int DeptId,@RequestParam("EmpBirth") String EmpBirth,
+                         @RequestParam("EmpStatus1") int EmpStatus1,@RequestParam("EmpStatus2") int EmpStatus2,
+                         @RequestParam("EmpNo") String EmpNo) {
+        Map<String,Object> resultmap = new HashMap<String,Object>();
+        if(EmpName==""||EmpPassword==""||EmpBirth==""||EmpNo==""){
+            resultmap.put("data", "添加用户失败!用户信息不完整,请仔细核对");
+            resultmap.put("code", 0);
+            return resultmap;
+        }else if(DeptId==-1||EmpStatus1==-1||EmpStatus2==-1){
+            resultmap.put("data", "添加用户失败!用户信息不完整,请仔细核对");
+            resultmap.put("code", 0);
+            return resultmap;
+        }
         HashMap<String,Object> map = new HashMap<String,Object>();
-        map.put("EmpName","海翔");
-        map.put("EmpPassword","31002828");
-        map.put("DeptId",1);
-        map.put("EmpBirth","1998-01-01");
-        map.put("EmpStatus1",1);
-        map.put("EmpStatus2",1);
+        map.put("EmpNo",EmpNo);
+        map.put("EmpName",EmpName);
+        map.put("EmpPassword",EmpPassword);
+        map.put("DeptId",DeptId);
+        map.put("EmpBirth",EmpBirth);
+        map.put("EmpStatus1",EmpStatus1);
+        map.put("EmpStatus2",EmpStatus2);
         int result = iEmpService.insertEmp(map);
-        return result;
+
+        if(result==1){
+            resultmap.put("data", "添加用户成功!");
+            resultmap.put("code", 1);
+        }else{
+            resultmap.put("data", "添加用户失败!");
+            resultmap.put("code", 0);
+        }
+        return resultmap;
     }
 
     /**
@@ -134,19 +153,41 @@ public class EmpController {
      */
     @RequestMapping("/updateEmp.do")
     @ResponseBody
-    public int updateByPrimaryKey( ){
+    public int updateByPrimaryKey(@RequestParam("EmpName") String EmpName,@RequestParam("EmpName") String EmpPassword,
+                                  @RequestParam("DeptId") int DeptId,@RequestParam("EmpBirth") String EmpBirth,
+                                  @RequestParam("EmpStatus1") int EmpStatus1,@RequestParam("EmpStatus2") int EmpStatus2,
+                                  @RequestParam("EmpNo") String EmpNo,@RequestParam("EmpId") int EmpId ){
         HashMap<String,Object> map = new HashMap<String,Object>();
-        map.put("EmpId",1);
-        map.put("EmpNo","1001");
-        map.put("EmpName","lijp");
-        map.put("EmpPassword","31002828");
-        map.put("DeptId",1);
-        map.put("EmpBirth","1998-01-01");
-        map.put("EmpStatus1",1);
-        map.put("EmpStatus2",1);
+        map.put("EmpId",EmpId);
+        map.put("EmpNo",EmpNo);
+        map.put("EmpName",EmpName);
+        map.put("EmpPassword",EmpPassword);
+        map.put("DeptId",DeptId);
+        map.put("EmpBirth",EmpBirth);
+        map.put("EmpStatus1",EmpStatus1);
+        map.put("EmpStatus2",EmpStatus1);
         int result  = iEmpService.updateByPrimaryKey(map);
         return result;
     }
 
+    /**
+     * 根据EmpId删除用户
+     * @param EmpId
+     * @return
+     */
+    @RequestMapping("/deleteEmp.do")
+    @ResponseBody
+    public Map<String,Object> deleteEmp(@RequestParam("EmpId") int EmpId){
+        Map<String,Object> resultmap = new HashMap<String,Object>();
+        int result = iEmpService.deleteEmp(EmpId);
+        if(result==1){
+            resultmap.put("data", "删除成功!");
+            resultmap.put("code", 1);
+        }else{
+            resultmap.put("code", 0);
+            resultmap.put("data", "删除失败!");
+        }
+        return resultmap;
+    }
 
 }
