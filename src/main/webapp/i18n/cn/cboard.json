@@ -28,6 +28,7 @@
       "MENU": "管理界面",
       "MENU_USER": "员工维护",
       "MENU_DEPT": "部门维护",
+      "MENU_BATCH": "批次维护",
       "MENU_ROLE": "角色维护",
       "MENU_ROLE_MENU": "角色菜单维护",
       "MENU_ROLE_MENU_TREE": "角色菜单树",
@@ -94,6 +95,15 @@
       "DESC": "描述",
       "SAVE": "保存"
     },
+    "MENU_BATCH": {
+      "BATCH_NAME": "查询批次",
+      "BATCH_SEARCH": "---请输入批次名称---",
+      "ADD_BATCH": "添加批次",
+      "ADD_BATCH_NO": " 批次号",
+      "ADD_BATCH_NAME": "批次名称",
+      "ADD_BATCH_STATUS": "批次状态",
+      "EDIT_BATCH": "修改批次"
+    },
     "MENU_ROLE": {
       "ROLE_NAME": "角色名称",
       "ROLE_SEARCH": "---请输入---",
@@ -145,9 +155,7 @@
       "PLACE_NAME": "商圈名称",
       "BRAND_NAME": "品牌名称"
     },
-    "MENU_ITEMCATEGORY": {
 
-    },
     "MENU_ITEMDEPTMENT": {
       "CODE": "编码",
       "NAME": "名称",

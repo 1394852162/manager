@@ -3,39 +3,6 @@
  */
 angular.module('cBoard').config(['$stateProvider', function ($stateProvider) {
     $stateProvider
-        /*.state('user', {
-            url: '/user',
-            abstract: true,
-            template: '<div ui-view></div>'
-        })
-        .state('dashboard', {
-            url: '/dashboard',
-            abstract: true,
-            template: '<div ui-view></div>'
-        })
-        .state('mine', {
-            url: '/mine',
-            abstract: true,
-            template: '<div ui-view></div>'
-        })
-        .state('mine.view', {
-            url: '/{id}',
-            params: {id: null},
-            templateUrl: 'org/cboard/view/dashboard/view.html',
-            controller: 'dashboardViewCtrl'
-        })
-        .state('dashboard.category', {
-            url: '/{category}',
-            params: {category: null},
-            abstract: true,
-            template: '<div ui-view></div>',
-        })
-        .state('dashboard.category.view', {
-            url: '/{id}',
-            params: {id: null},
-            templateUrl: 'org/cboard/view/dashboard/view.html',
-            controller: 'dashboardViewCtrl'
-        })*/
         //管理界面控制路由配置
         .state('config', {
             url: '/config',
@@ -53,102 +20,11 @@ angular.module('cBoard').config(['$stateProvider', function ($stateProvider) {
             templateUrl: 'org/cboard/view/config/dept.html',
             controller: 'deptCtrl'
         })
-        //角色路由配置
-        /*.state('config.role', {
-            url: '/role',
-            templateUrl: 'org/cboard/view/config/role.html',
-            controller: 'roleCtrl'
-        })
-        //角色-菜单路由配置
-        .state('config.roleMenu', {
-            url: '/roleMenu',
-            templateUrl: 'org/cboard/view/config/roleMenu.html',
-            controller: 'roleMenuCtrl'
-        })
-        //角色-菜单路由配置
-        .state('config.roleMenuTree', {
-            url: '/roleMenuTree',
-            templateUrl: 'org/cboard/view/config/roleMenuTree.html',
-            controller: 'roleMenuTreeCtrl'
-        })
-        //datatables路由配置
-        .state('config.datatables', {
-            url: '/datatables',
-            templateUrl: 'org/cboard/view/config/dataTables.html',
-            controller: 'dataTablesCtrl'
-        })
-        //品牌-路由配置
-        .state('config.brand', {
-            url: '/brand',
-            templateUrl: 'org/cboard/view/config/brand.html',
-            controller: 'brandCtrl'
-        })
-        //区域-路由配置
-        .state('config.area', {
-            url: '/area',
-            templateUrl: 'org/cboard/view/config/area.html',
-            controller: 'areaCtrl'
-        })
-        //门店-路由配置
-        .state('config.outlet', {
-            url: '/outlet',
-            templateUrl: 'org/cboard/view/config/outlet.html',
-            controller: 'outletCtrl'
-        })
-        //通讯报表-路由配置
-        .state('config.communication', {
-            url: '/communication',
-            templateUrl: 'org/cboard/view/config/communication.html',
-            controller: 'communicationCtrl'
-        })
-        //商品分类-路由配置
-        .state('config.itemcategory', {
-            url: '/itemcategory',
-            templateUrl: 'org/cboard/view/config/itemcategory.html',
-            controller: 'itemcategoryCtrl'
-        })
-        //餐品部门-路由配置
-        .state('config.itemdeptment', {
-            url: '/itemdeptment',
-            templateUrl: 'org/cboard/view/config/itemdeptment.html',
-            controller: 'itemdeptmentCtrl'
-        })
-        //商圈-路由配置
-        .state('config.place', {
-            url: '/place',
-            templateUrl: 'org/cboard/view/config/place.html',
-            controller: 'placeCtrl'
-        })
-        //顾客档次-路由配置
-        .state('config.guestgradetype', {
-            url: '/guestgradetype',
-            templateUrl: 'org/cboard/view/config/guestgradetype.html',
-            controller: 'guestgradetypeCtrl'
-        })
-        //人数档次-路由配置
-        .state('config.guestnotype', {
-            url: '/guestnotype',
-            templateUrl: 'org/cboard/view/config/guestnotype.html',
-            controller: 'guestnotypeCtrl'
-        })
-        //促销主题-路由配置
-        .state('config.promotion', {
-            url: '/promotion',
-            templateUrl: 'org/cboard/view/config/promotion.html',
-            controller: 'promotionCtrl'
-        })
-        //促销相关商品-路由配置
-        .state('config.promotionitem', {
-            url: '/promotionitem',
-            templateUrl: 'org/cboard/view/config/promotionitem.html',
-            controller: 'promotionitemCtrl'
-        })
-        //日历-路由配置
-        .state('config.date', {
-            url: '/date',
-            templateUrl: 'org/cboard/view/config/date.html',
-            controller: 'dateCtrl'
-        })*/;
+        .state('config.batch', {
+        url: '/batch',
+        templateUrl: 'org/cboard/view/config/batch.html',
+        controller: 'batchCtrl'
+    });
     }
 ]);
 
