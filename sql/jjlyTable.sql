@@ -65,3 +65,7 @@ CREATE TABLE Tbb_VipTicket (
   UpdateTime DATE
 )
 
+SELECT *
+FROM Tbb_Employee;
+SELECT *
+FROM Tbb_Dept;
