@@ -7,7 +7,9 @@ import java.util.List;
 /**
  * Created by haswell on 2018/1/25.
  */
-public interface IDeptService {
+interface IDeptService {
     public Dept getUserById(int id);
     public List<Dept> GetDeptList(int deptid);
+
+    public List<Dept> GetQueryDeptList();
 }
