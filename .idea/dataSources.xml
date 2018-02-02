@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="symarket60@10.200.168.75" uuid="896b69d5-f08c-418a-9aca-a824937434a5">
+      <driver-ref>sybase.jtds</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>net.sourceforge.jtds.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:jtds:sybase://10.200.168.75:7000/symarket60</jdbc-url>
+      <driver-properties>
+        <property name="appName" value="DataGrip" />
+        <property name="CHARSET" value="cp936" />
+      </driver-properties>
+    </data-source>
+  </component>
+</project>

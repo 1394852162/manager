@@ -3,6 +3,7 @@
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/.idea" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/.settings" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sql/jjlyTable.sql" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/sy/controller/EmpController.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/sy/controller/UserController.java" charset="ISO-8859-1" />
