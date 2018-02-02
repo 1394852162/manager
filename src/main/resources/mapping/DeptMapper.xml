@@ -2,10 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sy.dao.IDeptDao" >
   <resultMap id="BaseResultMap" type="com.sy.pojo.Dept" >
-    <result property="deptId" column="deptId" jdbcType="INTEGER" />
-    <result property="deptName" column="deptName" jdbcType="VARCHAR" />
-    <result property="deptNo" column="deptNo" jdbcType="VARCHAR" />
-    <result property="deptType" column="deptType"  jdbcType="VARCHAR" />
+    <result property="DeptId" column="DeptId" jdbcType="INTEGER" />
+    <result property="DeptNo" column="DeptNo" jdbcType="VARCHAR" />
+    <result property="DeptName" column="DeptName" jdbcType="VARCHAR" />
+    <result property="Status" column="Status"  jdbcType="INTEGER" />
+    <result property="DeptNote" column="DeptNote"  jdbcType="VARCHAR" />
+    <result property="CreateTime" column="CreateTime"  jdbcType="DATE" />
+    <result property="UpdateTime" column="UpdateTime"  jdbcType="DATE" />
+
   </resultMap>
 
   <resultMap type="com.sy.pojo.Dept" id="DeptList">
@@ -14,6 +18,13 @@
   <result property="deptNo" column="deptNo" />
   <result property="deptType" column="deptType" />
 </resultMap>
+
+  <select id="getDeptList" resultMap="BaseResultMap">
+    SELECT DeptId, DeptName,DeptNo
+    FROM Tbb_Dept
+    where Status =1
+  </select>
+
   <select id="getListById" resultMap="DeptList">
     SELECT deptId, deptName,deptNo,deptType
     FROM Dept

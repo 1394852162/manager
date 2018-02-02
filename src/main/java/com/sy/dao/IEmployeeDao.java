@@ -51,4 +51,18 @@ public interface IEmployeeDao {
      */
     int updateByPrimaryKey(HashMap<String,Object> map);
 
+    /**
+     * 根据EmpId删除人员
+     * @param EmpId
+     * @return
+     */
+    int deleteEmp(int EmpId);
+
+    /**
+     * 根据名称模糊查询
+     * @param EmpName
+     * @return
+     */
+    List<Employee> getNameQueryList(String EmpName);
+
 }

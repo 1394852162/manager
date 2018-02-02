@@ -11,4 +11,11 @@ public interface IDeptDao {
 
     Dept selectByPrimaryKey(Integer id);
     List<Dept> getListById(Integer deptId);
+
+    /**
+     * 查询部门列表
+     * @return
+     */
+    List<Dept> getDeptList();
+
 }
