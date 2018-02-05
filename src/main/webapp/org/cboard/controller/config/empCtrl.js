@@ -161,7 +161,7 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
      * @param current
      * @param $event
      */
-    $scope.addEmp = function (current, $event) {
+    $scope.addEmp = function () {
         $uibModal.open({
             templateUrl: 'org/cboard/view/config/modal/addEmp.html',
             //windowTemplateUrl: 'org/cboard/view/util/modal/window.html',
@@ -194,16 +194,15 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
                             DeptId: $scope.newEmpDept,
                             EmpStatus1: $scope.newEmpStatus1,
                             EmpStatus2: $scope.newEmpStatus2
-
                         }
                     }).success(function (response) {
-                        if (response.code === 0) {
+                        /*if (response.code === 0) {
                             ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
                         } else if (response.code === 1) {
                             ModalUtils.alert(translate(response.msg + "!"), "modal-success", "md");
                         } else if (response.code === -2) {
                             ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-                        }
+                        }*/
                         getUserList();
                     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                         ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
@@ -212,7 +211,6 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
                 }
             }
         });
-        // $event.stopPropagation();//阻止冒泡
     };
 
 
@@ -222,7 +220,19 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
      * @param $event
      */
     $scope.delEmp = function (current, $event) {
-        console.log("删除用户...");
+        $http({
+            method: 'POST',
+            url: './employee/deleteEmp.do',
+            data: {
+                EmpId: current.empId
+            }
+        }).success(function (response) {
+            /*$scope.userList = response;
+            $scope.initPageSort($scope.userList);*/
+            getUserList();
+        }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+            ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
+        })
         $event.stopPropagation();//阻止冒泡
      };
 
