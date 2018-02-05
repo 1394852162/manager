@@ -19,6 +19,8 @@
     select count(EmpId)  FROM Tbb_Employee
     where EmpName = #{EmpName,jdbcType=VARCHAR}
     and EmpPassword =#{EmpPassword,jdbcType=VARCHAR}
+    and EmpStatus1 !=-1
+    and EmpStatus2 =1
   </select>
 
 
@@ -65,7 +67,7 @@
     declare @EmpId int
     select @EmpId = isnull(max(EmpId),0) from Tbb_Employee
     insert into Tbb_Employee
-    select @EmpId+1,convert(varchar(20),1001+@EmpId),#{EmpName,jdbcType=VARCHAR},
+    select @EmpId+1,#{EmpNo,jdbcType=VARCHAR},#{EmpName,jdbcType=VARCHAR},
     #{EmpPassword,jdbcType=VARCHAR},#{DeptId,jdbcType=INTEGER},
     #{EmpBirth,jdbcType=VARCHAR},#{EmpStatus1,jdbcType=INTEGER},
     #{EmpStatus2,jdbcType=INTEGER},'增加人员',

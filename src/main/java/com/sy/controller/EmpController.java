@@ -41,9 +41,11 @@ public class EmpController {
         emp.setEmpPassword(password);
         boolean EmpExit = iEmpService.EmployeeLogin(emp);
         List<Employee> list = iEmpService.getEmpInfo(emp);
-        emp.setEmpId(list.get(0).getEmpId());
-        emp.setDeptId(list.get(0).getDeptId());
-        emp.setEmpNo(list.get(0).getEmpNo());
+        if(EmpExit==true){
+            emp.setEmpId(list.get(0).getEmpId());
+            emp.setDeptId(list.get(0).getDeptId());
+            emp.setEmpNo(list.get(0).getEmpNo());
+        }
         HashMap<String,Object> result = new HashMap<String,Object>();
         System.out.println("存入到对象的数据"+emp);
         result.put("IfExit",EmpExit+"");
