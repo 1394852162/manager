@@ -1,7 +1,7 @@
 /**
  * Created by 陶鹏飞 on 2017/8/4.
  */
-cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $uibModal, ModalUtils, $filter, chartService) {
+cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $uibModal, ModalUtils, $filter) {
 
     var translate = $filter('translate');
     $scope.optFlag = 'none';
@@ -75,7 +75,7 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
      * @returns {boolean}
      */
     $scope.isActivePage = function (page) {
-        return $scope.selPage == page;
+        return $scope.selPage === page;
     };
 
     /**
@@ -154,14 +154,14 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
         })*/
-    })
+    });
 
     /**
      * 增加用户
      * @param current
      * @param $event
      */
-    $scope.addEmp = function (current, $event) {
+    $scope.addEmp = function () {
         $uibModal.open({
             templateUrl: 'org/cboard/view/config/modal/addEmp.html',
             //windowTemplateUrl: 'org/cboard/view/util/modal/window.html',
@@ -170,15 +170,15 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
                 /**
                  * 部门载入
                  */
-                /*$http({
+                $http({
                     method: 'get',
-                    url: './role/roleLoad.do'
+                    url: './dept/getDeptList.do'
                 }).success(function (response) {
-                    $scope.roleList_1 = response;
-                    console,log($scope.roleList_1);
+                    $scope.deptList = response;
+                    console.log($scope.deptList);
                 }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                     ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-                });*/
+                });
                 $scope.close = function () {
                     $uibModalInstance.close();
                 };
@@ -187,20 +187,22 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
                         method: 'POST',
                         url: './employee/insertEmp.do',
                         data:{
-                            name: $scope.newUserName,
-                            role: $scope.newUserRole,
-                            password: $scope.newUserPwd,
-                            // oldRole:oldRole,
-                            desc: $scope.newUserDesc
+                            EmpNo: $scope.newEmpNo,
+                            EmpName: $scope.newEmpName,
+                            EmpBirth: $scope.newEmpBirth,
+                            EmpPassword: $scope.newEmpPwd,
+                            DeptId: $scope.newEmpDept,
+                            EmpStatus1: $scope.newEmpStatus1,
+                            EmpStatus2: $scope.newEmpStatus2
                         }
                     }).success(function (response) {
-                        if (response.code === 0) {
+                        /*if (response.code === 0) {
                             ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
                         } else if (response.code === 1) {
                             ModalUtils.alert(translate(response.msg + "!"), "modal-success", "md");
                         } else if (response.code === -2) {
                             ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-                        }
+                        }*/
                         getUserList();
                     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                         ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
@@ -209,7 +211,6 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
                 }
             }
         });
-        // $event.stopPropagation();//阻止冒泡
     };
 
 
@@ -219,7 +220,19 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
      * @param $event
      */
     $scope.delEmp = function (current, $event) {
-        console.log("删除用户...");
+        $http({
+            method: 'POST',
+            url: './employee/deleteEmp.do',
+            data: {
+                EmpId: current.empId
+            }
+        }).success(function (response) {
+            /*$scope.userList = response;
+            $scope.initPageSort($scope.userList);*/
+            getUserList();
+        }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+            ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
+        })
         $event.stopPropagation();//阻止冒泡
      };
 
