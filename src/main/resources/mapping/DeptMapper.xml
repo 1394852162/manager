@@ -20,7 +20,7 @@
 </resultMap>
 
   <select id="getDeptList" resultMap="BaseResultMap">
-    SELECT DeptId, DeptName,DeptNo
+    SELECT *
     FROM Tbb_Dept
     where Status =1
   </select>
