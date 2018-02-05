@@ -1,7 +1,7 @@
 /**
  * Created by 陶鹏飞 on 2017/8/4.
  */
-cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $uibModal, ModalUtils, $filter, chartService) {
+cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $uibModal, ModalUtils, $filter) {
 
     var translate = $filter('translate');
     $scope.optFlag = 'none';
@@ -75,7 +75,7 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
      * @returns {boolean}
      */
     $scope.isActivePage = function (page) {
-        return $scope.selPage == page;
+        return $scope.selPage === page;
     };
 
     /**
@@ -154,7 +154,7 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
         })*/
-    })
+    });
 
     /**
      * 增加用户
@@ -170,15 +170,15 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
                 /**
                  * 部门载入
                  */
-                /*$http({
+                $http({
                     method: 'get',
-                    url: './role/roleLoad.do'
+                    url: './dept/getDeptList.do'
                 }).success(function (response) {
-                    $scope.roleList_1 = response;
-                    console,log($scope.roleList_1);
+                    $scope.deptList = response;
+                    console.log($scope.deptList);
                 }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                     ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-                });*/
+                });
                 $scope.close = function () {
                     $uibModalInstance.close();
                 };
@@ -187,11 +187,14 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
                         method: 'POST',
                         url: './employee/insertEmp.do',
                         data:{
-                            name: $scope.newUserName,
-                            role: $scope.newUserRole,
-                            password: $scope.newUserPwd,
-                            // oldRole:oldRole,
-                            desc: $scope.newUserDesc
+                            EmpNo: $scope.newEmpNo,
+                            EmpName: $scope.newEmpName,
+                            EmpBirth: $scope.newEmpBirth,
+                            EmpPassword: $scope.newEmpPwd,
+                            DeptId: $scope.newEmpDept,
+                            EmpStatus1: $scope.newEmpStatus1,
+                            EmpStatus2: $scope.newEmpStatus2
+
                         }
                     }).success(function (response) {
                         if (response.code === 0) {
