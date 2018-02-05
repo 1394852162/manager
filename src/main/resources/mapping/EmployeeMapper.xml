@@ -85,6 +85,9 @@
       <if test="EmpName != null" >
         EmpName = #{EmpName,jdbcType=VARCHAR},
       </if>
+      <if test="EmpBirth != null" >
+        EmpBirth = #{EmpBirth,jdbcType=VARCHAR},
+      </if>
       <if test="EmpPassword != null" >
         EmpPassword = #{EmpPassword,jdbcType=VARCHAR},
       </if>
