@@ -2,6 +2,7 @@ package com.sy.service;
 
 import com.sy.pojo.Dept;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -12,4 +13,12 @@ public interface IDeptService {
     public List<Dept> GetDeptList(int deptid);
 
     public List<Dept> GetQueryDeptList();
+
+    public List<Dept> getNameQueryList(String DeptName);
+
+    public  int insertDept(HashMap<String,Object> map);
+
+    public int updateDeptByKey(HashMap<String,Object> map);
+
+    public int deleteDept(int DeptId);
 }

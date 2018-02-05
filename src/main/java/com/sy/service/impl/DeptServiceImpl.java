@@ -6,6 +6,7 @@ import com.sy.service.IDeptService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -29,5 +30,25 @@ public class DeptServiceImpl implements IDeptService {
     @Override
     public List<Dept> GetQueryDeptList() {
         return this.deptdao.getDeptList();
+    }
+
+    @Override
+    public List<Dept> getNameQueryList(String DeptName) {
+        return this.deptdao.getNameQueryList(DeptName);
+    }
+
+    @Override
+    public int insertDept(HashMap<String, Object> map) {
+        return this.deptdao.insertDept(map);
+    }
+
+    @Override
+    public int updateDeptByKey(HashMap<String, Object> map) {
+        return this.deptdao.updateDeptByKey(map);
+    }
+
+    @Override
+    public int deleteDept(int DeptId) {
+        return this.deptdao.deleteDept(DeptId);
     }
 }

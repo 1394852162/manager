@@ -2,6 +2,7 @@ package com.sy.dao;
 
 import com.sy.pojo.Dept;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -17,5 +18,37 @@ public interface IDeptDao {
      * @return
      */
     List<Dept> getDeptList();
+
+
+    /**
+     * 根据名称模糊查询部门信息
+     * @param DeptName
+     * @return
+     */
+    List<Dept> getNameQueryList(String DeptName);
+
+    /**
+     *插入部门信息
+     * @param map
+     * @return
+     */
+    int insertDept(HashMap<String,Object> map);
+
+
+    /**
+     * 修改用户信息
+     * @param map
+     * @return
+     */
+    int updateDeptByKey(HashMap<String,Object> map);
+
+
+    /**
+     * 根据DeptId删除人员
+     * @param DeptId
+     * @return
+     */
+    int deleteDept(int DeptId);
+
 
 }

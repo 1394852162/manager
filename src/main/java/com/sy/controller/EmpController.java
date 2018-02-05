@@ -77,6 +77,11 @@ public class EmpController {
     return list;
     }
 
+    /**
+     * 修改密码
+     * @param password
+     * @return
+     */
     @RequestMapping("/updatepwd.do")
     @ResponseBody
     public HashMap<String,Object> updatepwd(@RequestParam("password") String password){
@@ -106,6 +111,26 @@ public class EmpController {
         return resultmap;
     }
 
+    /**
+     * 根据用户名查询用户
+     * @param EmpName
+     * @return
+     */
+
+    @RequestMapping("/getNameQueryList.do")
+    @ResponseBody
+    public Map<String,Object> getNameQueryList(@RequestParam("EmpName") String EmpName) {
+        Map<String,Object> resultmap = new HashMap<String,Object>();
+        List<Employee> list =iEmpService.getNameQueryList(EmpName);
+        if(list != null & list.size()>0){
+            resultmap.put("data", list);
+            resultmap.put("code", 1);
+        }else{
+            resultmap.put("code",0);
+            resultmap.put("data","无数据");
+        }
+        return resultmap;
+    }
 
     /**
      * 添加用户 参数待定
@@ -153,21 +178,29 @@ public class EmpController {
      */
     @RequestMapping("/updateEmp.do")
     @ResponseBody
-    public int updateByPrimaryKey(@RequestParam("EmpName") String EmpName,@RequestParam("EmpName") String EmpPassword,
+    public  Map<String,Object> updateByPrimaryKey(@RequestParam("EmpName") String EmpName,
                                   @RequestParam("DeptId") int DeptId,@RequestParam("EmpBirth") String EmpBirth,
                                   @RequestParam("EmpStatus1") int EmpStatus1,@RequestParam("EmpStatus2") int EmpStatus2,
                                   @RequestParam("EmpNo") String EmpNo,@RequestParam("EmpId") int EmpId ){
+        Map<String,Object> resultmap = new HashMap<String,Object>();
         HashMap<String,Object> map = new HashMap<String,Object>();
         map.put("EmpId",EmpId);
         map.put("EmpNo",EmpNo);
         map.put("EmpName",EmpName);
-        map.put("EmpPassword",EmpPassword);
+       // map.put("EmpPassword",EmpPassword);
         map.put("DeptId",DeptId);
         map.put("EmpBirth",EmpBirth);
         map.put("EmpStatus1",EmpStatus1);
         map.put("EmpStatus2",EmpStatus1);
         int result  = iEmpService.updateByPrimaryKey(map);
-        return result;
+        if(result==1){
+            resultmap.put("data", "修改用户成功!");
+            resultmap.put("code", 1);
+        }else{
+            resultmap.put("data", "修改用户失败!");
+            resultmap.put("code", 0);
+        }
+        return resultmap;
     }
 
     /**
