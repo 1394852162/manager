@@ -180,7 +180,7 @@ public class EmpController {
      */
     @RequestMapping("/updateEmp.do")
     @ResponseBody
-    public  Map<String,Object> updateByPrimaryKey(@RequestParam("EmpName") String EmpName,
+    public  Map<String,Object> updateByPrimaryKey(@RequestParam("EmpName") String EmpName,@RequestParam("EmpPassword") String EmpPassword,
                                   @RequestParam("DeptId") int DeptId,@RequestParam("EmpBirth") String EmpBirth,
                                   @RequestParam("EmpStatus1") int EmpStatus1,@RequestParam("EmpStatus2") int EmpStatus2,
                                   @RequestParam("EmpNo") String EmpNo,@RequestParam("EmpId") int EmpId ){
@@ -189,11 +189,11 @@ public class EmpController {
         map.put("EmpId",EmpId);
         map.put("EmpNo",EmpNo);
         map.put("EmpName",EmpName);
-       // map.put("EmpPassword",EmpPassword);
+        map.put("EmpPassword",EmpPassword);
         map.put("DeptId",DeptId);
         map.put("EmpBirth",EmpBirth);
         map.put("EmpStatus1",EmpStatus1);
-        map.put("EmpStatus2",EmpStatus1);
+        map.put("EmpStatus2",EmpStatus2);
         int result  = iEmpService.updateByPrimaryKey(map);
         if(result==1){
             resultmap.put("data", "修改用户成功!");
