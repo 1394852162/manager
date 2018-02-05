@@ -39,6 +39,7 @@
     FROM Tbb_Employee a,Tbb_Dept b
     where EmpStatus1 !=-1
     and a.DeptId=b.DeptId
+    order by EmpId
   </select>
 
 
@@ -48,6 +49,7 @@
     where EmpStatus1 !=-1
     and a.DeptId=b.DeptId
     and EmpName like '%'+rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))=''
+    order by EmpId
   </select>
 
 
