@@ -26,28 +26,28 @@ public class DeptController {
     Dept dept = new Dept();
 
     /**
-     * æŸ¥è¯¢éƒ¨é—¨åˆ—è¡¨
+     * ²éÑ¯²¿ÃÅÁĞ±í
      * @return
      */
     @RequestMapping("/getDeptList.do")
     @ResponseBody
     public Map<String,Object>  GetDeptList(){
         Map<String,Object> resultmap = new HashMap<String,Object>();
-        System.out.println("å¼€å§‹è¿›å…¥");
+        System.out.println("??Ê¼½ø??");
         List<Dept> list = this.DeptService.GetQueryDeptList();
         if(list != null & list.size()>0) {
             resultmap.put("data",list);
             resultmap.put("code",1);
         }
         else{
-            resultmap.put("data","æŸ¥è¯¢å¤±è´¥");
+            resultmap.put("data","²éÑ¯Ê§°Ü");
             resultmap.put("code",0);
         }
         return resultmap;
     }
 
     /**
-     * æ ¹æ®éƒ¨é—¨åç§°æŸ¥è¯¢éƒ¨é—¨
+     * ¸ù¾İ²¿ÃÅÃû³Æ²éÑ¯²¿ÃÅ
      * @param DeptName
      * @return
      */
@@ -55,20 +55,20 @@ public class DeptController {
     @ResponseBody
     public Map<String,Object>  getNameQueryList(@RequestParam("DeptName") String DeptName){
         Map<String,Object> resultmap = new HashMap<String,Object>();
-        System.out.println("å¼€å§‹è¿›å…¥");
+        System.out.println("Ç°Ì¨´«ÈëµÄname========"+DeptName);
         List<Dept> list = this.DeptService.getNameQueryList(DeptName);
         if(list != null & list.size()>0) {
             resultmap.put("data",list);
             resultmap.put("code",1);
         }else{
-            resultmap.put("data","æŸ¥ä¸åˆ°è¯¥éƒ¨é—¨");
+            resultmap.put("data","²é²»µ½¸Ã²¿ÃÅ");
             resultmap.put("code",0);
         }
         return resultmap;
     }
 
     /**
-     * æ·»åŠ éƒ¨é—¨ä¿¡æ¯
+     * Ìí¼Ó²¿ÃÅĞÅÏ¢
      * @param DeptNo
      * @param DeptName
      * @return
@@ -79,7 +79,7 @@ public class DeptController {
         Map<String,Object> resultmap = new HashMap<String,Object>();
         HashMap<String,Object> map = new HashMap<String,Object>();
         if(DeptNo.equals("")||DeptName.equals("")){
-            resultmap.put("data", "è¯·è¾“å…¥å®Œæ•´çš„éƒ¨é—¨ä¿¡æ¯!");
+            resultmap.put("data", "ÇëÊäÈëÍêÕûµÄ²¿ÃÅĞÅÏ¢!");
             resultmap.put("code", 0);
             return resultmap;
         }
@@ -87,17 +87,17 @@ public class DeptController {
         map.put("DeptName",DeptName);
         int result = this.DeptService.insertDept(map);
         if(result==1){
-            resultmap.put("data", "æ·»åŠ éƒ¨é—¨æˆåŠŸ!");
+            resultmap.put("data", "Ìí¼Ó²¿ÃÅ³É¹¦!");
             resultmap.put("code", 1);
         }else{
-            resultmap.put("data", "æ·»åŠ éƒ¨é—¨å¤±è´¥!");
+            resultmap.put("data", "Ìí¼Ó²¿ÃÅÊ§°Ü!");
             resultmap.put("code", 0);
         }
         return resultmap;
     }
 
     /**
-     * ä¿®æ”¹éƒ¨é—¨ä¿¡æ¯æ ¹æ®DeptId
+     * ĞŞ¸Ä²¿ÃÅĞÅÏ¢¸ù¾İDeptId
      * @param DeptNo
      * @param DeptName
      * @param DeptId
@@ -110,7 +110,7 @@ public class DeptController {
         Map<String,Object> resultmap = new HashMap<String,Object>();
         HashMap<String,Object> map = new HashMap<String,Object>();
         if(DeptNo.equals("")||DeptName.equals("")){
-            resultmap.put("data", "è¯·è¾“å…¥å®Œæ•´çš„éƒ¨é—¨ä¿¡æ¯!");
+            resultmap.put("data", "ÇëÊäÈëÍêÕûµÄ²¿ÃÅĞÅÏ¢!");
             resultmap.put("code", 0);
             return resultmap;
         }
@@ -119,17 +119,17 @@ public class DeptController {
         map.put("DeptId",DeptId);
         int result = this.DeptService.updateDeptByKey(map);
         if(result==1){
-            resultmap.put("data", "ä¿®æ”¹éƒ¨é—¨æˆåŠŸ!");
+            resultmap.put("data", "ĞŞ¸Ä²¿ÃÅ³É¹¦!");
             resultmap.put("code", 1);
         }else{
-            resultmap.put("data", "ä¿®æ”¹éƒ¨é—¨å¤±è´¥!");
+            resultmap.put("data", "ĞŞ¸Ä²¿ÃÅÊ§°Ü!");
             resultmap.put("code", 0);
         }
         return resultmap;
     }
 
     /**
-     * æ ¹æ®DeptIdåˆ é™¤éƒ¨é—¨
+     * ¸ù¾İDeptIdÉ¾³ı²¿ÃÅ
      * @param DeptId
      * @return
      */
@@ -139,10 +139,10 @@ public class DeptController {
         Map<String,Object> resultmap = new HashMap<String,Object>();
         int result = this.DeptService.deleteDept(DeptId);
         if(result==1){
-            resultmap.put("data", "éƒ¨é—¨åˆ é™¤æˆåŠŸ!");
+            resultmap.put("data", "²¿ÃÅÉ¾³ı³É¹¦!");
             resultmap.put("code", 1);
         }else{
-            resultmap.put("data", "éƒ¨é—¨åˆ é™¤å¤±è´¥!");
+            resultmap.put("data", "²¿ÃÅÉ¾³ıÊ§°Ü!");
             resultmap.put("code", 0);
         }
         return resultmap;
