@@ -70,6 +70,8 @@
             <div class="col-lg-6 col-md-6 col-xs-6 col-xs-12">
                 <div class="input-group has-feedback">
                     <span class="input-group-addon">{{'CONFIG.MENU_USER.NEW_PWD'|translate}}</span>
+                    <!--<input type="password" class="form-control" id="editEmpPwd" name="editEmpPwd"
+                           placeholder="{{'CONFIG.MENU_USER.SEARCH'|translate}}" ng-model="editEmpPwd">-->
                     <input type="password" class="form-control" id="editEmpPwd" name="editEmpPwd"
                            placeholder="{{'CONFIG.MENU_USER.SEARCH'|translate}}" ng-model="editEmpPwd">
                 </div>
@@ -78,10 +80,9 @@
             <div class="col-lg-6 col-md-6 col-xs-6 col-xs-12 column">
                 <div class="input-group">
                     <span class="input-group-addon">{{'CONFIG.MENU_USER.NEW_DEPT'|translate}}</span>
-                    <select class="form-control" id="editEmpDept" ng-model="editEmpDept">
-                        <option value="">{{'CONFIG.MENU_USER.PLEASE_SELECT'|translate}}</option>
-                        <!-- 直接用模型值第一个会为空，所以这里填充第一个 -->
-                        <option ng-repeat="x in roleList_1.data" value="{{x}}">{{x}}</option>
+                    <select ng-model="editEmpDept" ng-options="c.deptId as c.deptName for c in deptList_2" class="form-control"
+                            ng-selected="c.deptId==editEmpDept">
+                        <!--<option value="">请选择网站</option>-->
                     </select>
 
                 </div>
