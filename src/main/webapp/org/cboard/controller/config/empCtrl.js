@@ -4,10 +4,8 @@
 cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $uibModal, ModalUtils, $filter) {
 
     var translate = $filter('translate');
-    $scope.optFlag = 'none';
-    $scope.dsView = '';
-    $scope.curDatasource = {};
-    $scope.userName = "";
+    $scope.EmpName = "";
+    // $scope.editEmp = {}
 
     ///表格的头部
     $scope.headerInfos = [
@@ -141,25 +139,27 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
     /**
      * 数据双向绑定+监听机制
      */
-    $scope.$watch("userName", function () {
-        /*$http({
-            method: 'post',
-            url: './user/queryUser.do',
-            data: {
-                userName: $scope.userName
-            }
-        }).success(function (response) {
-            $scope.userList = response;
-            $scope.initPageSort($scope.userList);
-        }).error(function (XMLHttpRequest, textStatus, errorThrown) {
-            ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-        })*/
-    });
+    var searchEmpName = function () {
+        $scope.$watch("EmpName", function () {
+            $http({
+                method: 'post',
+                url: './employee/getNameQueryList.do',
+                data: {
+                    EmpName: $scope.EmpName
+                }
+            }).success(function (response) {
+                $scope.userList = response;
+                $scope.initPageSort($scope.userList);
+            }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+                ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
+            })
+        });
+
+    };
+    searchEmpName();
 
     /**
      * 增加用户
-     * @param current
-     * @param $event
      */
     $scope.addEmp = function () {
         $uibModal.open({
@@ -175,7 +175,7 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
                     url: './dept/getDeptList.do'
                 }).success(function (response) {
                     $scope.deptList = response;
-                    console.log($scope.deptList);
+                    // console.log($scope.deptList);
                 }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                     ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
                 });
@@ -195,14 +195,7 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
                             EmpStatus1: $scope.newEmpStatus1,
                             EmpStatus2: $scope.newEmpStatus2
                         }
-                    }).success(function (response) {
-                        /*if (response.code === 0) {
-                            ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-                        } else if (response.code === 1) {
-                            ModalUtils.alert(translate(response.msg + "!"), "modal-success", "md");
-                        } else if (response.code === -2) {
-                            ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-                        }*/
+                    }).success(function () {
                         getUserList();
                     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                         ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
@@ -226,13 +219,11 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
             data: {
                 EmpId: current.empId
             }
-        }).success(function (response) {
-            /*$scope.userList = response;
-            $scope.initPageSort($scope.userList);*/
+        }).success(function () {
             getUserList();
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-        })
+        });
         $event.stopPropagation();//阻止冒泡
      };
 
@@ -255,46 +246,39 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
                 $scope.editEmpDept = current.deptName;
                 $scope.editEmpStatus1 = current.empStatus1;
                 $scope.editEmpStatus2 = current.empStatus2;
-                //getRoleList();
-                // console.log($uibModalInstance);
-                /*$http({
+
+                $http({
                     method: 'get',
-                    url: './role/roleLoad.do'
+                    url: './dept/getDeptList.do'
                 }).success(function (response) {
-                    $scope.modifyUserRole = current.roleName;
-                    $scope.modifyUserName = current.userName;
-                    $scope.modifyUserDesc = current.description;
-                    $scope.roleList_2 = response;
+                    $scope.editEmpDept = current.deptId;
+                    $scope.deptList_2 = response.data;
                 }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                     ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-                });*/
+                });
                 $scope.close = function () {
                     $uibModalInstance.close();
                 };
                 $scope.save = function () {
-                    /*$http({
+                    $http({
                         method: 'POST',
-                        url: './user/updateUser.do',
-                        data:{
-                            name: $scope.modifyUserName,
-                            password: $scope.modifyUserPwd,
-                            role: $scope.modifyUserRole,
-                            oldRole: current.password,
-                            desc: $scope.modifyUserName/!*,
-                            enabled:current.enabled*!/
+                        url: './employee/updateEmp.do',
+                        data: {
+                            EmpId: current.empId,
+                            EmpNo: $scope.editEmpNo,
+                            EmpName: $scope.editEmpName,
+                            EmpBirth: $scope.editEmpBirth,
+                            EmpPassword: $scope.editEmpPwd,
+                            DeptId: $scope.editEmpDept,
+                            EmpStatus1: $scope.editEmpStatus1,
+                            EmpStatus2: $scope.editEmpStatus2
                         }
-                    }).success(function (response) {
-                        if (response.code === 0) {
-                            ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-                        } else if (response.code === 1) {
-                            ModalUtils.alert(translate(response.msg + "!"), "modal-success", "md");
-                        } else if (response.code === -2) {
-                            ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-                        }
+                    }).success(function () {
                         getUserList();
+                        // searchEmpName();
                     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                         ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-                    });*/
+                    });
                     $uibModalInstance.close();
                 }
             }
