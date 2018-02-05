@@ -27,7 +27,7 @@ public class EmpController {
 
 
     /**
-     * ç”¨æˆ·ç™»å½•
+     * ÓÃ»§µÇÂ¼
      * @param username
      * @param password
      * @param session
@@ -47,14 +47,14 @@ public class EmpController {
             emp.setEmpNo(list.get(0).getEmpNo());
         }
         HashMap<String,Object> result = new HashMap<String,Object>();
-        System.out.println("å­˜å…¥åˆ°å¯¹è±¡çš„æ•°æ®"+emp);
+        System.out.println("´æÈëµ½¶ÔÏóµÄÊı¾İ"+emp);
         result.put("IfExit",EmpExit+"");
         session.setAttribute("User", emp);
         return result;
     }
 
     /**
-     * å°†ç”¨æˆ·çš„ä¿¡æ¯æ”¾å…¥åˆ°employee
+     * ½«ÓÃ»§µÄĞÅÏ¢·ÅÈëµ½employee
      * @return
      */
     @RequestMapping("/getSessionUsername.do")
@@ -80,7 +80,7 @@ public class EmpController {
     }
 
     /**
-     * ä¿®æ”¹å¯†ç 
+     * ĞŞ¸ÄÃÜÂë
      * @param password
      * @return
      */
@@ -95,7 +95,7 @@ public class EmpController {
     }
 
     /**
-     * æŸ¥è¯¢ç”¨æˆ·åˆ—è¡¨
+     * ²éÑ¯ÓÃ»§ÁĞ±í
      * @return
      */
     @RequestMapping("/getEmpList.do")
@@ -108,13 +108,13 @@ public class EmpController {
             resultmap.put("code", 1);
         }else{
             resultmap.put("code", 0);
-            resultmap.put("data", "æ— æ•°æ®!");
+            resultmap.put("data", "ÎŞÊı¾İ!");
         }
         return resultmap;
     }
 
     /**
-     * æ ¹æ®ç”¨æˆ·åæŸ¥è¯¢ç”¨æˆ·
+     * ¸ù¾İÓÃ»§Ãû²éÑ¯ÓÃ»§
      * @param EmpName
      * @return
      */
@@ -129,13 +129,13 @@ public class EmpController {
             resultmap.put("code", 1);
         }else{
             resultmap.put("code",0);
-            resultmap.put("data","æ— æ•°æ®");
+            resultmap.put("data","ÎŞÊı¾İ");
         }
         return resultmap;
     }
 
     /**
-     * æ·»åŠ ç”¨æˆ· å‚æ•°å¾…å®š
+     * Ìí¼ÓÓÃ»§ ²ÎÊı´ı¶¨
      * @return
      */
     @RequestMapping("/insertEmp.do")
@@ -146,11 +146,11 @@ public class EmpController {
                          @RequestParam("EmpNo") String EmpNo) {
         Map<String,Object> resultmap = new HashMap<String,Object>();
         if(EmpName==""||EmpPassword==""||EmpBirth==""||EmpNo==""){
-            resultmap.put("data", "æ·»åŠ ç”¨æˆ·å¤±è´¥!ç”¨æˆ·ä¿¡æ¯ä¸å®Œæ•´,è¯·ä»”ç»†æ ¸å¯¹");
+            resultmap.put("data", "Ìí¼ÓÓÃ»§Ê§°Ü!ÓÃ»§ĞÅÏ¢²»ÍêÕû,Çë×ĞÏ¸ºË¶Ô");
             resultmap.put("code", 0);
             return resultmap;
         }else if(DeptId==-1||EmpStatus1==-1||EmpStatus2==-1){
-            resultmap.put("data", "æ·»åŠ ç”¨æˆ·å¤±è´¥!ç”¨æˆ·ä¿¡æ¯ä¸å®Œæ•´,è¯·ä»”ç»†æ ¸å¯¹");
+            resultmap.put("data", "Ìí¼ÓÓÃ»§Ê§°Ü!ÓÃ»§ĞÅÏ¢²»ÍêÕû,Çë×ĞÏ¸ºË¶Ô");
             resultmap.put("code", 0);
             return resultmap;
         }
@@ -165,17 +165,17 @@ public class EmpController {
         int result = iEmpService.insertEmp(map);
 
         if(result==1){
-            resultmap.put("data", "æ·»åŠ ç”¨æˆ·æˆåŠŸ!");
+            resultmap.put("data", "Ìí¼ÓÓÃ»§³É¹¦!");
             resultmap.put("code", 1);
         }else{
-            resultmap.put("data", "æ·»åŠ ç”¨æˆ·å¤±è´¥!");
+            resultmap.put("data", "Ìí¼ÓÓÃ»§Ê§°Ü!");
             resultmap.put("code", 0);
         }
         return resultmap;
     }
 
     /**
-     * ç”¨æˆ·ä¿®æ”¹
+     * ÓÃ»§ĞŞ¸Ä
      * @return
      */
     @RequestMapping("/updateEmp.do")
@@ -196,17 +196,17 @@ public class EmpController {
         map.put("EmpStatus2",EmpStatus1);
         int result  = iEmpService.updateByPrimaryKey(map);
         if(result==1){
-            resultmap.put("data", "ä¿®æ”¹ç”¨æˆ·æˆåŠŸ!");
+            resultmap.put("data", "ĞŞ¸ÄÓÃ»§³É¹¦!");
             resultmap.put("code", 1);
         }else{
-            resultmap.put("data", "ä¿®æ”¹ç”¨æˆ·å¤±è´¥!");
+            resultmap.put("data", "ĞŞ¸ÄÓÃ»§Ê§°Ü!");
             resultmap.put("code", 0);
         }
         return resultmap;
     }
 
     /**
-     * æ ¹æ®EmpIdåˆ é™¤ç”¨æˆ·
+     * ¸ù¾İEmpIdÉ¾³ıÓÃ»§
      * @param EmpId
      * @return
      */
@@ -216,13 +216,14 @@ public class EmpController {
         Map<String,Object> resultmap = new HashMap<String,Object>();
         int result = iEmpService.deleteEmp(EmpId);
         if(result==1){
-            resultmap.put("data", "åˆ é™¤æˆåŠŸ!");
+            resultmap.put("data", "É¾³ı³É¹¦!");
             resultmap.put("code", 1);
         }else{
             resultmap.put("code", 0);
-            resultmap.put("data", "åˆ é™¤å¤±è´¥!");
+            resultmap.put("data", "É¾³ıÊ§°Ü!");
         }
         return resultmap;
     }
+
 
 }

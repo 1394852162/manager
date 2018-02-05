@@ -25,7 +25,10 @@ public class DeptController {
     private IDeptService DeptService;
     Dept dept = new Dept();
 
-
+    /**
+     * 查询部门列表
+     * @return
+     */
     @RequestMapping("/getDeptList.do")
     @ResponseBody
     public Map<String,Object>  GetDeptList(){
@@ -43,6 +46,11 @@ public class DeptController {
         return resultmap;
     }
 
+    /**
+     * 根据部门名称查询部门
+     * @param DeptName
+     * @return
+     */
     @RequestMapping("/getNameQueryList.do")
     @ResponseBody
     public Map<String,Object>  getNameQueryList(@RequestParam("DeptName") String DeptName){

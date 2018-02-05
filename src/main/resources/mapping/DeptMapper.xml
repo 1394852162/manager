@@ -41,7 +41,7 @@
     select  @DeptId = isnull(max(DeptId),0) from Tbb_Dept
     insert into Tbb_Dept
     select @DeptId+1,#{DeptNo,jdbcType=VARCHAR},#{DeptName,jdbcType=VARCHAR},
-            1,添加部门,getdate(),null
+            1,'添加部门',getdate(),null
   end
   </insert>
 
