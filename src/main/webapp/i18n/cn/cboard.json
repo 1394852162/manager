@@ -81,18 +81,17 @@
       "DEPT_NAME": "查询部门",
       "DEPT_SEARCH": "---请输入部门名称---",
       "ADD_DEPT": "添加部门",
-      "ADD_DEPT_NO": " 部门号",
+      "ADD_DEPT_NO": " 部门编号",
       "ADD_DEPT_NAME": "部门名称",
       "ADD_DEPT_STATUS": "部门状态",
       "EDIT_DEPT": "修改部门",
-
 
       "PRINT": "打印",
       "MODIFY": "修改",
       "DELETE": "删除",
       "DEPT_PLACEHOLDER": "请确定输入的角色名称是否已经存在!",
       "IF_ROLE": "* 角色已存在！",
-      "DESC": "描述",
+      "DESC": "部门备注",
       "SAVE": "保存"
     },
     "MENU_BATCH": {
