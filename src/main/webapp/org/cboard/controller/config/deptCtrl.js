@@ -4,16 +4,16 @@
 cBoard.controller('deptCtrl', function ($rootScope, $scope, $http, dataService, $uibModal, ModalUtils, $filter, chartService) {
 
     var translate = $filter('translate');
-    $scope.optFlag = 'none';
+/*    $scope.optFlag = 'none';
     $scope.dsView = '';
     $scope.curDatasource = {};
-    $scope.userName = "";
+    $scope.userName = "";*/
 
     ///表格的头部
     $scope.headerInfos = [
         {'name': '部门号', 'col': 'id'},
         {'name': '部门名称', 'col': 'userName'},
-        {'name': '部门状态', 'col': 'roleName'},
+        {'name': '备注', 'col': 'roleName'},
         {'name': '操作'}
     ];
 
@@ -96,12 +96,12 @@ cBoard.controller('deptCtrl', function ($rootScope, $scope, $http, dataService, 
     var getUserList = function () {
         $http({
             method: 'get',
-            url: './employee/getEmpList.do'//,
+            url: './dept/getDeptList.do'//,
             /*params: {
                 userName: $scope.userName
             }*/
         }).success(function (response) {
-            // console.log(response);
+            console.log(response);
             //$scope.userList = response;
             $scope.initPageSort(response);
             /*
@@ -116,40 +116,22 @@ cBoard.controller('deptCtrl', function ($rootScope, $scope, $http, dataService, 
     };
     getUserList();
 
-    /*var getRoleList = function () {
-        $http({
-            method: 'get',
-            url: './role/roleLoad.do'
-        }).success(function (response) {
-            $scope.roleList = response;
-        }).error(function (XMLHttpRequest, textStatus, errorThrown) {
-            ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-        });
-    }*/
-
-    //查询用户
-    /*
-     $scope.queryUser = function (current,$event) {
-     console.log("查询用户...");
-     };
-     */
-
     /**
      * 数据双向绑定+监听机制
      */
-    $scope.$watch("userName", function () {
-        /*$http({
-            method: 'post',
-            url: './user/queryUser.do',
+    $scope.$watch("deptName", function () {
+        $http({
+            method: 'POST',
+            url: './dept/getNameQueryList.do',
             data: {
-                userName: $scope.userName
+                DeptName: $scope.deptName
             }
         }).success(function (response) {
             $scope.userList = response;
             $scope.initPageSort($scope.userList);
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-        })*/
+        })
     })
 
     /**
@@ -163,40 +145,26 @@ cBoard.controller('deptCtrl', function ($rootScope, $scope, $http, dataService, 
             //windowTemplateUrl: 'org/cboard/view/util/modal/window.html',
             backdrop: false,
             controller: function ($scope, $uibModalInstance, $http) {
-                /**
-                 * 部门载入
-                 */
-                /*$http({
-                    method: 'get',
-                    url: './role/roleLoad.do'
-                }).success(function (response) {
-                    $scope.roleList_1 = response;
-                    console,log($scope.roleList_1);
-                }).error(function (XMLHttpRequest, textStatus, errorThrown) {
-                    ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-                });*/
                 $scope.close = function () {
                     $uibModalInstance.close();
                 };
                 $scope.save = function () {
                     $http({
                         method: 'POST',
-                        url: './employee/insertEmp.do',
+                        url: './dept/insertDept.do',
                         data:{
-                            name: $scope.newUserName,
-                            role: $scope.newUserRole,
-                            password: $scope.newUserPwd,
-                            // oldRole:oldRole,
-                            desc: $scope.newUserDesc
+                            DeptNo: $scope.addDeptNo,
+                            DeptName: $scope.addDeptName,
+                            DeptNote: $scope.addDeptNote
                         }
                     }).success(function (response) {
-                        if (response.code === 0) {
+                        /*if (response.code === 0) {
                             ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
                         } else if (response.code === 1) {
                             ModalUtils.alert(translate(response.msg + "!"), "modal-success", "md");
                         } else if (response.code === -2) {
                             ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-                        }
+                        }*/
                         getUserList();
                     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                         ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
@@ -205,7 +173,7 @@ cBoard.controller('deptCtrl', function ($rootScope, $scope, $http, dataService, 
                 }
             }
         });
-        // $event.stopPropagation();//阻止冒泡
+        $event.stopPropagation();//阻止冒泡
     };
 
 
@@ -215,7 +183,17 @@ cBoard.controller('deptCtrl', function ($rootScope, $scope, $http, dataService, 
      * @param $event
      */
     $scope.delDept = function (current, $event) {
-        console.log("1111");
+        $http({
+            method: 'POST',
+            url: './dept/deleteDept.do',
+            data:{
+                DeptId: current.deptId
+            }
+        }).success(function (response) {
+            getUserList();
+        }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+            ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
+        });
         $event.stopPropagation();//阻止冒泡
      };
 
@@ -231,53 +209,28 @@ cBoard.controller('deptCtrl', function ($rootScope, $scope, $http, dataService, 
             backdrop: false,
             controller: function ($scope, $uibModalInstance, $http) {
 
-                $scope.editEmpNo = current.empNo;
-                $scope.editEmpName = current.empName;
-                $scope.editEmpBirth = current.empBirth;
-                $scope.editEmpPwd = current.empPassword;
-                $scope.editEmpDept = current.deptName;
-                $scope.editEmpStatus1 = current.empStatus1;
-                $scope.editEmpStatus2 = current.empStatus2;
-                //getRoleList();
-                // console.log($uibModalInstance);
-                /*$http({
-                    method: 'get',
-                    url: './role/roleLoad.do'
-                }).success(function (response) {
-                    $scope.modifyUserRole = current.roleName;
-                    $scope.modifyUserName = current.userName;
-                    $scope.modifyUserDesc = current.description;
-                    $scope.roleList_2 = response;
-                }).error(function (XMLHttpRequest, textStatus, errorThrown) {
-                    ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-                });*/
+                $scope.editDeptNo = current.deptNo;
+                $scope.editDeptName = current.deptName;
+                $scope.editDeptNote = current.deptNote;
+
                 $scope.close = function () {
                     $uibModalInstance.close();
                 };
                 $scope.save = function () {
-                    /*$http({
+                    $http({
                         method: 'POST',
-                        url: './user/updateUser.do',
+                        url: './dept/updateDeptByKey.do',
                         data:{
-                            name: $scope.modifyUserName,
-                            password: $scope.modifyUserPwd,
-                            role: $scope.modifyUserRole,
-                            oldRole: current.password,
-                            desc: $scope.modifyUserName/!*,
-                            enabled:current.enabled*!/
+                            DeptId: current.deptId,
+                            DeptNo: $scope.editDeptNo,
+                            DeptName: $scope.editDeptName,
+                            DeptNote: $scope.editDeptNote
                         }
                     }).success(function (response) {
-                        if (response.code === 0) {
-                            ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-                        } else if (response.code === 1) {
-                            ModalUtils.alert(translate(response.msg + "!"), "modal-success", "md");
-                        } else if (response.code === -2) {
-                            ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-                        }
                         getUserList();
                     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                         ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-                    });*/
+                    });
                     $uibModalInstance.close();
                 }
             }
@@ -285,33 +238,4 @@ cBoard.controller('deptCtrl', function ($rootScope, $scope, $http, dataService, 
         $event.stopPropagation();//阻止冒泡
     };
 
-    /**
-     * 状态
-     * @param current
-     * @param $event
-     */
-    $scope.enableEmp = function (current, $event) {
-        $http({
-            method: 'post',
-            url: './user/updateUser.do',
-            data: {
-                name: current.userName,
-                enabled: !current.enabled
-            }
-        }).success(function (response) {
-            if (response.code === 1) {
-                ModalUtils.alert(translate(response.msg + "!"), "modal-success", "md");
-            } else if (response.code === 0) {
-                ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-            } else if (response.code === -1) {
-                ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-            } else if (response.code === -2) {
-                ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-            }
-            getUserList();
-        }).error(function (XMLHttpRequest, textStatus, errorThrown) {
-            ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-        });
-        $event.stopPropagation();//阻止冒泡
-    };
 });
