@@ -75,7 +75,7 @@ public class DeptController {
      */
     @RequestMapping("/insertDept.do")
     @ResponseBody
-    public Map<String,Object>  insertDept(@RequestParam("DeptNo") String DeptNo,@RequestParam("DeptName") String DeptName){
+    public Map<String,Object>  insertDept(@RequestParam("DeptNo") String DeptNo,@RequestParam("DeptName") String DeptName,@RequestParam("DeptNote") String DeptNote){
         Map<String,Object> resultmap = new HashMap<String,Object>();
         HashMap<String,Object> map = new HashMap<String,Object>();
         if(DeptNo.equals("")||DeptName.equals("")){
@@ -85,6 +85,7 @@ public class DeptController {
         }
         map.put("DeptNo",DeptNo);
         map.put("DeptName",DeptName);
+        map.put("DeptNote",DeptNote);
         int result = this.DeptService.insertDept(map);
         if(result==1){
             resultmap.put("data", "添加部门成功!");

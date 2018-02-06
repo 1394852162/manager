@@ -27,8 +27,8 @@ CREATE TABLE Tbb_Dept (
 /*Åú´Î±í*/
 CREATE TABLE Tbb_Batch (
   BatId        INT         NOT NULL PRIMARY KEY,
-  BatNo        VARCHAR(10) NOT NULL,
-  BatName      VARCHAR(30),
+  BatNo        VARCHAR(20) NOT NULL,
+  BatName      VARCHAR(40),
   BatBeginTime DATE        NOT NULL,
   BatEndTime   DATE        NOT NULL,
   BatTicketNum INT         NOT NULL,
