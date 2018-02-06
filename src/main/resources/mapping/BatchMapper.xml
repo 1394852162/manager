@@ -26,7 +26,7 @@
   and BatName like '%'+rtrim(ltrim(#{BatName,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{BatName,jdbcType=VARCHAR}))=''
   </select>
 
-  <insert id="insertBatch" parameterMap="java.util.HashMap">
+  <insert id="insertBatch" parameterType="java.util.HashMap">
     begin
     declare @BatId int
     select @BatId=isnull(max(BatId),0) from Tbb_Batch
@@ -38,13 +38,13 @@
     #{BatEndTime,jdbcType=DATE},
     #{BatTicketNum,jdbcType=INTEGER},
     #{Status,jdbcType=INTEGER},
-    #{BatNote,jdbcType=VARCHAR},
+    '增加批次',
     getdate(),
-    null,
+    null
     end
   </insert>
 
-<update id="updateBatchByKey" parameterMap="java.util.HashMap">
+<update id="updateBatchByKey" parameterType="java.util.HashMap">
   update Tbb_Batch
   <set >
     <if test="BatNo != null" >
