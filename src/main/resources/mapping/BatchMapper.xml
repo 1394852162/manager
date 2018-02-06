@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sy.dao.IBatchDao" >
+  <resultMap id="BaseResultMap" type="com.sy.pojo.Batch" >
+    <result property="BatId" column="BatId" jdbcType="INTEGER" />
+    <result property="BatNo" column="BatNo" jdbcType="VARCHAR" />
+    <result property="BatName" column="BatName" jdbcType="VARCHAR" />
+    <result property="Status" column="Status"  jdbcType="INTEGER" />
+    <result property="BatTicketNum" column="BatTicketNum"  jdbcType="INTEGER" />
+    <result property="BatNote" column="BatNote" jdbcType="VARCHAR" />
+    <result property="BatBeginTime" column="BatBeginTime"  jdbcType="DATE" />
+    <result property="BatEndTime" column="BatEndTime"  jdbcType="DATE" />
+    <result property="CreateTime" column="CreateTime"  jdbcType="DATE" />
+    <result property="UpdateTime" column="UpdateTime"  jdbcType="DATE" />
+
+  </resultMap>
+
+  <select id="getBatList" resultMap="BaseResultMap">
+  select * from Tbb_Batch
+  where Status=1
+  </select>
+  
+  <select id="queryNameBatList" resultMap="BaseResultMap">
+  select * from Tbb_Batch
+  where Status = 1
+  and BatName like '%'+rtrim(ltrim(#{BatName,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{BatName,jdbcType=VARCHAR}))=''
+  </select>
+
+  <insert id="insertBatch" parameterType="java.util.HashMap">
+    begin
+    declare @BatId int
+    select @BatId=isnull(max(BatId),0) from Tbb_Batch
+    insert into Tbb_Batch
+    select @BatId+1,
+    #{BatNo,jdbcType=VARCHAR},
+    #{BatName,jdbcType=VARCHAR},
+    #{BatBeginTime,jdbcType=DATE},
+    #{BatEndTime,jdbcType=DATE},
+    #{BatTicketNum,jdbcType=INTEGER},
+    #{Status,jdbcType=INTEGER},
+    '增加批次',
+    getdate(),
+    null
+    end
+  </insert>
+
+<update id="updateBatchByKey" parameterType="java.util.HashMap">
+  update Tbb_Batch
+  <set >
+    <if test="BatNo != null" >
+      BatNo = #{BatNo,jdbcType=VARCHAR},
+    </if>
+    <if test="BatName != null" >
+      BatName = #{BatName,jdbcType=VARCHAR},
+    </if>
+    <if test="BatBeginTime != null" >
+      BatBeginTime = #{BatBeginTime,jdbcType=DATE},
+    </if>
+    <if test="BatEndTime != null" >
+      BatEndTime = #{BatEndTime,jdbcType=DATE},
+    </if>
+    <if test="BatTicketNum != null" >
+      BatTicketNum = #{BatTicketNum,jdbcType=INTEGER},
+    </if>
+    <if test="Status != null" >
+      Status = #{Status,jdbcType=INTEGER},
+    </if>
+    <if test="BatNote != null" >
+      BatNote = #{BatNote,jdbcType=VARCHAR},
+    </if>
+  </set>
+  ,UpdateTime = getdate()
+  where DBatId = #{BattId,jdbcType=INTEGER}
+</update>
+
+
+  <delete id="deleteBatch" parameterType="INTEGER">
+  update Tbb_Batch
+  set Status = -1
+  where BatId = #{BatId,jdbcType=INTEGER}
+  </delete>
+
+</mapper>
