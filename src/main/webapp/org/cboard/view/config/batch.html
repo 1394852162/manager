@@ -8,12 +8,12 @@
                     <span class="input-group-addon">{{'CONFIG.MENU_BATCH.BATCH_NAME'|translate}}</span>
                     <input type="text" placeholder = "{{'CONFIG.MENU_BATCH.BATCH_SEARCH'|translate}}" class="form-control glyphicon-remove"
                            id="deptName"
-                           ng-model="deptName">
+                           ng-model="batchName">
                 </div>
             </div>
             <!-- 添加 -->
             <div class="pull-right" style="margin-top: 10px;">
-                <button type="button" class="btn btn-primary " id='addDept' ng-click="addDept()">{{'CONFIG.MENU_BATCH.ADD_BATCH'|translate}}</button>
+                <button type="button" class="btn btn-primary " id='addDept' ng-click="addBatch()">{{'CONFIG.MENU_BATCH.ADD_BATCH'|translate}}</button>
                 <!--<button type="button" class="btn btn-primary" id='delRole' ng-click="printUser()">{{// 'CONFIG.MENU_USER.PRINT'|translate}}</button>-->
             </div>
         </div>
@@ -38,11 +38,11 @@
                     <td>{{ (row.status == '1') ? "在职" : "离职" }}</td>
                     <td>{{ row.batNote }}</td>
                     <td>
-                        <button type="button" class="btn btn-info btn-xs" ng-click="editDept(row, $event)">
+                        <button type="button" class="btn btn-info btn-xs" ng-click="editBatch(row, $event)">
                             <span class="glyphicon glyphicon-pencil"></span>{{'CONFIG.MENU_USER.MODIFY'|translate}}
                         </button>
                         <button type="button" class="btn btn-danger btn-xs"
-                                ng-click="delDept(row, $event)">
+                                ng-click="delBatch(row, $event)">
                             <span class="glyphicon glyphicon-remove-circle"></span>{{'CONFIG.MENU_PLACE.PLACE_DEL'|translate}}
                         </button>
                     </td>

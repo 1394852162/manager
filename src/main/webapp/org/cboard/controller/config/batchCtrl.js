@@ -98,7 +98,7 @@ cBoard.controller('batchCtrl', function ($rootScope, $scope, $http, dataService,
     /**
      * 初始化
      */
-    var getUserList = function () {
+    var getBatchList = function () {
         $http({
             method: 'get',
             url: './batch/GetBatList.do'
@@ -116,42 +116,24 @@ cBoard.controller('batchCtrl', function ($rootScope, $scope, $http, dataService,
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
         });
     };
-    getUserList();
-
-    /*var getRoleList = function () {
-        $http({
-            method: 'get',
-            url: './role/roleLoad.do'
-        }).success(function (response) {
-            $scope.roleList = response;
-        }).error(function (XMLHttpRequest, textStatus, errorThrown) {
-            ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-        });
-    }*/
-
-    //查询用户
-    /*
-     $scope.queryUser = function (current,$event) {
-     console.log("查询用户...");
-     };
-     */
+    getBatchList();
 
     /**
      * 数据双向绑定+监听机制
      */
-    $scope.$watch("userName", function () {
-        /*$http({
-            method: 'post',
-            url: './user/queryUser.do',
+    $scope.$watch("batchName", function () {
+        $http({
+            method: 'POST',
+            url: './batch/queryNameBatList.do',
             data: {
-                userName: $scope.userName
+                BatName: $scope.batchName
             }
         }).success(function (response) {
             $scope.userList = response;
             $scope.initPageSort($scope.userList);
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-        })*/
+        })
     })
 
     /**
@@ -159,31 +141,19 @@ cBoard.controller('batchCtrl', function ($rootScope, $scope, $http, dataService,
      * @param current
      * @param $event
      */
-    $scope.addDept = function (current, $event) {
+    $scope.addBatch = function (current, $event) {
         $uibModal.open({
-            templateUrl: 'org/cboard/view/config/modal/addDept.html',
+            templateUrl: 'org/cboard/view/config/modal/addBatch.html',
             //windowTemplateUrl: 'org/cboard/view/util/modal/window.html',
             backdrop: false,
             controller: function ($scope, $uibModalInstance, $http) {
-                /**
-                 * 部门载入
-                 */
-                /*$http({
-                    method: 'get',
-                    url: './role/roleLoad.do'
-                }).success(function (response) {
-                    $scope.roleList_1 = response;
-                    console,log($scope.roleList_1);
-                }).error(function (XMLHttpRequest, textStatus, errorThrown) {
-                    ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-                });*/
                 $scope.close = function () {
                     $uibModalInstance.close();
                 };
                 $scope.save = function () {
                     $http({
                         method: 'POST',
-                        url: './employee/insertEmp.do',
+                        url: './batch/insertEmp.do',
                         data:{
                             name: $scope.newUserName,
                             role: $scope.newUserRole,
@@ -192,14 +162,14 @@ cBoard.controller('batchCtrl', function ($rootScope, $scope, $http, dataService,
                             desc: $scope.newUserDesc
                         }
                     }).success(function (response) {
-                        if (response.code === 0) {
+                        /*if (response.code === 0) {
                             ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
                         } else if (response.code === 1) {
                             ModalUtils.alert(translate(response.msg + "!"), "modal-success", "md");
                         } else if (response.code === -2) {
                             ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-                        }
-                        getUserList();
+                        }*/
+                        getBatchList();
                     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                         ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
                     });
@@ -207,7 +177,7 @@ cBoard.controller('batchCtrl', function ($rootScope, $scope, $http, dataService,
                 }
             }
         });
-        // $event.stopPropagation();//阻止冒泡
+        $event.stopPropagation();//阻止冒泡
     };
 
 
@@ -216,8 +186,27 @@ cBoard.controller('batchCtrl', function ($rootScope, $scope, $http, dataService,
      * @param current
      * @param $event
      */
-    $scope.delDept = function (current, $event) {
-        console.log("1111");
+    $scope.delBatch = function (current, $event) {
+        $http({
+            method: 'POST',
+            url: './batch/deleteBatch.do',
+            data: {
+                BatId: current.batId
+            }
+        }).success(function (response) {
+            /*if (response.code === 1) {
+                ModalUtils.alert(translate(response.msg + "!"), "modal-success", "md");
+            } else if (response.code === 0) {
+                ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
+            } else if (response.code === -1) {
+                ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
+            } else if (response.code === -2) {
+                ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
+            }*/
+            getBatchList();
+        }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+            ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
+        });
         $event.stopPropagation();//阻止冒泡
     };
 
@@ -226,60 +215,48 @@ cBoard.controller('batchCtrl', function ($rootScope, $scope, $http, dataService,
      * @param current
      * @param $event
      */
-    $scope.editDept = function (current, $event) {
+    $scope.editBatch = function (current, $event) {
         $uibModal.open({
-            templateUrl: 'org/cboard/view/config/modal/editDept.html',
+            templateUrl: 'org/cboard/view/config/modal/editBatch.html',
             //windowTemplateUrl: 'org/cboard/view/util/modal/window.html',
             backdrop: false,
             controller: function ($scope, $uibModalInstance, $http) {
 
-                $scope.editEmpNo = current.empNo;
-                $scope.editEmpName = current.empName;
-                $scope.editEmpBirth = current.empBirth;
-                $scope.editEmpPwd = current.empPassword;
-                $scope.editEmpDept = current.deptName;
-                $scope.editEmpStatus1 = current.empStatus1;
-                $scope.editEmpStatus2 = current.empStatus2;
-                //getRoleList();
-                // console.log($uibModalInstance);
-                /*$http({
-                    method: 'get',
-                    url: './role/roleLoad.do'
-                }).success(function (response) {
-                    $scope.modifyUserRole = current.roleName;
-                    $scope.modifyUserName = current.userName;
-                    $scope.modifyUserDesc = current.description;
-                    $scope.roleList_2 = response;
-                }).error(function (XMLHttpRequest, textStatus, errorThrown) {
-                    ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-                });*/
+                $scope.editBatchNo = current.batNo;
+                $scope.editBatchName = current.batName;
+                $scope.editBatBeginTime = current.batBeginTime;
+                $scope.editBatEndTime = current.batEndTime;
+                $scope.editBatchTicketNum = current.batTicketNum;
+                $scope.editBatchStatus = current.status;
+                $scope.editBatchNote = current.batNote;
+
                 $scope.close = function () {
                     $uibModalInstance.close();
                 };
                 $scope.save = function () {
-                    /*$http({
+                    $http({
                         method: 'POST',
-                        url: './user/updateUser.do',
+                        url: './batch/updateDeptByKey.do',
                         data:{
                             name: $scope.modifyUserName,
                             password: $scope.modifyUserPwd,
                             role: $scope.modifyUserRole,
                             oldRole: current.password,
-                            desc: $scope.modifyUserName/!*,
-                            enabled:current.enabled*!/
+                            desc: $scope.modifyUserName/*,
+                            enabled:current.enabled*/
                         }
                     }).success(function (response) {
-                        if (response.code === 0) {
+                        /*if (response.code === 0) {
                             ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
                         } else if (response.code === 1) {
                             ModalUtils.alert(translate(response.msg + "!"), "modal-success", "md");
                         } else if (response.code === -2) {
                             ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-                        }
-                        getUserList();
+                        }*/
+                        getBatchList();
                     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                         ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-                    });*/
+                    });
                     $uibModalInstance.close();
                 }
             }
@@ -292,16 +269,16 @@ cBoard.controller('batchCtrl', function ($rootScope, $scope, $http, dataService,
      * @param current
      * @param $event
      */
-    $scope.enableEmp = function (current, $event) {
+    $scope.enableBatch = function (current, $event) {
         $http({
-            method: 'post',
-            url: './user/updateUser.do',
+            method: 'POST',
+            url: './batch/updateUser.do',
             data: {
                 name: current.userName,
                 enabled: !current.enabled
             }
         }).success(function (response) {
-            if (response.code === 1) {
+            /*if (response.code === 1) {
                 ModalUtils.alert(translate(response.msg + "!"), "modal-success", "md");
             } else if (response.code === 0) {
                 ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
@@ -309,8 +286,8 @@ cBoard.controller('batchCtrl', function ($rootScope, $scope, $http, dataService,
                 ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
             } else if (response.code === -2) {
                 ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-            }
-            getUserList();
+            }*/
+            getBatchList();
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
         });

@@ -101,6 +101,11 @@
       "ADD_BATCH_NO": " 批次号",
       "ADD_BATCH_NAME": "批次名称",
       "ADD_BATCH_STATUS": "批次状态",
+      "BATCH_BEGIN_TIME": "开始时间",
+      "BATCH_END_TIME": "结束时间",
+      "BATCH_TICKET_NUM": "批次票数",
+      "BATCH_NOTE": "批次备注",
+      "EDIT_BATCH": "修改批次",
       "EDIT_BATCH": "修改批次"
     },
     "MENU_ROLE": {
