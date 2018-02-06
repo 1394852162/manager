@@ -22,6 +22,7 @@
     "CONFIRM_PASSWORD": "确认密码"
   },
   "SIDEBAR": {
+    "MENU_TITLE": "操作菜单",
     "MY_DASHBOARD": "我的仪表盘",
     "MY_REPORTER": "我的报表",
     "CONFIG": {
@@ -29,6 +30,9 @@
       "MENU_USER": "员工维护",
       "MENU_DEPT": "部门维护",
       "MENU_BATCH": "批次维护",
+      "MENU_COLLAR": "职工劵领取",
+      "MENU_VERIFICATION": "职工劵领取核销查询",
+      "MENU_VIP": "VIP职工劵领取",
       "MENU_ROLE": "角色维护",
       "MENU_ROLE_MENU": "角色菜单维护",
       "MENU_ROLE_MENU_TREE": "角色菜单树",

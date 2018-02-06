@@ -14,7 +14,7 @@
     </div>
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu">
-        <li class="header">MENU</li>
+        <li class="header">{{'SIDEBAR.MENU_TITLE'|translate}}</li>
         <!-- DashBoard -->
         <!--<li class="treeview" ui-sref-active="active">
             <a ui-sref="dashboard">
@@ -40,7 +40,7 @@
                 </span>
             </a>
             <!--menu-open style="display: block;" -->
-            <ul class="active treeview-menu">
+            <ul class="active treeview-menu" style="display: block;">
                 <li ui-sref-active="active">
                     <a ui-sref="config.emp"><i class="fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_USER'|translate}}</a>
                 </li>
@@ -49,6 +49,15 @@
                 </li>
                 <li ui-sref-active="active">
                     <a ui-sref="config.batch"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_BATCH'|translate}}</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="config.collar"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_COLLAR'|translate}}</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="config.verification"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_VERIFICATION'|translate}}</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="config.vip"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_VIP'|translate}}</a>
                 </li>
 
             </ul>
