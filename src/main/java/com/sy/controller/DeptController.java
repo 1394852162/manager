@@ -107,7 +107,7 @@ public class DeptController {
     @RequestMapping("/updateDeptByKey")
     @ResponseBody
     public Map<String,Object>  updateDeptByKey(@RequestParam("DeptNo") String DeptNo,@RequestParam("DeptName") String DeptName,
-                                               @RequestParam("DeptId") int DeptId){
+                                               @RequestParam("DeptId") int DeptId,@RequestParam("DeptNote") String DeptNote){
         Map<String,Object> resultmap = new HashMap<String,Object>();
         HashMap<String,Object> map = new HashMap<String,Object>();
         if(DeptNo.equals("")||DeptName.equals("")){
@@ -118,6 +118,7 @@ public class DeptController {
         map.put("DeptNo",DeptNo);
         map.put("DeptName",DeptName);
         map.put("DeptId",DeptId);
+        map.put("DeptNote",DeptNote);
         int result = this.DeptService.updateDeptByKey(map);
         if(result==1){
             resultmap.put("data", "修改部门成功!");
