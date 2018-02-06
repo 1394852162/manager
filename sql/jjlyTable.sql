@@ -70,3 +70,5 @@ SELECT *
 FROM Tbb_Employee;
 SELECT *
 FROM Tbb_Dept;
+
+SELECT * FROM Tbb_Batch;

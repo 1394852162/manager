@@ -18,7 +18,7 @@ cBoard.controller('batchCtrl', function ($rootScope, $scope, $http, dataService,
         {'name': '批次结束时间', 'col': 'roleName'},
         {'name': '批次总票数', 'col': 'roleName'},
         {'name': '批次对象（在职/离职）', 'col': 'roleName'},
-        {'name': '批次状态', 'col': 'roleName'},
+        {'name': '备注', 'col': 'roleName'},
         {'name': '操作'}
     ];
 
@@ -101,10 +101,7 @@ cBoard.controller('batchCtrl', function ($rootScope, $scope, $http, dataService,
     var getUserList = function () {
         $http({
             method: 'get',
-            url: './employee/getEmpList.do'//,
-            /*params: {
-                userName: $scope.userName
-            }*/
+            url: './batch/GetBatList.do'
         }).success(function (response) {
             // console.log(response);
             //$scope.userList = response;
