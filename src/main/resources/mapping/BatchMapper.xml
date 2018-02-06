@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sy.dao.IBatchDao" >
+  <resultMap id="BaseResultMap" type="com.sy.pojo.Batch" >
+    <result property="BatId" column="BatId" jdbcType="INTEGER" />
+    <result property="BatNo" column="BatNo" jdbcType="VARCHAR" />
+    <result property="BatName" column="BatName" jdbcType="VARCHAR" />
+    <result property="Status" column="Status"  jdbcType="INTEGER" />
+    <result property="BatTicketNum" column="BatTicketNum"  jdbcType="INTEGER" />
+    <result property="CreateTime" column="CreateTime"  jdbcType="DATE" />
+    <result property="UpdateTime" column="UpdateTime"  jdbcType="DATE" />
+
+  </resultMap>
+
+  <resultMap type="com.sy.pojo.Dept" id="DeptList">
+  <result property="deptId" column="deptId" />
+  <result property="deptName" column="deptName"/>
+  <result property="deptNo" column="deptNo" />
+  <result property="deptType" column="deptType" />
+</resultMap>
+
+  <!--查询所有部门-->
+  <select id="getDeptList" resultMap="BaseResultMap">
+    SELECT *
+    FROM Tbb_Dept
+    where Status =1
+  </select>
+
+  <!--根据部门名称查询符合条件的部门-->
+  <select id="getNameQueryList" resultMap="BaseResultMap">
+  select *
+  from Tbb_Dept
+  where Status=1
+  and DeptName like '%'+rtrim(ltrim(#{DeptName,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{DeptName,jdbcType=VARCHAR}))=''
+  </select>
+
+  <!--添加一个部门-->
+  <insert id="insertDept" parameterType="java.util.HashMap">
+  begin
+    declare @DeptId int
+    select  @DeptId = isnull(max(DeptId),0) from Tbb_Dept
+    insert into Tbb_Dept
+    select @DeptId+1,#{DeptNo,jdbcType=VARCHAR},#{DeptName,jdbcType=VARCHAR},
+            1,#{DeptNote,jdbcType=VARCHAR},getdate(),null
+  end
+  </insert>
+
+<update id="updateDeptByKey"  parameterType="java.util.HashMap">
+  update Tbb_Dept
+  <set >
+    <if test="DeptNo != null" >
+      DeptNo = #{DeptNo,jdbcType=VARCHAR},
+    </if>
+    <if test="DeptName != null" >
+      DeptName = #{DeptName,jdbcType=VARCHAR},
+    </if>
+  </set>
+  ,UpdateTime = getdate()
+  where DeptId = #{DeptId,jdbcType=INTEGER}
+</update>
+
+  <update id="deleteDept" parameterType="INTEGER">
+  update Tbb_Dept
+  set Status = -1
+  where DeptId = #{DeptId,jdbcType=INTEGER}
+  </update>
+</mapper>

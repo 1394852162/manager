@@ -33,6 +33,7 @@ CREATE TABLE Tbb_Batch (
   BatEndTime   DATE        NOT NULL,
   BatTicketNum INT         NOT NULL,
   Status       INT         NOT NULL,
+  BatNote      VARCHAR(100),
   CreateTime   DATE,
   UpdateTime   DATE
 )
