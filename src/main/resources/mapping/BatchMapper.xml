@@ -15,6 +15,7 @@
 
   </resultMap>
 
+
   <select id="getBatList" resultMap="BaseResultMap">
   select * from Tbb_Batch
   where Status=1
