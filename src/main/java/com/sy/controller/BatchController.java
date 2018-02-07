@@ -103,18 +103,21 @@ public class BatchController {
      * @param BatName
      * @param BatTicketNum
      * @param Status
-     * @param BatBeginTime
-     * @param BatEndTime
+     * @param BeginTime
+     * @param EndTime
      * @return
      */
     @RequestMapping("/updateDeptByKey")
     @ResponseBody
     public Map<String,Object>  updateDeptByKey(@RequestParam("BatNo") String BatNo, @RequestParam("BatName") String BatName,
                                                @RequestParam("BatTicketNum") int BatTicketNum, @RequestParam("Status") int Status,
-                                               @RequestParam("BatBeginTime") Date BatBeginTime, @RequestParam("BatEndTime") Date BatEndTime,
-                                               @RequestParam("BatId") int BatId ){
+                                               @RequestParam("BatBeginTime") String BeginTime, @RequestParam("BatEndTime") String EndTime,
+                                               @RequestParam("BatId") int BatId ) throws ParseException {
         Map<String,Object> resultmap = new HashMap<String,Object>();
         HashMap<String,Object> map = new HashMap<String,Object>();
+        SimpleDateFormat simp = new SimpleDateFormat("yyyyMMdd");
+        Date BatBeginTime =simp.parse(BeginTime);
+        Date BatEndTime =simp.parse(EndTime);
 
         map.put("BatNo",BatNo);
         map.put("BatName",BatName);

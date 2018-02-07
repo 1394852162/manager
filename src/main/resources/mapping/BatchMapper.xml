@@ -71,7 +71,7 @@
     </if>
   </set>
   ,UpdateTime = getdate()
-  where DBatId = #{BattId,jdbcType=INTEGER}
+  where BatId = #{BatId,jdbcType=INTEGER}
 </update>
 
 
