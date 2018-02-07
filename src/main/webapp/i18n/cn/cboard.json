@@ -114,7 +114,7 @@
     },
     "MENU_COLLAR": {
       "COLLAR_TITLE": "请确定已交付下列信息的职工劵",
-      "COLLAR_CODE": "领用编码",
+      "COLLAR_CODE": "领用编号",
       "BAT_NAME": "发放批次",
       "D1": "有效日期",
       "D2": "领用日期",
@@ -122,7 +122,6 @@
       "EMP_NAME": "员工姓名",
       "NUM": "领用数量",
       "NOTE": "领用说明"
-
     },
     "MENU_VIP": {
       "VIP_NAME": "查询",
@@ -134,6 +133,13 @@
       "VIP_DATE": "领取时间",
       "ADD_VIP": "添加VIP职工劵",
       "EDIT_VIP": "修改VIP职工劵"
+    },
+    "MENU_VERIFICATION": {
+      "VERIFICATION_TITLE": "职工劵领取核销查询",
+      "VERIFICATION_START": "开始日期",
+      "VERIFICATION_END": "结束日期",
+      "VERIFICATION_TICKET": "是否出票",
+      "VERIFICATION_SEARCH": "职工劵查询"
     },
     "MENU_ROLE": {
       "ROLE_NAME": "角色名称",
