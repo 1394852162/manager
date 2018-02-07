@@ -56,6 +56,7 @@ CREATE TABLE Tbb_Collar (
 /*VIP补入界面*/
 CREATE TABLE Tbb_VipTicket (
   VipAddId   INT      NOT NULL PRIMARY KEY, --VIP ID
+  VipTicNo   varchar(20), --新加备用暂时不显示
   VipAddTime DATETIME NOT NULL, --添加VIP票的时间
   EmpId      INT      NOT NULL, --操作人
   VipEMpID   INT      NOT NULL, --VIP人

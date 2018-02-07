@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sy.dao.IVipTicketDao" >
+  <resultMap id="BaseResultMap" type="com.sy.pojo.VipTicket" >
+    <result property="VipAddId" column="VipAddId" jdbcType="INTEGER" />
+    <result property="VipTicNo" column="VipTicNo" jdbcType="VARCHAR" />
+    <result property="VipAddNum" column="VipAddNum" jdbcType="INTEGER" />
+    <result property="Status" column="Status"  jdbcType="INTEGER" />
+    <result property="EmpId" column="EmpId"  jdbcType="INTEGER" />
+    <result property="VipEMpID" column="VipEMpID"  jdbcType="INTEGER" />
+    <result property="VipAddNote" column="VipAddNote" jdbcType="VARCHAR" />
+    <result property="VipAddTime" column="VipAddTime"  jdbcType="DATE" />
+    <result property="CreateTime" column="CreateTime"  jdbcType="DATE" />
+    <result property="UpdateTime" column="UpdateTime"  jdbcType="DATE" />
+  </resultMap>
+
+
+  <select id="getVipList" resultMap="BaseResultMap">
+  select v.*,e.EmpName from Tbb_VipTicket v,Tbb_Employee e
+  where v.Status=1
+  and v.VipEMpID=e.EmpId
+  </select>
+
+  <select id="QueryNameByList" resultMap="BaseResultMap">
+   select v.*,e.EmpName from Tbb_VipTicket v,Tbb_Employee e
+  where v.Status = 1
+  and v.VipEMpID=e.EmpId
+  and e.EmpName like '%'+rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))=''
+  </select>
+
+  <insert id="insertVipTicket" parameterType="java.util.HashMap">
+    begin
+    declare @VipAddId int
+    select @VipAddId=isnull(max(VipAddId),0) from  Tbb_VipTicket
+    insert into Tbb_VipTicket
+    select @VipAddId+1,convert(varchar(20),(@VipAddId+1001)),
+    #{VipAddTime,jdbcType=DATE},
+    #{EmpId,jdbcType=INTEGER},
+    #{VipEMpID,jdbcType=INTEGER},
+    #{VipAddNum,jdbcType=INTEGER},
+    #{VipAddNote,jdbcType=VARCHAR},
+    1,
+    getdate(),
+    null
+    end
+  </insert>
+
+
+
+  <delete id="deleteVipTicket" parameterType="INTEGER">
+  update Tbb_VipTicket
+  set Status = -1
+  where VipAddId = #{VipAddId,jdbcType=INTEGER}
+  </delete>
+
+</mapper>
