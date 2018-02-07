@@ -15,7 +15,7 @@
     "EDIT": "修改"
   },
   "HEADER": {
-    "SIGN_OUT": "注销",
+    "SIGN_OUT": "退出系统",
     "CHANGE_PASSWORD": "更改密码",
     "CURRENT_PASSWORD": "当前密码",
     "NEW_PASSWORD": "新的密码",
@@ -111,6 +111,18 @@
       "BATCH_NOTE": "批次备注",
       "EDIT_BATCH": "修改批次",
       "EDIT_BATCH": "修改批次"
+    },
+    "MENU_COLLAR": {
+      "COLLAR_TITLE": "请确定已交付下列信息的职工劵",
+      "COLLAR_CODE": "领用编码",
+      "BAT_NAME": "发放批次",
+      "D1": "有效日期",
+      "D2": "领用日期",
+      "EMP_CODE": "员工工号",
+      "EMP_NAME": "员工姓名",
+      "NUM": "领用数量",
+      "NOTE": "领用说明"
+
     },
     "MENU_ROLE": {
       "ROLE_NAME": "角色名称",
