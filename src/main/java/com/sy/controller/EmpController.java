@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -51,6 +53,11 @@ public class EmpController {
         result.put("IfExit",EmpExit+"");
         session.setAttribute("User", emp);
         return result;
+    }
+
+    @RequestMapping("/layout.do")
+    public String layout(HttpServletRequest request, HttpServletResponse response){
+        return "redirect:/login.html";
     }
 
     /**
