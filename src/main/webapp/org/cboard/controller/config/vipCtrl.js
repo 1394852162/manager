@@ -13,12 +13,12 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
     ///表格的头部
 
     $scope.headerInfos = [
-        {'name': '批次号', 'col': 'id'},
-        {'name': '批次名称', 'col': 'userName'},
-        {'name': '批次开始时间', 'col': 'roleName'},
-        {'name': '批次结束时间', 'col': 'roleName'},
-        {'name': '批次总票数', 'col': 'roleName'},
-        {'name': '批次对象（在职/离职）', 'col': 'roleName'},
+        {'name': 'VIP ID', 'col': 'id'},
+        {'name': 'VIP职工姓名', 'col': 'userName'},
+        {'name': 'VIP票数', 'col': 'roleName'},
+        {'name': '操作人', 'col': 'roleName'},
+        {'name': '领取时间', 'col': 'roleName'},
+        {'name': '状态', 'col': 'roleName'},
         {'name': '备注', 'col': 'roleName'},
         {'name': '操作'}
     ];
@@ -99,7 +99,7 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
     /**
      * 初始化
      */
-    var getBatchList = function () {
+    var getVipList = function () {
         $http({
             method: 'get',
             url: './batch/GetBatList.do'
@@ -117,12 +117,12 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
         });
     };
-    getBatchList();
+    getVipList();
 
     /**
      * 数据双向绑定+监听机制
      */
-    $scope.$watch("batchName", function () {
+    $scope.$watch("vipName", function () {
         $http({
             method: 'POST',
             url: './batch/queryNameBatList.do',
@@ -142,9 +142,9 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
      * @param current
      * @param $event
      */
-    $scope.addBatch = function (current, $event) {
+    $scope.addVip = function (current, $event) {
         $uibModal.open({
-            templateUrl: 'org/cboard/view/config/modal/addBatch.html',
+            templateUrl: 'org/cboard/view/config/modal/addVip.html',
             //windowTemplateUrl: 'org/cboard/view/util/modal/window.html',
             backdrop: false,
             controller: function ($scope, $uibModalInstance, $http) {
@@ -170,7 +170,7 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
                         } else if (response.code === -2) {
                             ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
                         }*/
-                        getBatchList();
+                        getVipList();
                     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                         ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
                     });
@@ -187,7 +187,7 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
      * @param current
      * @param $event
      */
-    $scope.delBatch = function (current, $event) {
+    $scope.delVip = function (current, $event) {
         $http({
             method: 'POST',
             url: './batch/deleteBatch.do',
@@ -204,7 +204,7 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
             } else if (response.code === -2) {
                 ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
             }*/
-            getBatchList();
+            getVipList();
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
         });
@@ -216,9 +216,9 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
      * @param current
      * @param $event
      */
-    $scope.editBatch = function (current, $event) {
+    $scope.editVip = function (current, $event) {
         $uibModal.open({
-            templateUrl: 'org/cboard/view/config/modal/editBatch.html',
+            templateUrl: 'org/cboard/view/config/modal/editVip.html',
             //windowTemplateUrl: 'org/cboard/view/util/modal/window.html',
             backdrop: false,
             controller: function ($scope, $uibModalInstance, $http) {
@@ -254,7 +254,7 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
                         } else if (response.code === -2) {
                             ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
                         }*/
-                        getBatchList();
+                        getVipList();
                     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                         ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
                     });
@@ -270,7 +270,7 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
      * @param current
      * @param $event
      */
-    $scope.enableBatch = function (current, $event) {
+    $scope.enableVip = function (current, $event) {
         $http({
             method: 'POST',
             url: './batch/updateUser.do',
@@ -288,7 +288,7 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
             } else if (response.code === -2) {
                 ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
             }*/
-            getBatchList();
+            getVipList();
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
         });

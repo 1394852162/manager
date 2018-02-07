@@ -124,6 +124,17 @@
       "NOTE": "领用说明"
 
     },
+    "MENU_VIP": {
+      "VIP_NAME": "查询",
+      "VIP_SEARCH": "---请输入VIP员工姓名---",
+      "DESC": "备注",
+      "VIP_NAME": "VIP员工",
+      "PLEASE_SELECT": "---请选择---",
+      "VIP_TICKET": "VIP票数",
+      "VIP_DATE": "领取时间",
+      "ADD_VIP": "添加VIP职工劵",
+      "EDIT_VIP": "修改VIP职工劵"
+    },
     "MENU_ROLE": {
       "ROLE_NAME": "角色名称",
       "ROLE_SEARCH": "---请输入---",
