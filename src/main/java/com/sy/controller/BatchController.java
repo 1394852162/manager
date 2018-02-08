@@ -115,7 +115,7 @@ public class BatchController {
                                                @RequestParam("BatId") int BatId ) throws ParseException {
         Map<String,Object> resultmap = new HashMap<String,Object>();
         HashMap<String,Object> map = new HashMap<String,Object>();
-        SimpleDateFormat simp = new SimpleDateFormat("yyyyMMdd");
+        SimpleDateFormat simp = new SimpleDateFormat("yyyy-MM-dd");
         Date BatBeginTime =simp.parse(BeginTime);
         Date BatEndTime =simp.parse(EndTime);
 
