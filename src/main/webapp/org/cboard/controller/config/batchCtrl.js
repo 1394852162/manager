@@ -153,13 +153,15 @@ cBoard.controller('batchCtrl', function ($rootScope, $scope, $http, dataService,
                 $scope.save = function () {
                     $http({
                         method: 'POST',
-                        url: './batch/insertEmp.do',
+                        url: './batch/insertBatch.do',
                         data:{
-                            name: $scope.newUserName,
-                            role: $scope.newUserRole,
-                            password: $scope.newUserPwd,
-                            // oldRole:oldRole,
-                            desc: $scope.newUserDesc
+                            BatNo: $scope.addBatchNo,
+                            BatName: $scope.addBatchName,
+                            BatBeginTime: $scope.addBatBeginTime,
+                            BatEndTime: $scope.addBatEndTime,
+                            BatTicketNum: $scope.addBatchTicketNum,
+                            Status: $scope.addBatchStatus/*,
+                            BatNote: $scope.addBatchNote,*/
                         }
                     }).success(function (response) {
                         /*if (response.code === 0) {
@@ -238,12 +240,14 @@ cBoard.controller('batchCtrl', function ($rootScope, $scope, $http, dataService,
                         method: 'POST',
                         url: './batch/updateDeptByKey.do',
                         data:{
-                            name: $scope.modifyUserName,
-                            password: $scope.modifyUserPwd,
-                            role: $scope.modifyUserRole,
-                            oldRole: current.password,
-                            desc: $scope.modifyUserName/*,
-                            enabled:current.enabled*/
+                            BatId: current.batId,
+                            BatNo: $scope.editBatchNo,
+                            BatName: $scope.editBatchName,
+                            BatBeginTime: $scope.editBatBeginTime,
+                            BatEndTime: $scope.editBatEndTime,
+                            BatTicketNum:$scope.editBatchTicketNum,
+                            Status: $scope.editBatchStatus/*,
+                            BatNote: $scope.editBatchNote,*/
                         }
                     }).success(function (response) {
                         /*if (response.code === 0) {

@@ -30,9 +30,9 @@
                 </thead>
                 <tbody id="userTable">
                 <tr ng-repeat="row in items " ng-init="outerIndex = $index">
-                    <td>{{ row.batNo }}</td>
-                    <td>{{ row.batName }}</td>
-                    <td>{{ row.batBeginTime | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+                    <td>{{ row.VipAddId }}</td>
+                    <td>{{ row.VipEmpName }}</td>
+                    <td>{{ row.VipAddNum | date:'yyyy-MM-dd HH:mm:ss' }}</td>
                     <td>{{ row.batEndTime | date:'yyyy-MM-dd HH:mm:ss' }}</td>
                     <td>{{ row.batTicketNum }}</td>
                     <td>{{ (row.status == '1') ? "在职" : "离职" }}</td>
