@@ -95,6 +95,27 @@ cBoard.controller('batchCtrl', function ($rootScope, $scope, $http, dataService,
         $scope.selectPage($scope.selPage + 1);
     };
 
+    // 对Date的扩展，将 Date 转化为指定格式的String
+// 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
+// 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
+// 例子：
+// (new Date()).Format("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423
+// (new Date()).Format("yyyy-M-d h:m:s.S")   ==> 2006-7-2 8:9:4.18
+    Date.prototype.Format = function (fmt) {
+        var o = {
+            "M+": this.getMonth() + 1, //月份
+            "d+": this.getDate(), //日
+            "h+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds(), //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S": this.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    }
     /**
      * 初始化
      */
@@ -164,13 +185,6 @@ cBoard.controller('batchCtrl', function ($rootScope, $scope, $http, dataService,
                             BatNote: $scope.addBatchNote,*/
                         }
                     }).success(function (response) {
-                        /*if (response.code === 0) {
-                            ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-                        } else if (response.code === 1) {
-                            ModalUtils.alert(translate(response.msg + "!"), "modal-success", "md");
-                        } else if (response.code === -2) {
-                            ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-                        }*/
                         getBatchList();
                     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                         ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
@@ -226,8 +240,14 @@ cBoard.controller('batchCtrl', function ($rootScope, $scope, $http, dataService,
 
                 $scope.editBatchNo = current.batNo;
                 $scope.editBatchName = current.batName;
-                $scope.editBatBeginTime = current.batBeginTime;
-                $scope.editBatEndTime = current.batEndTime;
+                $scope.editBatBeginTime = (function () {
+                    return new Date(current.batBeginTime).Format("yyyy-MM-dd");
+                    // var date = new Date(current.batBeginTime).Format;
+                    // return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+                })();
+                $scope.editBatEndTime = (function () {
+                    return new Date(current.batEndTime).Format("yyyy-MM-dd");
+                })();
                 $scope.editBatchTicketNum = current.batTicketNum;
                 $scope.editBatchStatus = current.status;
                 $scope.editBatchNote = current.batNote;
