@@ -17,10 +17,10 @@
             <div class="col-lg-6 col-md-6 col-xs-6 col-xs-12 column">
                 <div class="input-group">
                     <span class="input-group-addon">{{'CONFIG.MENU_VIP.VIP_NAME'|translate}}</span>
-                    <select class="form-control" id="addVipName" ng-model="addVipName">
+                    <select class="form-control" id="addVipName" name="addVipName" ng-model="addVipName">
                         <option value="">{{'CONFIG.MENU_VIP.PLEASE_SELECT'|translate}}</option>
                         <!-- 直接用模型值第一个会为空，所以这里填充第一个 -->
-                        <option ng-repeat="x in deptList.data" value="{{x.deptId}}">{{x.deptName}}</option>
+                        <option ng-repeat="x in empList.data" value="{{x.empId}}">{{x.empName}}</option>
                     </select>
 
                 </div>

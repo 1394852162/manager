@@ -36,7 +36,7 @@ CREATE TABLE Tbb_Batch (
   BatNote      VARCHAR(100),
   CreateTime   DATE,
   UpdateTime   DATE,
-  Status2      INT         ,/*1=在职的能领取,0=在职离职的都能领取*/
+  Status2      INT         -- /*1=在职的能领取,0=在职离职的都能领取*/
 )
 
 /*领用表*/
@@ -75,3 +75,4 @@ SELECT *
 FROM Tbb_Dept;
 
 SELECT * FROM Tbb_Batch;
+SELECT * FROM Tbb_VipTicket;

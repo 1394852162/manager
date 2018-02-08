@@ -14,13 +14,28 @@
 
         <div class="row">
             <!-- VIP员工 -->
-            <div class="col-lg-6 col-md-6 col-xs-6 col-xs-12 column">
+            <!--<div class="col-lg-6 col-md-6 col-xs-6 col-xs-12 column">
                 <div class="input-group">
                     <span class="input-group-addon">{{'CONFIG.MENU_VIP.VIP_NAME'|translate}}</span>
-                    <select class="form-control" id="editVipName" ng-model="editVipName">
+                    &lt;!&ndash;<select class="form-control" id="editVipName" ng-model="editVipName">
                         <option value="">{{'CONFIG.MENU_VIP.PLEASE_SELECT'|translate}}</option>
-                        <!-- 直接用模型值第一个会为空，所以这里填充第一个 -->
+                        &lt;!&ndash; 直接用模型值第一个会为空，所以这里填充第一个 &ndash;&gt;
                         <option ng-repeat="x in deptList.data" value="{{x.deptId}}">{{x.deptName}}</option>
+                    </select>&ndash;&gt;
+                    <select ng-model="editVipName" ng-options="b.empId as b.empName for b in empList" class="form-control"
+                            ng-selected="b.empId==editVipName">
+                        &lt;!&ndash;<option value="">请选择网站</option>&ndash;&gt;
+                    </select>
+
+                </div>
+            </div>-->
+            <!-- 所属部门 -->
+            <div class="col-lg-6 col-md-6 col-xs-6 col-xs-12 column">
+                <div class="input-group">
+                    <span class="input-group-addon">{{'CONFIG.MENU_USER.NEW_DEPT'|translate}}</span>
+                    <select ng-model="editEmpDept" ng-options="c.deptId as c.deptName for c in deptList_2" class="form-control"
+                            ng-selected="c.deptId==editEmpDept">
+                        <!--<option value="">请选择网站</option>-->
                     </select>
 
                 </div>

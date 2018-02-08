@@ -181,8 +181,8 @@ cBoard.controller('batchCtrl', function ($rootScope, $scope, $http, dataService,
                             BatBeginTime: $scope.addBatBeginTime,
                             BatEndTime: $scope.addBatEndTime,
                             BatTicketNum: $scope.addBatchTicketNum,
-                            Status: $scope.addBatchStatus/*,
-                            BatNote: $scope.addBatchNote,*/
+                            Status2: $scope.addBatchStatus,
+                            BatNote: $scope.addBatchNote,
                         }
                     }).success(function (response) {
                         getBatchList();
@@ -266,8 +266,8 @@ cBoard.controller('batchCtrl', function ($rootScope, $scope, $http, dataService,
                             BatBeginTime: $scope.editBatBeginTime,
                             BatEndTime: $scope.editBatEndTime,
                             BatTicketNum:$scope.editBatchTicketNum,
-                            Status: $scope.editBatchStatus/*,
-                            BatNote: $scope.editBatchNote,*/
+                            Status2: $scope.editBatchStatus,
+                            BatNote: $scope.editBatchNote,
                         }
                     }).success(function (response) {
                         /*if (response.code === 0) {

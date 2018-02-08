@@ -13,12 +13,12 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
     ///表格的头部
 
     $scope.headerInfos = [
-        {'name': 'VIP ID', 'col': 'id'},
-        {'name': 'VIP职工姓名', 'col': 'userName'},
+        // {'name': 'VIP ID', 'col': 'id'},
+        {'name': 'VIP员工', 'col': 'userName'},
         {'name': 'VIP票数', 'col': 'roleName'},
         {'name': '操作人', 'col': 'roleName'},
         {'name': '领取时间', 'col': 'roleName'},
-        {'name': '状态', 'col': 'roleName'},
+        // {'name': '状态', 'col': 'roleName'},
         {'name': '备注', 'col': 'roleName'},
         {'name': '操作'}
     ];
@@ -96,6 +96,28 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
         $scope.selectPage($scope.selPage + 1);
     };
 
+    // 对Date的扩展，将 Date 转化为指定格式的String
+// 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
+// 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
+// 例子：
+// (new Date()).Format("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423
+// (new Date()).Format("yyyy-M-d h:m:s.S")   ==> 2006-7-2 8:9:4.18
+    Date.prototype.Format = function (fmt) {
+        var o = {
+            "M+": this.getMonth() + 1, //月份
+            "d+": this.getDate(), //日
+            "h+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds(), //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S": this.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    }
+
     /**
      * 初始化
      */
@@ -148,28 +170,35 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
             //windowTemplateUrl: 'org/cboard/view/util/modal/window.html',
             backdrop: false,
             controller: function ($scope, $uibModalInstance, $http) {
+                /**
+                 * 员工载入
+                 */
+                $http({
+                    method: 'GET',
+                    url: './employee/getEmpList.do'
+                }).success(function (response) {
+                    $scope.empList = response;
+                    // console.log($scope.deptList);
+                }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+                    ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
+                });
+                $scope.close = function () {
+                    $uibModalInstance.close();
+                };
                 $scope.close = function () {
                     $uibModalInstance.close();
                 };
                 $scope.save = function () {
                     $http({
                         method: 'POST',
-                        url: './batch/insertEmp.do',
+                        url: './employee/insertVipTicket.do',
                         data:{
-                            name: $scope.newUserName,
-                            role: $scope.newUserRole,
-                            password: $scope.newUserPwd,
-                            // oldRole:oldRole,
-                            desc: $scope.newUserDesc
+                            VipEmpID: $scope.addVipName,
+                            VipAddNum: $scope.addVipTicket,
+                            VipAddTime: $scope.addVipDate,
+                            VipAddNote: $scope.addVipNote
                         }
                     }).success(function (response) {
-                        /*if (response.code === 0) {
-                            ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-                        } else if (response.code === 1) {
-                            ModalUtils.alert(translate(response.msg + "!"), "modal-success", "md");
-                        } else if (response.code === -2) {
-                            ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-                        }*/
                         getVipList();
                     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                         ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
@@ -190,20 +219,11 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
     $scope.delVip = function (current, $event) {
         $http({
             method: 'POST',
-            url: './batch/deleteBatch.do',
+            url: './vip/deleteVipTicket.do',
             data: {
-                BatId: current.batId
+                VipId: current.vipAddId
             }
         }).success(function (response) {
-            /*if (response.code === 1) {
-                ModalUtils.alert(translate(response.msg + "!"), "modal-success", "md");
-            } else if (response.code === 0) {
-                ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-            } else if (response.code === -1) {
-                ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-            } else if (response.code === -2) {
-                ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-            }*/
             getVipList();
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
@@ -222,14 +242,26 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
             //windowTemplateUrl: 'org/cboard/view/util/modal/window.html',
             backdrop: false,
             controller: function ($scope, $uibModalInstance, $http) {
+                $scope.editVipName = current.empName;
+                $scope.editVipTicket = current.vipAddNum;
+                $scope.editVipDate = (function () {
+                    return new Date(current.vipAddTime).Format("yyyy-MM-dd");
+                })();
+                $scope.editVipNote = current.vipAddNote;
 
-                $scope.editBatchNo = current.batNo;
-                $scope.editBatchName = current.batName;
-                $scope.editBatBeginTime = current.batBeginTime;
-                $scope.editBatEndTime = current.batEndTime;
-                $scope.editBatchTicketNum = current.batTicketNum;
-                $scope.editBatchStatus = current.status;
-                $scope.editBatchNote = current.batNote;
+                /**
+                 * 员工载入
+                 */
+                $http({
+                    method: 'GET',
+                    url: './employee/getEmpList.do'
+                }).success(function (response) {
+                    $scope.editVipName = current.empId;
+                    $scope.empList = response.data;
+                    // console.log($scope.deptList);
+                }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+                    ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
+                });
 
                 $scope.close = function () {
                     $uibModalInstance.close();
@@ -261,36 +293,6 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
                     $uibModalInstance.close();
                 }
             }
-        });
-        $event.stopPropagation();//阻止冒泡
-    };
-
-    /**
-     * 状态
-     * @param current
-     * @param $event
-     */
-    $scope.enableVip = function (current, $event) {
-        $http({
-            method: 'POST',
-            url: './batch/updateUser.do',
-            data: {
-                name: current.userName,
-                enabled: !current.enabled
-            }
-        }).success(function (response) {
-            /*if (response.code === 1) {
-                ModalUtils.alert(translate(response.msg + "!"), "modal-success", "md");
-            } else if (response.code === 0) {
-                ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-            } else if (response.code === -1) {
-                ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-            } else if (response.code === -2) {
-                ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-            }*/
-            getVipList();
-        }).error(function (XMLHttpRequest, textStatus, errorThrown) {
-            ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
         });
         $event.stopPropagation();//阻止冒泡
     };
