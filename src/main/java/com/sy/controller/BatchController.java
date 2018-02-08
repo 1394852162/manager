@@ -70,7 +70,7 @@ public class BatchController {
     @RequestMapping("/insertBatch.do")
     @ResponseBody
     public Map<String,Object>  insertBatch(@RequestParam("BatNo") String BatNo, @RequestParam("BatName") String BatName,
-                                          @RequestParam("BatTicketNum") int BatTicketNum, @RequestParam("Status") int Status,
+                                          @RequestParam("BatTicketNum") int BatTicketNum,
                                           @RequestParam("BatBeginTime") String BeginTime, @RequestParam("BatEndTime") String EndTime,
                                            @RequestParam("Status2") int Status2, @RequestParam("BatNote") String BatNote
                                           ) throws ParseException {
@@ -83,7 +83,7 @@ public class BatchController {
         map.put("BatNo",BatNo);
         map.put("BatName",BatName);
         map.put("BatTicketNum",BatTicketNum);
-        map.put("Status",Status);
+
         map.put("BatBeginTime",BatBeginTime);
         map.put("BatEndTime",BatEndTime);
         map.put("Status2",Status2);
@@ -105,7 +105,6 @@ public class BatchController {
      * @param BatNo
      * @param BatName
      * @param BatTicketNum
-     * @param Status
      * @param BeginTime
      * @param EndTime
      * @return
@@ -113,7 +112,7 @@ public class BatchController {
     @RequestMapping("/updateDeptByKey")
     @ResponseBody
     public Map<String,Object>  updateDeptByKey(@RequestParam("BatNo") String BatNo, @RequestParam("BatName") String BatName,
-                                               @RequestParam("BatTicketNum") int BatTicketNum, @RequestParam("Status") int Status,
+                                               @RequestParam("BatTicketNum") int BatTicketNum,
                                                @RequestParam("BatBeginTime") String BeginTime, @RequestParam("BatEndTime") String EndTime,
                                                @RequestParam("BatId") int BatId ,@RequestParam("Status2") int Status2,
                                                @RequestParam("BatNote") String BatNote) throws ParseException {
@@ -126,7 +125,6 @@ public class BatchController {
         map.put("BatNo",BatNo);
         map.put("BatName",BatName);
         map.put("BatTicketNum",BatTicketNum);
-        map.put("Status",Status);
         map.put("BatBeginTime",BatBeginTime);
         map.put("BatEndTime",BatEndTime);
         map.put("BatId",BatId);

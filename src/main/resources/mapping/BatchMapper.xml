@@ -39,7 +39,7 @@
     #{BatBeginTime,jdbcType=DATE},
     #{BatEndTime,jdbcType=DATE},
     #{BatTicketNum,jdbcType=INTEGER},
-    #{Status,jdbcType=INTEGER},
+    1,
     #{BatNote,jdbcType=VARCHAR},
     getdate(),
     null,
@@ -65,9 +65,6 @@
     <if test="BatTicketNum != null" >
       BatTicketNum = #{BatTicketNum,jdbcType=INTEGER},
     </if>
-    <if test="Status != null" >
-      Status = #{Status,jdbcType=INTEGER},
-    </if>
     <if test="Status2 != null" >
       Status2 = #{Status2,jdbcType=INTEGER},
     </if>
@@ -75,7 +72,7 @@
       BatNote = #{BatNote,jdbcType=VARCHAR},
     </if>
   </set>
-  ,UpdateTime = getdate()
+  ,UpdateTime = getdate(),Status=1
   where BatId = #{BatId,jdbcType=INTEGER}
 </update>
 
