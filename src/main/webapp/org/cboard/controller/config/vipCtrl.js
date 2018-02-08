@@ -102,9 +102,9 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
     var getVipList = function () {
         $http({
             method: 'get',
-            url: './batch/GetBatList.do'
+            url: './vip/getVipList.do'
         }).success(function (response) {
-            // console.log(response);
+            console.log(response);
             //$scope.userList = response;
             $scope.initPageSort(response);
             /*
