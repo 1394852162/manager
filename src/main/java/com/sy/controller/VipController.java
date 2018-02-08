@@ -27,6 +27,7 @@ public class VipController {
     private IVipService iVipService;
 
     VipTicket viptic = new VipTicket();
+
     /**
      * 查询vip票添加的列表
      * @return
@@ -34,6 +35,8 @@ public class VipController {
     @RequestMapping("/getVipList.do")
     @ResponseBody
     public Map<String,Object> getVipList(){
+
+
         Map<String,Object> resultmap = new HashMap<String,Object>();
         List<VipTicket> list = this.iVipService.getVipList();
         if(list != null & list.size()>0) {
@@ -52,6 +55,7 @@ public class VipController {
     @RequestMapping("/QueryNameByList.do")
     @ResponseBody
     public Map<String,Object> QueryNameByList(@RequestParam("EmpName") String  EmpName){
+
         Map<String,Object> resultmap = new HashMap<String,Object>();
         List<VipTicket> list = this.iVipService.QueryNameByList(EmpName);
         if(list != null & list.size()>0) {
@@ -72,7 +76,7 @@ public class VipController {
     /**
      * 添加一条记录
      * @param EmpId
-     * @param VipEMpID
+     * @param VipEmpID
      * @param VipAddNum
      * @param VipAddNote
      * @param AddTime
@@ -81,15 +85,18 @@ public class VipController {
      */
     @RequestMapping("/insertVipTicket.do")
     @ResponseBody
-    public Map<String,Object> insertVipTicket(@RequestParam("EmpId") int EmpId,@RequestParam("VipEMpID") int VipEMpID,
+    public Map<String,Object> insertVipTicket(@RequestParam("EmpId") int EmpId,@RequestParam("VipEmpID") int VipEmpID,
                                               @RequestParam("VipAddNum") int VipAddNum,@RequestParam("VipAddNote") String VipAddNote,
                                               @RequestParam("VipAddTime") String AddTime) throws ParseException {
+
+
         Map<String,Object> resultmap = new HashMap<String,Object>();
         HashMap<String,Object> map = new HashMap<String,Object>();
         SimpleDateFormat simp = new SimpleDateFormat("yyyy-MM-dd");
         Date VipAddTime =simp.parse(AddTime);
+
         map.put("EmpId",EmpId);
-        map.put("VipEMpID",VipEMpID);
+        map.put("VipEmpID",VipEmpID);
         map.put("VipAddNum",VipAddNum);
         map.put("VipAddNote",VipAddNote);
         map.put("VipAddTime",VipAddTime);

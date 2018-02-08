@@ -2,6 +2,7 @@ package com.sy.controller;
 
 import com.sy.pojo.Employee;
 import com.sy.service.IEmployeeService;
+import com.sy.service.IVipService;
 import net.sf.json.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +29,9 @@ import java.util.Map;
 public class EmpController {
     @Resource
     private IEmployeeService iEmpService;
+
+    @Resource
+    private IVipService iVipService;
     Employee emp = new Employee();
 
 
@@ -228,6 +235,45 @@ public class EmpController {
         }else{
             resultmap.put("code", 0);
             resultmap.put("data", "删除失败!");
+        }
+        return resultmap;
+    }
+
+
+
+    /**
+     * 添加一条记录
+     * @param VipEmpID
+     * @param VipAddNum
+     * @param VipAddNote
+     * @param AddTime
+     * @return
+     * @throws ParseException
+     */
+    @RequestMapping("/insertVipTicket.do")
+    @ResponseBody
+    public Map<String,Object> insertVipTicket(@RequestParam("VipEmpID") int VipEmpID,
+                                              @RequestParam("VipAddNum") int VipAddNum,@RequestParam("VipAddNote") String VipAddNote,
+                                              @RequestParam("VipAddTime") String AddTime) throws ParseException {
+
+
+        Map<String,Object> resultmap = new HashMap<String,Object>();
+        HashMap<String,Object> map = new HashMap<String,Object>();
+        SimpleDateFormat simp = new SimpleDateFormat("yyyy-MM-dd");
+        Date VipAddTime =simp.parse(AddTime);
+
+        map.put("EmpId",emp.getEmpId());
+        map.put("VipEmpID",VipEmpID);
+        map.put("VipAddNum",VipAddNum);
+        map.put("VipAddNote",VipAddNote);
+        map.put("VipAddTime",VipAddTime);
+        int result =this.iVipService.insertVipTicket(map);
+        if(result==1){
+            resultmap.put("data", "添加成功!");
+            resultmap.put("code", 1);
+        }else{
+            resultmap.put("code", 0);
+            resultmap.put("data", "添加失败了!");
         }
         return resultmap;
     }
