@@ -35,19 +35,21 @@ CREATE TABLE Tbb_Batch (
   Status       INT         NOT NULL,
   BatNote      VARCHAR(100),
   CreateTime   DATE,
-  UpdateTime   DATE
+  UpdateTime   DATE,
+  Status2      INT         ,/*1=在职的能领取,0=在职离职的都能领取*/
 )
 
 /*领用表*/
 CREATE TABLE Tbb_Collar (
   CollId     INT  NOT NULL PRIMARY KEY,
+  CollNo     varchar(20),
   BatId      INT  NOT NULL, --批次ID
   BatEndTime DATE NOT NULL, --有效期(批次结束时间)
   CollTime   DATE, --领用时间
   EmpId      INT, --领用员工ID
   CollNum    INT, --领用数量
   CollNote   VARCHAR(100), --备注
-  Status     INT  NOT NULL,
+  Status     INT  NOT NULL, /*-1删除，1未出票，0已出票*/
   CreateTime DATE,
   UpdateTime DATE
 
@@ -57,9 +59,9 @@ CREATE TABLE Tbb_Collar (
 CREATE TABLE Tbb_VipTicket (
   VipAddId   INT      NOT NULL PRIMARY KEY, --VIP ID
   VipTicNo   varchar(20), --新加备用暂时不显示
-  VipAddTime DATETIME NOT NULL, --添加VIP票的时间
+  VipAddTime DATE NOT NULL, --添加VIP票的时间
   EmpId      INT      NOT NULL, --操作人
-  VipEMpID   INT      NOT NULL, --VIP人
+  VipEmpID   INT      NOT NULL, --VIP领取人
   VipAddNum  INT      NOT NULL, --VIP人领取的数量
   VipAddNote VARCHAR(100), --备注
   Status     INT,
