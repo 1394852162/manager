@@ -4,27 +4,30 @@
   <resultMap id="BaseResultMap" type="com.sy.pojo.VipTicket" >
     <result property="VipAddId" column="VipAddId" jdbcType="INTEGER" />
     <result property="VipTicNo" column="VipTicNo" jdbcType="VARCHAR" />
+    <result property="EmpName" column="EmpName" jdbcType="VARCHAR" />
+    <result property="operaName" column="operaName" jdbcType="VARCHAR" />
     <result property="VipAddNum" column="VipAddNum" jdbcType="INTEGER" />
     <result property="Status" column="Status"  jdbcType="INTEGER" />
     <result property="EmpId" column="EmpId"  jdbcType="INTEGER" />
-    <result property="VipEMpID" column="VipEMpID"  jdbcType="INTEGER" />
+    <result property="VipEmpID" column="VipEMpID"  jdbcType="INTEGER" />
     <result property="VipAddNote" column="VipAddNote" jdbcType="VARCHAR" />
     <result property="VipAddTime" column="VipAddTime"  jdbcType="DATE" />
     <result property="CreateTime" column="CreateTime"  jdbcType="DATE" />
     <result property="UpdateTime" column="UpdateTime"  jdbcType="DATE" />
   </resultMap>
 
-
+<!--e.EmpName=领取人  f.EmpName=操作人-->
   <select id="getVipList" resultMap="BaseResultMap">
-  select v.*,e.EmpName from Tbb_VipTicket v,Tbb_Employee e
+  select v.*,e.EmpName,f.EmpName as operaName from Tbb_VipTicket v,Tbb_Employee e,Tbb_Employee f
   where v.Status=1
-  and v.VipEMpID=e.EmpId
+  and v.VipEmpID=e.EmpId
+  and v.EmpId=f.EmpId
   </select>
 
   <select id="QueryNameByList" resultMap="BaseResultMap">
    select v.*,e.EmpName from Tbb_VipTicket v,Tbb_Employee e
   where v.Status = 1
-  and v.VipEMpID=e.EmpId
+  and v.VipEmpID=e.EmpId
   and e.EmpName like '%'+rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))=''
   </select>
 
@@ -36,7 +39,7 @@
     select @VipAddId+1,convert(varchar(20),(@VipAddId+1001)),
     #{VipAddTime,jdbcType=DATE},
     #{EmpId,jdbcType=INTEGER},
-    #{VipEMpID,jdbcType=INTEGER},
+    #{VipEmpID,jdbcType=INTEGER},
     #{VipAddNum,jdbcType=INTEGER},
     #{VipAddNote,jdbcType=VARCHAR},
     1,

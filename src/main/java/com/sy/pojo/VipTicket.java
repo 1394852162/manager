@@ -10,12 +10,14 @@ public class VipTicket {
     private String VipTicNo;
     private Date VipAddTime;
     private int EmpId;
-    private int VipEMpID;
+    private int VipEmpID;
+    private String EmpName;
     private int VipAddNum;
     private String VipAddNote;
     private int Status;
     private Date CreateTime;
     private Date UpdateTime;
+    private String operaName;
 
     @Override
     public String toString() {
@@ -24,12 +26,14 @@ public class VipTicket {
                 ", VipTicNo='" + VipTicNo + '\'' +
                 ", VipAddTime=" + VipAddTime +
                 ", EmpId=" + EmpId +
-                ", VipEMpID=" + VipEMpID +
+                ", VipEmpID=" + VipEmpID +
+                ", EmpName='" + EmpName + '\'' +
                 ", VipAddNum=" + VipAddNum +
                 ", VipAddNote='" + VipAddNote + '\'' +
                 ", Status=" + Status +
                 ", CreateTime=" + CreateTime +
                 ", UpdateTime=" + UpdateTime +
+                ", operaName='" + operaName + '\'' +
                 '}';
     }
 
@@ -65,12 +69,20 @@ public class VipTicket {
         EmpId = empId;
     }
 
-    public int getVipEMpID() {
-        return VipEMpID;
+    public int getVipEmpID() {
+        return VipEmpID;
     }
 
-    public void setVipEMpID(int vipEMpID) {
-        VipEMpID = vipEMpID;
+    public void setVipEmpID(int vipEmpID) {
+        VipEmpID = vipEmpID;
+    }
+
+    public String getEmpName() {
+        return EmpName;
+    }
+
+    public void setEmpName(String empName) {
+        EmpName = empName;
     }
 
     public int getVipAddNum() {
@@ -111,5 +123,13 @@ public class VipTicket {
 
     public void setUpdateTime(Date updateTime) {
         UpdateTime = updateTime;
+    }
+
+    public String getOperaName() {
+        return operaName;
+    }
+
+    public void setOperaName(String operaName) {
+        this.operaName = operaName;
     }
 }
