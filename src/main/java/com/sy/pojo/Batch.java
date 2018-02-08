@@ -16,6 +16,7 @@ public class Batch {
     private Date BatEndTime;
     private Date CreateTime;
     private Date UpdateTime;
+    private int Status2;
 
     @Override
     public String toString() {
@@ -30,6 +31,7 @@ public class Batch {
                 ", BatEndTime=" + BatEndTime +
                 ", CreateTime=" + CreateTime +
                 ", UpdateTime=" + UpdateTime +
+                ", Status2=" + Status2 +
                 '}';
     }
 
@@ -111,5 +113,13 @@ public class Batch {
 
     public void setUpdateTime(Date updateTime) {
         UpdateTime = updateTime;
+    }
+
+    public int getStatus2() {
+        return Status2;
+    }
+
+    public void setStatus2(int status2) {
+        Status2 = status2;
     }
 }

@@ -71,7 +71,8 @@ public class BatchController {
     @ResponseBody
     public Map<String,Object>  insertBatch(@RequestParam("BatNo") String BatNo, @RequestParam("BatName") String BatName,
                                           @RequestParam("BatTicketNum") int BatTicketNum, @RequestParam("Status") int Status,
-                                          @RequestParam("BatBeginTime") String BeginTime, @RequestParam("BatEndTime") String EndTime
+                                          @RequestParam("BatBeginTime") String BeginTime, @RequestParam("BatEndTime") String EndTime,
+                                           @RequestParam("Status2") int Status2, @RequestParam("BatNote") String BatNote
                                           ) throws ParseException {
         Map<String,Object> resultmap = new HashMap<String,Object>();
         HashMap<String,Object> map = new HashMap<String,Object>();
@@ -85,6 +86,8 @@ public class BatchController {
         map.put("Status",Status);
         map.put("BatBeginTime",BatBeginTime);
         map.put("BatEndTime",BatEndTime);
+        map.put("Status2",Status2);
+        map.put("BatNote",BatNote);
         int result = this.iBatchService.insertBatch(map);
         if(result==1){
             resultmap.put("data", "添加部门成功!");
@@ -112,7 +115,8 @@ public class BatchController {
     public Map<String,Object>  updateDeptByKey(@RequestParam("BatNo") String BatNo, @RequestParam("BatName") String BatName,
                                                @RequestParam("BatTicketNum") int BatTicketNum, @RequestParam("Status") int Status,
                                                @RequestParam("BatBeginTime") String BeginTime, @RequestParam("BatEndTime") String EndTime,
-                                               @RequestParam("BatId") int BatId ) throws ParseException {
+                                               @RequestParam("BatId") int BatId ,@RequestParam("Status2") int Status2,
+                                               @RequestParam("BatNote") String BatNote) throws ParseException {
         Map<String,Object> resultmap = new HashMap<String,Object>();
         HashMap<String,Object> map = new HashMap<String,Object>();
         SimpleDateFormat simp = new SimpleDateFormat("yyyy-MM-dd");
@@ -126,6 +130,8 @@ public class BatchController {
         map.put("BatBeginTime",BatBeginTime);
         map.put("BatEndTime",BatEndTime);
         map.put("BatId",BatId);
+        map.put("Status2",Status2);
+        map.put("BatNote",BatNote);
         int result = this.iBatchService.updateBatchByKey(map);
         if(result==1){
             resultmap.put("data", "修改部门成功!");

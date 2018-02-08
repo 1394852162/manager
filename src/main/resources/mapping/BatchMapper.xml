@@ -6,6 +6,7 @@
     <result property="BatNo" column="BatNo" jdbcType="VARCHAR" />
     <result property="BatName" column="BatName" jdbcType="VARCHAR" />
     <result property="Status" column="Status"  jdbcType="INTEGER" />
+    <result property="Status2" column="Status2"  jdbcType="INTEGER" />
     <result property="BatTicketNum" column="BatTicketNum"  jdbcType="INTEGER" />
     <result property="BatNote" column="BatNote" jdbcType="VARCHAR" />
     <result property="BatBeginTime" column="BatBeginTime"  jdbcType="DATE" />
@@ -39,9 +40,10 @@
     #{BatEndTime,jdbcType=DATE},
     #{BatTicketNum,jdbcType=INTEGER},
     #{Status,jdbcType=INTEGER},
-    '增加批次',
+    #{BatNote,jdbcType=VARCHAR},
     getdate(),
-    null
+    null,
+    #{Status2,jdbcType=INTEGER}
     end
   </insert>
 
@@ -65,6 +67,9 @@
     </if>
     <if test="Status != null" >
       Status = #{Status,jdbcType=INTEGER},
+    </if>
+    <if test="Status2 != null" >
+      Status2 = #{Status2,jdbcType=INTEGER},
     </if>
     <if test="BatNote != null" >
       BatNote = #{BatNote,jdbcType=VARCHAR},
