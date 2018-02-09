@@ -18,7 +18,7 @@ cBoard.controller("verificationCtrl",function ($rootScope, $scope, $http, dataSe
         {'name': '操作'}
     ];
 
-    $scope.pageSize = 5;　　//分页大小，可以随意更改
+    $scope.pageSize = 8;　　//分页大小，可以随意更改
 
     /*
      * 当页面列表数据过多时，我们经常会收到将列表内容分页的需求，列表内容分页一般会有两种做法：
@@ -137,43 +137,8 @@ cBoard.controller("verificationCtrl",function ($rootScope, $scope, $http, dataSe
      * @param current
      * @param $event
      */
-    $scope.addBatch = function (current, $event) {
-        $uibModal.open({
-            templateUrl: 'org/cboard/view/config/modal/addBatch.html',
-            //windowTemplateUrl: 'org/cboard/view/util/modal/window.html',
-            backdrop: false,
-            controller: function ($scope, $uibModalInstance, $http) {
-                $scope.close = function () {
-                    $uibModalInstance.close();
-                };
-                $scope.save = function () {
-                    $http({
-                        method: 'POST',
-                        url: './batch/insertEmp.do',
-                        data:{
-                            name: $scope.newUserName,
-                            role: $scope.newUserRole,
-                            password: $scope.newUserPwd,
-                            // oldRole:oldRole,
-                            desc: $scope.newUserDesc
-                        }
-                    }).success(function (response) {
-                        /*if (response.code === 0) {
-                            ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-                        } else if (response.code === 1) {
-                            ModalUtils.alert(translate(response.msg + "!"), "modal-success", "md");
-                        } else if (response.code === -2) {
-                            ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
-                        }*/
-                        getBatchList();
-                    }).error(function (XMLHttpRequest, textStatus, errorThrown) {
-                        ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-                    });
-                    $uibModalInstance.close();
-                }
-            }
-        });
-        $event.stopPropagation();//阻止冒泡
+    $scope.searchVerification = function () {
+        console.log("searchVerification");
     };
 
 
@@ -182,7 +147,7 @@ cBoard.controller("verificationCtrl",function ($rootScope, $scope, $http, dataSe
      * @param current
      * @param $event
      */
-    $scope.delBatch = function (current, $event) {
+    $scope.delVerification = function (current, $event) {
         $http({
             method: 'POST',
             url: './batch/deleteBatch.do',
@@ -211,9 +176,9 @@ cBoard.controller("verificationCtrl",function ($rootScope, $scope, $http, dataSe
      * @param current
      * @param $event
      */
-    $scope.editBatch = function (current, $event) {
+    $scope.editVerification = function (current, $event) {
         $uibModal.open({
-            templateUrl: 'org/cboard/view/config/modal/editBatch.html',
+            templateUrl: 'org/cboard/view/config/modal/editVerification.html',
             //windowTemplateUrl: 'org/cboard/view/util/modal/window.html',
             backdrop: false,
             controller: function ($scope, $uibModalInstance, $http) {
