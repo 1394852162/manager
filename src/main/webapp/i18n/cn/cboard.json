@@ -132,8 +132,8 @@
       "PLEASE_SELECT": "---请选择---",
       "VIP_TICKET": "VIP票数",
       "VIP_DATE": "领取时间",
-      "ADD_VIP": "添加VIP职工劵",
-      "EDIT_VIP": "修改VIP职工劵"
+      "ADD_VIP": "添加VIP劵",
+      "EDIT_VIP": "修改VIP劵"
     },
     "MENU_VERIFICATION": {
       "VERIFICATION_TITLE": "职工劵领取核销查询",
