@@ -242,7 +242,8 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
             //windowTemplateUrl: 'org/cboard/view/util/modal/window.html',
             backdrop: false,
             controller: function ($scope, $uibModalInstance, $http) {
-                $scope.editVipName = current.empName;
+                $scope.editVipName = current.vipEmpID;
+                // console.log($scope.editVipName);
                 $scope.editVipTicket = current.vipAddNum;
                 $scope.editVipDate = (function () {
                     return new Date(current.vipAddTime).Format("yyyy-MM-dd");
@@ -256,9 +257,9 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
                     method: 'GET',
                     url: './employee/getEmpList.do'
                 }).success(function (response) {
-                    $scope.editVipName = current.empId;
+                    $scope.editVipName = current.vipEmpID;
                     $scope.empList = response.data;
-                    // console.log($scope.deptList);
+                    // console.log($scope.empList);
                 }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                     ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
                 });
