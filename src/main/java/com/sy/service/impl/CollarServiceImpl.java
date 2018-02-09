@@ -25,8 +25,8 @@ public class CollarServiceImpl implements ICollarService {
     }
 
     @Override
-    public List<Collar> querySelectList(String EmpName, String EmpNo, Date BeginDate, Date EndDate) {
-        return this.iCollarDao.querySelectList( EmpName,  EmpNo,  BeginDate,  EndDate);
+    public List<Collar> querySelectList(HashMap<String,Object> map) {
+        return this.iCollarDao.querySelectList(map);
     }
 
     @Override

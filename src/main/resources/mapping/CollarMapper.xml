@@ -43,9 +43,18 @@
   and b.EmpStatus1 !=-1
   and c.Status !=-1
   and a.Status=1
-  and b.EmpNo like '%'+rtrim(ltrim(#{b.EmpNo,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{b.EmpNo,jdbcType=VARCHAR}))=''
-  and b.EmpName like '%'+rtrim(ltrim(#{b.EmpName,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{b.EmpName,jdbcType=VARCHAR}))=''
-  and
+    <if test="EmpNo != null" >
+    and   b.EmpNo like '%'+rtrim(ltrim(#{b.EmpNo,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{b.EmpNo,jdbcType=VARCHAR}))=''
+    </if>
+
+    <if test="EmpName != null" >
+     and b.EmpName like '%'+rtrim(ltrim(#{b.EmpName,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{b.EmpName,jdbcType=VARCHAR}))=''
+    </if>
+
+    <if test="CollNo != null" >
+      and c.CollNo like '%'+rtrim(ltrim(#{c.CollNo,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{c.CollNo,jdbcType=VARCHAR}))=''
+    </if>
+
   </select>
 
   <insert id="insertCollar" parameterType="java.util.HashMap">

@@ -61,7 +61,7 @@ public class EmployeeServiceImpl implements IEmployeeService{
     }
 
     @Override
-    public List<Employee> getBatEmpInfo(int BatId) {
-        return this.iEmployeeDao.getBatEmpInfo(BatId);
+    public List<Employee> getBatEmpInfo(int BatId,int EmpId) {
+        return this.iEmployeeDao.getBatEmpInfo(BatId,EmpId);
     }
 }

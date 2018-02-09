@@ -41,9 +41,10 @@ public class EmpController {
      */
     @RequestMapping("/getBatEmpInfo.do")
     @ResponseBody
-    public Map<String,Object> getBatEmpInfo(@RequestParam("BatId") int BatId) {
+    public Map<String,Object> getBatEmpInfo(@RequestParam("BatId") int BatId,@RequestParam("EmpId") int EmpId) {
+        System.out.println(BatId+"+++++++++++"+EmpId);
         Map<String,Object> resultmap = new HashMap<String,Object>();
-        List<Employee> list = iEmpService.getBatEmpInfo(BatId);
+        List<Employee> list = iEmpService.getBatEmpInfo(BatId,EmpId);
         if(list != null & list.size()>0) {
             resultmap.put("data", list);
             resultmap.put("code", 1);

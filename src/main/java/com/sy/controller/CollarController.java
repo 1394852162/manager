@@ -43,23 +43,23 @@ public class CollarController {
 
     }
 
-    @RequestMapping("/querySelectList.do")
+    @RequestMapping("/querySelectCollList.do")
     @ResponseBody
-    public Map<String,Object> querySelectList(@RequestParam("EmpName") String EmpName,@RequestParam("EmpNo") String EmpNo,
+    public Map<String,Object> querySelectCollList(@RequestParam("EmpName") String EmpName,@RequestParam("EmpNo") String EmpNo,
                                               @RequestParam("BeginDate") String BeginDate,@RequestParam("EndDate") String EndDate) throws ParseException {
-        SimpleDateFormat simp = new SimpleDateFormat("yyyyMMdd");
+        SimpleDateFormat simp = new SimpleDateFormat("yyyy-MM-dd");
         Date beginCollTime =simp.parse(BeginDate);
         Date endCollTime =simp.parse(EndDate);
         Map<String,Object> resultmap = new HashMap<String,Object>();
-        List<Collar> list = this.iCollarService.querySelectList(EmpName,EmpNo,beginCollTime,endCollTime);
-        if(list != null & list.size()>0) {
-            resultmap.put("data",list);
-            resultmap.put("code",1);
-        }
-        else{
-            resultmap.put("code",0);
-            resultmap.put("data","查不到信息");
-        }
+//        List<Collar> list = this.iCollarService.querySelectList(EmpName,EmpNo,beginCollTime,endCollTime);
+//        if(list != null & list.size()>0) {
+//            resultmap.put("data",list);
+//            resultmap.put("code",1);
+//        }
+//        else{
+//            resultmap.put("code",0);
+//            resultmap.put("data","查不到信息");
+//        }
         return resultmap;
     }
 
@@ -105,6 +105,30 @@ public class CollarController {
         }
         return resultmap;
     }
+
+    /**
+     * 根据条件模糊查询
+     * @param param
+     * @return
+     * @throws ParseException
+     */
+    @RequestMapping("/querySelectList.do")
+    @ResponseBody
+    public Map<String,Object> querySelectList(@RequestBody HashMap<String, Object> param) throws ParseException {
+
+        Map<String,Object> resultmap = new HashMap<String,Object>();
+        List<Collar> list = this.iCollarService.querySelectList(param);
+        if(list != null & list.size()>0) {
+            resultmap.put("data",list);
+            resultmap.put("code",1);
+        }
+        else{
+            resultmap.put("code",0);
+            resultmap.put("data","查询失败");
+        }
+        return resultmap;
+    }
+
 
 
     @RequestMapping("/insertCollarMap.do")

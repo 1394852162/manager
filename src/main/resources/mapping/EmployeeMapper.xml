@@ -38,8 +38,8 @@
     ) y
     where x.BatId *= y.BatId
     and x.EmpId *= y.EmpId
-    and BatId = #{BatId,jdbcType=INTEGER}
-    and EmpId = #{EmpId,jdbcType=INTEGER}
+    and x.BatId = #{0,jdbcType=INTEGER}
+    and x.EmpId = #{1,jdbcType=INTEGER}
 
   </select>
 

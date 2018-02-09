@@ -20,7 +20,7 @@ public interface ICollarService {
      * 根据条件模糊查询
      * @return
      */
-   public List<Collar> querySelectList(String EmpName, String EmpNo, Date BeginDate, Date EndDate);
+   public List<Collar> querySelectList(HashMap<String,Object> map);
 
     /**
      * 添加一条领用记录

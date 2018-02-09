@@ -21,7 +21,7 @@ public interface IEmployeeDao {
      * @param BatId
      * @return
      */
-    List<Employee> getBatEmpInfo(int BatId);
+    List<Employee> getBatEmpInfo(int BatId,int EmpId);
 
     /**
      * 根据用户名密码查询登录人员的信息

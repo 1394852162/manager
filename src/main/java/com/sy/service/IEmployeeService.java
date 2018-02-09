@@ -26,5 +26,5 @@ public interface IEmployeeService {
 
     public List<Employee> getNameQueryList(String EmpName);
 
-    public List<Employee> getBatEmpInfo(int BatId);
+    public List<Employee> getBatEmpInfo(int BatId,int EmpId);
 }
