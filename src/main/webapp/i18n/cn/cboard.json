@@ -140,7 +140,9 @@
       "VERIFICATION_START": "开始日期",
       "VERIFICATION_END": "结束日期",
       "VERIFICATION_TICKET": "是否出票",
-      "VERIFICATION_SEARCH": "职工劵查询"
+      "VERIFICATION_D": "领用日期",
+      "VERIFICATION_TICKET_NUM": "领用票数",
+      "VERIFICATION_SEARCH": "点击查询职工劵领用情况"
     },
     "MENU_ROLE": {
       "ROLE_NAME": "角色名称",

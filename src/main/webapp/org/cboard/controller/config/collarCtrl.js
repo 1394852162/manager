@@ -62,8 +62,6 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
      * 确定
      */
     $scope.saveCollar = function () {
-        /*console.log($scope.collarEmpCode);
-        $scope.collarEmpCode = 1;*/
         $http({
             method: 'POST',
             // headers: {'Content-Type': 'application/json;charset=UTF-8', 'Accept': 'application/json'},
@@ -99,7 +97,7 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
      * 取消
      */
     $scope.canelCollar = function () {
-        console.log("canelCollar");
+
     };
 
 })

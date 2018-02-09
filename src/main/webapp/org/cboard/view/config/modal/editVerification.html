@@ -1,0 +1,101 @@
+<!-- usrMgrForm
+   Created by 陶鹏飞 on 2017/8/3.
+-->
+<form id="editVerificationForm" class="form-horizontal" role="form" name="editVerificationForm" ng-submit="ctrl.submit()">
+    <!-- 模态框header -->
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="close()">
+            <span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">{{'CONFIG.MENU_BATCH.EDIT_BATCH'|translate}}</h4>
+    </div>
+
+    <!-- 模态框body -->
+    <div class="modal-body">
+
+        <div class="row">
+            <!-- 领用票数 -->
+            <div class="col-lg-6 col-md-6 col-xs-6 col-xs-12">
+                <div class="input-group has-feedback">
+                    <span class="input-group-addon">{{'CONFIG.MENU_VERIFICATION.VERIFICATION_TICKET_NUM'|translate}}</span>
+                    <!--<input type="password" class="form-control" id="newEmpPwd" name="newEmpPwd"
+                           placeholder="{{'CONFIG.MENU_BATCH.SEARCH'|translate}}" ng-model="newEmpPwd">-->
+                    <input type="text" class="form-control" id="editVerificationTicketNum" name="editVerificationTicketNum"
+                           placeholder="{{'COMMON.PLACEHOLDER'|translate}}"
+                           ng-model="editVerificationTicketNum">
+                </div>
+            </div>
+
+            <!-- 领用日期 -->
+            <div class="col-lg-6 col-md-6 col-xs-6 col-xs-12">
+                <div class="input-group has-feedback">
+                    <div  ng-model='timepickerTest'  ng-time class="input-group date form_date col-md-12" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                        <span class="input-group-addon">{{'CONFIG.MENU_VERIFICATION.VERIFICATION_D'|translate}}</span>
+                        <input class="form-control" size="11" type="text" value=""  id="editVerificationTicketD" name="editVerificationTicketD"
+                               ng-model="editVerificationTicketD" readonly>
+                        <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
+                        <span class="input-group-addon" style="background-color: white;">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    <!--<input type="hidden" id="dtp_input2" value="" /><br/>-->
+                </div>
+            </div>
+            <!-- 批次状态 -->
+            <!--<div class="col-lg-6 col-md-6 col-xs-6 col-xs-12">
+                <div class="input-group has-feedback"
+                     ng-class="{'has-success' : !editVerificationForm.editVerificationStatus.$pristine && editVerificationForm.editVerificationStatus.$valid,
+                              'has-error' : !editVerificationForm.editVerificationStatus.$pristine && editVerificationForm.editVerificationStatus.$invalid }">
+                    <span class="input-group-addon">{{'CONFIG.MENU_BATCH.ADD_BATCH_STATUS'|translate}}</span>
+                    <div class="panel-heading form-control" style="
+                                    padding: 5px 15px;
+                                    border-top-left-radius: 0px;
+                                    border-top-right-radius: 0px;">
+                        <input tabindex="1" type="radio" id="newEmpStatus1_Y" value="1" name="editVerificationStatus"
+                               ng-value=1
+                               ng-model="editVerificationStatus"
+                               ng-icheck>
+                        <label for="newEmpStatus1_Y" style="font-weight: normal;">{{'CONFIG.MENU_USER.STATUS1_Y'|translate}}</label>
+                        <input tabindex="0" type="radio" id="newEmpStatus1_N" value="0" name="editVerificationStatus"
+                               ng-value=0
+                               ng-model="editVerificationStatus"
+                               ng-icheck>
+                        <label for="newEmpStatus1_N" style="font-weight: normal;">{{'CONFIG.MENU_USER.STATUS1_N'|translate}}</label>
+                    </div>
+                </div>
+                <div style="color: red" ng-show="editVerificationForm.editVerificationStatus.$invalid">
+                    <span ng-show="editVerificationForm.editVerificationStatus.$error.required">
+                        {{'CONFIG.MENU_GUESTGRADETYPE.MUST_INPUT'|translate}}
+                    </span>
+                </div>
+            </div>-->
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1></h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- 领用说明 -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 column">
+                <div class="input-group">
+                    <span class="input-group-addon">{{'CONFIG.MENU_BATCH.BATCH_NOTE'|translate}}</span>
+                    <textarea class="form-control" rows="3" col="12" id="editVerificationNote" name="editVerificationNote"
+                              placeholder=""
+                              ng-model="editVerificationNote"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 模态框footer ng-disabled="userForm.$invalid" -->
+    <div class="modal-footer">
+        <button type="submit" name="submit" class="btn btn-primary" id="btn_save"
+                ng-disabled="!editVerificationForm.confirmUserPwd.$pristine && editVerificationForm.confirmUserPwd.$invalid"
+                ng-click="save()">
+            {{'CONFIG.MENU_USER.SAVE'|translate}}
+        </button>
+    </div>
+</form>

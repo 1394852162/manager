@@ -11,14 +11,15 @@
                     <div class="row">
                         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
                             <div class="row">
+                                <!-- 开始日期 -->
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <div class="form-group has-feedback">
                                         <!--<span>{{'CONFIG.MENU_VERIFICATION.VERIFICATION_START'|translate}}</span>-->
                                         <div  ng-model='timepickerTest'  ng-time class="input-group date form_date col-lg-12 col-md-12 col-sm-12 col-xs-12"
                                               data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
                                             <span class="input-group-addon">{{'CONFIG.MENU_VERIFICATION.VERIFICATION_START'|translate}}</span>
-                                            <input class="form-control" size="11" type="text" value=""  id="collarD1" name="collarD1"
-                                                   ng-model="collarD1" readonly>
+                                            <input class="form-control" size="11" type="text" value=""  id="verificationD1" name="verificationD1"
+                                                   ng-model="verificationD1" readonly>
                                             <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
                                             <span class="input-group-addon" style="background-color: white;">
                                                 <span class="glyphicon glyphicon-calendar"></span>
@@ -26,14 +27,15 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- 结束日期 -->
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <div class="form-group has-feedback">
                                         <!--<span>{{'CONFIG.MENU_VERIFICATION.VERIFICATION_END'|translate}}</span>-->
                                         <div  ng-model='timepickerTest'  ng-time class="input-group date form_date col-lg-12 col-md-12 col-sm-12 col-xs-12"
                                               data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
                                             <span class="input-group-addon">{{'CONFIG.MENU_VERIFICATION.VERIFICATION_END'|translate}}</span>
-                                            <input class="form-control" size="11" type="text" value=""  id="collarD2" name="collarD2"
-                                                   ng-model="collarD2" readonly>
+                                            <input class="form-control" size="11" type="text" value=""  id="verificationD2" name="verificationD2"
+                                                   ng-model="verificationD2" readonly>
                                             <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
                                             <span class="input-group-addon" style="background-color: white;">
                                                 <span class="glyphicon glyphicon-calendar"></span>
@@ -43,49 +45,43 @@
                                 </div>
                             </div>
                             <div class="row" style="margin-bottom: 15px;">
+                                <!-- 员工工号 -->
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <!-- 员工工号 -->
                                     <div class="input-group has-feedback">
                                         <span class="input-group-addon">{{'CONFIG.MENU_COLLAR.EMP_CODE'|translate}}</span>
                                         <!--<input type="password" class="form-control" id="newEmpPwd" name="newEmpPwd"
                                                placeholder="{{'CONFIG.MENU_BATCH.SEARCH'|translate}}" ng-model="newEmpPwd">-->
-                                        <input type="text" class="form-control" id="addBatchTicketNum" name="addBatchTicketNum"
+                                        <input type="text" class="form-control" id="verificationEmpNo" name="verificationEmpNo"
                                                placeholder="{{'COMMON.PLACEHOLDER'|translate}}"
-                                               ng-model="addBatchTicketNum">
+                                               ng-model="verificationEmpNo">
                                     </div>
                                 </div>
+                                <!-- 员工姓名 -->
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <!-- 员工姓名 -->
                                     <div class="input-group has-feedback">
                                         <span class="input-group-addon">{{'CONFIG.MENU_COLLAR.EMP_NAME'|translate}}</span>
                                         <!--<input type="password" class="form-control" id="newEmpPwd" name="newEmpPwd"
                                                placeholder="{{'CONFIG.MENU_BATCH.SEARCH'|translate}}" ng-model="newEmpPwd">-->
-                                        <input type="text" class="form-control" id="collarEmpName" name="collarEmpName"
+                                        <input type="text" class="form-control" id="verificationEmpName" name="verificationEmpName"
                                                placeholder="{{'COMMON.PLACEHOLDER'|translate}}"
-                                               ng-model="collarEmpName">
+                                               ng-model="verificationEmpName">
                                     </div>
                                 </div>
                             </div>
                             <div class="row" style="margin-bottom: 15px;">
+                                <!-- 领用ID -->
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <!-- 领用ID -->
                                     <div class="input-group has-feedback">
                                         <span class="input-group-addon">{{'CONFIG.MENU_COLLAR.COLLAR_CODE'|translate}}</span>
                                         <!--<input type="password" class="form-control" id="newEmpPwd" name="newEmpPwd"
                                                placeholder="{{'CONFIG.MENU_BATCH.SEARCH'|translate}}" ng-model="newEmpPwd">-->
-                                        <input type="text" class="form-control" id="collarCode" name="collarCode"
+                                        <input type="text" class="form-control" id="verificationCode" name="verificationCode"
                                                placeholder="{{'COMMON.PLACEHOLDER'|translate}}"
-                                               ng-model="collarCode">
+                                               ng-model="verificationCode">
                                     </div>
                                 </div>
+                                <!-- 是否出票 -->
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <!-- 是否出票 -->
-                                    <!--<div class="form-group">
-                                        <span>{{'CONFIG.MENU_VERIFICATION.VERIFICATION_TICKET'|translate}}</span>
-                                        <input type="text" class="form-control input-sm" id="collarBatchName" name="collarBatchName"
-                                               placeholder="{{'COMMON.PLACEHOLDER'|translate}}"
-                                               ng-model="collarBatchName"/>
-                                    </div>-->
                                     <div class="input-group has-feedback"
                                          ng-class="{'has-success' : !addItemDeptForm.newItemDeptmentStatus.$pristine && addItemDeptForm.newItemDeptmentStatus.$valid,
                                                     'has-error' : !addItemDeptForm.newItemDeptmentStatus.$pristine && addItemDeptForm.newItemDeptmentStatus.$invalid }">
@@ -94,14 +90,14 @@
                                     padding: 5px 15px;
                                     border-top-left-radius: 0px;
                                     border-top-right-radius: 0px;">
-                                            <input tabindex="1" type="radio" id="newEmpStatus1_Y" value="1" name="newEmpStatus1"
+                                            <input tabindex="1" type="radio" id="newEmpStatus1_Y" value="1" name="verificationStatus"
                                                    ng-value=1
-                                                   ng-model="newEmpStatus1"
+                                                   ng-model="verificationStatus"
                                                    ng-icheck>
                                             <label for="newEmpStatus1_Y" style="font-weight: normal;">{{'CONFIG.MENU_USER.STATUS1_Y'|translate}}</label>
-                                            <input tabindex="0" type="radio" id="newEmpStatus1_N" value="0" name="newEmpStatus1"
+                                            <input tabindex="0" type="radio" id="newEmpStatus1_N" value="0" name="verificationStatus"
                                                    ng-value=0
-                                                   ng-model="newEmpStatus1"
+                                                   ng-model="verificationStatus"
                                                    ng-icheck>
                                             <label for="newEmpStatus1_N" style="font-weight: normal;">{{'CONFIG.MENU_USER.STATUS1_N'|translate}}</label>
                                         </div>
@@ -120,7 +116,7 @@
                             <!--<button type="submit" name="submit" ng-click="saveCollar()" class="btn btn-success btn-lg  ">
                                 {{'CONFIG.MENU_VERIFICATION.VERIFICATION_SEARCH'|translate}}
                             </button>-->
-                            <button type="button" class="btn btn-success btn-md btn-block">
+                            <button type="button" class="btn btn-success btn-md btn-block" ng-click="searchVerification()">
                                 {{'CONFIG.MENU_VERIFICATION.VERIFICATION_SEARCH'|translate}}
                             </button>
                         </div>
@@ -128,7 +124,6 @@
 
                 </div>
                 <div class="box-footer">
-
                     <div class="row" style="margin-top: 10px; margin-bottom: 0px">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 column">
                             <table id="listDept" class="table table-bordered">
@@ -145,15 +140,15 @@
                                     <td>{{ row.batBeginTime | date:'yyyy-MM-dd HH:mm:ss' }}</td>
                                     <td>{{ row.batEndTime | date:'yyyy-MM-dd HH:mm:ss' }}</td>
                                     <td>{{ row.batTicketNum }}</td>
-                                    <td>{{ (row.status == '1') ? "在职" : "离职" }}</td>
+                                    <!--<td>{{ (row.status == '1') ? "在职" : "离职" }}</td>-->
                                     <td>{{ (row.status == '1') ? "在职" : "离职" }}</td>
                                     <td>{{ row.batNote }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-info btn-xs" ng-click="editBatch(row, $event)">
+                                        <button type="button" class="btn btn-info btn-xs" ng-click="editVerification(row, $event)">
                                             <span class="glyphicon glyphicon-pencil"></span>{{'CONFIG.MENU_USER.MODIFY'|translate}}
                                         </button>
                                         <button type="button" class="btn btn-danger btn-xs"
-                                                ng-click="delBatch(row, $event)">
+                                                ng-click="delVerification(row, $event)">
                                             <span class="glyphicon glyphicon-remove-circle"></span>{{'CONFIG.MENU_PLACE.PLACE_DEL'|translate}}
                                         </button>
                                     </td>

@@ -98,5 +98,23 @@ where x.BatId *= y.BatId
       and x.EmpId *= y.EmpId
 
 
-SELECT * FROM Tbb_Collar
+SELECT Tbb_Collar.BatId,Tbb_Collar.EmpId,SUM(Tbb_Collar.CollNum) FROM Tbb_Collar GROUP BY Tbb_Collar.BatId,Tbb_Collar.EmpId-- WHERE BatId=13
+
+SELECT * FROM Tbb_Collar;
+
+select x.EmpId,x.EmpNo,x.EmpName,(x.BatTicketNum-y.Qty) as Standbyticket
+from
+  ( select a.BatId as BatId, b.EmpId, b.EmpNo, b.EmpName, a.BatTicketNum
+    from Tbb_Batch a, Tbb_Employee b
+
+  ) x,
+  (
+    select BatId, EmpId, sum(CollNum) as Qty
+    from Tbb_Collar
+    group by EmpId, BatId
+  ) y
+where x.BatId *= y.BatId
+      and x.EmpId *= y.EmpId
+      and x.BatId = 13
+      and x.EmpId = 2
 
