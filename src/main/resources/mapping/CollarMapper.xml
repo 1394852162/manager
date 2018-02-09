@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sy.dao.ICollarDao" >
+  <resultMap id="BaseResultMap" type="com.sy.pojo.Collar" >
+    <result property="CollId" column="CollId" jdbcType="INTEGER" />
+    <result property="CollNo" column="CollNo" jdbcType="VARCHAR" />
+    <result property="BatId" column="BatId" jdbcType="INTEGER" />
+    <result property="Status" column="Status"  jdbcType="INTEGER" />
+    <result property="EmpId" column="EmpId"  jdbcType="INTEGER" />
+    <result property="CollNum" column="CollNum"  jdbcType="INTEGER" />
+    <result property="CollNote" column="CollNote" jdbcType="VARCHAR" />
+
+    <result property="BatNo" column="BatNo" jdbcType="VARCHAR" />
+    <result property="BatName" column="BatName" jdbcType="VARCHAR" />
+    <result property="EmpNo" column="EmpNo" jdbcType="VARCHAR" />
+    <result property="EmpName" column="EmpName" jdbcType="VARCHAR" />
+
+    <result property="CollTime" column="CollTime"  jdbcType="DATE" />
+    <result property="BatEndTime" column="BatEndTime"  jdbcType="DATE" />
+    <result property="CreateTime" column="CreateTime"  jdbcType="DATE" />
+    <result property="UpdateTime" column="UpdateTime"  jdbcType="DATE" />
+
+  </resultMap>
+
+
+  <select id="getCollList" resultMap="BaseResultMap">
+  select a.BatNo,a.BatName,b.EmpId,b.EmpNo,b.EmpName,c.*
+  from Tbb_Batch a, Tbb_Employee b ,Tbb_Collar c
+  where a.BatId=c.BatId
+  and b.EmpId = c.EmpId
+  and b.EmpStatus1 !=-1
+  and c.Status !=-1
+  and a.Status=1
+  </select>
+
+
+  <!-- 模糊查询待定-->
+  <select id="querySelectList" resultMap="BaseResultMap">
+  select a.BatNo,a.BatName,b.EmpId,b.EmpNo,b.EmpName,c.*
+  from Tbb_Batch a, Tbb_Employee b ,Tbb_Collar c
+  where a.BatId=c.BatId
+  and b.EmpId = c.EmpId
+  and b.EmpStatus1 !=-1
+  and c.Status !=-1
+  and a.Status=1
+  and b.EmpNo like '%'+rtrim(ltrim(#{b.EmpNo,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{b.EmpNo,jdbcType=VARCHAR}))=''
+  and b.EmpName like '%'+rtrim(ltrim(#{b.EmpName,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{b.EmpName,jdbcType=VARCHAR}))=''
+  and
+  </select>
+
+  <insert id="insertCollar" parameterType="java.util.HashMap">
+    begin
+    declare @CollId int
+    select @CollId=isnull(max(CollId),0) from Tbb_Collar
+    insert into Tbb_Collar
+    select @CollId+1,
+    #{CollNo,jdbcType=VARCHAR},
+    #{BatId,jdbcType=INTEGER},
+    #{BatEndTime,jdbcType=DATE},
+    #{CollTime,jdbcType=DATE},
+    #{EmpId,jdbcType=INTEGER},
+    #{CollNum,jdbcType=INTEGER},
+    <if test="CollNote != null" >
+      CollNote = #{CollNote,jdbcType=VARCHAR},
+    </if>
+    1,
+    getdate(),
+    null
+    end
+  </insert>
+
+
+
+  <delete id="deleteCollar" parameterType="INTEGER">
+  update Tbb_Collar
+  set Status = -1
+  where CollId = #{CollId,jdbcType=INTEGER}
+  </delete>
+
+</mapper>

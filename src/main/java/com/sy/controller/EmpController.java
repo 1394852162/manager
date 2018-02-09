@@ -34,6 +34,25 @@ public class EmpController {
     private IVipService iVipService;
     Employee emp = new Employee();
 
+    /**
+     * 查询人员剩余的票数
+     * @param BatId
+     * @return
+     */
+    @RequestMapping("/getBatEmpInfo.do")
+    @ResponseBody
+    public Map<String,Object> getBatEmpInfo(@RequestParam("BatId") int BatId) {
+        Map<String,Object> resultmap = new HashMap<String,Object>();
+        List<Employee> list = iEmpService.getBatEmpInfo(BatId);
+        if(list != null & list.size()>0) {
+            resultmap.put("data", list);
+            resultmap.put("code", 1);
+        }else{
+            resultmap.put("code", 0);
+            resultmap.put("data", "未查到!");
+        }
+        return resultmap;
+    }
 
     /**
      * 用户登录

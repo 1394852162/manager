@@ -15,6 +15,34 @@
     <result property="DeptName" column="DeptName"  jdbcType="VARCHAR" />
   </resultMap>
 
+
+  <resultMap id="ResultMap" type="com.sy.pojo.Employee" >
+    <result property="EmpId" column="EmpId" jdbcType="INTEGER" />
+    <result property="EmpNo" column="EmpNo" jdbcType="VARCHAR" />
+    <result property="EmpName" column="EmpName" jdbcType="VARCHAR" />
+    <result property="Standbyticket" column="Standbyticket" jdbcType="INTEGER" />
+  </resultMap>
+
+  <select id="getBatEmpInfo" resultMap="ResultMap">
+    select x.EmpId,x.EmpNo,x.EmpName,(x.BatTicketNum-y.Qty) as Standbyticket
+    from
+    ( select a.BatId as BatId, b.EmpId, b.EmpNo, b.EmpName, a.BatTicketNum
+    from Tbb_Batch a, Tbb_Employee b
+    where BatBeginTime &lt;= convert(Date,getdate(),108)
+    and BatEndTime &gt;= convert(Date,getdate(),108)
+    ) x,
+    (
+    select BatId, EmpId, sum(CollNum) as Qty
+    from Tbb_Collar
+    group by EmpId, BatId
+    ) y
+    where x.BatId *= y.BatId
+    and x.EmpId *= y.EmpId
+    and BatId = #{BatId,jdbcType=INTEGER}
+    and EmpId = #{EmpId,jdbcType=INTEGER}
+
+  </select>
+
   <select id="ifExist" parameterType="com.sy.pojo.Employee" resultType="boolean">
     select count(EmpId)  FROM Tbb_Employee
     where EmpName = #{EmpName,jdbcType=VARCHAR}

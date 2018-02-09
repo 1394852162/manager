@@ -25,4 +25,6 @@ public interface IEmployeeService {
     public int deleteEmp(int EmpId);
 
     public List<Employee> getNameQueryList(String EmpName);
+
+    public List<Employee> getBatEmpInfo(int BatId);
 }

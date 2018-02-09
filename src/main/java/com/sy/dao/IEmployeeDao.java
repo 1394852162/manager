@@ -17,6 +17,13 @@ public interface IEmployeeDao {
     boolean ifExist(Employee employee);
 
     /**
+     * 获取每个人剩余的票数
+     * @param BatId
+     * @return
+     */
+    List<Employee> getBatEmpInfo(int BatId);
+
+    /**
      * 根据用户名密码查询登录人员的信息
      * @param employee
      * @return

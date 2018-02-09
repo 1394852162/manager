@@ -14,6 +14,8 @@ import java.util.List;
  */
 @Service("employeeService")
 public class EmployeeServiceImpl implements IEmployeeService{
+
+
     @Resource
     private IEmployeeDao iEmployeeDao;
 
@@ -56,5 +58,10 @@ public class EmployeeServiceImpl implements IEmployeeService{
     @Override
     public List<Employee> getNameQueryList(String EmpName) {
         return this.iEmployeeDao.getNameQueryList(EmpName);
+    }
+
+    @Override
+    public List<Employee> getBatEmpInfo(int BatId) {
+        return this.iEmployeeDao.getBatEmpInfo(BatId);
     }
 }
