@@ -121,7 +121,8 @@
       "EMP_CODE": "员工工号",
       "EMP_NAME": "员工姓名",
       "NUM": "领用数量",
-      "NOTE": "领用说明"
+      "NOTE": "领用说明",
+      "BATCH_SELECT": "-----请选择-----"
     },
     "MENU_VIP": {
       "VIP_NAME": "查询",

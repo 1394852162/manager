@@ -76,3 +76,27 @@ FROM Tbb_Dept;
 
 SELECT * FROM Tbb_Batch;
 SELECT * FROM Tbb_VipTicket;
+
+
+
+select x.EmpId,x.EmpNo,x.EmpName, x.BatId, x.BatTicketNum, y.Qty
+
+from
+
+  ( select a.BatId as BatId, b.EmpId, b.EmpNo, b.EmpName, a.BatTicketNum
+    from Tbb_Batch a, Tbb_Employee b
+    where BatBeginTime< getdate()
+          and BatEndTime> getdate()
+  ) x,
+
+  (
+    select BatId, EmpId, sum(CollNum) as Qty
+    from Tbb_Collar
+    group by EmpId, BatId
+  ) y
+where x.BatId *= y.BatId
+      and x.EmpId *= y.EmpId
+
+
+SELECT * FROM Tbb_Collar
+
