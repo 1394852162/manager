@@ -12,13 +12,13 @@ cBoard.controller("verificationCtrl",function ($rootScope, $scope, $http, dataSe
         {'name': '工号', 'col': 'roleName'},
         {'name': '姓名', 'col': 'roleName'},
         {'name': '领用数量', 'col': 'roleName'},
-        {'name': '操作人', 'col': 'roleName'},
-        {'name': '操作日期', 'col': 'roleName'},
+        // {'name': '操作人', 'col': 'roleName'},
+        {'name': '领用日期', 'col': 'roleName'},
         {'name': '领用说明', 'col': 'roleName'},
         {'name': '操作'}
     ];
 
-    $scope.pageSize = 8;　　//分页大小，可以随意更改
+    $scope.pageSize = 5;　　//分页大小，可以随意更改
 
     /*
      * 当页面列表数据过多时，我们经常会收到将列表内容分页的需求，列表内容分页一般会有两种做法：
