@@ -126,7 +126,7 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
             method: 'get',
             url: './vip/getVipList.do'
         }).success(function (response) {
-            console.log(response);
+            // console.log(response);
             //$scope.userList = response;
             $scope.initPageSort(response);
             /*
@@ -147,9 +147,9 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
     $scope.$watch("vipName", function () {
         $http({
             method: 'POST',
-            url: './batch/queryNameBatList.do',
+            url: './vip/QueryNameByList.do',
             data: {
-                BatName: $scope.batchName
+                EmpName: $scope.vipName
             }
         }).success(function (response) {
             $scope.userList = response;
