@@ -149,5 +149,36 @@ public class CollarController {
     }
 
 
+    @RequestMapping("/updateCollar.do")
+    @ResponseBody
+    public Map<String,Object>  updateCollar(@RequestBody HashMap<String, Object> param) throws ParseException {
+        Map<String,Object> resultmap = new HashMap<String,Object>();
+        // HashMap<String,Object> map = new HashMap<String,Object>();
+        int result = this.iCollarService.updateCollar(param);
+        if(result==1){
+            resultmap.put("data", "修改成功!");
+            resultmap.put("code", 1);
+        }else{
+            resultmap.put("code", 0);
+            resultmap.put("data", "修改失败了!");
+        }
+        return resultmap;
+    }
+
+    @RequestMapping("/deleteCollar.do")
+    @ResponseBody
+    public Map<String,Object> deleteCollar(@RequestParam("CollId") int CollId) {
+
+        Map<String,Object> resultmap = new HashMap<String,Object>();
+       int result = this.iCollarService.deleteCollar(CollId);
+        if(result==1){
+            resultmap.put("data", "删除成功!");
+            resultmap.put("code", 1);
+        }else{
+            resultmap.put("code", 0);
+            resultmap.put("data", "删除失败了!");
+        }
+        return resultmap;
+    }
 
 }

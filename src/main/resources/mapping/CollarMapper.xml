@@ -44,15 +44,23 @@
   and c.Status !=-1
   and a.Status=1
     <if test="EmpNo != null" >
-    and   b.EmpNo like '%'+rtrim(ltrim(#{b.EmpNo,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{b.EmpNo,jdbcType=VARCHAR}))=''
+    and   b.EmpNo like '%'+rtrim(ltrim(#{EmpNo,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{EmpNo,jdbcType=VARCHAR}))=''
     </if>
 
     <if test="EmpName != null" >
-     and b.EmpName like '%'+rtrim(ltrim(#{b.EmpName,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{b.EmpName,jdbcType=VARCHAR}))=''
+     and b.EmpName like '%'+rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))=''
     </if>
-
     <if test="CollNo != null" >
-      and c.CollNo like '%'+rtrim(ltrim(#{c.CollNo,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{c.CollNo,jdbcType=VARCHAR}))=''
+      and c.CollNo like '%'+rtrim(ltrim(#{CollNo,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{CollNo,jdbcType=VARCHAR}))=''
+    </if>
+    <if test="Status != null" >
+      and c.Status =#{Status,jdbcType=INTEGER}
+    </if>
+    <if test="BeginDate != null" >
+      and c.CollTime &gt;= #{BeginDate,jdbcType=DATE}
+    </if>
+    <if test="EndDate != null" >
+      and c.CollTime  &lt;= #{EndDate,jdbcType=DATE}
     </if>
 
   </select>
@@ -79,6 +87,23 @@
   </insert>
 
 
+  <update id="updateCollar" parameterType="java.util.HashMap">
+    update Tbb_Collar
+    <set >
+      <if test="CollNum != null" >
+        CollNum = #{CollNum,jdbcType=INTEGER},
+      </if>
+      <if test="CollTime != null" >
+        CollTime = #{CollTime,jdbcType=DATE},
+      </if>
+
+      <if test="CollNote != null" >
+        CollNote = #{CollNote,jdbcType=VARCHAR},
+      </if>
+    </set>
+    ,UpdateTime = getdate(),Status=1
+    where CollId = #{CollId,jdbcType=INTEGER}
+  </update>
 
   <delete id="deleteCollar" parameterType="INTEGER">
   update Tbb_Collar
