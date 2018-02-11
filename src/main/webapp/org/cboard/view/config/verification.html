@@ -45,17 +45,6 @@
                                 </div>
                             </div>
                             <div class="row" style="margin-bottom: 15px;">
-                                <!-- 员工工号 -->
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <div class="input-group has-feedback">
-                                        <span class="input-group-addon">{{'CONFIG.MENU_COLLAR.EMP_CODE'|translate}}</span>
-                                        <!--<input type="password" class="form-control" id="newEmpPwd" name="newEmpPwd"
-                                               placeholder="{{'CONFIG.MENU_BATCH.SEARCH'|translate}}" ng-model="newEmpPwd">-->
-                                        <input type="text" class="form-control" id="verificationEmpNo" name="verificationEmpNo"
-                                               placeholder="{{'COMMON.PLACEHOLDER'|translate}}"
-                                               ng-model="verificationEmpNo">
-                                    </div>
-                                </div>
                                 <!-- 员工姓名 -->
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <div class="input-group has-feedback">
@@ -67,6 +56,18 @@
                                                ng-model="verificationEmpName">
                                     </div>
                                 </div>
+                                <!-- 员工工号 -->
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="input-group has-feedback">
+                                        <span class="input-group-addon">{{'CONFIG.MENU_COLLAR.EMP_CODE'|translate}}</span>
+                                        <!--<input type="password" class="form-control" id="newEmpPwd" name="newEmpPwd"
+                                               placeholder="{{'CONFIG.MENU_BATCH.SEARCH'|translate}}" ng-model="newEmpPwd">-->
+                                        <input type="text" class="form-control" id="verificationEmpNo" name="verificationEmpNo"
+                                               placeholder="{{'COMMON.PLACEHOLDER'|translate}}"
+                                               ng-model="verificationEmpNo">
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="row" style="margin-bottom: 15px;">
                                 <!-- 领用ID -->
@@ -90,16 +91,22 @@
                                     padding: 5px 15px;
                                     border-top-left-radius: 0px;
                                     border-top-right-radius: 0px;">
-                                            <input tabindex="1" type="radio" id="newEmpStatus1_Y" value="1" name="verificationStatus"
-                                                   ng-value=1
+                                            <input tabindex="10" type="radio" id="newEmpStatus1_NULL" value="10" name="verificationStatus"
+                                                   ng-value=10
                                                    ng-model="verificationStatus"
                                                    ng-icheck>
-                                            <label for="newEmpStatus1_Y" style="font-weight: normal;">{{'CONFIG.MENU_USER.STATUS1_Y'|translate}}</label>
-                                            <input tabindex="0" type="radio" id="newEmpStatus1_N" value="0" name="verificationStatus"
+                                            <label for="newEmpStatus1_NULL" style="font-weight: normal;">{{'CONFIG.MENU_VERIFICATION.STATUS1_NULL'|translate}}</label>
+                                            <input tabindex="0" type="radio" id="newEmpStatus1_Y" value="0" name="verificationStatus"
                                                    ng-value=0
                                                    ng-model="verificationStatus"
                                                    ng-icheck>
-                                            <label for="newEmpStatus1_N" style="font-weight: normal;">{{'CONFIG.MENU_USER.STATUS1_N'|translate}}</label>
+                                            <label for="newEmpStatus1_Y" style="font-weight: normal;">{{'CONFIG.MENU_VERIFICATION.STATUS1_Y'|translate}}</label>
+                                            <input tabindex="1" type="radio" id="newEmpStatus1_N" value="1" name="verificationStatus"
+                                                   ng-value=1
+                                                   ng-model="verificationStatus"
+                                                   ng-icheck>
+                                            <label for="newEmpStatus1_N" style="font-weight: normal;">{{'CONFIG.MENU_VERIFICATION.STATUS1_N'|translate}}</label>
+
                                         </div>
                                     </div>
                                     <div style="color: red" ng-show="addItemDeptForm.newEmpStatus1.$invalid">
@@ -135,19 +142,26 @@
                                 </thead>
                                 <tbody id="userTable">
                                 <tr ng-repeat="row in items " ng-init="outerIndex = $index">
-                                    <td>{{ row.batNo }}</td>
+                                    <td>{{ row.collNo }}</td>
                                     <td>{{ row.batName }}</td>
-                                    <td>{{ row.batBeginTime | date:'yyyy-MM-dd HH:mm:ss' }}</td>
-                                    <td>{{ row.batEndTime | date:'yyyy-MM-dd HH:mm:ss' }}</td>
-                                    <td>{{ row.batTicketNum }}</td>
+                                    <td>{{ row.empNo }}</td>
+                                    <td>{{ row.empName }}</td>
+                                    <td>{{ row.collNum }}</td>
+                                    <td>{{ row.collTime | date:'yyyy-MM-dd' }}</td>
+                                    <td>{{ row.collNote }}</td>
                                     <!--<td>{{ (row.status == '1') ? "在职" : "离职" }}</td>-->
-                                    <td>{{ (row.status == '1') ? "在职" : "离职" }}</td>
-                                    <td>{{ row.batNote }}</td>
+                                    <!--<td>{{ (row.status == '1') ? "在职" : "离职" }}</td>
+                                    <td>{{ row.batNote }}</td>-->
                                     <td>
-                                        <button type="button" class="btn btn-info btn-xs" ng-click="editVerification(row, $event)">
+                                        <button type="button" class="btn btn-info btn-xs"
+                                                ng-class="{true:'trueClass',false:'falseClass'}[row.status]"
+                                                ng-disabled="{{ row.status == '0' ? 'true' : 'false' }}"
+                                                ng-click="editVerification(row, $event)">
                                             <span class="glyphicon glyphicon-pencil"></span>{{'CONFIG.MENU_USER.MODIFY'|translate}}
                                         </button>
                                         <button type="button" class="btn btn-danger btn-xs"
+                                                ng-class="{true:'trueClass',false:'falseClass'}[row.status]"
+                                                ng-disabled="{{ row.status == '0' ? 'true' : 'false' }}"
                                                 ng-click="delVerification(row, $event)">
                                             <span class="glyphicon glyphicon-remove-circle"></span>{{'CONFIG.MENU_PLACE.PLACE_DEL'|translate}}
                                         </button>
