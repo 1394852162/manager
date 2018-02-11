@@ -60,11 +60,11 @@ public class CollarControllerTest {
     public void testselectCollar() throws  Exception  {
 //		delete 需要传的参数和insert不一样，是 BrandSeq:1 pBrandId:[2,3] 这种json格式
         JSONObject jo = new JSONObject();
-        jo.put("EmpName", "x");
-        jo.put("EmpNo", "1003");
-        jo.put("BeginDate", "BeginDate");
-        jo.put("EndDate", "2018-02-10");
-       jo.put("CollNo", "3");
+        jo.put("EmpName", "TPF");
+        jo.put("EmpNo", "1002");
+        jo.put("BeginDate", "2018-01-01");
+        jo.put("EndDate", "2018-01-01");
+       jo.put("CollNo", "20180209");
        jo.put("Status", 0);
 
 //   这个就是前段需要传的json的array
