@@ -115,7 +115,7 @@ from
 where x.BatId *= y.BatId
       and x.EmpId *= y.EmpId
       and x.BatId = 13
-      and x.EmpId = 2
+      and x.EmpId = 3
 
 select x.EmpId,x.EmpNo,x.EmpName,isnull((x.BatTicketNum-y.Qty),x.BatTicketNum)  as Standbyticket
 from
