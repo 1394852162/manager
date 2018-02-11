@@ -24,22 +24,20 @@
   </resultMap>
 
   <select id="getBatEmpInfo" resultMap="ResultMap">
-    select x.EmpId,x.EmpNo,x.EmpName,(x.BatTicketNum-y.Qty) as Standbyticket
-    from
-    ( select a.BatId as BatId, b.EmpId, b.EmpNo, b.EmpName, a.BatTicketNum
+    select x.EmpId,x.EmpNo,x.EmpName,isnull((x.BatTicketNum-y.Qty),x.BatTicketNum)  as Standbyticket
+from
+  ( select a.BatId as BatId, b.EmpId, b.EmpNo, b.EmpName, a.BatTicketNum
     from Tbb_Batch a, Tbb_Employee b
-    where BatBeginTime &lt;= convert(Date,getdate(),108)
-    and BatEndTime &gt;= convert(Date,getdate(),108)
-    ) x,
-    (
-    select BatId, EmpId, sum(CollNum) as Qty
+  ) x,
+  (
+    select BatId, EmpId, isnull(sum(CollNum),0)  as Qty
     from Tbb_Collar
     group by EmpId, BatId
-    ) y
-    where x.BatId *= y.BatId
-    and x.EmpId *= y.EmpId
-    and x.BatId = #{0,jdbcType=INTEGER}
-    and x.EmpId = #{1,jdbcType=INTEGER}
+  ) y
+where x.BatId *= y.BatId
+      and x.EmpId *= y.EmpId
+      and x.BatId = #{0,jdbcType=INTEGER}
+      and x.EmpId = #{1,jdbcType=INTEGER}
 
   </select>
 

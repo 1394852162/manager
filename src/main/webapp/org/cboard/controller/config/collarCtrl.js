@@ -62,7 +62,74 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
      * 确定
      */
     $scope.saveCollar = function () {
+
         $http({
+            method: 'POST',
+            // headers: {'Content-Type': 'application/json;charset=UTF-8', 'Accept': 'application/json'},
+            /*headers : {
+                'Content-Type' : 'application/json;charset=UTF-8',
+                'Accept': 'application/json'
+            },*/
+            // dataType: 'json',
+            url: './employee/getBatEmpInfo.do',
+            data: {
+                BatId: $scope.collarBatchName.batId,
+                EmpId: $scope.collarEmpName.empId
+            }
+        }).success(function (response) {
+            // return response;
+            //console.log(response.data[0].standbyticket);
+            /*if (response.code === 0) {
+                ModalUtils.alert(translate(response.data + "!"), "modal-danger", "md");
+            } else if (response.code === 1) {
+                ModalUtils.alert(translate(response.data[0].standbyticket), "modal-success", "md");
+            }*/
+            // var t = response.data[0].standbyticket + parseInt($scope.collarNum);
+            // if (parseInt(response.data[0].standbyticket) < 0) {
+            if ( parseInt(response.data[0].standbyticket)  > 0
+                && parseInt($scope.collarNum) <= parseInt(response.data[0].standbyticket) ) {
+                $http({
+                    method: 'POST',
+                    // headers: {'Content-Type': 'application/json;charset=UTF-8', 'Accept': 'application/json'},
+                    headers : {
+                        'Content-Type' : 'application/json;charset=UTF-8',
+                        'Accept': 'application/json'
+                    },
+                    dataType: 'json',
+                    url: './collar/insertCollarMap.do',
+                    data: JSON.stringify({
+                        CollNo: $scope.collarCode,
+                        BatId: $scope.collarBatchName.batId,
+                        // BatEndTime: $scope.collarD1,
+                        BatEndTime: (function () {
+                            return new Date($scope.collarD1).Format("yyyy-MM-dd");
+                        })(),
+                        CollTime: $scope.collarD2,
+                        EmpId: $scope.collarEmpName.empId,
+                        CollNum: parseInt($scope.collarNum),
+                        CollNote: $scope.collarNote
+                    })
+                }).success(function () {
+                    ModalUtils.alert(translate("领取成功" + "!"), "modal-success", "md");
+                    // getUserList();
+                    // todo
+                }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+                    ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
+                });
+                // ModalUtils.alert(response.data[0].standbyticket, "modal-success", "md");
+                // alert("YES");
+            } else if( parseInt(response.data[0].standbyticket) <= 0 ){
+                if ( parseInt(response.data[0].standbyticket) === 0 ){
+                    ModalUtils.alert( parseInt($scope.collarNum), "modal-danger", "md");
+                } else {
+                    ModalUtils.alert( parseInt($scope.collarNum) + parseInt(response.data[0].standbyticket)*-1, "modal-danger", "md");
+                }
+            }
+        }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+            ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
+        });
+
+        /*$http({
             method: 'POST',
             // headers: {'Content-Type': 'application/json;charset=UTF-8', 'Accept': 'application/json'},
             headers : {
@@ -90,7 +157,7 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
         });
-
+*/
     };
 
     /**

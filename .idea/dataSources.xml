@@ -11,15 +11,5 @@
         <property name="CHARSET" value="cp936" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="symarket60@10.200.168.75 [2]" uuid="3bb943a2-9fee-4fb5-bfc4-a8675594e891">
-      <driver-ref>sybase.jtds</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>net.sourceforge.jtds.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:jtds:sybase://10.200.168.75:7000/symarket60</jdbc-url>
-      <driver-properties>
-        <property name="appName" value="DataGrip" />
-        <property name="CHARSET" value="cp936" />
-      </driver-properties>
-    </data-source>
   </component>
 </project>
