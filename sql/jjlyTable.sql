@@ -100,16 +100,15 @@ where x.BatId *= y.BatId
 
 SELECT Tbb_Collar.BatId,Tbb_Collar.EmpId,SUM(Tbb_Collar.CollNum) FROM Tbb_Collar GROUP BY Tbb_Collar.BatId,Tbb_Collar.EmpId-- WHERE BatId=13
 
-SELECT * FROM Tbb_Collar;
+SELECT * FROM Tbb_Collar WHERE EmpId=2;
 
-select x.EmpId,x.EmpNo,x.EmpName,(x.BatTicketNum-y.Qty) as Standbyticket
+select x.EmpId,x.EmpNo,x.EmpName,isnull((x.BatTicketNum-y.Qty),x.BatTicketNum)  as Standbyticket
 from
   ( select a.BatId as BatId, b.EmpId, b.EmpNo, b.EmpName, a.BatTicketNum
     from Tbb_Batch a, Tbb_Employee b
-
   ) x,
   (
-    select BatId, EmpId, sum(CollNum) as Qty
+    select BatId, EmpId, isnull(sum(CollNum),0)  as Qty
     from Tbb_Collar
     group by EmpId, BatId
   ) y
@@ -117,4 +116,19 @@ where x.BatId *= y.BatId
       and x.EmpId *= y.EmpId
       and x.BatId = 13
       and x.EmpId = 2
+
+select x.EmpId,x.EmpNo,x.EmpName,isnull((x.BatTicketNum-y.Qty),x.BatTicketNum)  as Standbyticket
+from
+  ( select a.BatId as BatId, b.EmpId, b.EmpNo, b.EmpName, a.BatTicketNum
+    from Tbb_Batch a, Tbb_Employee b
+  ) x,
+  (
+    select BatId, EmpId, isnull(sum(CollNum),0)  as Qty
+    from Tbb_Collar
+    group by EmpId, BatId
+  ) y
+where x.BatId *= y.BatId
+      and x.EmpId *= y.EmpId
+      and x.BatId = #{0,jdbcType=INTEGER}
+      and x.EmpId = #{1,jdbcType=INTEGER}
 
