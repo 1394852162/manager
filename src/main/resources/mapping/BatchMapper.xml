@@ -19,13 +19,15 @@
 
   <select id="getBatList" resultMap="BaseResultMap">
   select * from Tbb_Batch
-  where Status=1
+  where Status !=-1
+  and BatEndTime &gt; convert(Date,getdate(),108)
   </select>
   
   <select id="queryNameBatList" resultMap="BaseResultMap">
   select * from Tbb_Batch
-  where Status = 1
-  and BatName like '%'+rtrim(ltrim(#{BatName,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{BatName,jdbcType=VARCHAR}))=''
+  where Status != -1
+  and BatName like '%'+rtrim(ltrim(#{BatName,jdbcType=VARCHAR}))+'%'
+  and BatEndTime &gt;  convert(Date,getdate(),108)
   </select>
 
   <insert id="insertBatch" parameterType="java.util.HashMap">

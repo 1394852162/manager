@@ -49,7 +49,7 @@ CREATE TABLE Tbb_Collar (
   EmpId      INT, --领用员工ID
   CollNum    INT, --领用数量
   CollNote   VARCHAR(100), --备注
-  Status     INT  NOT NULL, /*-1删除，1未出票，0已出票*/
+  Status     INT  NOT NULL, /*-1删除，1未出票，0已出票,查询参数传10查询全部数据*/
   CreateTime DATE,
   UpdateTime DATE
 
