@@ -44,14 +44,14 @@
   and c.Status !=-1
   and a.Status=1
     <if test="EmpNo != null" >
-    and   b.EmpNo like '%'+rtrim(ltrim(#{EmpNo,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{EmpNo,jdbcType=VARCHAR}))=''
+    and   b.EmpNo like '%'+rtrim(ltrim(#{EmpNo,jdbcType=VARCHAR}))+'%'
     </if>
 
     <if test="EmpName != null" >
-     and b.EmpName like '%'+rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))=''
+     and b.EmpName like '%'+rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))+'%'
     </if>
     <if test="CollNo != null" >
-      and c.CollNo like '%'+rtrim(ltrim(#{CollNo,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{CollNo,jdbcType=VARCHAR}))=''
+      and c.CollNo like '%'+rtrim(ltrim(#{CollNo,jdbcType=VARCHAR}))+'%'
     </if>
     <if test="Status != null" >
       and c.Status =#{Status,jdbcType=INTEGER}
