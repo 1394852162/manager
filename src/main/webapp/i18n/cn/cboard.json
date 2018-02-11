@@ -139,10 +139,13 @@
       "VERIFICATION_TITLE": "职工劵领取核销查询",
       "VERIFICATION_START": "开始日期",
       "VERIFICATION_END": "结束日期",
-      "VERIFICATION_TICKET": "是否出票",
+      "VERIFICATION_TICKET": "出票情况",
       "VERIFICATION_D": "领用日期",
       "VERIFICATION_TICKET_NUM": "领用票数",
-      "VERIFICATION_SEARCH": "点击查询职工劵领用情况"
+      "VERIFICATION_SEARCH": "点击查询职工劵领用情况",
+      "STATUS1_NULL": "全部",
+      "STATUS1_Y": "已出票",
+      "STATUS1_N": "未出票"
     },
     "MENU_ROLE": {
       "ROLE_NAME": "角色名称",
