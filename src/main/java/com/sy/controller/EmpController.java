@@ -248,6 +248,11 @@ public class EmpController {
     @ResponseBody
     public Map<String,Object> deleteEmp(@RequestParam("EmpId") int EmpId){
         Map<String,Object> resultmap = new HashMap<String,Object>();
+        if(EmpId==emp.getEmpId()){
+            resultmap.put("code", 0);
+            resultmap.put("data", "请不要删除自己!");
+            return resultmap;
+        }
         int result = iEmpService.deleteEmp(EmpId);
         if(result==1){
             resultmap.put("data", "删除成功!");

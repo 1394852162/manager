@@ -35,7 +35,7 @@ public class IVipServiceImpl implements IVipService{
 
     @Override
     public int updateVipTicket(HashMap<String, Object> map) {
-        return this.updateVipTicket(map);
+        return this.iVipTicketDao.updateVipTicket(map);
     }
 
     @Override

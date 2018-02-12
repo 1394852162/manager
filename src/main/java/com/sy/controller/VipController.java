@@ -4,6 +4,7 @@ import com.sy.pojo.VipTicket;
 
 import com.sy.service.IVipService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -128,6 +129,29 @@ public class VipController {
             resultmap.put("data", "删除失败!");
             resultmap.put("code", 0);
 
+        }
+        return resultmap;
+    }
+
+
+    /**
+     * VIp票修改
+     * @param param
+     * @return
+     * @throws ParseException
+     */
+    @RequestMapping("/updateVipTicket.do")
+    @ResponseBody
+    public Map<String,Object>  updateVipTicket(@RequestBody HashMap<String, Object> param) throws ParseException {
+        Map<String,Object> resultmap = new HashMap<String,Object>();
+        // HashMap<String,Object> map = new HashMap<String,Object>();
+        int result = this.iVipService.updateVipTicket(param);
+        if(result==1){
+            resultmap.put("data", "修改成功!");
+            resultmap.put("code", 1);
+        }else{
+            resultmap.put("code", 0);
+            resultmap.put("data", "修改失败!");
         }
         return resultmap;
     }

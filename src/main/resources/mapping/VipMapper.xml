@@ -49,6 +49,26 @@
   </insert>
 
 
+  <update id="updateVipTicket" parameterType="java.util.HashMap">
+    update Tbb_VipTicket
+    <set >
+      <if test="VipEmpID != null" >
+        VipEmpID = #{VipEmpID,jdbcType=INTEGER},
+      </if>
+      <if test="VipAddNum != null" >
+        VipAddNum = #{VipAddNum,jdbcType=INTEGER},
+      </if>
+      <if test="VipAddTime != null" >
+        VipAddTime = #{VipAddTime,jdbcType=DATE},
+      </if>
+      <if test="VipAddNote != null" >
+        VipAddNote = #{VipAddNote,jdbcType=VARCHAR},
+      </if>
+    </set>
+    ,UpdateTime = getdate(),Status=1
+    where VipAddId = #{VipAddId,jdbcType=INTEGER}
+  </update>
+
 
   <delete id="deleteVipTicket" parameterType="INTEGER">
   update Tbb_VipTicket
