@@ -27,6 +27,10 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
     }
 
     var getBatList = function () {
+        var d2 = new Date().Format("yyyy-MM-dd");
+        // console.log(d2);
+        $scope.collarD2 = d2;
+
         $http({
             method: 'get',
             url: './batch/GetBatList.do'
@@ -53,8 +57,6 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
     getEmpList();
 
     $scope.collarEmpChange = function(collarEmpName){
-        // $scope.select2=$scope.select1.gnum[0];
-        // console.log($scope.collarEmpName);
         $scope.collarEmpCode = $scope.collarEmpName.empId;
     };
 
@@ -65,12 +67,6 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
 
         $http({
             method: 'POST',
-            // headers: {'Content-Type': 'application/json;charset=UTF-8', 'Accept': 'application/json'},
-            /*headers : {
-                'Content-Type' : 'application/json;charset=UTF-8',
-                'Accept': 'application/json'
-            },*/
-            // dataType: 'json',
             url: './employee/getBatEmpInfo.do',
             data: {
                 BatId: $scope.collarBatchName.batId,
@@ -81,7 +77,6 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
                 if(parseInt($scope.collarNum) <= parseInt(response.data[0].standbyticket)){
                     $http({
                         method: 'POST',
-                        // headers: {'Content-Type': 'application/json;charset=UTF-8', 'Accept': 'application/json'},
                         headers : {
                             'Content-Type' : 'application/json;charset=UTF-8',
                             'Accept': 'application/json'

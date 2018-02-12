@@ -214,16 +214,34 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
      */
     $scope.delEmp = function (current, $event) {
         $http({
-            method: 'POST',
-            url: './employee/deleteEmp.do',
-            data: {
-                EmpId: current.empId
+            method: 'get',
+            url: './employee/getSessionUsername.do'
+        }).success(function (response) {
+            console.log(response.code.empId);
+            console.log(current.empId);
+            if(current.empId != response.code.empId){
+                $http({
+                    method: 'POST',
+                    url: './employee/deleteEmp.do',
+                    data: {
+                        EmpId: current.empId
+                    }
+                }).success(function () {
+                    getUserList();
+                }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+                    ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
+                });
+            } else {
+                ModalUtils.alert(translate("当前系统的登录用户，不能删除!"), "modal-danger", "md");
             }
-        }).success(function () {
-            getUserList();
+
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
         });
+
+
+
+
         $event.stopPropagation();//阻止冒泡
      };
 
