@@ -56,9 +56,10 @@
                                     <div class="form-group has-feedback">
                                         <span>{{'CONFIG.MENU_COLLAR.D1'|translate}}</span>
                                         <div  ng-model='timepickerTest'  ng-time class="input-group date form_date col-lg-12 col-md-12 col-sm-12 col-xs-12"
-                                              data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                              data-date="" data-date-format="yyyy-MM-dd" data-link-field="dtp_input2" data-link-format="yyyy-MM-dd">
                                             <!--<span class="input-group-addon">{{'CONFIG.MENU_COLLAR.D1'|translate}}</span>-->
                                             <input class="form-control" size="11" type="text" value=""  id="collarD1" name="collarD1"
+                                                   placeholder="{{'COMMON.PLACEHOLDER'|translate}}"
                                                    ng-model="collarD1=collarBatchName.batEndTime  | date:'yyyy-MM-dd' " readonly>
                                             <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
                                             <span class="input-group-addon" style="background-color: white; border: 0px solid #ccc;border-radius: 0px;">
@@ -108,27 +109,24 @@
                                     </div>
                                 </div>
                                 <!-- 员工工号 -->
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <div class="form-group">
                                         <span>{{'CONFIG.MENU_COLLAR.EMP_CODE'|translate}}</span>
-                                        <!--<input type="text" class="form-control input-sm" id="collarEmpCode" name="collarEmpCode"
+                                        &lt;!&ndash;<input type="text" class="form-control input-sm" id="collarEmpCode" name="collarEmpCode"
                                                placeholder="{{'COMMON.PLACEHOLDER'|translate}}"
-                                               ng-model="collarEmpCode" required/>-->
+                                               ng-model="collarEmpCode" required/>&ndash;&gt;
                                         <select ng-model="collarEmpCode" class="form-control" name="collarEmpCode"
                                                 ng-options="s.empId as s.empNo for s in empList"
                                                 ng-selected="s.empId==collarEmpCode">
                                             <option value="" selected="selected">{{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}</option>
                                         </select>
+                                        &lt;!&ndash;<select ng-model="collarEmpCode" class="form-control" name="collarEmpCode"
+                                                ng-options="s.empId as s.empNo for s in empList"
+                                                ng-selected="s.empId==collarEmpCode">
+                                            <option value="" selected="selected">{{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}</option>
+                                        </select>&ndash;&gt;
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-                            <!-- 留空 -->
-                            <div class="form-group"></div>
-                            <div class="row">
+                                </div>-->
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <!-- 领用数量 -->
                                     <div class="form-group">
@@ -138,6 +136,16 @@
                                                ng-model="collarNum" required/>
                                     </div>
                                 </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                            <!-- 留空 -->
+                            <div class="form-group"></div>
+                            <div class="row">
+
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <!-- 领用说明 -->
                                     <div class="form-group">

@@ -49,14 +49,11 @@
     and EmpStatus2 =1
   </select>
 
-
-
-
   <select id="getEmpInfo" resultMap="BaseResultMap">
     SELECT *
     FROM Tbb_Employee
     where EmpName = #{EmpName,jdbcType=VARCHAR}
-    and EmpPassword =#{EmpPassword,jdbcType=VARCHAR}
+    and EmpPassword =#{EmpPassword,jdbcType=VARCHAR} and EmpStatus1 !=-1
   </select>
 
 
