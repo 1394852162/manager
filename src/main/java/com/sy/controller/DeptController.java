@@ -5,6 +5,7 @@ import com.sy.pojo.User;
 import com.sy.service.IDeptService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -69,24 +70,14 @@ public class DeptController {
 
     /**
      * 添加部门信息
-     * @param DeptNo
-     * @param DeptName
+     * @param param
      * @return
      */
     @RequestMapping("/insertDept.do")
     @ResponseBody
-    public Map<String,Object>  insertDept(@RequestParam("DeptNo") String DeptNo,@RequestParam("DeptName") String DeptName,@RequestParam("DeptNote") String DeptNote){
+    public Map<String,Object>  insertDept(@RequestBody HashMap<String, Object> param){
         Map<String,Object> resultmap = new HashMap<String,Object>();
-        HashMap<String,Object> map = new HashMap<String,Object>();
-        if(DeptNo.equals("")||DeptName.equals("")){
-            resultmap.put("data", "请输入完整的部门信息!");
-            resultmap.put("code", 0);
-            return resultmap;
-        }
-        map.put("DeptNo",DeptNo);
-        map.put("DeptName",DeptName);
-        map.put("DeptNote",DeptNote);
-        int result = this.DeptService.insertDept(map);
+        int result = this.DeptService.insertDept(param);
         if(result==1){
             resultmap.put("data", "添加部门成功!");
             resultmap.put("code", 1);

@@ -3,6 +3,7 @@ package com.sy.controller;
 import com.sy.pojo.Batch;
 import com.sy.service.IBatchService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -69,26 +70,10 @@ public class BatchController {
 
     @RequestMapping("/insertBatch.do")
     @ResponseBody
-    public Map<String,Object>  insertBatch(@RequestParam("BatNo") String BatNo, @RequestParam("BatName") String BatName,
-                                          @RequestParam("BatTicketNum") int BatTicketNum,
-                                          @RequestParam("BatBeginTime") String BeginTime, @RequestParam("BatEndTime") String EndTime,
-                                           @RequestParam("Status2") int Status2, @RequestParam("BatNote") String BatNote
+    public Map<String,Object>  insertBatch(@RequestBody HashMap<String, Object> param
                                           ) throws ParseException {
         Map<String,Object> resultmap = new HashMap<String,Object>();
-        HashMap<String,Object> map = new HashMap<String,Object>();
-        SimpleDateFormat simp = new SimpleDateFormat("yyyy-MM-dd");
-        Date BatBeginTime =simp.parse(BeginTime);
-        Date BatEndTime =simp.parse(EndTime);
-
-        map.put("BatNo",BatNo);
-        map.put("BatName",BatName);
-        map.put("BatTicketNum",BatTicketNum);
-
-        map.put("BatBeginTime",BatBeginTime);
-        map.put("BatEndTime",BatEndTime);
-        map.put("Status2",Status2);
-        map.put("BatNote",BatNote);
-        int result = this.iBatchService.insertBatch(map);
+        int result = this.iBatchService.insertBatch(param);
         if(result==1){
             resultmap.put("data", "添加部门成功!");
             resultmap.put("code", 1);
