@@ -74,10 +74,12 @@ public class EmpController {
             emp.setEmpId(list.get(0).getEmpId());
             emp.setDeptId(list.get(0).getDeptId());
             emp.setEmpNo(list.get(0).getEmpNo());
+            emp.setEmpStatus3(list.get(0).getEmpStatus3());
         }
         HashMap<String,Object> result = new HashMap<String,Object>();
         System.out.println("存入到对象的数据"+emp);
         result.put("IfExit",EmpExit+"");
+        result.put("emp",emp);
         session.setAttribute("User", emp);
         return result;
     }

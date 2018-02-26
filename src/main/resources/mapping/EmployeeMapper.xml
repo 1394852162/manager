@@ -10,6 +10,7 @@
     <result property="EmpBirth" column="EmpBirth"  jdbcType="VARCHAR" />
     <result property="EmpStatus1" column="EmpStatus1"  jdbcType="INTEGER" />
     <result property="EmpStatus2" column="EmpStatus2"  jdbcType="INTEGER" />
+    <result property="EmpStatus3" column="EmpStatus3"  jdbcType="INTEGER" />
     <result property="CreateTime" column="CreateTime"  jdbcType="DATE" />
     <result property="UpdateTime" column="UpdateTime"  jdbcType="DATE" />
     <result property="DeptName" column="DeptName"  jdbcType="VARCHAR" />
@@ -96,7 +97,7 @@
     #{EmpPassword,jdbcType=VARCHAR},#{DeptId,jdbcType=INTEGER},
     #{EmpBirth,jdbcType=VARCHAR},#{EmpStatus1,jdbcType=INTEGER},
     #{EmpStatus2,jdbcType=INTEGER},'增加人员',
-    getdate(),null
+    getdate(),null,0
     end
   </insert>
 

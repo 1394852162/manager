@@ -1,0 +1,66 @@
+<!-- sidebar: style can be found in sidebar.less -->
+<section class="sidebar">
+
+     <!--Sidebar user panel (optional)-->
+    <div class="user-panel">
+        <div class="pull-left image">
+            <img src="{{avatar}}" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+            <!--<p>{{user.username}}</p>-->
+           <!-- <p>{{sessionUser.name}}</p>-->
+            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+    </div>
+    <!-- Sidebar Menu -->
+    <ul class="sidebar-menu">
+        <li class="header">{{'SIDEBAR.MENU_TITLE'|translate}}</li>
+        <!-- DashBoard -->
+        <!--<li class="treeview" ui-sref-active="active">
+            <a ui-sref="dashboard">
+                <i class="fa fa-th"></i>
+                <span>{{'SIDEBAR.MY_DASHBOARD'|translate}}</span>
+                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+            </a>
+        </li>
+        <li class="treeview" ui-sref-active="active">
+            <a ui-sref="mine">
+                <i class="fa fa-th"></i>
+                <span>{{'SIDEBAR.MY_REPORTER'|translate}}</span>
+                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+            </a>
+        </li>-->
+        <!-- Config -->
+        <li class="active treeview" ui-sref-active="active">
+            <a ui-sref="config">
+                <i class="fa fa-cog"></i>
+                <span>{{'SIDEBAR.CONFIG.MENU'|translate}}</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <!--menu-open style="display: block;" -->
+            <ul class="active treeview-menu" style="display: block;">
+                <li ui-sref-active="active">
+                    <a ui-sref="config.emp"><i class="fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_USER'|translate}}</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="config.dept"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_DEPT'|translate}}</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="config.batch"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_BATCH'|translate}}</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="config.collar"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_COLLAR'|translate}}</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="config.verification"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_VERIFICATION'|translate}}</a>
+                </li>
+
+
+            </ul>
+        </li>
+    </ul>
+    <!-- /.sidebar-menu -->
+</section>
+<!-- /.sidebar -->

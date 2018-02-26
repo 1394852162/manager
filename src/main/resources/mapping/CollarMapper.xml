@@ -77,9 +77,15 @@
     #{CollTime,jdbcType=DATE},
     #{EmpId,jdbcType=INTEGER},
     #{CollNum,jdbcType=INTEGER},
-    <if test="CollNote != null" >
-      CollNote = #{CollNote,jdbcType=VARCHAR},
-    </if>
+    <choose>
+      <when test="CollNote != null">
+        CollNote = #{CollNote,jdbcType=VARCHAR},
+      </when>
+      <otherwise>
+        '',
+      </otherwise>
+    </choose>
+
     1,
     getdate(),
     null

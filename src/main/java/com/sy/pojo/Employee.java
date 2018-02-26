@@ -18,6 +18,7 @@ public class Employee {
     private Date UpdateTime;
     private String DeptName;
     private int Standbyticket;
+    private int EmpStatus3;
 
     @Override
     public String toString() {
@@ -34,6 +35,7 @@ public class Employee {
                 ", UpdateTime=" + UpdateTime +
                 ", DeptName='" + DeptName + '\'' +
                 ", Standbyticket=" + Standbyticket +
+                ", EmpStatus3=" + EmpStatus3 +
                 '}';
     }
 
@@ -131,5 +133,13 @@ public class Employee {
 
     public void setStandbyticket(int standbyticket) {
         Standbyticket = standbyticket;
+    }
+
+    public int getEmpStatus3() {
+        return EmpStatus3;
+    }
+
+    public void setEmpStatus3(int empStatus3) {
+        EmpStatus3 = empStatus3;
     }
 }

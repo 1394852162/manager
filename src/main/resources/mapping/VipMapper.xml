@@ -25,9 +25,10 @@
   </select>
 
   <select id="QueryNameByList" resultMap="BaseResultMap">
-   select v.*,e.EmpName from Tbb_VipTicket v,Tbb_Employee e
-  where v.Status = 1
+   select v.*,e.EmpName,f.EmpName as operaName from Tbb_VipTicket v,Tbb_Employee e,Tbb_Employee f
+  where v.Status=1
   and v.VipEmpID=e.EmpId
+  and v.EmpId=f.EmpId
   and e.EmpName like '%'+rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))=''
   </select>
 

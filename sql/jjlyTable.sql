@@ -7,10 +7,11 @@ CREATE TABLE Tbb_Employee (
   DeptId      INT         NOT NULL,
   EmpBirth    VARCHAR(30),
   EmpStatus1  INT         NOT NULL, /*1在职 10离职 2删除*/
-  EmpStatus2  INT         NOT NULL,
+  EmpStatus2  INT         NOT NULL, /*是否允许使用本系统 1.允许  0.不允许*/
   EmpNote     VARCHAR(100),
   CreateTime  DATE,
-  UpdateTime  DATE
+  UpdateTime  DATE,
+  EmpStatus3 int                /*是否是Vip用户 1.是Vip用户 0.不是Vip用户 新加字段*/
 )
 
 /*部门表*/
@@ -18,7 +19,7 @@ CREATE TABLE Tbb_Dept (
   DeptId     INT         NOT NULL PRIMARY KEY,
   DeptNo     VARCHAR(20) NOT NULL,
   DeptName   VARCHAR(40) NOT NULL,
-  Status     INT         NOT NULL,
+  Status     INT         NOT NULL,/*1.在用 0.删除*/
   DeptNote   VARCHAR(100),
   CreateTime DATE,
   UpdateTime DATE
@@ -32,7 +33,7 @@ CREATE TABLE Tbb_Batch (
   BatBeginTime DATE        NOT NULL,
   BatEndTime   DATE        NOT NULL,
   BatTicketNum INT         NOT NULL,
-  Status       INT         NOT NULL,
+  Status       INT         NOT NULL,/*1.在用 0.删除*/
   BatNote      VARCHAR(100),
   CreateTime   DATE,
   UpdateTime   DATE,
@@ -64,10 +65,19 @@ CREATE TABLE Tbb_VipTicket (
   VipEmpID   INT      NOT NULL, --VIP领取人
   VipAddNum  INT      NOT NULL, --VIP人领取的数量
   VipAddNote VARCHAR(100), --备注
-  Status     INT,
+  Status     INT,/*1.在用 0.删除*/
   CreateTime DATE,
   UpdateTime DATE
 )
+
+
+insert into Tbb_Employee
+  select  1, '1001', 'admin' , 'password',1, '2018-02-12' , 1 , 1 ,'增加人员' ,  '2018-2-26'  , '2018-2-26',   1
+
+insert into Tbb_Dept select 1,'2001','Vip部门',1,'特殊账号请勿修改删除','2018-2-26',null
+
+
+
 
 SELECT *
 FROM Tbb_Employee;
