@@ -48,13 +48,13 @@ public class BatchControllerTest {
         JSONObject jo = new JSONObject();
 
 
-        jo.put("BatNo", "1005");
-        jo.put("BatName", "测试批次4");//备注
+        jo.put("BatNo", "11005");
+        jo.put("BatName", "11005");//备注
         jo.put("BatTicketNum", 8);//备注
         jo.put("BatBeginTime", "2018-2-15");//备注
         jo.put("BatEndTime", "2018-3-25");//备注
         jo.put("Status2", 1);//备注
-        //jo.put("BatNote", "测试批次4有备注");//备注
+        jo.put("BatNote", "测试批次4有备注");//备注
 
 
 

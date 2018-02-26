@@ -152,11 +152,15 @@ cBoard.controller('deptCtrl', function ($rootScope, $scope, $http, dataService, 
                     $http({
                         method: 'POST',
                         url: './dept/insertDept.do',
-                        data:{
+                        headers : {
+                            'Content-Type' : 'application/json;charset=UTF-8',
+                            'Accept': 'application/json'
+                        },
+                        data: JSON.stringify({
                             DeptNo: $scope.addDeptNo,
                             DeptName: $scope.addDeptName,
                             DeptNote: $scope.addDeptNote
-                        }
+                        })
                     }).success(function (response) {
                         /*if (response.code === 0) {
                             ModalUtils.alert(translate(response.msg + "!"), "modal-danger", "md");
@@ -173,7 +177,7 @@ cBoard.controller('deptCtrl', function ($rootScope, $scope, $http, dataService, 
                 }
             }
         });
-        $event.stopPropagation();//阻止冒泡
+        // $event.stopPropagation();//阻止冒泡
     };
 
 

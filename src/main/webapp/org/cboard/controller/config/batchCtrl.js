@@ -174,16 +174,20 @@ cBoard.controller('batchCtrl', function ($rootScope, $scope, $http, dataService,
                 $scope.save = function () {
                     $http({
                         method: 'POST',
+                        headers : {
+                            'Content-Type' : 'application/json;charset=UTF-8',
+                            'Accept': 'application/json'
+                        },
                         url: './batch/insertBatch.do',
-                        data:{
+                        data: JSON.stringify({
                             BatNo: $scope.addBatchNo,
                             BatName: $scope.addBatchName,
                             BatBeginTime: $scope.addBatBeginTime,
                             BatEndTime: $scope.addBatEndTime,
-                            BatTicketNum: $scope.addBatchTicketNum,
+                            BatTicketNum: parseInt($scope.addBatchTicketNum),
                             Status2: $scope.addBatchStatus,
                             BatNote: $scope.addBatchNote,
-                        }
+                        })
                     }).success(function (response) {
                         getBatchList();
                     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
@@ -193,7 +197,7 @@ cBoard.controller('batchCtrl', function ($rootScope, $scope, $http, dataService,
                 }
             }
         });
-        $event.stopPropagation();//阻止冒泡
+        // $event.stopPropagation();//阻止冒泡
     };
 
 
