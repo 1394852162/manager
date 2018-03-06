@@ -8,7 +8,7 @@
       <jdbc-url>jdbc:jtds:sybase://10.200.168.75:7000/symarket60</jdbc-url>
       <driver-properties>
         <property name="appName" value="DataGrip" />
-        <property name="CHARSET" value="cp936" />
+        <property name="CHARSET" value="iso_1" />
       </driver-properties>
     </data-source>
   </component>
