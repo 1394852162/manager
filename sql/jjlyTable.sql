@@ -161,3 +161,17 @@ where x.BatId *= y.BatId
       and x.BatId = 6
       and x.EmpId = 5
 
+
+
+/*SELECT a.*,b.DeptName
+    FROM Tbb_Employee a,Tbb_Dept b
+    where EmpStatus1 !=-1
+    and a.DeptId=b.DeptId
+    order by EmpId*/
+
+SELECT a.*,b.DeptName
+FROM Tbb_Employee a,Tbb_Dept b
+where EmpStatus1 !=-1
+      and a.DeptId=b.DeptId
+      and EmpName like '%'+rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))=''
+order by EmpId

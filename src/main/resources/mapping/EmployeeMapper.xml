@@ -60,20 +60,17 @@
 
   <select id="getEmpList" resultMap="BaseResultMap">
     SELECT a.*,b.DeptName
-    FROM Tbb_Employee a,Tbb_Dept b
-    where EmpStatus1 !=-1
-    and a.DeptId=b.DeptId
-    order by EmpId
+    FROM Tbb_Employee a LEFT JOIN Tbb_Dept b ON a.DeptId=b.DeptId
+    WHERE a.EmpStatus1 != -1
+    ORDER BY a.EmpId
   </select>
 
 
   <select id="getNameQueryList"  parameterType="String"  resultMap="BaseResultMap">
     SELECT a.*,b.DeptName
-    FROM Tbb_Employee a,Tbb_Dept b
-    where EmpStatus1 !=-1
-    and a.DeptId=b.DeptId
-    and EmpName like '%'+rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))=''
-    order by EmpId
+    FROM Tbb_Employee a LEFT JOIN Tbb_Dept b ON a.DeptId=b.DeptId
+    WHERE a.EmpStatus1 != -1 and a.EmpName like '%'+rtrim(ltrim(#{a.EmpName,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{a.EmpName,jdbcType=VARCHAR}))=''
+    ORDER BY a.EmpId
   </select>
 
 
