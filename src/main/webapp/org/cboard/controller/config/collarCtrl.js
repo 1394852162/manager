@@ -104,7 +104,7 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
                     });
                 } else {
                     // ModalUtils.alert( parseInt($scope.collarNum) - parseInt(response.data[0].standbyticket), "modal-danger", "md");
-                    let t = parseInt(response.data[0].standbyticket)
+                    var t = parseInt(response.data[0].standbyticket)
                     ModalUtils.alert( "余票不足, 最多还可领取" + t + "张劵", "modal-danger", "md");
                 }
 

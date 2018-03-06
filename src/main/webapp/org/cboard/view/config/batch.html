@@ -36,7 +36,7 @@
                     <td>{{ row.batBeginTime | date:'yyyy-MM-dd' }}</td>
                     <td>{{ row.batEndTime | date:'yyyy-MM-dd' }}</td>
                     <td>{{ row.batTicketNum }}</td>
-                    <td>{{ (row.status2 == '1') ? "在职" : "离职" }}</td>
+                    <td>{{ (row.status2 == '1') ? "在职" : "退休" }}</td>
                     <td>{{ row.batNote }}</td>
                     <td>
                         <button type="button" class="btn btn-info btn-xs" ng-click="editBatch(row, $event)">
