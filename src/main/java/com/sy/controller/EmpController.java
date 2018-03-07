@@ -14,6 +14,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -67,6 +69,12 @@ public class EmpController {
     public HashMap<String,Object> UserLogin(@RequestParam("name") String username, @RequestParam("password") String password,HttpSession session) {
 
         emp.setEmpName(username);
+        /*try {
+            emp.setEmpName(URLDecoder.decode(username, "utf-8"));
+//            URLDecoder.decode(username, "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }*/
         emp.setEmpPassword(password);
         boolean EmpExit = iEmpService.EmployeeLogin(emp);
         List<Employee> list = iEmpService.getEmpInfo(emp);

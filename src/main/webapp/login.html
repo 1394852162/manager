@@ -117,18 +117,28 @@
                 $("#btn-login").button('loading');
                 $.ajax({
                     type:"GET",
+                    /*headers : {
+                        'Content-Type' : 'application/json;charset=UTF-8',
+                        'Accept': 'application/json'
+                    },*/
                     url : './employee/login.do',
                     dataType: "json",
                     async:false,
                     cache:false,
                     data:{
+//                        name: encodeURI(encodeURI(username)),
                         name: username,
                         password: pwd,
                         enabled: true
                     },
+                    /*data:JSON.stringify({
+                        name: username,
+                        password: pwd,
+                        enabled: true
+                    }),*/
                     success:function(data,textStatus){
+                        console.log(data);
                         if(data){
-                            console.log(data);
                             var notecode = data.IfExit;
                             var vipStatus=data.emp.empStatus3;
 //                            alert(notecode);

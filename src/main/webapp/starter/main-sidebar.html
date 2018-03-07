@@ -8,8 +8,8 @@
         </div>
         <div class="pull-left info">
             <!--<p>{{user.username}}</p>-->
-           <!-- <p>{{sessionUser.name}}</p>-->
-            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            <!--<p>{{sessionUser.empName}}</p>-->
+            <a href="#"><i class="fa fa-circle text-success"></i> {{sessionUser.empName}}</a>
         </div>
     </div>
     <!-- Sidebar Menu -->
@@ -59,9 +59,27 @@
                 <li ui-sref-active="active">
                     <a ui-sref="config.vip"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_VIP'|translate}}</a>
                 </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="config.authority"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_AUTH'|translate}}</a>
+                </li>
 
             </ul>
         </li>
+        <!--<li class="treeview" ui-sref-active="active">
+            <a ui-sref="dashboard">
+                <i class="fa fa-th"></i>
+                <span>{{'SIDEBAR.MY_DASHBOARD'|translate}}</span>
+                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+            </a>
+        </li>
+        <li class="treeview" ui-sref-active="active">
+            <a ui-sref="mine">
+                <i class="fa fa-th"></i>
+                <span>{{'SIDEBAR.MY_REPORTER'|translate}}</span>
+                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+            </a>
+        </li>-->
+        <!-- Config -->
     </ul>
     <!-- /.sidebar-menu -->
 </section>

@@ -11,7 +11,7 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
     $scope.headerInfos = [
         {'name': '员工工号', 'col': 'id'},
         {'name': '员工姓名', 'col': 'userName'},
-        {'name': '员工生日', 'col': 'userName'},
+        // {'name': '员工生日', 'col': 'userName'},
         {'name': '登录密码', 'col': 'userName'},
         {'name': '所属部门', 'col': 'roleName'},
         {'name': '是否在职', 'col': 'description'},
@@ -19,7 +19,7 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
         {'name': '操作'}
     ];
 
-    $scope.pageSize = 8;　　//分页大小，可以随意更改
+    $scope.pageSize = 10;　　//分页大小，可以随意更改
 
     /*
      * 当页面列表数据过多时，我们经常会收到将列表内容分页的需求，列表内容分页一般会有两种做法：
@@ -36,7 +36,7 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
         // $scope.data = item;
         $scope.data = item.data;
         $scope.pages = Math.ceil($scope.data.length / $scope.pageSize); //分页数
-        $scope.newPages = $scope.pages > 5 ? 5 : $scope.pages;
+        $scope.newPages = $scope.pages > 10 ? 10 : $scope.pages;
         $scope.pageList = [];
         $scope.selPage = 1;
         //设置表格数据源(分页)

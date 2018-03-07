@@ -33,6 +33,7 @@
       "MENU_COLLAR": "职工劵领取",
       "MENU_VERIFICATION": "职工劵领取核销查询",
       "MENU_VIP": "VIP劵补录",
+      "MENU_AUTH": "开票权限设置",
       "MENU_ROLE": "角色维护",
       "MENU_ROLE_MENU": "角色菜单维护",
       "MENU_ROLE_MENU_TREE": "角色菜单树",
@@ -147,6 +148,16 @@
       "STATUS1_Y": "已出票",
       "STATUS1_N": "未出票"
     },
+    "MENU_AUTH": {
+      "AUTH_TITLE": "部门-职工树",
+      "SETTING_AUTH": "设置开票权限",
+      "CURRENT_EMP": "当前所选职工姓名：",
+      "VIP_AUTH": "是否赋予VIP劵开票权限：",
+      "EMP_AUTH": "是否赋予职工劵开票权限：",
+      "STATUS_Y": "是",
+      "STATUS_N": "否"
+    },
+
     "MENU_ROLE": {
       "ROLE_NAME": "角色名称",
       "ROLE_SEARCH": "---请输入---",

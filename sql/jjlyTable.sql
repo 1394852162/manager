@@ -11,7 +11,8 @@ CREATE TABLE Tbb_Employee (
   EmpNote     VARCHAR(100),
   CreateTime  DATE,
   UpdateTime  DATE,
-  EmpStatus3 int                /*是否是Vip用户 1.是Vip用户 0.不是Vip用户 新加字段*/
+  EmpStatus3 int,                /*是否赋予VIP劵开票权限 1.是 0.否 新加字段*/
+  EmpStatus4 int                /*是否赋予职工劵开票权限 1.是 0.否 新加字段*/
 )
 
 /*部门表*/

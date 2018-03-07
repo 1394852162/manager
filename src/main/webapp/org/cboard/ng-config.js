@@ -21,24 +21,29 @@ angular.module('cBoard').config(['$stateProvider', function ($stateProvider) {
             controller: 'deptCtrl'
         })
         .state('config.batch', {
-        url: '/batch',
-        templateUrl: 'org/cboard/view/config/batch.html',
-        controller: 'batchCtrl'
+            url: '/batch',
+            templateUrl: 'org/cboard/view/config/batch.html',
+            controller: 'batchCtrl'
         })
         .state('config.collar', {
-        url: '/collar',
-        templateUrl: 'org/cboard/view/config/collar.html',
-        controller: 'collarCtrl'
+            url: '/collar',
+            templateUrl: 'org/cboard/view/config/collar.html',
+            controller: 'collarCtrl'
         })
         .state('config.verification', {
-        url: '/verification',
-        templateUrl: 'org/cboard/view/config/verification.html',
-        controller: 'verificationCtrl'
+            url: '/verification',
+            templateUrl: 'org/cboard/view/config/verification.html',
+            controller: 'verificationCtrl'
         })
         .state('config.vip', {
             url: '/vip',
             templateUrl: 'org/cboard/view/config/vip.html',
             controller: 'vipCtrl'
+        })
+        .state('config.authority', {
+            url: '/authority',
+            templateUrl: 'org/cboard/view/config/authority.html',
+            controller: 'authorityCtrl'
         });
     }
 ]);
