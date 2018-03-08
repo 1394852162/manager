@@ -19,6 +19,7 @@ public class Employee {
     private String DeptName;
     private int Standbyticket;
     private int EmpStatus3;
+    private int EmpStatus4;
 
     @Override
     public String toString() {
@@ -36,6 +37,7 @@ public class Employee {
                 ", DeptName='" + DeptName + '\'' +
                 ", Standbyticket=" + Standbyticket +
                 ", EmpStatus3=" + EmpStatus3 +
+                ", EmpStatus4=" + EmpStatus4 +
                 '}';
     }
 
@@ -141,5 +143,13 @@ public class Employee {
 
     public void setEmpStatus3(int empStatus3) {
         EmpStatus3 = empStatus3;
+    }
+
+    public int getEmpStatus4() {
+        return EmpStatus4;
+    }
+
+    public void setEmpStatus4(int empStatus4) {
+        EmpStatus4 = empStatus4;
     }
 }

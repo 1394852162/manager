@@ -79,4 +79,7 @@ public interface IEmployeeDao {
      */
     List<Map<String, Object>> getDeptEmpTree();
 
+    //跟新地区
+    int updateDeptEmpTree(Map<String, Object> param);
+
 }

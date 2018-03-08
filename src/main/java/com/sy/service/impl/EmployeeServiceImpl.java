@@ -70,4 +70,9 @@ public class EmployeeServiceImpl implements IEmployeeService{
     public List<Map<String, Object>> getDeptEmpTree() {
         return this.iEmployeeDao.getDeptEmpTree();
     }
+
+    @Override
+    public int updateDeptEmpTree(Map<String, Object> param) {
+        return this.iEmployeeDao.updateDeptEmpTree(param);
+    }
 }

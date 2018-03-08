@@ -1,8 +1,10 @@
 package com.sy.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -28,6 +30,10 @@ public class EmpControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(empController).build();
     }
 
+    /**
+     * 部门-职工树查询测试
+     * @throws Exception
+     */
     @Test
     public void testGetDeptEmpTree() throws Exception{
         ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.post("/employee/getDeptEmpTree.do"));
@@ -35,5 +41,22 @@ public class EmpControllerTest {
         String result = mvcResult.getResponse().getContentAsString();
         System.out.println("=====客户端获得反馈数据:" + result);
 
+    }
+
+
+    @Test
+    public void testUpdateDeptEmpTree() throws Exception{
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("EmpId", 2);
+        jsonObject.put("DeptId", 1);
+        jsonObject.put("EmpStatus3", 0);
+        jsonObject.put("EmpStatus4", 0);
+
+        String requestjson = jsonObject.toString();
+        System.out.println(requestjson);
+
+        String responseString = mockMvc.perform(MockMvcRequestBuilders.post("/employee/updateDeptEmpTree.do").contentType(MediaType.APPLICATION_JSON).content(requestjson))
+                .andReturn().getResponse().getContentAsString();
+        System.out.println(responseString);
     }
 }

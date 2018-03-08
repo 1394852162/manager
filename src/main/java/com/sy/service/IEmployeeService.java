@@ -34,4 +34,11 @@ public interface IEmployeeService {
      * @return
      */
     List<Map<String, Object>> getDeptEmpTree();
+
+    /**
+     * 跟新部门-职工的状态
+     * @param param
+     * @return
+     */
+    int updateDeptEmpTree(Map<String, Object> param);
 }

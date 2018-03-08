@@ -5,6 +5,7 @@ import com.sy.service.IEmployeeService;
 import com.sy.service.IVipService;
 import net.sf.json.JSONArray;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -313,7 +314,10 @@ public class EmpController {
         return resultmap;
     }
 
-    //部门-职工树查询
+    /**
+     * 部门-职工树查询
+     * @return
+     */
     @RequestMapping("/getDeptEmpTree.do")
     @ResponseBody
     public Map<String, Object> getDeptEmpTree(){
@@ -331,6 +335,30 @@ public class EmpController {
         return result;
     }
 
+    /**
+     * 跟新部门-职工的状态
+     * @param param
+     * @return
+     */
+    @RequestMapping("/updateDeptEmpTree.do")
+    @ResponseBody
+    public Map<String,Object> updateDeptEmpTree(@RequestBody Map<String,Object> param){
+        Map<String, Object> result = new HashMap<>();
+        int rowCount = iEmpService.updateDeptEmpTree(param);
+        try {
+            if ( rowCount > 0 ) {
+                result.put("code", 1);
+                result.put("msg", "操作成功");
+            } else {
+                result.put("code", 0);
+                result.put("msg", "操作失败");
+            }
+        } catch (Exception e) {
+            result.put("code", -1);
+            result.put("msg", e.getMessage());
+        }
+        return result;
+    }
 
 
 }

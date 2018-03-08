@@ -12,6 +12,7 @@
                     b.EmpName,
                     CONVERT(VARCHAR(20),a.DeptId) + '-' +  a.DeptNo AS pId,
                     b.EmpStatus3,
+                    b.EmpStatus4,
                     2 AS Lev
                 FROM
                     Tbb_Dept a LEFT JOIN Tbb_Employee b ON a.DeptId = b.DeptId
@@ -23,6 +24,7 @@
                     Tbb_Dept.DeptName,
                     '0' AS pId,
                     -999 AS Status3,
+                    -999 AS Status4,
                     1 AS Lev
                 FROM
                     Tbb_Dept
@@ -30,5 +32,18 @@
         ORDER BY tbl.Lev,tbl.EmpId,tbl.EmpNo
     </select>
 
+    <update id="updateDeptEmpTree">
+        update Tbb_Employee
+        <set>
+            <if test="EmpStatus3 != null">
+                EmpStatus3=#{EmpStatus3},
+            </if>
+            <if test="EmpStatus4 != null ">
+                EmpStatus4=#{EmpStatus4},
+            </if>
+            UpdateTime = getdate()
+        </set>
+        where  EmpId=#{EmpId} and DeptId=#{DeptId}
+    </update>
 
 </mapper>
