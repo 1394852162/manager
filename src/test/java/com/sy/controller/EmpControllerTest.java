@@ -43,7 +43,10 @@ public class EmpControllerTest {
 
     }
 
-
+    /**
+     * 跟新部门-职工的状态
+     * @throws Exception
+     */
     @Test
     public void testUpdateDeptEmpTree() throws Exception{
         JSONObject jsonObject = new JSONObject();
