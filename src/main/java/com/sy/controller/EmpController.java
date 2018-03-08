@@ -313,5 +313,24 @@ public class EmpController {
         return resultmap;
     }
 
+    //部门-职工树查询
+    @RequestMapping("/getDeptEmpTree.do")
+    @ResponseBody
+    public Map<String, Object> getDeptEmpTree(){
+        Map<String,Object> result = new HashMap<>();
+
+        List<Map<String,Object>> data = iEmpService.getDeptEmpTree();
+
+        if ( data != null ){
+            result.put("code",1);
+            result.put("data",data);
+        } else {
+            result.put("code", 0);
+            result.put("msg", "无数据！");
+        }
+        return result;
+    }
+
+
 
 }

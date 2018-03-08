@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by haswell on 2018/1/29.
@@ -63,5 +64,10 @@ public class EmployeeServiceImpl implements IEmployeeService{
     @Override
     public List<Employee> getBatEmpInfo(int BatId,int EmpId) {
         return this.iEmployeeDao.getBatEmpInfo(BatId,EmpId);
+    }
+
+    @Override
+    public List<Map<String, Object>> getDeptEmpTree() {
+        return this.iEmployeeDao.getDeptEmpTree();
     }
 }

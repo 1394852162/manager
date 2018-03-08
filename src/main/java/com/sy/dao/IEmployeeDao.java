@@ -4,6 +4,7 @@ import com.sy.pojo.Employee;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by haswell on 2018/1/29.
@@ -71,5 +72,11 @@ public interface IEmployeeDao {
      * @return
      */
     List<Employee> getNameQueryList(String EmpName);
+
+    /**
+     * 部门-职工树查询
+     * @return
+     */
+    List<Map<String, Object>> getDeptEmpTree();
 
 }
