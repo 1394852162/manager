@@ -1,6 +1,7 @@
 package com.sy.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +20,8 @@ import javax.annotation.Resource;
 @ContextConfiguration(locations = { "classpath:spring-mvc.xml",
         "classpath:spring-mybatis.xml"})
 public class EmpControllerTest {
+
+    public static final Logger LOGGER = Logger.getLogger(EmpControllerTest.class);
 
     @Resource
     private EmpController empController;
@@ -39,7 +42,7 @@ public class EmpControllerTest {
         ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.post("/employee/getDeptEmpTree.do"));
         MvcResult mvcResult = resultActions.andReturn();
         String result = mvcResult.getResponse().getContentAsString();
-        System.out.println("=====客户端获得反馈数据:" + result);
+        LOGGER.info("=====客户端获得反馈数据:" + result);
 
     }
 
@@ -56,10 +59,10 @@ public class EmpControllerTest {
         jsonObject.put("EmpStatus4", 0);
 
         String requestjson = jsonObject.toString();
-        System.out.println(requestjson);
+        LOGGER.info(requestjson);
 
         String responseString = mockMvc.perform(MockMvcRequestBuilders.post("/employee/updateDeptEmpTree.do").contentType(MediaType.APPLICATION_JSON).content(requestjson))
                 .andReturn().getResponse().getContentAsString();
-        System.out.println(responseString);
+        LOGGER.info(responseString);
     }
 }
