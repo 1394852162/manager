@@ -1,6 +1,6 @@
 <div class="form-group">
     <label>{{'CONFIG.MENU_AUTH.CURRENT_EMP'|translate}}</label>
-    <input style="color: red" class="form-control input-sm" value="{{curBrand}}" disabled/>
+    <input style="color: red" class="form-control input-sm" value="{{curEmpName}}" ng-model="editAuth.EmpName" disabled/>
 </div>
 
 <!--<div class="form-group">
@@ -22,12 +22,12 @@
                                     border-top-right-radius: 0px;">
         <input tabindex="1" type="radio" id="editEmpStatus3_Y" value="1" name="editEmpStatus3"
                ng-value=1
-               ng-model="editEmpStatus3"
+               ng-model="editAuth.editEmpStatus3"
                ng-icheck>
         <label for="editEmpStatus3_Y" style="font-weight: normal;">{{'CONFIG.MENU_AUTH.STATUS_Y'|translate}}</label>
         <input tabindex="0" type="radio" id="editEmpStatus3_N" value="0" name="editEmpStatus3"
                ng-value=0
-               ng-model="editEmpStatus3"
+               ng-model="editAuth.editEmpStatus3"
                ng-icheck>
         <label for="editEmpStatus3_N" style="font-weight: normal;">{{'CONFIG.MENU_AUTH.STATUS_N'|translate}}</label>
     </div>
@@ -47,12 +47,12 @@
                                     border-top-right-radius: 0px;">
         <input tabindex="1" type="radio" id="editEmpStatus4_Y" value="1" name="editEmpStatus4"
                ng-value=1
-               ng-model="editEmpStatus4"
+               ng-model="editAuth.editEmpStatus4"
                ng-icheck>
         <label for="editEmpStatus4_Y" style="font-weight: normal;">{{'CONFIG.MENU_AUTH.STATUS_Y'|translate}}</label>
         <input tabindex="0" type="radio" id="editEmpStatus4_N" value="0" name="editEmpStatus4"
                ng-value=0
-               ng-model="editEmpStatus4"
+               ng-model="editAuth.editEmpStatus4"
                ng-icheck>
         <label for="editEmpStatus4_N" style="font-weight: normal;">{{'CONFIG.MENU_AUTH.STATUS_N'|translate}}</label>
     </div>

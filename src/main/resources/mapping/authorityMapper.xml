@@ -28,6 +28,7 @@
                     1 AS Lev
                 FROM
                     Tbb_Dept
+                WHERE Tbb_Dept.Status =1
             ) AS tbl
         ORDER BY tbl.Lev,tbl.EmpId,tbl.EmpNo
     </select>
