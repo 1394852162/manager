@@ -17,7 +17,8 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <div class="form-group">
                                         <span>{{'CONFIG.MENU_COLLAR.COLLAR_CODE'|translate}}</span>
-                                        <input type="text" class="form-control input-sm" id="collarCode" name="collarCode"
+                                        <input type="text" class="form-control input-sm" id="collarCode"
+                                               name="collarCode"
                                                placeholder="{{'COMMON.PLACEHOLDER'|translate}}"
                                                ng-model="collarCode" required/>
                                     </div>
@@ -28,8 +29,10 @@
                                         <span>{{'CONFIG.MENU_COLLAR.BAT_NAME'|translate}}</span>
                                         <select ng-model="collarBatchName" class="form-control" name="collarBatchName"
                                                 ng-options="collarBatchName as collarBatchName.batName for collarBatchName in batList">
-                                                <!--ng-options="collarBatchName.batId as collarBatchName.batName for collarBatchName in batList">-->
-                                            <option value="" selected="selected">{{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}</option>
+                                            <!--ng-options="collarBatchName.batId as collarBatchName.batName for collarBatchName in batList">-->
+                                            <option value="" selected="selected">
+                                                {{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
@@ -55,14 +58,19 @@
                                     </div>-->
                                     <div class="form-group has-feedback">
                                         <span>{{'CONFIG.MENU_COLLAR.D1'|translate}}</span>
-                                        <div  ng-model='timepickerTest'  ng-time class="input-group date form_date col-lg-12 col-md-12 col-sm-12 col-xs-12"
-                                              data-date="" data-date-format="yyyy-MM-dd" data-link-field="dtp_input2" data-link-format="yyyy-MM-dd">
+                                        <div ng-model='timepickerTest' ng-time
+                                             class="input-group date form_date col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                                             data-date="" data-date-format="yyyy-MM-dd" data-link-field="dtp_input2"
+                                             data-link-format="yyyy-MM-dd">
                                             <!--<span class="input-group-addon">{{'CONFIG.MENU_COLLAR.D1'|translate}}</span>-->
-                                            <input class="form-control" size="11" type="text" value=""  id="collarD1" name="collarD1"
+                                            <input class="form-control" size="11" type="text" value="" id="collarD1"
+                                                   name="collarD1"
                                                    placeholder="{{'COMMON.PLACEHOLDER'|translate}}"
-                                                   ng-model="collarD1=collarBatchName.batEndTime  | date:'yyyy-MM-dd' " readonly>
+                                                   ng-model="collarD1=collarBatchName.batEndTime  | date:'yyyy-MM-dd' "
+                                                   readonly>
                                             <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
-                                            <span class="input-group-addon" style="background-color: white; border: 0px solid #ccc;border-radius: 0px;">
+                                            <span class="input-group-addon"
+                                                  style="background-color: white; border: 0px solid #ccc;border-radius: 0px;">
                                                 <span class="glyphicon glyphicon-calendar"></span>
                                             </span>
                                         </div>
@@ -73,13 +81,17 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <div class="form-group has-feedback">
                                         <span>{{'CONFIG.MENU_COLLAR.D2'|translate}}</span>
-                                        <div  ng-model='timepickerTest'  ng-time class="input-group date form_date col-lg-12 col-md-12 col-sm-12 col-xs-12"
-                                              data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                        <div ng-model='timepickerTest' ng-time
+                                             class="input-group date form_date col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                                             data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
+                                             data-link-format="yyyy-mm-dd">
                                             <!--<span class="input-group-addon">{{'CONFIG.MENU_COLLAR.D1'|translate}}</span>-->
-                                            <input class="form-control" size="11" type="text" value=""  id="collarD2" name="collarD2"
+                                            <input class="form-control" size="11" type="text" value="" id="collarD2"
+                                                   name="collarD2"
                                                    ng-model="collarD2" readonly>
                                             <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
-                                            <span class="input-group-addon" style="background-color: white; border: 0px solid #ccc;border-radius: 0px;">
+                                            <span class="input-group-addon"
+                                                  style="background-color: white; border: 0px solid #ccc;border-radius: 0px;">
                                                 <span class="glyphicon glyphicon-calendar"></span>
                                             </span>
                                         </div>
@@ -104,7 +116,9 @@
                                         <select ng-model="collarEmpName" class="form-control" name="collarEmpName"
                                                 ng-change="collarEmpChange()"
                                                 ng-options="collarEmpName as collarEmpName.empName for collarEmpName in empList">
-                                            <option value="" selected="selected">{{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}</option>
+                                            <option value="" selected="selected">
+                                                {{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
@@ -150,9 +164,40 @@
                                     <!-- 领用说明 -->
                                     <div class="form-group">
                                         <span>{{'CONFIG.MENU_COLLAR.NOTE'|translate}}</span>
-                                        <input type="text" class="form-control input-sm" id="collarNote" name="collarNote"
+                                        <input type="text" class="form-control input-sm" id="collarNote"
+                                               name="collarNote"
                                                placeholder="{{'COMMON.PLACEHOLDER'|translate}}"
                                                ng-model="collarNote"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <!-- 职工劵补录 -->
+                                        <div class="form-group">
+                                            <span class="input-group-addon has-feedback" style="padding: 6px 0px;
+                                                text-align: left;
+                                                background-color: white;
+                                                border: 0px solid #ccc;">
+                                                {{'CONFIG.MENU_COLLAR.COLLAR_STAUTS'|translate}}
+                                        </span>
+                                        <div class="panel-heading form-control" style="
+                                    padding: 5px 15px;
+                                    border: 0px solid #ccc;
+                                    border-top-left-radius: 0px;
+                                    border-top-right-radius: 0px;">
+                                            <input tabindex="0" type="radio" id="collarStatus_Y" value="0"
+                                                   name="collarStatus"
+                                                   ng-value=0
+                                                   ng-model="collarStatus"
+                                                   ng-icheck>
+                                            <label for="collarStatus_Y" style="font-weight: normal;">{{'CONFIG.MENU_AUTH.STATUS_Y'|translate}}</label>
+                                            <input tabindex="1" type="radio" id="collarStatus_N" value="1"
+                                                   name="collarStatus"
+                                                   ng-value=1
+                                                   ng-model="collarStatus"
+                                                   ng-icheck>
+                                            <label for="collarStatus_N" style="font-weight: normal;">{{'CONFIG.MENU_AUTH.STATUS_N'|translate}}</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -164,7 +209,8 @@
                                 <!--pull-right-->
                                 <!-- col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3 -->
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3">
-                                    <button type="submit" name="submit" ng-click="saveCollar()" class="btn btn-success btn-lg ">
+                                    <button type="submit" name="submit" ng-click="saveCollar()"
+                                            class="btn btn-success btn-lg ">
                                         {{'COMMON.OK'|translate}}
                                     </button>
                                 </div>

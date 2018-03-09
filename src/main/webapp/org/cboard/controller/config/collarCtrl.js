@@ -93,7 +93,8 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
                             CollTime: $scope.collarD2,
                             EmpId: $scope.collarEmpName.empId,
                             CollNum: parseInt($scope.collarNum),
-                            CollNote: $scope.collarNote
+                            CollNote: $scope.collarNote,
+                            Status: parseInt($scope.collarStatus)
                         })
                     }).success(function () {
                         ModalUtils.alert(translate("领取成功" + "!"), "modal-success", "md");
