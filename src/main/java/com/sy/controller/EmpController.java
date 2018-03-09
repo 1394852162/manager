@@ -84,6 +84,7 @@ public class EmpController {
             emp.setDeptId(list.get(0).getDeptId());
             emp.setEmpNo(list.get(0).getEmpNo());
             emp.setEmpStatus3(list.get(0).getEmpStatus3());
+            emp.setEmpStatus4(list.get(0).getEmpStatus4());
         }
         HashMap<String,Object> result = new HashMap<String,Object>();
         System.out.println("存入到对象的数据"+emp);

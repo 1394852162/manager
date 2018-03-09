@@ -144,11 +144,12 @@
 //                            alert(notecode);
                             $("#btn-login").button('reset');
                             if(notecode == "true"){
-                                if(vipStatus==1){
+                                document.location.href= "starter.html?lang=" + "cn";
+                                /*if(vipStatus==1){
                                     document.location.href= "starter.html?lang=" + "cn";
                                 }else{
                                     document.location.href= "ptstarter.html?lang=" + "cn";
-                                }
+                                }*/
 
                             }else {
                                 $("#login-form").prepend("<div class='alert alert-danger' role='alert'><button type='button' class='close' data-dismiss='alert' id='btnClose'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button><strong>登陆失败！</strong> 用户名或密码错误，请重试！</div>");

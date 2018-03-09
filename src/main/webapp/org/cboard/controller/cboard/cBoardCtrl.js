@@ -6,6 +6,9 @@ cBoard.controller('cBoardCtrl', function ($rootScope, $scope, $location, $http, 
     var translate = $filter('translate');
 
     $scope.avatar = './dist/img/user-male-circle-blue-128.png';
+    /*$scope.verificationFlag = 0;
+    $scope.vipFlag = 0;
+    $scope.adminFlag = 0;*/
     // $scope.username = "admin";
     // console.log($window.sessionStorage);
 
@@ -26,8 +29,11 @@ cBoard.controller('cBoardCtrl', function ($rootScope, $scope, $location, $http, 
         // url: '../user/user.do'
         url: './employee/getSessionUsername.do'
     }).success(function (response) {
+        $scope.collarFlag = parseInt(response.code.empStatus4);
+        $scope.vipFlag = parseInt(response.code.empStatus3);
+        $scope.adminFlag = response.code.empName;
         $scope.sessionUser = response.code;
-        // console.log($scope.sessionUser);
+        console.log(response);
     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
         ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
     });
