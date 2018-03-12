@@ -1,10 +1,10 @@
 /*人员表*/
 CREATE TABLE Tbb_Employee (
   EmpId       INT         NOT NULL PRIMARY KEY,
-  EmpNo       VARCHAR(20) , /*可以为NULL*/
+  EmpNo       VARCHAR(20) NULL, /*可以为NULL*/
   EmpName     VARCHAR(40) NOT NULL,
   EmpPassword VARCHAR(20) NOT NULL,
-  DeptId      INT         , /*可以为NULL*/
+  DeptId      INT         NULL, /*可以为NULL*/
   EmpBirth    VARCHAR(30),
   EmpStatus1  INT         NOT NULL, /*1在职 10退休 2删除*/
   EmpStatus2  INT         NOT NULL, /*是否允许使用本系统 1.允许  0.不允许*/
@@ -12,7 +12,8 @@ CREATE TABLE Tbb_Employee (
   CreateTime  DATE,
   UpdateTime  DATE,
   EmpStatus3 int,                /*是否赋予VIP劵开票权限 1.是 0.否 新加字段*/
-  EmpStatus4 int                /*是否赋予职工劵开票权限 1.是 0.否 新加字段*/
+  EmpStatus4 int,                /*是否赋予职工劵开票权限 1.是 0.否 新加字段*/
+  EmpStatus5 int                /*是否赋予批次权限 1.是 0.否 新加字段*/
 )
 
 /*部门表*/

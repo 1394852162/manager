@@ -50,7 +50,7 @@
                     <a ui-sref="config.dept"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_DEPT'|translate}}</a>
                 </li>
                 <!-- 批次 -->
-                <li ui-sref-active="active">
+                <li ui-sref-active="active" ng-show="batchFlag == '1'">
                     <a ui-sref="config.batch"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_BATCH'|translate}}</a>
                 </li>
                 <!-- 职工劵 -->

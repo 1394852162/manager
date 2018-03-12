@@ -155,6 +155,7 @@
       "CURRENT_EMP": "当前所选职工姓名：",
       "VIP_AUTH": "是否赋予VIP劵开票权限：",
       "EMP_AUTH": "是否赋予职工劵开票权限：",
+      "BATCH_AUTH": "是否赋予批次操作权限：",
       "STATUS_Y": "是",
       "STATUS_N": "否"
     },
