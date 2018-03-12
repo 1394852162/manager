@@ -60,6 +60,22 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
         $scope.collarEmpCode = $scope.collarEmpName.empId;
     };
 
+    $scope.collarCode = (function(){
+        var count = 3000;
+        var originalArray = new Array;//原数组
+        //给原数组originalArray赋值
+        for ( var i=0;i<count;i++ ){
+            originalArray[i] = i + 1;
+        }
+        originalArray.sort(function(){ return 0.5 - Math.random(); });
+        for (var i = 0;i < count;i++){
+            originalArray[i];
+        }
+        collarCodeStr = originalArray.toString();
+        collarCodeStr = collarCodeStr.replace(",","1").substr(0, 6).replace(",","1");
+        return collarCodeStr;
+    })();
+
     /**
      * 确定
      */
