@@ -20,6 +20,7 @@ public class Employee {
     private int Standbyticket;
     private int EmpStatus3;
     private int EmpStatus4;
+    private int EmpStatus5;
 
     @Override
     public String toString() {
@@ -38,6 +39,7 @@ public class Employee {
                 ", Standbyticket=" + Standbyticket +
                 ", EmpStatus3=" + EmpStatus3 +
                 ", EmpStatus4=" + EmpStatus4 +
+                ", EmpStatus5=" + EmpStatus5 +
                 '}';
     }
 
@@ -151,5 +153,13 @@ public class Employee {
 
     public void setEmpStatus4(int empStatus4) {
         EmpStatus4 = empStatus4;
+    }
+
+    public int getEmpStatus5() {
+        return EmpStatus5;
+    }
+
+    public void setEmpStatus5(int empStatus5) {
+        EmpStatus5 = empStatus5;
     }
 }
