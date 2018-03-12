@@ -61,7 +61,7 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
     };
 
     $scope.collarCode = (function(){
-        var count = 3000;
+        /*var count = 3000;
         var originalArray = new Array;//原数组
         //给原数组originalArray赋值
         for ( var i=0;i<count;i++ ){
@@ -73,7 +73,8 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
         }
         collarCodeStr = originalArray.toString();
         collarCodeStr = collarCodeStr.replace(",","1").substr(0, 6).replace(",","1");
-        return collarCodeStr;
+        return collarCodeStr;*/
+        return Date.now();
     })();
 
     /**
