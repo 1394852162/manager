@@ -74,7 +74,7 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
         collarCodeStr = originalArray.toString();
         collarCodeStr = collarCodeStr.replace(",","1").substr(0, 6).replace(",","1");
         return collarCodeStr;*/
-        return Date.now();
+        return Date.now().toString();
     })();
 
     /**
