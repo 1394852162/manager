@@ -15,6 +15,7 @@ cBoard.controller("verificationCtrl",function ($rootScope, $scope, $http, dataSe
         // {'name': '操作人', 'col': 'roleName'},
         {'name': '领用日期', 'col': 'roleName'},
         {'name': '领用说明', 'col': 'roleName'},
+        {'name': '核销情况', 'col': 'roleName'},
         {'name': '操作'}
     ];
 

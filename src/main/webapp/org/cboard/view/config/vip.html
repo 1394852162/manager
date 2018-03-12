@@ -23,30 +23,39 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 column">
             <table id="listDept" class="table table-bordered">
                 <thead>
-                <tr>
-                    <th ng-repeat="headerInfo in headerInfos track by $index " >{{ headerInfo.name }}</th>
-                </tr>
-                </tr>
+                    <tr>
+                        <th ng-repeat="headerInfo in headerInfos track by $index " >{{ headerInfo.name }}</th>
+                    </tr>
                 </thead>
                 <tbody id="userTable">
-                <tr ng-repeat="row in items " ng-init="outerIndex = $index">
-                    <!--<td>{{ row.vipAddId }}</td>-->
-                    <td>{{ row.empName }}</td>
-                    <td>{{ row.vipAddNum }}</td>
-                    <td>{{ row.operaName }}</td>
-                    <td>{{ row.vipAddTime | date:'yyyy-MM-dd' }}</td>
-                    <td>{{ row.vipAddNote }}</td>
-                    <td>
-                        <!--<button type="button" class="btn btn-info btn-xs" ng-click="editVip(row, $event)">
-                            <span class="glyphicon glyphicon-pencil"></span>{{'CONFIG.MENU_USER.MODIFY'|translate}}
-                        </button>-->
-                        <button type="button" class="btn btn-danger btn-xs"
-                                ng-click="delVip(row, $event)">
-                            <span class="glyphicon glyphicon-remove-circle"></span>{{'CONFIG.MENU_PLACE.PLACE_DEL'|translate}}
-                        </button>
-                    </td>
-                </tr>
+                    <tr ng-repeat="row in items " ng-init="outerIndex = $index">
+                        <!--<td>{{ row.vipAddId }}</td>-->
+                        <td>{{ row.empName }}</td>
+                        <td>{{ row.vipAddNum }}</td>
+                        <td>{{ row.operaName }}</td>
+                        <td>{{ row.vipAddTime | date:'yyyy-MM-dd' }}</td>
+                        <td>{{ row.vipAddNote }}</td>
+                        <td>
+                            <!--<button type="button" class="btn btn-info btn-xs" ng-click="editVip(row, $event)">
+                                <span class="glyphicon glyphicon-pencil"></span>{{'CONFIG.MENU_USER.MODIFY'|translate}}
+                            </button>-->
+                            <button type="button" class="btn btn-danger btn-xs"
+                                    ng-click="delVip(row, $event)">
+                                <span class="glyphicon glyphicon-remove-circle"></span>{{'CONFIG.MENU_PLACE.PLACE_DEL'|translate}}
+                            </button>
+                        </td>
+                    </tr>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <th>合计</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>
