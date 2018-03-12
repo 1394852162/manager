@@ -13,6 +13,7 @@
                     CONVERT(VARCHAR(20),a.DeptId) + '-' +  a.DeptNo AS pId,
                     b.EmpStatus3,
                     b.EmpStatus4,
+                    b.EmpStatus5,
                     2 AS Lev
                 FROM
                     Tbb_Dept a LEFT JOIN Tbb_Employee b ON a.DeptId = b.DeptId
@@ -25,6 +26,7 @@
                     '0' AS pId,
                     -999 AS Status3,
                     -999 AS Status4,
+                    -999 AS Status5,
                     1 AS Lev
                 FROM
                     Tbb_Dept
