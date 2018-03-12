@@ -42,6 +42,9 @@
             <if test="EmpStatus4 != null ">
                 EmpStatus4=#{EmpStatus4},
             </if>
+            <if test="EmpStatus5 != null ">
+                EmpStatus5=#{EmpStatus5},
+            </if>
             UpdateTime = getdate()
         </set>
         where  EmpId=#{EmpId} and DeptId=#{DeptId}

@@ -20,7 +20,8 @@ cBoard.controller("authorityCtrl",function ($rootScope, $scope, $http, dataServi
                 EmpId: parseInt($scope.curEmpId),
                 DeptId: parseInt($scope.curDeptId),
                 EmpStatus3: $scope.editAuth.editEmpStatus3,
-                EmpStatus4: $scope.editAuth.editEmpStatus4
+                EmpStatus4: $scope.editAuth.editEmpStatus4,
+                EmpStatus5: $scope.editAuth.editEmpStatus5
             })
         }).success(function (response) {
             if (response.code === 0) {

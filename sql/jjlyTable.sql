@@ -1,10 +1,10 @@
 /*人员表*/
 CREATE TABLE Tbb_Employee (
   EmpId       INT         NOT NULL PRIMARY KEY,
-  EmpNo       VARCHAR(20) , /*可以为NULL*/
+  EmpNo       VARCHAR(20) NULL, /*可以为NULL*/
   EmpName     VARCHAR(40) NOT NULL,
   EmpPassword VARCHAR(20) NOT NULL,
-  DeptId      INT         , /*可以为NULL*/
+  DeptId      INT         NULL, /*可以为NULL*/
   EmpBirth    VARCHAR(30),
   EmpStatus1  INT         NOT NULL, /*1在职 10退休 2删除*/
   EmpStatus2  INT         NOT NULL, /*是否允许使用本系统 1.允许  0.不允许*/

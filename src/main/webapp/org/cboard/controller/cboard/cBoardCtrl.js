@@ -26,11 +26,11 @@ cBoard.controller('cBoardCtrl', function ($rootScope, $scope, $location, $http, 
 
     $http({
         method: 'get',
-        // url: '../user/user.do'
         url: './employee/getSessionUsername.do'
     }).success(function (response) {
         $scope.collarFlag = parseInt(response.code.empStatus4);
         $scope.vipFlag = parseInt(response.code.empStatus3);
+        $scope.batchFlag = parseInt(response.code.empStatus5);
         $scope.adminFlag = response.code.empName;
         $scope.sessionUser = response.code;
         console.log(response);
