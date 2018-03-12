@@ -31,8 +31,10 @@ public class CollarController {
     public Map<String,Object> getCollList(){
         Map<String,Object> resultmap = new HashMap<String,Object>();
         List<Collar> list = this.iCollarService.getCollList();
+        System.out.println(list);
         if(list != null & list.size()>0) {
             resultmap.put("data",list);
+            resultmap.put("num",list.get(0).getSumCollNum());
             resultmap.put("code",1);
         }
         else{
@@ -120,6 +122,8 @@ public class CollarController {
         List<Collar> list = this.iCollarService.querySelectList(param);
         if(list != null & list.size()>0) {
             resultmap.put("data",list);
+            resultmap.put("num",list.get(0).getSumCollNum());
+            System.out.println("总数为:"+list.get(0).getSumCollNum());
             resultmap.put("code",1);
         }
         else{

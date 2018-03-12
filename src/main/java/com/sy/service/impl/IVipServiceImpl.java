@@ -24,8 +24,8 @@ public class IVipServiceImpl implements IVipService{
     }
 
     @Override
-    public List<VipTicket> QueryNameByList(String Vipname) {
-        return this.iVipTicketDao.QueryNameByList(Vipname);
+    public List<VipTicket> QueryNameByList(HashMap<String, Object> map) {
+        return this.iVipTicketDao.QueryNameByList(map);
     }
 
     @Override

@@ -11,6 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -64,7 +66,7 @@ public class CollarControllerTest {
         jo.put("EmpName", "TPF");
         jo.put("EmpNo", "1002");
         jo.put("BeginDate", "2018-01-01");
-        jo.put("EndDate", "2018-01-01");
+        jo.put("EndDate", "2018-04-01");
        jo.put("CollNo", "20180209");
        jo.put("Status", 0);
 
@@ -100,5 +102,23 @@ public class CollarControllerTest {
         String responseString = mockMvc.perform(MockMvcRequestBuilders.post("/collar/updateCollar.do").contentType(MediaType.APPLICATION_JSON).content(requestjson))
                 .andReturn().getResponse().getContentAsString();
         System.out.println(responseString);
+    }
+
+
+
+
+
+    /**
+     * 查询领用信息加上领取的票数合计 调用的借口不变
+     * @throws Exception
+     */
+    @Test
+    public void testLYHJ() throws Exception{
+
+        //参数为DeptId
+        ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.get("/collar/getCollList.do"));
+        MvcResult mvcResult = resultActions.andReturn();
+        String result = mvcResult.getResponse().getContentAsString();
+        System.out.println("数据是:" + result);
     }
 }

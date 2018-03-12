@@ -65,4 +65,22 @@ public class EmpControllerTest {
                 .andReturn().getResponse().getContentAsString();
         LOGGER.info(responseString);
     }
+
+    /**
+     * 查询部门下的人员
+     * @throws Exception
+     */
+    @Test
+    public void testQueryDeptEmp() throws Exception{
+
+        //参数为DeptId
+        //   这个就是前段需要传的json的array
+        /*
+        "DeptId":1
+         */
+        ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.get("/employee/QueryDeptEmp.do?DeptId=1"));
+        MvcResult mvcResult = resultActions.andReturn();
+        String result = mvcResult.getResponse().getContentAsString();
+        System.out.println("数据是:" + result);
+    }
 }

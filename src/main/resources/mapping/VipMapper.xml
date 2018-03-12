@@ -14,22 +14,54 @@
     <result property="VipAddTime" column="VipAddTime"  jdbcType="DATE" />
     <result property="CreateTime" column="CreateTime"  jdbcType="DATE" />
     <result property="UpdateTime" column="UpdateTime"  jdbcType="DATE" />
+    <result property="sumVipAddNum" column="sumVipAddNum"  jdbcType="INTEGER" />
   </resultMap>
 
 <!--e.EmpName=领取人  f.EmpName=操作人-->
   <select id="getVipList" resultMap="BaseResultMap">
-  select v.*,e.EmpName,f.EmpName as operaName from Tbb_VipTicket v,Tbb_Employee e,Tbb_Employee f
-  where v.Status=1
-  and v.VipEmpID=e.EmpId
-  and v.EmpId=f.EmpId
+    select
+      sum(v.VipAddNum) as sumVipAddNum,
+      VTab.*
+    from (
+      SELECT
+        v.*,
+        e.EmpName,
+        f.EmpName AS operaName
+      FROM Tbb_VipTicket v, Tbb_Employee e, Tbb_Employee f
+      WHERE v.Status = 1
+            AND v.VipEmpID = e.EmpId
+            AND v.EmpId = f.EmpId
+    ) as VTab , Tbb_VipTicket v
+    where v.VipAddId=VTab .VipAddId
   </select>
 
   <select id="QueryNameByList" resultMap="BaseResultMap">
-   select v.*,e.EmpName,f.EmpName as operaName from Tbb_VipTicket v,Tbb_Employee e,Tbb_Employee f
-  where v.Status=1
-  and v.VipEmpID=e.EmpId
-  and v.EmpId=f.EmpId
-  and e.EmpName like '%'+rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))+'%' or rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))=''
+    select
+      sum(v.VipAddNum) as sumVipAddNum,
+      VTab.*
+    from (
+
+      SELECT
+        v.*,
+        e.EmpName,
+        f.EmpName AS operaName
+      FROM Tbb_VipTicket v, Tbb_Employee e, Tbb_Employee f
+      WHERE v.Status = 1
+            AND v.VipEmpID = e.EmpId
+            AND v.EmpId = f.EmpId
+            <if test="EmpName != null" >
+              AND e.EmpName LIKE '%' + rtrim(ltrim(#{EmpName,jdbcType=VARCHAR})) + '%' OR
+              rtrim(ltrim(#{EmpName,jdbcType=VARCHAR})) = ''
+            </if>
+            <if test="BeginDate != null" >
+              and v.VipAddTime  &gt;= #{BeginDate,jdbcType=DATE}
+            </if>
+            <if test="EndDate != null" >
+              and v.VipAddTime   &lt;= #{EndDate,jdbcType=DATE}
+            </if>
+
+    ) as VTab , Tbb_VipTicket v
+    where v.VipAddId=VTab .VipAddId
   </select>
 
   <insert id="insertVipTicket" parameterType="java.util.HashMap">

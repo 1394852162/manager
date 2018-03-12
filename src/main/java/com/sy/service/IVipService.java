@@ -13,7 +13,7 @@ public interface IVipService {
    public List<VipTicket> getVipList();
 
 
-    public List<VipTicket> QueryNameByList(String Vipname);
+    public List<VipTicket> QueryNameByList(HashMap<String, Object> map);
 
 
     public int insertVipTicket(HashMap<String, Object> map);

@@ -82,4 +82,11 @@ public interface IEmployeeDao {
     //跟新地区
     int updateDeptEmpTree(Map<String, Object> param);
 
+    /**
+     * 根据DeptID查询部门下的人员
+     * @param DeptId
+     * @return
+     */
+    List<Employee> QueryDeptEmp(int DeptId);
+
 }

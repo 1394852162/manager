@@ -137,5 +137,10 @@
   </update>
 
 
+  <select id="QueryDeptEmp" resultMap="BaseResultMap">
+    SELECT *
+    FROM Tbb_Employee
+    WHERE DeptId= #{DeptId,jdbcType=INTEGER}
+  </select>
 
 </mapper>

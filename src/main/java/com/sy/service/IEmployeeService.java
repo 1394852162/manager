@@ -41,4 +41,7 @@ public interface IEmployeeService {
      * @return
      */
     int updateDeptEmpTree(Map<String, Object> param);
+
+
+    public List<Employee> QueryDeptEmp(int DeptId);
 }

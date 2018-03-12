@@ -20,49 +20,61 @@
     <result property="CreateTime" column="CreateTime"  jdbcType="DATE" />
     <result property="UpdateTime" column="UpdateTime"  jdbcType="DATE" />
 
+    <result property="SumCollNum" column="SumCollNum"  jdbcType="INTEGER" />
+
   </resultMap>
 
 
   <select id="getCollList" resultMap="BaseResultMap">
-  select a.BatNo,a.BatName,b.EmpId,b.EmpNo,b.EmpName,c.*
-  from Tbb_Batch a, Tbb_Employee b ,Tbb_Collar c
-  where a.BatId=c.BatId
-  and b.EmpId = c.EmpId
-  and b.EmpStatus1 !=-1
-  and c.Status !=-1
-  and a.Status=1
+
+    select sum(c.CollNum) as SumCollNum ,Ztab .*
+    from  (
+            select a.BatNo,a.BatName,b.EmpId,b.EmpNo,b.EmpName,c.*
+            from Tbb_Batch a, Tbb_Employee b ,Tbb_Collar c
+            where a.BatId=c.BatId
+                  and b.EmpId = c.EmpId
+                  and b.EmpStatus1 !=-1
+                  and c.Status !=-1
+                  and a.Status=1
+          ) as Ztab ,Tbb_Collar c
+    where Ztab .CollId=c.CollId
+
+
   </select>
 
 
   <!-- 模糊查询待定-->
   <select id="querySelectList" resultMap="BaseResultMap">
-  select a.BatNo,a.BatName,b.EmpId,b.EmpNo,b.EmpName,c.*
-  from Tbb_Batch a, Tbb_Employee b ,Tbb_Collar c
-  where a.BatId=c.BatId
-  and b.EmpId = c.EmpId
-  and b.EmpStatus1 !=-1
-  and c.Status !=-1
-  and a.Status=1
-    <if test="EmpNo != null" >
-    and   b.EmpNo like '%'+rtrim(ltrim(#{EmpNo,jdbcType=VARCHAR}))+'%'
-    </if>
+    select sum(c.CollNum) as SumCollNum ,Ztab .*
+    from  (
+            select a.BatNo,a.BatName,b.EmpId,b.EmpNo,b.EmpName,c.*
+            from Tbb_Batch a, Tbb_Employee b ,Tbb_Collar c
+            where a.BatId=c.BatId
+            and b.EmpId = c.EmpId
+            and b.EmpStatus1 !=-1
+            and c.Status !=-1
+            and a.Status=1
+              <if test="EmpNo != null" >
+              and   b.EmpNo like '%'+rtrim(ltrim(#{EmpNo,jdbcType=VARCHAR}))+'%'
+              </if>
 
-    <if test="EmpName != null" >
-     and b.EmpName like '%'+rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))+'%'
-    </if>
-    <if test="CollNo != null" >
-      and c.CollNo like '%'+rtrim(ltrim(#{CollNo,jdbcType=VARCHAR}))+'%'
-    </if>
-    <if test="Status != null and Status !='10'" >
-      and c.Status =#{Status,jdbcType=INTEGER}
-    </if>
-    <if test="BeginDate != null" >
-      and c.CollTime &gt;= #{BeginDate,jdbcType=DATE}
-    </if>
-    <if test="EndDate != null" >
-      and c.CollTime  &lt;= #{EndDate,jdbcType=DATE}
-    </if>
-
+              <if test="EmpName != null" >
+               and b.EmpName like '%'+rtrim(ltrim(#{EmpName,jdbcType=VARCHAR}))+'%'
+              </if>
+              <if test="CollNo != null" >
+                and c.CollNo like '%'+rtrim(ltrim(#{CollNo,jdbcType=VARCHAR}))+'%'
+              </if>
+              <if test="Status != null and Status !='10'" >
+                and c.Status =#{Status,jdbcType=INTEGER}
+              </if>
+              <if test="BeginDate != null" >
+                and c.CollTime &gt;= #{BeginDate,jdbcType=DATE}
+              </if>
+              <if test="EndDate != null" >
+                and c.CollTime  &lt;= #{EndDate,jdbcType=DATE}
+              </if>
+          ) as Ztab ,Tbb_Collar c
+          where Ztab .CollId=c.CollId
   </select>
 
   <insert id="insertCollar" parameterType="java.util.HashMap">

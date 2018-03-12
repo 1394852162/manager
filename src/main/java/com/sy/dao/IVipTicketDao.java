@@ -17,10 +17,10 @@ public interface IVipTicketDao {
 
     /**
      * 根据名称模糊查询
-     * @param Vipname
+     * @param map
      * @return
      */
-    List<VipTicket> QueryNameByList(String Vipname);
+    List<VipTicket> QueryNameByList(HashMap<String,Object> map);
 
     /**
      * 插入一条记录

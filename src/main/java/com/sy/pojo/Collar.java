@@ -21,6 +21,7 @@ public class Collar {
     private String BatNo;
     private String EmpNo;
     private String BatName;
+    private int SumCollNum;
 
     @Override
     public String toString() {
@@ -40,6 +41,7 @@ public class Collar {
                 ", BatNo='" + BatNo + '\'' +
                 ", EmpNo='" + EmpNo + '\'' +
                 ", BatName='" + BatName + '\'' +
+                ", SumCollNum=" + SumCollNum +
                 '}';
     }
 
@@ -161,5 +163,13 @@ public class Collar {
 
     public void setBatName(String batName) {
         BatName = batName;
+    }
+
+    public int getSumCollNum() {
+        return SumCollNum;
+    }
+
+    public void setSumCollNum(int sumCollNum) {
+        SumCollNum = sumCollNum;
     }
 }

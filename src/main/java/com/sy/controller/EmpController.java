@@ -1,5 +1,6 @@
 package com.sy.controller;
 
+import com.sy.pojo.Dept;
 import com.sy.pojo.Employee;
 import com.sy.service.IEmployeeService;
 import com.sy.service.IVipService;
@@ -359,6 +360,29 @@ public class EmpController {
             result.put("msg", e.getMessage());
         }
         return result;
+    }
+
+
+    /**
+     * 查询部门下的员工
+     * @param DeptId
+     * @return
+     */
+    @RequestMapping("/QueryDeptEmp.do")
+    @ResponseBody
+    public Map<String,Object> QueryDeptEmp(@RequestParam("DeptId") int DeptId   ){
+        Map<String,Object> resultmap = new HashMap<String,Object>();
+        System.out.println("开始进入");
+        List<Employee> list = iEmpService.QueryDeptEmp(DeptId);
+        System.out.println("数据为"+list);
+        if(list != null & list.size()>0) {
+            resultmap.put("data",list);
+            resultmap.put("code",1);
+        }else{
+            resultmap.put("data","查不到该部门下的人员");
+            resultmap.put("code",0);
+        }
+        return resultmap;
     }
 
 

@@ -75,4 +75,10 @@ public class EmployeeServiceImpl implements IEmployeeService{
     public int updateDeptEmpTree(Map<String, Object> param) {
         return this.iEmployeeDao.updateDeptEmpTree(param);
     }
+
+
+    @Override
+    public List<Employee> QueryDeptEmp(int DeptId) {
+        return this.iEmployeeDao.QueryDeptEmp(DeptId);
+    }
 }

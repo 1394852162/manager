@@ -42,6 +42,7 @@ public class VipController {
         List<VipTicket> list = this.iVipService.getVipList();
         if(list != null & list.size()>0) {
             resultmap.put("data",list);
+            resultmap.put("num",list.get(0).getSumVipAddNum());
             resultmap.put("code",1);
         }
         else{
@@ -55,12 +56,13 @@ public class VipController {
 
     @RequestMapping("/QueryNameByList.do")
     @ResponseBody
-    public Map<String,Object> QueryNameByList(@RequestParam("EmpName") String  EmpName){
+    public Map<String,Object> QueryNameByList(@RequestBody HashMap<String, Object> param){
 
         Map<String,Object> resultmap = new HashMap<String,Object>();
-        List<VipTicket> list = this.iVipService.QueryNameByList(EmpName);
+        List<VipTicket> list = this.iVipService.QueryNameByList(param);
         if(list != null & list.size()>0) {
             resultmap.put("data",list);
+            resultmap.put("num",list.get(0).getSumVipAddNum());
             resultmap.put("code",1);
         }
         else{

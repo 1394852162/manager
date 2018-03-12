@@ -18,6 +18,7 @@ public class VipTicket {
     private Date CreateTime;
     private Date UpdateTime;
     private String operaName;
+    private int sumVipAddNum;
 
     @Override
     public String toString() {
@@ -34,6 +35,7 @@ public class VipTicket {
                 ", CreateTime=" + CreateTime +
                 ", UpdateTime=" + UpdateTime +
                 ", operaName='" + operaName + '\'' +
+                ", sumVipAddNum=" + sumVipAddNum +
                 '}';
     }
 
@@ -131,5 +133,13 @@ public class VipTicket {
 
     public void setOperaName(String operaName) {
         this.operaName = operaName;
+    }
+
+    public int getSumVipAddNum() {
+        return sumVipAddNum;
+    }
+
+    public void setSumVipAddNum(int sumVipAddNum) {
+        this.sumVipAddNum = sumVipAddNum;
     }
 }
