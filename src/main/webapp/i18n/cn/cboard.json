@@ -127,6 +127,7 @@
       "BATCH_SELECT": "-----请选择-----"
     },
     "MENU_VIP": {
+      "VIP_TITLE": "VIP劵补录查询",
       "VIP_NAME": "查询",
       "VIP_SEARCH": "---请输入VIP员工姓名---",
       "DESC": "备注",
@@ -134,6 +135,9 @@
       "PLEASE_SELECT": "---请选择---",
       "VIP_TICKET": "VIP票数",
       "VIP_DATE": "领取时间",
+      "START_DAY": "开始日期：",
+      "END_DAY": "结束日期：",
+      "VIP_SEARCH_BUTTON": "查询VIP劵",
       "ADD_VIP": "添加VIP劵",
       "EDIT_VIP": "修改VIP劵"
     },

@@ -129,6 +129,7 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
             // console.log(response);
             //$scope.userList = response;
             $scope.initPageSort(response);
+            $scope.vipNum = response.num;
             /*
              //淘汰/启用样式控制
              $scope.setStyle = function () {
@@ -144,20 +145,35 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
     /**
      * 数据双向绑定+监听机制
      */
-    $scope.$watch("vipName", function () {
+    /*$scope.$watch("vipName", function () {
+
+    })*/
+
+
+    /**
+     * 查询
+     */
+    $scope.searchVip = function () {
         $http({
             method: 'POST',
+            headers : {
+                'Content-Type' : 'application/json;charset=UTF-8',
+                'Accept': 'application/json'
+            },
             url: './vip/QueryNameByList.do',
-            data: {
-                EmpName: $scope.vipName
-            }
+            data: JSON.stringify({
+                EmpName: $scope.vipName,
+                BeginDate: $scope.vipD1,
+                EndDate: $scope.vipD2
+            })
         }).success(function (response) {
             $scope.userList = response;
             $scope.initPageSort($scope.userList);
+            $scope.vipNum = response.num;
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
         })
-    })
+    }
 
     /**
      * 增加
@@ -207,7 +223,7 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
                 }
             }
         });
-        $event.stopPropagation();//阻止冒泡
+        // $event.stopPropagation();//阻止冒泡
     };
 
 
