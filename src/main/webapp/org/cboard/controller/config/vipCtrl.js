@@ -129,6 +129,7 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
             // console.log(response);
             //$scope.userList = response;
             $scope.initPageSort(response);
+            $scope.vipNum = response.num;
             /*
              //淘汰/启用样式控制
              $scope.setStyle = function () {
@@ -145,7 +146,7 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
      * 数据双向绑定+监听机制
      */
     $scope.$watch("vipName", function () {
-        $http({
+        /*$http({
             method: 'POST',
             url: './vip/QueryNameByList.do',
             data: {
@@ -156,7 +157,7 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
             $scope.initPageSort($scope.userList);
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-        })
+        })*/
     })
 
     /**
@@ -207,7 +208,7 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
                 }
             }
         });
-        $event.stopPropagation();//阻止冒泡
+        // $event.stopPropagation();//阻止冒泡
     };
 
 
