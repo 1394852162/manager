@@ -24,6 +24,7 @@ cBoard.directive('auth', ['$http', '$interval', '$filter', '$log', function ($ht
                     }
                 },
                 callback: {
+                    beforeExpand: beforeExpand,
                     onClick: function (event, treeId, treeNode, clickFlag) {
                         $scope.$apply(function () {
                             ngModel.$setViewValue(treeNode);
@@ -81,29 +82,71 @@ cBoard.directive('auth', ['$http', '$interval', '$filter', '$log', function ($ht
                 });*/
             };
             function removeHoverDom(treeId, treeNode) {
-
                 $("#diyBtn_"+treeNode.id).unbind().remove();
                 $("#diyBtn_space_" +treeNode.id).unbind().remove();
-
-                /*$("#editBtn_"+treeNode.id).unbind().remove();
-                $("#diyBtn_space1_" +treeNode.id).unbind().remove();*/
             };
+            var curPage = 0;
+            function goPage(treeNode, page) {
+                treeNode.page = page;
+                if (treeNode.page<1) treeNode.page = 1;
+                if (treeNode.page>treeNode.maxPage) treeNode.page = treeNode.maxPage;
+                if (curPage == treeNode.page) return;
+                curPage = treeNode.page;
+                var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+                zTree.reAsyncChildNodes(treeNode, "refresh");
+            }
+            function beforeExpand(treeId, treeNode) {
+                if (treeNode.page == 0) treeNode.page = 1;
+                return !treeNode.isAjaxing;
+            }
             function addDiyDom(treeId, treeNode) {
                 var aObj = $("#" + treeNode.tId + "_a");
                 if ($("#diyBtn_" + treeNode.id).length > 0) return;
+
                 /*var editStr = "<span class='addTree button add' id='addBtn_" + treeNode.id + "' title='增加' onfocus='this.blur();'></span>"
                     + "<span class='addTree button edit' id='editBtn_" + treeNode.id + "' title='修改' onfocus='this.blur();'></span>"
-                    + "<span class='addTree button remove' id='delBtn_" + treeNode.id + "' title='删除' onfocus='this.blur();'></span>";*/
-/*
-                var editStr = "<span class='addTree button edit' id='editBtn_" + treeNode.id + "' title='设置权限' onfocus='this.blur();'></span>";
-*/
+                    + "<span class='addTree button remove' id='delBtn_" + treeNode.id + "' title='删除' onfocus='this.blur();'></span>";
+                var editStr = "<span class='addTree button edit' id='editBtn_" + treeNode.id + "' title='设置权限' onfocus='this.blur();'></span>";*/
 
                 var editStr = "<span id='diyBtn_space_auth_" +treeNode.id+ "' > </span>"
                     + "<button type='button' class='diyBtn1 btn btn-primary btn-xs' id='batchBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>批次</button>"
                     + "<button type='button' class='diyBtn1 btn btn-success btn-xs' id='empBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>职工劵</button>"
                     + "<button type='button' class='diyBtn1 btn btn-info btn-xs' id='vipBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>VIP劵</button>";
+
+                var pageStr = "<span class='button lastPage' id='lastBtn_" + treeNode.id
+                    + "' title='last page' onfocus='this.blur();'></span><span class='button nextPage' id='nextBtn_" + treeNode.id
+                    + "' title='next page' onfocus='this.blur();'></span><span class='button prevPage' id='prevBtn_" + treeNode.id
+                    + "' title='prev page' onfocus='this.blur();'></span><span class='button firstPage' id='firstBtn_" + treeNode.id
+                    + "' title='first page' onfocus='this.blur();'></span>";
                 if(!treeNode.isParent){
                     aObj.append(editStr);
+                } else {
+                    /*aObj.after(pageStr);
+                    var first = $("#firstBtn_"+treeNode.id);
+                    var prev = $("#prevBtn_"+treeNode.id);
+                    var next = $("#nextBtn_"+treeNode.id);
+                    var last = $("#lastBtn_"+treeNode.id);
+                    treeNode.maxPage = Math.round(treeNode.count/treeNode.pageSize - .5) + (treeNode.count%treeNode.pageSize == 0 ? 0:1);
+                    first.bind("click", function(){
+                        if (!treeNode.isAjaxing) {
+                            goPage(treeNode, 1);
+                        }
+                    });
+                    last.bind("click", function(){
+                        if (!treeNode.isAjaxing) {
+                            goPage(treeNode, treeNode.maxPage);
+                        }
+                    });
+                    prev.bind("click", function(){
+                        if (!treeNode.isAjaxing) {
+                            goPage(treeNode, treeNode.page-1);
+                        }
+                    });
+                    next.bind("click", function(){
+                        if (!treeNode.isAjaxing) {
+                            goPage(treeNode, treeNode.page+1);
+                        }
+                    });*/
                 }
                 if(!(treeNode.empStatus3 === 1)){
                     $("#vipBtn_"+treeNode.id).remove();
