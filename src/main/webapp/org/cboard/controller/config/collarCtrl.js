@@ -49,15 +49,30 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
             url: './employee/getEmpList.do'
         }).success(function (response) {
             $scope.empList = response.data;
-            // console.log($scope.empList);
+            $scope.deptEmpList = response.data;
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
         });
     };
     getEmpList();
 
-    $scope.collarEmpChange = function(collarEmpName){
-        $scope.collarEmpCode = $scope.collarEmpName.empId;
+    $scope.collarEmpChange = function(){
+        $scope.collarDepName = $scope.collarEmpName.deptId;
+    };
+    $scope.collarDeptChange = function(collarDepName){
+        $scope.collarDeptId = $scope.collarDepName.deptId;
+        $http({
+            method: 'POST',
+            url: './employee/QueryDeptEmp.do',
+            data: {
+                // DeptId: collarDepName.deptId
+                DeptId: collarDepName
+            }
+        }).success(function (response) {
+            // $scope.deptEmpList = response.data;
+            $scope.deptEmpList = response.data;
+
+        })
     };
 
     $scope.collarCode = (function(){
@@ -81,7 +96,6 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
      * 确定
      */
     $scope.saveCollar = function () {
-
         $http({
             method: 'POST',
             url: './employee/getBatEmpInfo.do',
@@ -109,6 +123,7 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
                             })(),
                             CollTime: $scope.collarD2,
                             EmpId: $scope.collarEmpName.empId,
+                            DeptId: $scope.collarDepName,
                             CollNum: parseInt($scope.collarNum),
                             CollNote: $scope.collarNote,
                             Status: parseInt($scope.collarStatus)
@@ -146,4 +161,24 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
 
     };
 
-})
+}).filter('unique', function () {
+    return function (collection, keyname) {
+        var output = [],
+            keys = [];
+        angular.forEach(collection, function (item) {
+            // console.log(collection);
+
+            // console.log(collection);
+            // console.log(item);
+            if(item.deptName != null){
+                var key = item[keyname];
+                if ( (keys.indexOf(key) === -1) ) {
+                    keys.push(key);
+                    output.push(item);
+                }
+            }
+
+        });
+        return output;
+    };
+});
