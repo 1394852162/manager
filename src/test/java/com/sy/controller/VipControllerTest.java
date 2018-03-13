@@ -90,8 +90,8 @@ public class VipControllerTest {
 //		delete 需要传的参数和insert不一样，是 BrandSeq:1 pBrandId:[2,3] 这种json格式
         JSONObject jo = new JSONObject();
        jo.put("EmpName", "admin");
-        jo.put("BeginDate","2018-02-17");
-        jo.put("EndDate","2018-03-8");
+       // jo.put("BeginDate","2018-02-17");
+      //  jo.put("EndDate","2018-03-8");
 
 //   这个就是前段需要传的json的array
         /*

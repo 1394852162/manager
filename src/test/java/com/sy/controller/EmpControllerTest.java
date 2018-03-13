@@ -83,4 +83,24 @@ public class EmpControllerTest {
         String result = mvcResult.getResponse().getContentAsString();
         System.out.println("数据是:" + result);
     }
+
+
+
+    /**
+     * 查询部门下的人员
+     * @throws Exception
+     */
+    @Test
+    public void testUserLogin() throws Exception{
+
+        //参数为DeptId
+        //   这个就是前段需要传的json的array
+        /*
+        "DeptId":1
+         */
+        ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.get("/employee/login.do?name=admin&password=password"));
+        MvcResult mvcResult = resultActions.andReturn();
+        String result = mvcResult.getResponse().getContentAsString();
+        System.out.println("数据是:" + result);
+    }
 }
