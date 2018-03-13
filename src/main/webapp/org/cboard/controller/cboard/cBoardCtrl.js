@@ -33,7 +33,7 @@ cBoard.controller('cBoardCtrl', function ($rootScope, $scope, $location, $http, 
         $scope.batchFlag = parseInt(response.code.empStatus5);
         $scope.adminFlag = response.code.empName;
         $scope.sessionUser = response.code;
-        console.log(response);
+        // console.log(response);
     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
         ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
     });
