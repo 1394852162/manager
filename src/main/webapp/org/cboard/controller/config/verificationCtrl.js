@@ -113,6 +113,7 @@ cBoard.controller("verificationCtrl",function ($rootScope, $scope, $http, dataSe
             })
         }).success(function (response) {
             $scope.initPageSort(response);
+            $scope.ticketNum = response.num;
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
         });
@@ -149,7 +150,7 @@ cBoard.controller("verificationCtrl",function ($rootScope, $scope, $http, dataSe
     }
 
     /**
-     * 增加
+     * 搜索
      * @param current
      * @param $event
      */
@@ -171,8 +172,9 @@ cBoard.controller("verificationCtrl",function ($rootScope, $scope, $http, dataSe
             })
         }).success(function (response) {
             // $scope.collList = response;
-            console.log(response);
+            // console.log(response);
             $scope.initPageSort(response);
+            $scope.ticketNum = response.num;
             // $scope.initPageSort($scope.userList);
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
