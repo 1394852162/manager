@@ -71,22 +71,10 @@ public class EmpController {
     public HashMap<String,Object> UserLogin(@RequestParam("name") String username, @RequestParam("password") String password,HttpSession session) {
 
         emp.setEmpName(username);
-        /*try {
-            emp.setEmpName(URLDecoder.decode(username, "utf-8"));
-//            URLDecoder.decode(username, "utf-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }*/
         emp.setEmpPassword(password);
         boolean EmpExit = iEmpService.EmployeeLogin(emp);
-        List<Employee> list = iEmpService.getEmpInfo(emp);
         if(EmpExit==true){
-            emp.setEmpId(list.get(0).getEmpId());
-            emp.setDeptId(list.get(0).getDeptId());
-            emp.setEmpNo(list.get(0).getEmpNo());
-            emp.setEmpStatus3(list.get(0).getEmpStatus3());
-            emp.setEmpStatus4(list.get(0).getEmpStatus4());
-            emp.setEmpStatus5(list.get(0).getEmpStatus5());
+            emp = iEmpService.getQueryEmpInfo(emp);
         }
         HashMap<String,Object> result = new HashMap<String,Object>();
         System.out.println("存入到对象的数据"+emp);

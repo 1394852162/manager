@@ -81,4 +81,9 @@ public class EmployeeServiceImpl implements IEmployeeService{
     public List<Employee> QueryDeptEmp(int DeptId) {
         return this.iEmployeeDao.QueryDeptEmp(DeptId);
     }
+
+    @Override
+    public Employee getQueryEmpInfo(Employee employee) {
+        return this.iEmployeeDao.getQueryEmpInfo(employee);
+    }
 }

@@ -89,4 +89,7 @@ public interface IEmployeeDao {
      */
     List<Employee> QueryDeptEmp(int DeptId);
 
+
+    Employee getQueryEmpInfo(Employee employee);
+
 }

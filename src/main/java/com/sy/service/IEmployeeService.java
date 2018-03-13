@@ -44,4 +44,8 @@ public interface IEmployeeService {
 
 
     public List<Employee> QueryDeptEmp(int DeptId);
+
+
+
+    public Employee getQueryEmpInfo(Employee employee);
 }

@@ -60,6 +60,14 @@
   </select>
 
 
+  <select id="getQueryEmpInfo" resultMap="BaseResultMap">
+    SELECT *
+    FROM Tbb_Employee
+    where EmpName = #{EmpName,jdbcType=VARCHAR}
+    and EmpPassword =#{EmpPassword,jdbcType=VARCHAR} and EmpStatus1 !=-1
+  </select>
+
+
   <select id="getEmpList" resultMap="BaseResultMap">
     SELECT a.*,b.DeptName
     FROM Tbb_Employee a LEFT JOIN Tbb_Dept b ON a.DeptId=b.DeptId
