@@ -116,11 +116,12 @@
     "MENU_COLLAR": {
       "COLLAR_TITLE": "请确定已交付下列信息的职工劵",
       "COLLAR_CODE": "领用编号：",
-      "BAT_NAME": "发放批次：",
+      "BAT_NAME": "领用批次名称：",
       "D1": "有效日期：",
       "D2": "领用日期：",
       "EMP_CODE": "员工工号：",
       "EMP_NAME": "员工姓名：",
+      "COLLAR_DEPT": "部门名称：",
       "NUM": "领用数量：",
       "NOTE": "领用说明：",
       "COLLAR_STAUTS": "是否设置为补录票据：",

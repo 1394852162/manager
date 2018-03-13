@@ -141,7 +141,7 @@
   <select id="QueryDeptEmp" resultMap="BaseResultMap">
     SELECT *
     FROM Tbb_Employee
-    WHERE DeptId= #{DeptId,jdbcType=INTEGER}
+    WHERE DeptId= #{DeptId,jdbcType=INTEGER} AND Tbb_Employee.EmpId != 1
   </select>
 
 </mapper>
