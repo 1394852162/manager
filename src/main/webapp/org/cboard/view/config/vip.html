@@ -1,92 +1,208 @@
 <!-- Content Wrapper. Contains page content -->
 <div id="inner-container">
-    <form role="form" id="empinfo-form" AUTOCOMPLETE="off">
-        <div class="row" style="margin-right: 0px;">
-            <!-- 查询 -->
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 column">
-                <div class="input-group">
-                    <span class="input-group-addon">{{'CONFIG.MENU_VIP.VIP_NAME'|translate}}</span>
-                    <input type="text" placeholder = "{{'CONFIG.MENU_VIP.VIP_SEARCH'|translate}}" class="form-control glyphicon-remove"
-                           id="vipName"
-                           ng-model="vipName">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="box box-solid">
+                <div class="box-header with-border text-center">
+                    <label class="box-title">{{'CONFIG.MENU_VIP.VIP_TITLE'|translate}}</label>
+                </div>
+                <!--no-padding-->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                            <!-- 留空 -->
+                            <div class="row">
+                                <!-- 开始日期 -->
+                                <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group has-feedback">
+                                        <span>{{'CONFIG.MENU_VIP.START_DAY'|translate}}</span>
+                                        <div ng-model='timepickerTest' ng-time
+                                             class="input-group date form_date col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                                             data-date="" data-date-format="yyyy-MM-dd" data-link-field="dtp_input2"
+                                             data-link-format="yyyy-MM-dd">
+                                            &lt;!&ndash;<span class="input-group-addon">{{'CONFIG.MENU_COLLAR.D1'|translate}}</span>&ndash;&gt;
+                                            <input class="form-control" size="11" type="text" value="" id="vipD1"
+                                                   name="collarD1"
+                                                   placeholder="{{'COMMON.PLACEHOLDER'|translate}}"
+                                                   ng-model="vipD1"
+                                                   readonly>
+                                            &lt;!&ndash;<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>&ndash;&gt;
+                                            <span class="input-group-addon"
+                                                  style="background-color: white; border: 0px solid #ccc;border-radius: 0px;">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                        &lt;!&ndash;<input type="hidden" id="dtp_input2" value="" /><br/>&ndash;&gt;
+                                    </div>
+                                </div>-->
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group has-feedback">
+                                        <span>{{'CONFIG.MENU_VIP.START_DAY'|translate}}</span>
+                                        <div ng-model='timepickerTest' ng-time
+                                             class="input-group date form_date col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                                             data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
+                                             data-link-format="yyyy-mm-dd">
+                                            <!--<span class="input-group-addon">{{'CONFIG.MENU_COLLAR.D1'|translate}}</span>-->
+                                            <input class="form-control" size="11" type="text" value="" id="vipD1"
+                                                   name="vipD1"
+                                                   placeholder="{{'COMMON.PLACEHOLDER'|translate}}"
+                                                   ng-model="vipD1" readonly>
+                                            <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
+                                            <span class="input-group-addon"
+                                                  style="background-color: white; border: 0px solid #ccc;border-radius: 0px;">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                        <!--<input type="hidden" id="dtp_input2" value="" /><br/>-->
+                                    </div>
+                                </div>
+                                <!-- 结束日期 -->
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group has-feedback">
+                                        <span>{{'CONFIG.MENU_VIP.END_DAY'|translate}}</span>
+                                        <div ng-model='timepickerTest' ng-time
+                                             class="input-group date form_date col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                                             data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
+                                             data-link-format="yyyy-mm-dd">
+                                            <!--<span class="input-group-addon">{{'CONFIG.MENU_COLLAR.D1'|translate}}</span>-->
+                                            <input class="form-control" size="11" type="text" value="" id="vipD2"
+                                                   name="vipD2"
+                                                   placeholder="{{'COMMON.PLACEHOLDER'|translate}}"
+                                                   ng-model="vipD2" readonly>
+                                            <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
+                                            <span class="input-group-addon"
+                                                  style="background-color: white; border: 0px solid #ccc;border-radius: 0px;">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                        <!--<input type="hidden" id="dtp_input2" value="" /><br/>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                            <!-- 留空 -->
+                            <div class="row">
+                                <!-- 员工姓名 -->
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <span>{{'CONFIG.MENU_COLLAR.EMP_NAME'|translate}}</span>
+                                        <input type="text" placeholder = "{{'CONFIG.MENU_VIP.VIP_SEARCH'|translate}}" class="form-control glyphicon-remove"
+                                               id="vipName"
+                                               name="vipName"
+                                               ng-model="vipName">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                            <!--<button type="button" class="btn btn-success btn-md btn-block" ng-click="searchVip()">
+                                {{'CONFIG.MENU_VIP.VIP_SEARCH_BUTTON'|translate}}
+                            </button>-->
+                        </div>
+                    </div>
+
+                    <div class="box-footer">
+                        <div class="row" style="margin-right: 0px;">
+                            <!-- 查询 -->
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 column">
+                                <!--<div class="input-group">
+                                    <span class="input-group-addon">{{'CONFIG.MENU_VIP.VIP_NAME'|translate}}</span>
+                                    <input type="text" placeholder = "{{'CONFIG.MENU_VIP.VIP_SEARCH'|translate}}" class="form-control glyphicon-remove"
+                                           id="vipName"
+                                           ng-model="vipName">
+                                </div>-->
+                                <!--<button type="button" class="btn btn-success" ng-click="searchVip()">
+                                    {{'CONFIG.MENU_VIP.VIP_SEARCH_BUTTON'|translate}}
+                                </button>-->
+                            </div>
+                            <!-- 添加 -->
+                            <div class="pull-right" style="margin-top: 0px;">
+                                <div class="btn-group btn-group-sm">
+                                    <button type="button" class="btn btn-success btn-md" ng-click="searchVip()">{{'CONFIG.MENU_VIP.VIP_SEARCH_BUTTON'|translate}}</button>
+                                    <button type="button" class="btn btn-success btn-md" ng-click="addVip()">{{'CONFIG.MENU_VIP.ADD_VIP'|translate}}</button>
+                                    <!--<button type="button" class="btn btn-default">Button 6</button>-->
+                                </div>
+                                <!--<button type="button" class="btn btn-primary " id='addDept' ng-click="addVip()">{{'CONFIG.MENU_VIP.ADD_VIP'|translate}}</button>-->
+                                <!--<button type="button" class="btn btn-primary" id='delRole' ng-click="printUser()">{{// 'CONFIG.MENU_USER.PRINT'|translate}}</button>-->
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 10px; margin-bottom: 0px">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 column">
+                                <table id="listDept" class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th ng-repeat="headerInfo in headerInfos track by $index " >{{ headerInfo.name }}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="userTable">
+                                    <tr ng-repeat="row in items " ng-init="outerIndex = $index">
+                                        <!--<td>{{ row.vipAddId }}</td>-->
+                                        <td>{{ row.empName }}</td>
+                                        <td>{{ row.vipAddNum }}</td>
+                                        <td>{{ row.operaName }}</td>
+                                        <td>{{ row.vipAddTime | date:'yyyy-MM-dd' }}</td>
+                                        <td>{{ row.vipAddNote }}</td>
+                                        <td>
+                                            <!--<button type="button" class="btn btn-info btn-xs" ng-click="editVip(row, $event)">
+                                                <span class="glyphicon glyphicon-pencil"></span>{{'CONFIG.MENU_USER.MODIFY'|translate}}
+                                            </button>-->
+                                            <button type="button" class="btn btn-danger btn-xs"
+                                                    ng-click="delVip(row, $event)">
+                                                <span class="glyphicon glyphicon-remove-circle"></span>{{'CONFIG.MENU_PLACE.PLACE_DEL'|translate}}
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th>合计</th>
+                                        <th>{{vipNum}}</th>
+                                        <th>--</th>
+                                        <th>--</th>
+                                        <th>--</th>
+                                        <th>--</th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- pagination START-->
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  column">
+                                <div class="pull-right">
+                                    <nav>
+                                        <ul class="pagination">
+                                            <li>
+                                                <a ng-click="Previous()" role="button">
+                                                    <!--<span role="button" >上一页</span>-->
+                                                    <span role="button">&laquo;</span>
+                                                </a>
+                                            </li>
+                                            <li ng-repeat="page in pageList" ng-class="{active: isActivePage(page)}" role="button">
+                                                <a ng-click="selectPage(page)" >{{ page }}</a>
+                                            </li>
+                                            <li>
+                                                <a ng-click="Next()" role="button">
+                                                    <!--<span role="button" >下一页</span>-->
+                                                    <span role="button" >&raquo;</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- pagination END-->
+                    </div>
                 </div>
             </div>
-            <!-- 添加 -->
-            <div class="pull-right" style="margin-top: 0px;">
-                <button type="button" class="btn btn-primary " id='addDept' ng-click="addVip()">{{'CONFIG.MENU_VIP.ADD_VIP'|translate}}</button>
-                <!--<button type="button" class="btn btn-primary" id='delRole' ng-click="printUser()">{{// 'CONFIG.MENU_USER.PRINT'|translate}}</button>-->
-            </div>
-        </div>
-    </form>
-
-    <div class="row" style="margin-top: 10px; margin-bottom: 0px">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 column">
-            <table id="listDept" class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th ng-repeat="headerInfo in headerInfos track by $index " >{{ headerInfo.name }}</th>
-                    </tr>
-                </thead>
-                <tbody id="userTable">
-                    <tr ng-repeat="row in items " ng-init="outerIndex = $index">
-                        <!--<td>{{ row.vipAddId }}</td>-->
-                        <td>{{ row.empName }}</td>
-                        <td>{{ row.vipAddNum }}</td>
-                        <td>{{ row.operaName }}</td>
-                        <td>{{ row.vipAddTime | date:'yyyy-MM-dd' }}</td>
-                        <td>{{ row.vipAddNote }}</td>
-                        <td>
-                            <!--<button type="button" class="btn btn-info btn-xs" ng-click="editVip(row, $event)">
-                                <span class="glyphicon glyphicon-pencil"></span>{{'CONFIG.MENU_USER.MODIFY'|translate}}
-                            </button>-->
-                            <button type="button" class="btn btn-danger btn-xs"
-                                    ng-click="delVip(row, $event)">
-                                <span class="glyphicon glyphicon-remove-circle"></span>{{'CONFIG.MENU_PLACE.PLACE_DEL'|translate}}
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>合计</th>
-                        <th>{{vipNum}}</th>
-                        <th>--</th>
-                        <th>--</th>
-                        <th>--</th>
-                        <th>--</th>
-                    </tr>
-                </tfoot>
-            </table>
         </div>
     </div>
-
-    <!-- pagination START-->
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  column">
-            <div class="pull-right">
-                <nav>
-                    <ul class="pagination">
-                        <li>
-                            <a ng-click="Previous()" role="button">
-                                <!--<span role="button" >上一页</span>-->
-                                <span role="button">&laquo;</span>
-                            </a>
-                        </li>
-                        <li ng-repeat="page in pageList" ng-class="{active: isActivePage(page)}" role="button">
-                            <a ng-click="selectPage(page)" >{{ page }}</a>
-                        </li>
-                        <li>
-                            <a ng-click="Next()" role="button">
-                                <!--<span role="button" >下一页</span>-->
-                                <span role="button" >&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </div>
-    <!-- pagination END-->
-
 </div>
 
