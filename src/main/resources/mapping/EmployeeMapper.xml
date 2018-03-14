@@ -97,11 +97,21 @@
 
   <insert id="insertEmp" parameterType="java.util.HashMap" >
     begin
-    declare @EmpId int
+    declare @EmpId int,@Status int,@DeptId int
+      select  @Status =#{EmpStatus1,jdbcType=INTEGER}
+      if (@Status =0)
+        begin
+          select @DeptId=14
+        end
+      else
+        begin
+          select @DeptId = #{DeptId,jdbcType=INTEGER}
+        end
+
     select @EmpId = isnull(max(EmpId),0) from Tbb_Employee
     insert into Tbb_Employee
     select @EmpId+1,#{EmpNo,jdbcType=VARCHAR},#{EmpName,jdbcType=VARCHAR},
-    #{EmpPassword,jdbcType=VARCHAR},#{DeptId,jdbcType=INTEGER},
+    #{EmpPassword,jdbcType=VARCHAR},@DeptId,
     null,#{EmpStatus1,jdbcType=INTEGER},
     #{EmpStatus2,jdbcType=INTEGER},'增加人员',
     getdate(),null,0,0,0
@@ -110,30 +120,70 @@
 
 
   <update id="updateByPrimaryKey" parameterType="java.util.HashMap" >
-    update Tbb_Employee
-    <set >
-      <if test="EmpNo != null" >
-        EmpNo = #{EmpNo,jdbcType=VARCHAR},
-      </if>
-      <if test="EmpName != null" >
-        EmpName = #{EmpName,jdbcType=VARCHAR},
-      </if>
 
-      <if test="EmpPassword != null" >
-        EmpPassword = #{EmpPassword,jdbcType=VARCHAR},
-      </if>
-      <if test="DeptId != null" >
-        DeptId = #{DeptId,jdbcType=INTEGER},
-      </if>
-      <if test="EmpStatus1 != null" >
-        EmpStatus1 = #{EmpStatus1,jdbcType=INTEGER},
-      </if>
-      <if test="EmpStatus2 != null" >
-        EmpStatus2 = #{EmpStatus2,jdbcType=INTEGER},
-      </if>
-    </set>
-    ,UpdateTime = getdate()
-    where EmpId = #{EmpId,jdbcType=INTEGER}
+
+    declare @Status int
+    select  @Status =#{EmpStatus1,jdbcType=INTEGER}
+    select @Status
+    if (@Status =0)
+    begin
+        update Tbb_Employee
+        <set >
+          <if test="EmpNo != null" >
+            EmpNo = #{EmpNo,jdbcType=VARCHAR},
+          </if>
+          <if test="EmpName != null" >
+            EmpName = #{EmpName,jdbcType=VARCHAR},
+          </if>
+
+          <if test="EmpPassword != null" >
+            EmpPassword = #{EmpPassword,jdbcType=VARCHAR},
+          </if>
+          <if test="DeptId != null" >
+            DeptId = 14,
+          </if>
+          <if test="EmpStatus1 != null" >
+            EmpStatus1 = #{EmpStatus1,jdbcType=INTEGER},
+          </if>
+          <if test="EmpStatus2 != null" >
+            EmpStatus2 = #{EmpStatus2,jdbcType=INTEGER},
+          </if>
+        </set>
+        ,UpdateTime = getdate()
+        where EmpId = #{EmpId,jdbcType=INTEGER}
+    end
+    else
+    begin
+        update Tbb_Employee
+        <set >
+          <if test="EmpNo != null" >
+            EmpNo = #{EmpNo,jdbcType=VARCHAR},
+          </if>
+          <if test="EmpName != null" >
+            EmpName = #{EmpName,jdbcType=VARCHAR},
+          </if>
+
+          <if test="EmpPassword != null" >
+            EmpPassword = #{EmpPassword,jdbcType=VARCHAR},
+          </if>
+          <if test="DeptId != null" >
+            DeptId = #{DeptId,jdbcType=INTEGER},
+          </if>
+          <if test="EmpStatus1 != null" >
+            EmpStatus1 = #{EmpStatus1,jdbcType=INTEGER},
+          </if>
+          <if test="EmpStatus2 != null" >
+            EmpStatus2 = #{EmpStatus2,jdbcType=INTEGER},
+          </if>
+        </set>
+        ,UpdateTime = getdate()
+        where EmpId = #{EmpId,jdbcType=INTEGER}
+    end
+
+
+
+
+
   </update>
 
 

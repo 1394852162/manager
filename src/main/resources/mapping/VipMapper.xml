@@ -76,7 +76,12 @@
     #{EmpId,jdbcType=INTEGER},
     #{VipEmpID,jdbcType=INTEGER},
     #{VipAddNum,jdbcType=INTEGER},
-    #{VipAddNote,jdbcType=VARCHAR},
+    <if test="VipAddNote != null" >
+      #{VipAddNote,jdbcType=VARCHAR},
+    </if>
+    <if test="VipAddNote == null" >
+      null,
+    </if>
     1,
     getdate(),
     null

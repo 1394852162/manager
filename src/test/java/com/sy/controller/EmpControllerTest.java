@@ -103,4 +103,27 @@ public class EmpControllerTest {
         String result = mvcResult.getResponse().getContentAsString();
         System.out.println("数据是:" + result);
     }
+
+
+
+/*
+    @RequestParam("VipEmpID") int VipEmpID,
+    @RequestParam("VipAddNum") int VipAddNum,@RequestParam("VipAddNote") String VipAddNote,
+    @RequestParam("VipAddTime") String AddTime
+    */
+    @Test
+    public void testinsertVipTicket() throws Exception{
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("VipEmpID", 2);
+        jsonObject.put("VipAddNum", 3);
+       // jsonObject.put("VipAddNote", "测试备注");
+        jsonObject.put("VipAddTime", "2018-03-14");
+
+        String requestjson = jsonObject.toString();
+        LOGGER.info(requestjson);
+
+        String responseString = mockMvc.perform(MockMvcRequestBuilders.post("/employee/insertVipTicket.do").contentType(MediaType.APPLICATION_JSON).content(requestjson))
+                .andReturn().getResponse().getContentAsString();
+        LOGGER.info(responseString);
+    }
 }
