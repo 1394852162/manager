@@ -189,7 +189,7 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
                         data:{
                             EmpNo: $scope.newEmpNo,
                             EmpName: $scope.newEmpName,
-                            EmpBirth: $scope.newEmpBirth,
+                            // EmpBirth: $scope.newEmpBirth,
                             EmpPassword: $scope.newEmpPwd,
                             DeptId: $scope.newEmpDept,
                             EmpStatus1: $scope.newEmpStatus1,
@@ -285,7 +285,7 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
                             EmpId: current.empId,
                             EmpNo: $scope.editEmpNo,
                             EmpName: $scope.editEmpName,
-                            EmpBirth: $scope.editEmpBirth,
+                            // EmpBirth: $scope.editEmpBirth,
                             EmpPassword: $scope.editEmpPwd,
                             DeptId: $scope.editEmpDept,
                             EmpStatus1: $scope.editEmpStatus1,

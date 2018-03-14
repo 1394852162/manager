@@ -120,131 +120,9 @@
     <!--<link rel="stylesheet" href="css/ui-select.min.css">-->
     <link rel="stylesheet" href="css/select.css">
 
-
-    <style>
-        .modal-fit .modal-dialog {
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            margin: auto;
-            padding: 50px;
-        }
-        .modal-fit .modal-body {
-            height: calc(100vh - 200px);
-            overflow: auto;
-        }
-        @media (min-width: 768px) {
-            .modal-fit .modal-dialog {
-                width: auto;
-            }
-        }
-        /* ================ TABLE ================ */
-        table,table tr th, table tr td {
-            border:1px solid #F8FAFB;
-        }
-        table {
-            border: none;
-        }
-        table {
-            width: 100%;
-            margin: 0 auto;
-            clear: both;
-            border-collapse: collapse;
-            border-spacing: 0;
-        }
-        table thead {
-            background-color: #EBEFF2;
-            border: 1px solid #efefef;
-        }
-        table tbody tr {
-            background-color: white;
-            border: 1px solid #e2dfdf;
-        }
-        table tbody tr td {
-            border: none;
-            background-color: white;
-            padding: 0px;
-            line-height: 22px;
-        }
-        td, th {
-            border-left: 1px solid #d5d5d5;
-            border-top: 1px solid #d5d5d5;
-            text-align: center;
-            white-space: nowrap;
-            font-weight: normal;
-            font-size: 10px;
-            padding: 0px 0px 0px 0px;
-        }
-        .table.table-bordered > tr >td {
-            height: 22px;
-            max-height: 22px;
-        }
-        /* ================ 淘汰/启用样式控制 ================ */
-        .trueClass{
-            opacity:0.1;
-        }
-        .falseClass{
-        }
-
-        /* ================ tpfPagination ================ */
-        .page-list .pagination {float:left;}
-        .page-list .pagination span {cursor: pointer;}
-        .page-list .pagination .separate span{cursor: default; border-top:none;border-bottom:none;}
-        .page-list .pagination .separate span:hover {background: none;}
-        .page-list .page-total {float:left; margin: 25px 20px;}
-        .page-list .page-total input, .page-list .page-total select{height: 26px; border: 1px solid #ddd;}
-        .page-list .page-total input {width: 40px; padding-left:3px;}
-        .page-list .page-total select {width: 50px;}
+    <link rel="stylesheet" href="css/custom.css">
 
 
-        /* ================ ztree ================ */
-        /*.ztree li span.button.switch.level0 {
-            visibility:hidden;
-            width:1px;
-        }
-        .ztree li ul.level0 {
-            padding:0;
-            background:none;
-        }*/
-        /*.addTree {
-            background-color: #fff;
-            border-color: #fff;
-            border: none;
-            opacity:0.0;
-        }*/
-        .addTree {
-            background-color: #fff;
-            border-color: #fff;
-            border: none;
-            opacity: 1;
-        }
-        .addTree:hover {
-            background-color: #fff;
-            border-color: #fff;
-            border: none;
-            opacity:1;
-        }
-
-        /* ================ BOOSTRAP的span样式 ================ */
-        .input-group .input-group-addon {
-            border-radius: 0;
-            border-color: #d2d6de;
-            background-color: #EDEDED;
-        }
-
-        /* ================ BOOSTRAP的日期样式 ================ */
-        .dropdown-menu {
-            box-shadow: none;
-            border-color: #eee;
-            width: 300px;
-        }
-        .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
-            background-color: white;
-            opacity: 1;
-        }
-
-    </style>
     <link rel="stylesheet" href="plugins/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css">
 
     <!-- jquery-custom-scrollbar -->
@@ -435,6 +313,7 @@ desired effect
 <script src="org/cboard/directive/config/intervalCheck.js"></script>
 <script src="org/cboard/directive/config/ngIcheck.js"></script>
 <script src="org/cboard/directive/config/ngDatepicker.js"></script>
+<script src="org/cboard/directive/config/ngcSelectSearch.js"></script>
 
 
 <!--<script type="text/ng-template" id="echartContent">
