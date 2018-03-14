@@ -102,9 +102,9 @@
     insert into Tbb_Employee
     select @EmpId+1,#{EmpNo,jdbcType=VARCHAR},#{EmpName,jdbcType=VARCHAR},
     #{EmpPassword,jdbcType=VARCHAR},#{DeptId,jdbcType=INTEGER},
-    #{EmpBirth,jdbcType=VARCHAR},#{EmpStatus1,jdbcType=INTEGER},
+    null,#{EmpStatus1,jdbcType=INTEGER},
     #{EmpStatus2,jdbcType=INTEGER},'增加人员',
-    getdate(),null,0,0
+    getdate(),null,0,0,0
     end
   </insert>
 
@@ -118,9 +118,7 @@
       <if test="EmpName != null" >
         EmpName = #{EmpName,jdbcType=VARCHAR},
       </if>
-      <if test="EmpBirth != null" >
-        EmpBirth = #{EmpBirth,jdbcType=VARCHAR},
-      </if>
+
       <if test="EmpPassword != null" >
         EmpPassword = #{EmpPassword,jdbcType=VARCHAR},
       </if>
