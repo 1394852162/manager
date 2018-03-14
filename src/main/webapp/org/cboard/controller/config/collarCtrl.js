@@ -143,9 +143,11 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
 
             } else if( parseInt(response.data[0].standbyticket) <= 0 ){
                 if ( parseInt(response.data[0].standbyticket) === 0 ){
-                    ModalUtils.alert( parseInt($scope.collarNum), "modal-danger", "md");
+                    // ModalUtils.alert( parseInt($scope.collarNum), "modal-danger", "md");
+                    ModalUtils.alert( "以领完！", "modal-danger", "md");
                 } else {
-                    ModalUtils.alert( parseInt($scope.collarNum) + parseInt(response.data[0].standbyticket)*-1, "modal-danger", "md");
+                    // ModalUtils.alert( parseInt($scope.collarNum) + parseInt(response.data[0].standbyticket)*-1, "modal-danger", "md");
+                    ModalUtils.alert( "以领完！", "modal-danger", "md");
                 }
             }
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
