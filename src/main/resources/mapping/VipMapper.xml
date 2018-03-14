@@ -31,6 +31,7 @@
       WHERE v.Status = 1
             AND v.VipEmpID = e.EmpId
             AND v.EmpId = f.EmpId
+            and e.EmpId>1
     ) as VTab , Tbb_VipTicket v
     where v.VipAddId=VTab .VipAddId
   </select>
@@ -49,6 +50,7 @@
       WHERE v.Status = 1
             AND v.VipEmpID = e.EmpId
             AND v.EmpId = f.EmpId
+            and e.EmpId>1
             <if test="EmpName != null" >
               AND e.EmpName LIKE '%' + rtrim(ltrim(#{EmpName,jdbcType=VARCHAR})) + '%' OR
               rtrim(ltrim(#{EmpName,jdbcType=VARCHAR})) = ''
