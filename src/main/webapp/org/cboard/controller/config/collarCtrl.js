@@ -130,8 +130,16 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
                         })
                     }).success(function () {
                         ModalUtils.alert(translate("领取成功" + "!"), "modal-success", "md");
-                        // getUserList();
-                        // todo
+                        $scope.collarCode = (function(){
+                            return Date.now().toString();
+                        })();
+                        // $scope.collarBatchName.batId = null;
+                        // $scope.collarEmpName.empId = null;
+                        // $scope.collarDepName = null;
+                        $scope.collarNum = null;
+                        $scope.collarNote = null;
+                        // $scope.collarStatus = null;
+
                     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                         ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
                     });
@@ -168,10 +176,6 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
         var output = [],
             keys = [];
         angular.forEach(collection, function (item) {
-            // console.log(collection);
-
-            // console.log(collection);
-            // console.log(item);
             if(item.deptName != null){
                 var key = item[keyname];
                 if ( (keys.indexOf(key) === -1) ) {
@@ -179,7 +183,6 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
                     output.push(item);
                 }
             }
-
         });
         return output;
     };
