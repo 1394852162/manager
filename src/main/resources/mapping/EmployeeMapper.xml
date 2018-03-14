@@ -34,7 +34,7 @@
     ) x,
     (
     select BatId, EmpId, isnull(sum(CollNum),0)  as Qty
-    from Tbb_Collar
+    from Tbb_Collar WHERE Tbb_Collar.Status !=-1
     group by EmpId, BatId
     ) y
     where x.BatId *= y.BatId

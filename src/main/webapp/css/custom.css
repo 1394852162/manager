@@ -1,0 +1,189 @@
+.modal-fit .modal-dialog {
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 50px;
+}
+.modal-fit .modal-body {
+    height: calc(100vh - 200px);
+    overflow: auto;
+}
+@media (min-width: 768px) {
+    .modal-fit .modal-dialog {
+        width: auto;
+    }
+}
+/* ================ TABLE ================ */
+table,table tr th, table tr td {
+    border:1px solid #F8FAFB;
+}
+table {
+    border: none;
+}
+table {
+    width: 100%;
+    margin: 0 auto;
+    clear: both;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+table thead {
+    background-color: #EBEFF2;
+    border: 1px solid #efefef;
+}
+table tbody tr {
+    background-color: white;
+    border: 1px solid #e2dfdf;
+}
+table tbody tr td {
+    border: none;
+    background-color: white;
+    padding: 0px;
+    line-height: 22px;
+}
+td, th {
+    border-left: 1px solid #d5d5d5;
+    border-top: 1px solid #d5d5d5;
+    text-align: center;
+    white-space: nowrap;
+    font-weight: normal;
+    font-size: 10px;
+    padding: 0px 0px 0px 0px;
+}
+.table.table-bordered > tr >td {
+    height: 22px;
+    max-height: 22px;
+}
+/* ================ 淘汰/启用样式控制 ================ */
+.trueClass{
+    opacity:0.1;
+}
+.falseClass{
+}
+
+/* ================ tpfPagination ================ */
+.page-list .pagination {float:left;}
+.page-list .pagination span {cursor: pointer;}
+.page-list .pagination .separate span{cursor: default; border-top:none;border-bottom:none;}
+.page-list .pagination .separate span:hover {background: none;}
+.page-list .page-total {float:left; margin: 25px 20px;}
+.page-list .page-total input, .page-list .page-total select{height: 26px; border: 1px solid #ddd;}
+.page-list .page-total input {width: 40px; padding-left:3px;}
+.page-list .page-total select {width: 50px;}
+
+
+/* ================ ztree ================ */
+/*.ztree li span.button.switch.level0 {
+    visibility:hidden;
+    width:1px;
+}
+.ztree li ul.level0 {
+    padding:0;
+    background:none;
+}*/
+/*.addTree {
+    background-color: #fff;
+    border-color: #fff;
+    border: none;
+    opacity:0.0;
+}*/
+.addTree {
+    background-color: #fff;
+    border-color: #fff;
+    border: none;
+    opacity: 1;
+}
+.addTree:hover {
+    background-color: #fff;
+    border-color: #fff;
+    border: none;
+    opacity:1;
+}
+
+/* ================ BOOSTRAP的span样式 ================ */
+.input-group .input-group-addon {
+    border-radius: 0;
+    border-color: #d2d6de;
+    background-color: #EDEDED;
+}
+
+/* ================ BOOSTRAP的日期样式 ================ */
+.dropdown-menu {
+    box-shadow: none;
+    border-color: #eee;
+    width: 300px;
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: white;
+    opacity: 1;
+}
+
+
+.chose-hide {
+    position: absolute!important;
+    top: -999em !important;
+}
+.chose-container {
+    border: none!important;
+    float: left;
+    margin-right: 40px;
+    padding: 0!important;
+    position: relative;
+}
+.chose-container .chose-single {
+    padding: 6px 12px;
+    color: #333;
+    width: 100%;
+    border: 1px solid #eee;
+    display: inline-block;
+    height: 30px;
+}
+.chose-container .chose-single::after {
+    content: '';
+    position: absolute;
+    border-width: 6px 3px;
+    border-style: solid;
+    /* border-top-color: transparent; */
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    right: 8px;
+    top: 12px;
+}
+.chose-container .chose-single i {
+    width: 12px;
+    float: right;
+    right: 8px;
+    font-size: 12px;
+    height: 12px;
+    background-color: #eee;
+}
+.chose-container .chose-drop {
+    width: 195px;
+    position: absolute;
+    border: 1px solid #eee;
+    z-index: 1000;
+    background-color: #fff;
+}
+.chose-container .chose-search input[type='text'] {
+    margin: 0;
+    padding-left: 12px;
+    width: 100%;
+    height: 30px;
+    border: 1px solid #ccc;
+    float: none;
+}
+.chose-container .chose-result {
+    max-height: 370px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.chose-container .chose-result li {
+    padding: 5px 12px;
+    list-style-type: none;
+}
+.chose-container .chose-result li:hover {
+    background-color: #e1e2e7;
+}
