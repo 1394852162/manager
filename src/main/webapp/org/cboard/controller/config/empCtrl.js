@@ -36,7 +36,7 @@ cBoard.controller('empCtrl', function ($rootScope, $scope, $http, dataService, $
         // $scope.data = item;
         $scope.data = item.data;
         $scope.pages = Math.ceil($scope.data.length / $scope.pageSize); //分页数
-        $scope.newPages = $scope.pages > 10 ? 10 : $scope.pages;
+        $scope.newPages = $scope.pages > 5 ? 5 : $scope.pages;
         $scope.pageList = [];
         $scope.selPage = 1;
         //设置表格数据源(分页)
