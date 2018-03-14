@@ -138,16 +138,16 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
                 } else {
                     // ModalUtils.alert( parseInt($scope.collarNum) - parseInt(response.data[0].standbyticket), "modal-danger", "md");
                     var t = parseInt(response.data[0].standbyticket)
-                    ModalUtils.alert( "余票不足, 最多还可领取" + t + "张劵", "modal-danger", "md");
+                    ModalUtils.alert( "领取失败！ 您当前批次最多还可领取" + t + "张劵.", "modal-danger", "md");
                 }
 
             } else if( parseInt(response.data[0].standbyticket) <= 0 ){
                 if ( parseInt(response.data[0].standbyticket) === 0 ){
                     // ModalUtils.alert( parseInt($scope.collarNum), "modal-danger", "md");
-                    ModalUtils.alert( "以领完！", "modal-danger", "md");
+                    ModalUtils.alert( "领取失败！您已经领取完当前批次的所有票卷.", "modal-danger", "md");
                 } else {
                     // ModalUtils.alert( parseInt($scope.collarNum) + parseInt(response.data[0].standbyticket)*-1, "modal-danger", "md");
-                    ModalUtils.alert( "以领完！", "modal-danger", "md");
+                    ModalUtils.alert( "领取失败！您已经领取完当前批次的所有票卷.", "modal-danger", "md");
                 }
             }
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
