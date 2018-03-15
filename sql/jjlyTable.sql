@@ -13,7 +13,10 @@ CREATE TABLE Tbb_Employee (
   UpdateTime  DATE,
   EmpStatus3 int,                /*是否赋予VIP劵开票权限 1.是 0.否 新加字段*/
   EmpStatus4 int,                /*是否赋予职工劵开票权限 1.是 0.否 新加字段*/
-  EmpStatus5 int                /*是否赋予批次权限 1.是 0.否 新加字段*/
+  EmpStatus5 int,                /*是否赋予批次权限 1.是 0.否 新加字段*/
+  EmpStatus6 int,                /*是否赋予人员维护权限 1.是 0.否 新加字段*/
+  EmpStatus7 int,                /*是否赋予部门维护权限 1.是 0.否 新加字段*/
+  EmpStatus8 int                /*是否赋予核销查询权限 1.是 0.否 新加字段*/
 )
 
 /*部门表*/
