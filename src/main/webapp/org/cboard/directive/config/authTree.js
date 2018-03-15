@@ -220,6 +220,9 @@ cBoard.directive('auth', ['$http', '$interval', '$filter', '$log', function ($ht
                             "empStatus3": obj.EmpStatus3,
                             "empStatus4": obj.EmpStatus4,
                             "empStatus5": obj.EmpStatus5,
+                            "empStatus6": obj.EmpStatus6,
+                            "empStatus7": obj.EmpStatus7,
+                            "empStatus8": obj.EmpStatus7,
                             "level": obj.Lev,
                             "open": false
                         });
