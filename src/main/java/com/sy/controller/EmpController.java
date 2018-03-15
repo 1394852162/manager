@@ -69,7 +69,7 @@ public class EmpController {
     @RequestMapping("/login.do")
     @ResponseBody
     public HashMap<String,Object> UserLogin(@RequestParam("name") String username, @RequestParam("password") String password,HttpSession session) {
-
+System.out.println("登录时的emp:"+emp);
         emp.setEmpName(username);
         emp.setEmpPassword(password);
         boolean EmpExit = iEmpService.EmployeeLogin(emp);
@@ -80,12 +80,14 @@ public class EmpController {
         System.out.println("存入到对象的数据"+emp);
         result.put("IfExit",EmpExit+"");
         result.put("emp",emp);
+        System.out.println("存放session前的emp:"+emp);
         session.setAttribute("User", emp);
         return result;
     }
 
     @RequestMapping("/layout.do")
-    public String layout(HttpServletRequest request, HttpServletResponse response){
+    public String layout(HttpServletRequest request, HttpServletResponse response,HttpSession session){
+        session.removeAttribute("User");
         return "redirect:/login.html";
     }
 
@@ -95,14 +97,15 @@ public class EmpController {
      */
     @RequestMapping("/getSessionUsername.do")
     @ResponseBody
-    public Map<String, Object> getSessionUsername(){
+    public Map<String, Object> getSessionUsername(HttpSession session){
         Map<String, Object> result = new HashMap<String, Object>();
-        if(emp == null){
+        Employee emp1 = (Employee)session.getAttribute("User");
+        if(emp1 == null){
             result.put("code",0);
         }else{
-            result.put("code", emp);
+            result.put("code", emp1);
         }
-        System.out.println(emp);
+        System.out.println(emp1);
         return result;
     }
 
@@ -122,9 +125,11 @@ public class EmpController {
      */
     @RequestMapping("/updatepwd.do")
     @ResponseBody
-    public HashMap<String,Object> updatepwd(@RequestParam("password") String password){
-        emp.setEmpPassword(password);
-        int result = iEmpService.updatepwd(emp);
+    public HashMap<String,Object> updatepwd(@RequestParam("password") String password,HttpSession session){
+        Employee emp1 = (Employee)session.getAttribute("User");
+
+        emp1.setEmpPassword(password);
+        int result = iEmpService.updatepwd(emp1);
         HashMap<String,Object> map  = new HashMap<String,Object>();
         map.put("code",result);
         return map;
@@ -157,7 +162,9 @@ public class EmpController {
 
     @RequestMapping("/getNameQueryList.do")
     @ResponseBody
-    public Map<String,Object> getNameQueryList(@RequestParam("EmpName") String EmpName) {
+    public Map<String,Object> getNameQueryList(@RequestParam("EmpName") String EmpName,HttpSession session) {
+        Employee emp1 = (Employee)session.getAttribute("User");
+        System.out.println("session中取出的emp1="+emp1);
         Map<String,Object> resultmap = new HashMap<String,Object>();
         List<Employee> list =iEmpService.getNameQueryList(EmpName);
         if(list != null & list.size()>0){
@@ -274,12 +281,13 @@ public class EmpController {
      */
     @RequestMapping("/insertVipTicket.do")
     @ResponseBody
-    public Map<String,Object> insertVipTicket(@RequestBody HashMap<String,Object> param) throws ParseException {
+    public Map<String,Object> insertVipTicket(@RequestBody HashMap<String,Object> param,HttpSession session) throws ParseException {
 
 
         Map<String,Object> resultmap = new HashMap<String,Object>();
 /*用时改为param.put("EmpId",emp.getEmpId());*/
-        param.put("EmpId",1);
+        Employee emp1 = (Employee)session.getAttribute("User");
+        param.put("EmpId",emp1.getEmpId());
 
         int result =this.iVipService.insertVipTicket(param);
         if(result==1){
