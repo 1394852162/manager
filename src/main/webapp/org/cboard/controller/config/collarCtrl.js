@@ -89,7 +89,8 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
         collarCodeStr = originalArray.toString();
         collarCodeStr = collarCodeStr.replace(",","1").substr(0, 6).replace(",","1");
         return collarCodeStr;*/
-        return Date.now().toString();
+        return Date.now().toString().substr(Date.now().toString().length-7)
+        //return Date.now().toString();
     })();
 
     /**
@@ -131,7 +132,8 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
                     }).success(function () {
                         ModalUtils.alert(translate("领取成功" + "!"), "modal-success", "md");
                         $scope.collarCode = (function(){
-                            return Date.now().toString();
+                            // return Date.now().toString();
+                            return Date.now().toString().substr(Date.now().toString().length-7)
                         })();
                         // $scope.collarBatchName.batId = null;
                         // $scope.collarEmpName.empId = null;
