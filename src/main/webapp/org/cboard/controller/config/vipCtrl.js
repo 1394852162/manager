@@ -207,13 +207,17 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
                 $scope.save = function () {
                     $http({
                         method: 'POST',
+                        headers : {
+                            'Content-Type' : 'application/json;charset=UTF-8',
+                            'Accept': 'application/json'
+                        },
                         url: './employee/insertVipTicket.do',
-                        data:{
-                            VipEmpID: $scope.addVipName,
-                            VipAddNum: $scope.addVipTicket,
+                        data: JSON.stringify({
+                            VipEmpID: parseInt($scope.addVipName),
+                            VipAddNum: parseInt($scope.addVipTicket),
                             VipAddTime: $scope.addVipDate,
                             VipAddNote: $scope.addVipNote
-                        }
+                        })
                     }).success(function (response) {
                         getVipList();
                     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
