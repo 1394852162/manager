@@ -21,27 +21,8 @@ public class Employee {
     private int EmpStatus3;
     private int EmpStatus4;
     private int EmpStatus5;
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "EmpId=" + EmpId +
-                ", EmpNo='" + EmpNo + '\'' +
-                ", EmpName='" + EmpName + '\'' +
-                ", EmpPassword='" + EmpPassword + '\'' +
-                ", DeptId=" + DeptId +
-                ", EmpBirth='" + EmpBirth + '\'' +
-                ", EmpStatus1=" + EmpStatus1 +
-                ", EmpStatus2=" + EmpStatus2 +
-                ", CreateTime=" + CreateTime +
-                ", UpdateTime=" + UpdateTime +
-                ", DeptName='" + DeptName + '\'' +
-                ", Standbyticket=" + Standbyticket +
-                ", EmpStatus3=" + EmpStatus3 +
-                ", EmpStatus4=" + EmpStatus4 +
-                ", EmpStatus5=" + EmpStatus5 +
-                '}';
-    }
+    private int EmpStatus6;
+    private int EmpStatus7;
 
     public int getEmpId() {
         return EmpId;
@@ -161,5 +142,44 @@ public class Employee {
 
     public void setEmpStatus5(int empStatus5) {
         EmpStatus5 = empStatus5;
+    }
+
+    public int getEmpStatus6() {
+        return EmpStatus6;
+    }
+
+    public void setEmpStatus6(int empStatus6) {
+        EmpStatus6 = empStatus6;
+    }
+
+    public int getEmpStatus7() {
+        return EmpStatus7;
+    }
+
+    public void setEmpStatus7(int empStatus7) {
+        EmpStatus7 = empStatus7;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "EmpId=" + EmpId +
+                ", EmpNo='" + EmpNo + '\'' +
+                ", EmpName='" + EmpName + '\'' +
+                ", EmpPassword='" + EmpPassword + '\'' +
+                ", DeptId=" + DeptId +
+                ", EmpBirth='" + EmpBirth + '\'' +
+                ", EmpStatus1=" + EmpStatus1 +
+                ", EmpStatus2=" + EmpStatus2 +
+                ", CreateTime=" + CreateTime +
+                ", UpdateTime=" + UpdateTime +
+                ", DeptName='" + DeptName + '\'' +
+                ", Standbyticket=" + Standbyticket +
+                ", EmpStatus3=" + EmpStatus3 +
+                ", EmpStatus4=" + EmpStatus4 +
+                ", EmpStatus5=" + EmpStatus5 +
+                ", EmpStatus6=" + EmpStatus6 +
+                ", EmpStatus7=" + EmpStatus7 +
+                '}';
     }
 }
