@@ -9,6 +9,7 @@ cBoard.directive('auth', ['$http', '$interval', '$filter', '$log', function ($ht
         link: function ($scope, element, attrs, ngModel) {
             var setting = {
                 view: {
+                    showTitle: false,
                     dblClickExpand: dblClickExpand,
                     addDiyDom: addDiyDom,
                     addHoverDom: addHoverDom,
@@ -109,12 +110,14 @@ cBoard.directive('auth', ['$http', '$interval', '$filter', '$log', function ($ht
                 var editStr = "<span class='addTree button edit' id='editBtn_" + treeNode.id + "' title='设置权限' onfocus='this.blur();'></span>";*/
 
                 var editStr = "<span id='diyBtn_space_auth_" +treeNode.id+ "' > </span>"
-                    + "<button type='button' class='diyBtn1 btn btn-primary btn-xs' id='emp1Btn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>员工</button>"
-                    + "<button type='button' class='diyBtn1 btn btn-primary btn-xs' id='deptBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>部门</button>"
-                    + "<button type='button' class='diyBtn1 btn btn-primary btn-xs' id='searchTicketBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>核销查询</button>"
-                    + "<button type='button' class='diyBtn1 btn btn-primary btn-xs' id='batchBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>批次</button>"
-                    + "<button type='button' class='diyBtn1 btn btn-success btn-xs' id='empBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>职工劵</button>"
-                    + "<button type='button' class='diyBtn1 btn btn-info btn-xs' id='vipBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>VIP劵</button>";
+                    + "<div class='btn-group btn-group-xs'>"
+                        + "<button type='button' class='diyBtn1 btn btn-primary' id='emp1Btn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>员工</button>"
+                        + "<button type='button' class='diyBtn1 btn btn-primary' id='deptBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>部门</button>"
+                        + "<button type='button' class='diyBtn1 btn btn-primary' id='searchTicketBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>核销查询</button>"
+                        + "<button type='button' class='diyBtn1 btn btn-primary' id='batchBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>批次</button>"
+                        + "<button type='button' class='diyBtn1 btn btn-primary' id='empBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>职工劵</button>"
+                        + "<button type='button' class='diyBtn1 btn btn-primary' id='vipBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>VIP劵</button>"
+                    + "</div>";
 
                 var pageStr = "<span class='button lastPage' id='lastBtn_" + treeNode.id
                     + "' title='last page' onfocus='this.blur();'></span><span class='button nextPage' id='nextBtn_" + treeNode.id
