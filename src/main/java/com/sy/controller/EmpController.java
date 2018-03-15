@@ -39,7 +39,7 @@ public class EmpController {
     Employee emp = new Employee();
 
     /**
-     * ²éÑ¯ÈËÔ±Ê£ÓàµÄÆ±Êı
+     * æŸ¥è¯¢äººå‘˜å‰©ä½™çš„ç¥¨æ•°
      * @param BatId
      * @return
      */
@@ -54,13 +54,13 @@ public class EmpController {
             resultmap.put("code", 1);
         }else{
             resultmap.put("code", 0);
-            resultmap.put("data", "Î´²éµ½!");
+            resultmap.put("data", "æœªæŸ¥åˆ°!");
         }
         return resultmap;
     }
 
     /**
-     * ÓÃ»§µÇÂ¼
+     * ç”¨æˆ·ç™»å½•
      * @param username
      * @param password
      * @param session
@@ -77,7 +77,7 @@ public class EmpController {
             emp = iEmpService.getQueryEmpInfo(emp);
         }
         HashMap<String,Object> result = new HashMap<String,Object>();
-        System.out.println("´æÈëµ½¶ÔÏóµÄÊı¾İ"+emp);
+        System.out.println("å­˜å…¥åˆ°å¯¹è±¡çš„æ•°æ®"+emp);
         result.put("IfExit",EmpExit+"");
         result.put("emp",emp);
         session.setAttribute("User", emp);
@@ -90,7 +90,7 @@ public class EmpController {
     }
 
     /**
-     * ½«ÓÃ»§µÄĞÅÏ¢·ÅÈëµ½employee
+     * å°†ç”¨æˆ·çš„ä¿¡æ¯æ”¾å…¥åˆ°employee
      * @return
      */
     @RequestMapping("/getSessionUsername.do")
@@ -116,7 +116,7 @@ public class EmpController {
     }
 
     /**
-     * ĞŞ¸ÄÃÜÂë
+     * ä¿®æ”¹å¯†ç 
      * @param password
      * @return
      */
@@ -131,7 +131,7 @@ public class EmpController {
     }
 
     /**
-     * ²éÑ¯ÓÃ»§ÁĞ±í
+     * æŸ¥è¯¢ç”¨æˆ·åˆ—è¡¨
      * @return
      */
     @RequestMapping("/getEmpList.do")
@@ -144,13 +144,13 @@ public class EmpController {
             resultmap.put("code", 1);
         }else{
             resultmap.put("code", 0);
-            resultmap.put("data", "ÎŞÊı¾İ!");
+            resultmap.put("data", "æ— æ•°æ®!");
         }
         return resultmap;
     }
 
     /**
-     * ¸ù¾İÓÃ»§Ãû²éÑ¯ÓÃ»§
+     * æ ¹æ®ç”¨æˆ·åæŸ¥è¯¢ç”¨æˆ·
      * @param EmpName
      * @return
      */
@@ -165,13 +165,13 @@ public class EmpController {
             resultmap.put("code", 1);
         }else{
             resultmap.put("code",0);
-            resultmap.put("data","ÎŞÊı¾İ");
+            resultmap.put("data","æ— æ•°æ®");
         }
         return resultmap;
     }
 
     /**
-     * Ìí¼ÓÓÃ»§ ²ÎÊı´ı¶¨
+     * æ·»åŠ ç”¨æˆ· å‚æ•°å¾…å®š
      * @return
      */
     @RequestMapping("/insertEmp.do")
@@ -182,11 +182,11 @@ public class EmpController {
                          @RequestParam("EmpNo") String EmpNo) {
         Map<String,Object> resultmap = new HashMap<String,Object>();
         if(EmpName==""||EmpPassword==""||EmpNo==""){
-            resultmap.put("data", "Ìí¼ÓÓÃ»§Ê§°Ü!ÓÃ»§ĞÅÏ¢²»ÍêÕû,Çë×ĞÏ¸ºË¶Ô");
+            resultmap.put("data", "æ·»åŠ ç”¨æˆ·å¤±è´¥!ç”¨æˆ·ä¿¡æ¯ä¸å®Œæ•´,è¯·ä»”ç»†æ ¸å¯¹");
             resultmap.put("code", 0);
             return resultmap;
         }else if(DeptId==-1||EmpStatus1==-1||EmpStatus2==-1){
-            resultmap.put("data", "Ìí¼ÓÓÃ»§Ê§°Ü!ÓÃ»§ĞÅÏ¢²»ÍêÕû,Çë×ĞÏ¸ºË¶Ô");
+            resultmap.put("data", "æ·»åŠ ç”¨æˆ·å¤±è´¥!ç”¨æˆ·ä¿¡æ¯ä¸å®Œæ•´,è¯·ä»”ç»†æ ¸å¯¹");
             resultmap.put("code", 0);
             return resultmap;
         }
@@ -200,17 +200,17 @@ public class EmpController {
         int result = iEmpService.insertEmp(map);
 
         if(result==1){
-            resultmap.put("data", "Ìí¼ÓÓÃ»§³É¹¦!");
+            resultmap.put("data", "æ·»åŠ ç”¨æˆ·æˆåŠŸ!");
             resultmap.put("code", 1);
         }else{
-            resultmap.put("data", "Ìí¼ÓÓÃ»§Ê§°Ü!");
+            resultmap.put("data", "æ·»åŠ ç”¨æˆ·å¤±è´¥!");
             resultmap.put("code", 0);
         }
         return resultmap;
     }
 
     /**
-     * ÓÃ»§ĞŞ¸Ä
+     * ç”¨æˆ·ä¿®æ”¹
      * @return
      */
     @RequestMapping("/updateEmp.do")
@@ -231,17 +231,17 @@ public class EmpController {
         map.put("EmpStatus2",EmpStatus2);
         int result  = iEmpService.updateByPrimaryKey(map);
         if(result==1){
-            resultmap.put("data", "ĞŞ¸ÄÓÃ»§³É¹¦!");
+            resultmap.put("data", "ä¿®æ”¹ç”¨æˆ·æˆåŠŸ!");
             resultmap.put("code", 1);
         }else{
-            resultmap.put("data", "ĞŞ¸ÄÓÃ»§Ê§°Ü!");
+            resultmap.put("data", "ä¿®æ”¹ç”¨æˆ·å¤±è´¥!");
             resultmap.put("code", 0);
         }
         return resultmap;
     }
 
     /**
-     * ¸ù¾İEmpIdÉ¾³ıÓÃ»§
+     * æ ¹æ®EmpIdåˆ é™¤ç”¨æˆ·
      * @param EmpId
      * @return
      */
@@ -251,16 +251,16 @@ public class EmpController {
         Map<String,Object> resultmap = new HashMap<String,Object>();
         if(EmpId==emp.getEmpId()){
             resultmap.put("code", 0);
-            resultmap.put("data", "Çë²»ÒªÉ¾³ı×Ô¼º!");
+            resultmap.put("data", "è¯·ä¸è¦åˆ é™¤è‡ªå·±!");
             return resultmap;
         }
         int result = iEmpService.deleteEmp(EmpId);
         if(result==1){
-            resultmap.put("data", "É¾³ı³É¹¦!");
+            resultmap.put("data", "åˆ é™¤æˆåŠŸ!");
             resultmap.put("code", 1);
         }else{
             resultmap.put("code", 0);
-            resultmap.put("data", "É¾³ıÊ§°Ü!");
+            resultmap.put("data", "åˆ é™¤å¤±è´¥!");
         }
         return resultmap;
     }
@@ -268,7 +268,7 @@ public class EmpController {
 
 
     /**
-     * Ìí¼ÓÒ»Ìõ¼ÇÂ¼
+     * æ·»åŠ ä¸€æ¡è®°å½•
      * @return
      * @throws ParseException
      */
@@ -278,22 +278,22 @@ public class EmpController {
 
 
         Map<String,Object> resultmap = new HashMap<String,Object>();
-/*ÓÃÊ±¸ÄÎªparam.put("EmpId",emp.getEmpId());*/
+/*ç”¨æ—¶æ”¹ä¸ºparam.put("EmpId",emp.getEmpId());*/
         param.put("EmpId",1);
 
         int result =this.iVipService.insertVipTicket(param);
         if(result==1){
-            resultmap.put("data", "Ìí¼Ó³É¹¦!");
+            resultmap.put("data", "æ·»åŠ æˆåŠŸ!");
             resultmap.put("code", 1);
         }else{
             resultmap.put("code", 0);
-            resultmap.put("data", "Ìí¼ÓÊ§°ÜÁË!");
+            resultmap.put("data", "æ·»åŠ å¤±è´¥äº†!");
         }
         return resultmap;
     }
 
     /**
-     * ²¿ÃÅ-Ö°¹¤Ê÷²éÑ¯
+     * éƒ¨é—¨-èŒå·¥æ ‘æŸ¥è¯¢
      * @return
      */
     @RequestMapping("/getDeptEmpTree.do")
@@ -308,13 +308,13 @@ public class EmpController {
             result.put("data",data);
         } else {
             result.put("code", 0);
-            result.put("msg", "ÎŞÊı¾İ£¡");
+            result.put("msg", "æ— æ•°æ®ï¼");
         }
         return result;
     }
 
     /**
-     * ¸úĞÂ²¿ÃÅ-Ö°¹¤µÄ×´Ì¬
+     * è·Ÿæ–°éƒ¨é—¨-èŒå·¥çš„çŠ¶æ€
      * @param param
      * @return
      */
@@ -326,10 +326,10 @@ public class EmpController {
         try {
             if ( rowCount > 0 ) {
                 result.put("code", 1);
-                result.put("msg", "²Ù×÷³É¹¦");
+                result.put("msg", "æ“ä½œæˆåŠŸ");
             } else {
                 result.put("code", 0);
-                result.put("msg", "²Ù×÷Ê§°Ü");
+                result.put("msg", "æ“ä½œå¤±è´¥");
             }
         } catch (Exception e) {
             result.put("code", -1);
@@ -340,7 +340,7 @@ public class EmpController {
 
 
     /**
-     * ²éÑ¯²¿ÃÅÏÂµÄÔ±¹¤
+     * æŸ¥è¯¢éƒ¨é—¨ä¸‹çš„å‘˜å·¥
      * @param DeptId
      * @return
      */
@@ -348,14 +348,14 @@ public class EmpController {
     @ResponseBody
     public Map<String,Object> QueryDeptEmp(@RequestParam("DeptId") int DeptId   ){
         Map<String,Object> resultmap = new HashMap<String,Object>();
-        System.out.println("¿ªÊ¼½øÈë");
+        System.out.println("å¼€å§‹è¿›å…¥");
         List<Employee> list = iEmpService.QueryDeptEmp(DeptId);
-        System.out.println("Êı¾İÎª"+list);
+        System.out.println("æ•°æ®ä¸º"+list);
         if(list != null & list.size()>0) {
             resultmap.put("data",list);
             resultmap.put("code",1);
         }else{
-            resultmap.put("data","²é²»µ½¸Ã²¿ÃÅÏÂµÄÈËÔ±");
+            resultmap.put("data","æŸ¥ä¸åˆ°è¯¥éƒ¨é—¨ä¸‹çš„äººå‘˜");
             resultmap.put("code",0);
         }
         return resultmap;
