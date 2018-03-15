@@ -109,6 +109,9 @@ cBoard.directive('auth', ['$http', '$interval', '$filter', '$log', function ($ht
                 var editStr = "<span class='addTree button edit' id='editBtn_" + treeNode.id + "' title='设置权限' onfocus='this.blur();'></span>";*/
 
                 var editStr = "<span id='diyBtn_space_auth_" +treeNode.id+ "' > </span>"
+                    + "<button type='button' class='diyBtn1 btn btn-primary btn-xs' id='emp1Btn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>emp1Btn_</button>"
+                    + "<button type='button' class='diyBtn1 btn btn-primary btn-xs' id='deptBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>deptBtn_</button>"
+                    + "<button type='button' class='diyBtn1 btn btn-primary btn-xs' id='searchTicketBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>searchTicketBtn_</button>"
                     + "<button type='button' class='diyBtn1 btn btn-primary btn-xs' id='batchBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>批次</button>"
                     + "<button type='button' class='diyBtn1 btn btn-success btn-xs' id='empBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>职工劵</button>"
                     + "<button type='button' class='diyBtn1 btn btn-info btn-xs' id='vipBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>VIP劵</button>";
@@ -156,6 +159,15 @@ cBoard.directive('auth', ['$http', '$interval', '$filter', '$log', function ($ht
                 }1
                 if(!(treeNode.empStatus5 === 1)){
                     $("#batchBtn_"+treeNode.id).remove();
+                }
+                if(!(treeNode.empStatus6 === 1)){
+                    $("#emp1Btn_"+treeNode.id).remove();
+                }
+                if(!(treeNode.empStatus7 === 1)){
+                    $("#deptBtn_"+treeNode.id).remove();
+                }
+                if(!(treeNode.empStatus8 === 1)){
+                    $("#searchTicketBtn_"+treeNode.id).remove();
                 }
 
 
