@@ -109,9 +109,9 @@ cBoard.directive('auth', ['$http', '$interval', '$filter', '$log', function ($ht
                 var editStr = "<span class='addTree button edit' id='editBtn_" + treeNode.id + "' title='设置权限' onfocus='this.blur();'></span>";*/
 
                 var editStr = "<span id='diyBtn_space_auth_" +treeNode.id+ "' > </span>"
-                    + "<button type='button' class='diyBtn1 btn btn-primary btn-xs' id='emp1Btn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>emp1Btn_</button>"
-                    + "<button type='button' class='diyBtn1 btn btn-primary btn-xs' id='deptBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>deptBtn_</button>"
-                    + "<button type='button' class='diyBtn1 btn btn-primary btn-xs' id='searchTicketBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>searchTicketBtn_</button>"
+                    + "<button type='button' class='diyBtn1 btn btn-primary btn-xs' id='emp1Btn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>员工</button>"
+                    + "<button type='button' class='diyBtn1 btn btn-primary btn-xs' id='deptBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>部门</button>"
+                    + "<button type='button' class='diyBtn1 btn btn-primary btn-xs' id='searchTicketBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>核销查询</button>"
                     + "<button type='button' class='diyBtn1 btn btn-primary btn-xs' id='batchBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>批次</button>"
                     + "<button type='button' class='diyBtn1 btn btn-success btn-xs' id='empBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>职工劵</button>"
                     + "<button type='button' class='diyBtn1 btn btn-info btn-xs' id='vipBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>VIP劵</button>";
@@ -222,7 +222,7 @@ cBoard.directive('auth', ['$http', '$interval', '$filter', '$log', function ($ht
                             "empStatus5": obj.EmpStatus5,
                             "empStatus6": obj.EmpStatus6,
                             "empStatus7": obj.EmpStatus7,
-                            "empStatus8": obj.EmpStatus7,
+                            "empStatus8": obj.EmpStatus8,
                             "level": obj.Lev,
                             "open": false
                         });

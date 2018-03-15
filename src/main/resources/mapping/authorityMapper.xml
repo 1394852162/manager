@@ -14,6 +14,9 @@
                     b.EmpStatus3,
                     b.EmpStatus4,
                     b.EmpStatus5,
+                    b.EmpStatus6,
+                    b.EmpStatus7,
+                    b.EmpStatus8,
                     2 AS Lev
                 FROM
                     Tbb_Dept a LEFT JOIN Tbb_Employee b ON a.DeptId = b.DeptId
@@ -27,6 +30,9 @@
                     -999 AS Status3,
                     -999 AS Status4,
                     -999 AS Status5,
+                    -999 AS Status6,
+                    -999 AS Status7,
+                    -999 AS Status8,
                     1 AS Lev
                 FROM
                     Tbb_Dept
@@ -46,6 +52,15 @@
             </if>
             <if test="EmpStatus5 != null ">
                 EmpStatus5=#{EmpStatus5},
+            </if>
+            <if test="EmpStatus6 != null ">
+                EmpStatus6=#{EmpStatus6},
+            </if>
+            <if test="EmpStatus7 != null ">
+                EmpStatus7=#{EmpStatus7},
+            </if>
+            <if test="EmpStatus8 != null ">
+                EmpStatus8=#{EmpStatus8},
             </if>
             UpdateTime = getdate()
         </set>

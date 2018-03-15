@@ -53,9 +53,12 @@ public class EmpControllerTest {
     @Test
     public void testUpdateDeptEmpTree() throws Exception{
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("EmpId", 2);
-        jsonObject.put("DeptId", 1);
+        jsonObject.put("EmpId", 446);
+        jsonObject.put("DeptId", 11);
         jsonObject.put("EmpStatus3", 0);
+        jsonObject.put("EmpStatus4", 0);
+        jsonObject.put("EmpStatus4", 0);
+        jsonObject.put("EmpStatus4", 0);
         jsonObject.put("EmpStatus4", 0);
 
         String requestjson = jsonObject.toString();
