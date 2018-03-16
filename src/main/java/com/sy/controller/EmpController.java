@@ -91,6 +91,14 @@ System.out.println("登录时的emp:"+emp);
         return "redirect:/login.html";
     }
 
+
+
+    @RequestMapping("/testLogin.do")
+    public String testLogin(HttpServletRequest request, HttpServletResponse response,HttpSession session){
+       // session.removeAttribute("User");
+        return "starter";
+    }
+
     /**
      * 将用户的信息放入到employee
      * @return
