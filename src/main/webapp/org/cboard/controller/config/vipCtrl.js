@@ -12,6 +12,15 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
 
     ///表格的头部
 
+    $scope.config1 = {
+        data: [{id:1,text:'bug'},{id:2,text:'duplicate'},{id:3,text:'invalid'},{id:4,text:'wontfix'}],
+        placeholder: '尚无数据'
+    };
+    $scope.config2 = [
+        {id: 6, text: '来自ng-repeat'},
+        {id: 7, text: '来自ng-repeat'},
+        {id: 8, text: '来自ng-repeat'}
+    ];
     $scope.headerInfos = [
         // {'name': 'VIP ID', 'col': 'id'},
         {'name': 'VIP员工', 'col': 'userName'},
@@ -317,4 +326,5 @@ cBoard.controller("vipCtrl",function ($rootScope, $scope, $http, dataService, $u
         });
         $event.stopPropagation();//阻止冒泡
     };
-})
+});
+// angular.bootstrap(document, ['cBoard']);

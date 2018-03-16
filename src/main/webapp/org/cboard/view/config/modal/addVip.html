@@ -1,3 +1,25 @@
+<!--
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-xs-6 col-xs-12 column">
+        <select class="form-control with-search " select-picker data-live-search="true"
+                title="Select Consumer"
+                ng-model="addVipName"
+                ng-options="obj.empId as obj.empName for obj in empList.data">
+        </select>
+    </div>
+</div>
+
+
+    <select class="form-control with-search " select-picker data-live-search="true"
+            title="Select Consumer"
+            ng-model="addVipName"
+            ng-options="obj.empId as obj.empName for obj in empList.data">
+    </select>
+-->
+
+
+
+
 <!-- usrMgrForm
    Created by 陶鹏飞 on 2018/2/7.
 -->
@@ -9,18 +31,37 @@
         <h4 class="modal-title">{{'CONFIG.MENU_VIP.ADD_VIP'|translate}}</h4>
     </div>
 
+
     <!-- 模态框body -->
-    <div class="modal-body">
+    <div class="modal-body" >
 
         <div class="row">
             <!-- VIP员工 -->
             <div class="col-lg-6 col-md-6 col-xs-6 col-xs-12 column">
                 <div class="input-group">
                     <span class="input-group-addon">{{'CONFIG.MENU_VIP.VIP_NAME'|translate}}</span>
-                    <select  class="form-control common-select" id="addVipName" name="addVipName" ng-model="addVipName">
+                    <!--<select class="form-control with-search " select-picker data-live-search="true"
+                            title="Select Consumer"
+                            ng-model="addVipName"
+                            ng-options="obj.empId as obj.empName for obj in empList.data">
+                    </select>-->
+
+                    <!--<select  class="form-control" id="addVipName" name="addVipName" ng-model="addVipName">
                         <option value="">{{'CONFIG.MENU_VIP.PLEASE_SELECT'|translate}}</option>
-                        <!-- 直接用模型值第一个会为空，所以这里填充第一个 -->
+                        &lt;!&ndash; 直接用模型值第一个会为空，所以这里填充第一个 &ndash;&gt;
                         <option ng-repeat="x in empList.data" value="{{x.empId}}">{{x.empName}}</option>
+                    </select>-->
+                    <!--<input select2 ng-model="a" select2-model="aS2" config="config1" class="form-control" type="text"/>-->
+                    <select select2 ng-model="addVipName" class="form-control"
+                            id="addVipName" name="addVipName" ng-model="addVipName"
+                            placeholder="{{'CONFIG.MENU_VIP.PLEASE_SELECT'|translate}}">
+                        <option value="">{{'CONFIG.MENU_VIP.PLEASE_SELECT'|translate}}</option>
+                        <option ng-repeat="x in empList.data" value="{{x.empId}}">{{x.empName}}</option>
+                        <!--<option value="1">数据1</option>
+                        <option value="2">数据2</option>
+                        <option value="3">数据3</option>
+                        <option value="4">数据4</option>
+                        <option value="{{ item.id }}" ng-repeat="item in config2">{{ item.text }}</option>-->
                     </select>
                     <!--<select ngc-select-search class="common-select"
                             ng-model="addVipName"
@@ -28,7 +69,6 @@
                             name="addVipName">
                         <option value="">请选择</option>
                     </select>-->
-
                 </div>
             </div>
             <!-- 票数 -->

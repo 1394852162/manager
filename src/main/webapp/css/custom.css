@@ -187,3 +187,120 @@ td, th {
 .chose-container .chose-result li:hover {
     background-color: #e1e2e7;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+.search_input_div1 {
+    BORDER-LEFT: #6a8aae 1px solid;
+    BORDER-TOP: #6a8aae 1px solid;
+    BORDER-BOTTOM: #6a8aae 1px solid;
+    BORDER-RIGHT: #6a8aae 1px solid;
+    PADDING-RIGHT: 0px;
+    PADDING-LEFT: 2px;
+    FLOAT: left;
+    PADDING-BOTTOM: 0px;
+    PADDING-TOP: 0px;
+    POSITION: relative;
+}
+.search_input_div2 {
+    background: url(dropbg.gif)  repeat-x;
+    RIGHT: 4px;
+    WIDTH: 16px;
+    CURSOR: default;
+    PADDING-TOP: 0px;
+    POSITION: absolute;
+    TOP: 3px;
+    HEIGHT: 20px
+
+}
+.search_input_div3 {
+    BORDER-LEFT: #6a8aae 1px solid;
+    BORDER-TOP: #6a8aae 1px solid;
+    BORDER-BOTTOM: #6a8aae 1px solid;
+    BORDER-RIGHT: #6a8aae 1px solid;
+    PADDING-RIGHT: 0px;
+    PADDING-LEFT: 2px;
+    FLOAT: left;
+    PADDING-BOTTOM: 2px;
+    height: 168px;
+    overflow:auto;
+    PADDING-TOP: 0px;
+    position: absolute;
+    left:10px;
+    top:10;
+    background:#ffffff;
+    z-index:999;
+
+}
+.search_input_div4 {
+    BORDER-LEFT: #6a8aae 1px solid;
+    BORDER-TOP: #6a8aae 1px solid;
+    BORDER-BOTTOM: #6a8aae 1px solid;
+    BORDER-RIGHT: #6a8aae 1px solid;
+    PADDING-RIGHT: 0px;
+    PADDING-LEFT: 0px;
+    FLOAT: left;
+    PADDING-BOTTOM: 0px;
+    height: 200px;
+    overflow:auto;
+    PADDING-TOP: 0px;
+    position: absolute;
+    left:10px;
+    top:10;
+    background:#ffffff;
+    z-index:900;
+
+}
+.search_input_div5 {
+    BORDER-LEFT: #6a8aae 1px solid;
+    BORDER-TOP: #6a8aae 1px solid;
+    BORDER-BOTTOM: #6a8aae 1px solid;
+    BORDER-RIGHT: #6a8aae 1px solid;
+    PADDING-RIGHT: 0px;
+    PADDING-LEFT: 0px;
+    FLOAT: left;
+    PADDING-BOTTOM: 0px;
+    height: 30px;
+    overflow:hidden;
+    PADDING-TOP: 0px;
+    position: absolute;
+    left:10px;
+    top:10;
+    background:#ffffff;
+    z-index:999;
+
+}
+.search_input_input {
+    BORDER-RIGHT: #fff 0px solid;
+    BORDER-TOP: #fff 0px solid;
+    BORDER-BOTTOM: #fff 0px solid;
+    BORDER-LEFT: #fff 0px solid;
+    HEIGHT: 20px;
+    FONT-SIZE: 13px;
+    PADDING-TOP: 4px;
+}
+
+.search_input_over {background-color: #66aadd; width:100%;cursor: default; }
+.search_input_out  { width:100%;cursor: default; }
+.search_input_td { width:100%;}
+.search_input_table {
+    border:0px solid #397ccb;
+    WIDTH:100%;  BACKGROUND-COLOR: #fffff;
+}
+*/
