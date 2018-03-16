@@ -30,7 +30,8 @@
     background: none;
     padding: 0;
     border-color: #cccccc;
-    border-radius: 4px;
+    /*border-radius: 4px;*/
+    border-radius: 0px;
     color: #555555;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     background-color: white;
