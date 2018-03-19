@@ -31,6 +31,7 @@
       "MENU_DEPT": "部门维护",
       "MENU_BATCH": "批次维护",
       "MENU_COLLAR": "职工劵领取",
+      "MENU_EMPTICKET": "职工票使用情况",
       "MENU_VERIFICATION": "职工劵领取核销查询",
       "MENU_VIP": "VIP劵补录",
       "MENU_AUTH": "开票权限设置",
