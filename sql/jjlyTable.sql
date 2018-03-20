@@ -38,7 +38,7 @@ CREATE TABLE Tbb_Batch (
   BatBeginTime DATE        NOT NULL,
   BatEndTime   DATE        NOT NULL,
   BatTicketNum INT         NOT NULL,
-  Status       INT         NOT NULL,/*1.在用 0.删除*/
+  Status       INT         NOT NULL,/*1.在用 -1.删除*/
   BatNote      VARCHAR(100),
   CreateTime   DATE,
   UpdateTime   DATE,
