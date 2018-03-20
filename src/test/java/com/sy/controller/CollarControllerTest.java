@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 
 import com.alibaba.fastjson.JSONObject;
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +21,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 @ContextConfiguration(locations = { "classpath:spring-mvc.xml",
         "classpath:spring-mybatis.xml"})
 public class CollarControllerTest {
+
+    public static final Logger LOGGER = Logger.getLogger(CollarControllerTest.class);
 
     @Resource
     private CollarController collarController;
@@ -120,5 +123,17 @@ public class CollarControllerTest {
         MvcResult mvcResult = resultActions.andReturn();
         String result = mvcResult.getResponse().getContentAsString();
         System.out.println("数据是:" + result);
+    }
+
+    /**
+     * 职工劵明细
+     * @throws Exception
+     */
+    @Test
+    public void testGetCollarTicketList() throws Exception{
+        ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.post("/collar/getCollarTicketList.do"));
+        MvcResult mvcResult = resultActions.andReturn();
+        String result = mvcResult.getResponse().getContentAsString();
+        LOGGER.info("=====客户端获得反馈数据:" + result);
     }
 }

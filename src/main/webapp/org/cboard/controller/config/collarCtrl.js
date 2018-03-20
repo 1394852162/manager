@@ -76,21 +76,8 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
     };
 
     $scope.collarCode = (function(){
-        /*var count = 3000;
-        var originalArray = new Array;//原数组
-        //给原数组originalArray赋值
-        for ( var i=0;i<count;i++ ){
-            originalArray[i] = i + 1;
-        }
-        originalArray.sort(function(){ return 0.5 - Math.random(); });
-        for (var i = 0;i < count;i++){
-            originalArray[i];
-        }
-        collarCodeStr = originalArray.toString();
-        collarCodeStr = collarCodeStr.replace(",","1").substr(0, 6).replace(",","1");
-        return collarCodeStr;*/
-        return Date.now().toString().substr(Date.now().toString().length-7)
-        //return Date.now().toString();
+        return Date.now().toString().substr(Date.now().toString().length-6)
+        // return Date.now().toString();
     })();
 
     /**
@@ -133,7 +120,7 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
                         ModalUtils.alert(translate("领取成功" + "!"), "modal-success", "md");
                         $scope.collarCode = (function(){
                             // return Date.now().toString();
-                            return Date.now().toString().substr(Date.now().toString().length-7)
+                            return Date.now().toString().substr(Date.now().toString().length-6)
                         })();
                         // $scope.collarBatchName.batId = null;
                         // $scope.collarEmpName.empId = null;

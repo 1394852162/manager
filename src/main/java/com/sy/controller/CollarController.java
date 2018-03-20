@@ -185,4 +185,23 @@ public class CollarController {
         return resultmap;
     }
 
+    /**
+     * 职工劵明细
+     * @return
+     */
+    @RequestMapping("/getCollarTicketList.do")
+    @ResponseBody
+    public Map<String, Object> getCollarTicketList(){
+        Map<String,Object> results = new HashMap<>();
+        List<Map<String,Object>> datas = iCollarService.getCollarTicketList();
+        if ( datas != null ){
+            results.put("code",1);
+            results.put("data",datas);
+        } else {
+            results.put("code", 0);
+            results.put("msg", "无数据！");
+        }
+        return results;
+    }
+
 }

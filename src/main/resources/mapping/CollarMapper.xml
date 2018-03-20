@@ -128,4 +128,24 @@
   where CollId = #{CollId,jdbcType=INTEGER}
   </delete>
 
+  <select id="getCollarTicketList" resultType="Map">
+    SELECT
+    d.DeptId,d.DeptName,
+    e.EmpId,e.EmpNo,e.EmpName,
+    c.CollId,c.CollNo,
+    b.BatId,b.BatName,b.BatBeginTime,
+    c.CollTime,
+    b.BatTicketNum,
+    c.CollNum,
+    c.Status,
+    c.CollNote
+    FROM Tbb_Collar c
+    JOIN Tbb_Batch b ON b.BatId = c.BatId
+    JOIN Tbb_Employee e ON e.EmpId = c.EmpId
+    JOIN Tbb_Dept d ON e.DeptId = d.DeptId
+    WHERE c.Status != -1 AND e.EmpStatus1 !=-1 AND b.Status = 1 AND e.EmpId = 2
+    ORDER BY e.EmpId
+  </select>
+
+
 </mapper>
