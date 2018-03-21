@@ -51,5 +51,5 @@ public interface ICollarDao {
      * 职工劵明细
      * @return
      */
-    List<Map<String, Object>> getCollarTicketList();
+    List<Map<String, Object>> getCollarTicketList(Map<String, Object> param);
 }

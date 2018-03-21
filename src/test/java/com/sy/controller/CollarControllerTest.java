@@ -131,9 +131,20 @@ public class CollarControllerTest {
      */
     @Test
     public void testGetCollarTicketList() throws Exception{
-        ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.post("/collar/getCollarTicketList.do"));
+        JSONObject jo = new JSONObject();
+        jo.put("DeptId", 11);
+        jo.put("EmpId", 446);
+        jo.put("BatId", 26);
+
+        String requestjson = jo.toString();
+        System.out.println(requestjson);
+        String responseString = mockMvc.perform(MockMvcRequestBuilders.post("/collar/getCollarTicketList.do").contentType(MediaType.APPLICATION_JSON).content(requestjson))
+                .andReturn().getResponse().getContentAsString();
+        System.out.println(responseString);
+
+        /*ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.post("/collar/getCollarTicketList.do"));
         MvcResult mvcResult = resultActions.andReturn();
         String result = mvcResult.getResponse().getContentAsString();
-        LOGGER.info("=====客户端获得反馈数据:" + result);
+        LOGGER.info("=====客户端获得反馈数据:" + result);*/
     }
 }

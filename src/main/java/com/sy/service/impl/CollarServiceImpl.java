@@ -46,7 +46,7 @@ public class CollarServiceImpl implements ICollarService {
     }
 
     @Override
-    public List<Map<String, Object>> getCollarTicketList() {
-        return this.iCollarDao.getCollarTicketList();
+    public List<Map<String, Object>> getCollarTicketList(Map<String, Object> param) {
+        return this.iCollarDao.getCollarTicketList(param);
     }
 }

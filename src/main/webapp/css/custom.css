@@ -63,6 +63,13 @@ td, th {
 .falseClass{
 }
 
+.redClass{
+    color: red;
+}
+.blackClass{
+    color: black;
+}
+
 /* ================ tpfPagination ================ */
 .page-list .pagination {float:left;}
 .page-list .pagination span {cursor: pointer;}

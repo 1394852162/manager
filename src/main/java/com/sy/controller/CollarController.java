@@ -191,9 +191,9 @@ public class CollarController {
      */
     @RequestMapping("/getCollarTicketList.do")
     @ResponseBody
-    public Map<String, Object> getCollarTicketList(){
+    public Map<String, Object> getCollarTicketList(@RequestBody Map<String,Object> param){
         Map<String,Object> results = new HashMap<>();
-        List<Map<String,Object>> datas = iCollarService.getCollarTicketList();
+        List<Map<String,Object>> datas = iCollarService.getCollarTicketList(param);
         if ( datas != null ){
             results.put("code",1);
             results.put("data",datas);
