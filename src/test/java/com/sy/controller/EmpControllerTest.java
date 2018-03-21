@@ -129,4 +129,41 @@ public class EmpControllerTest {
                 .andReturn().getResponse().getContentAsString();
         LOGGER.info(responseString);
     }
+
+
+    /**
+     * 查询部门测试
+     * @throws Exception
+     */
+    @Test
+    public void testselectDeptListBySession() throws Exception{
+        JSONObject jsonObject = new JSONObject();
+
+
+        String requestjson = jsonObject.toString();
+        LOGGER.info(requestjson);
+
+        String responseString = mockMvc.perform(MockMvcRequestBuilders.post("/employee/selectDeptListBySession.do").contentType(MediaType.APPLICATION_JSON).content(requestjson))
+                .andReturn().getResponse().getContentAsString();
+        LOGGER.info(responseString);
+    }
+
+
+
+    /**
+     * 查询人员测试
+     * @throws Exception
+     */
+    @Test
+    public void selectEmpListbyDeptId() throws Exception{
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("DeptId", 1);
+
+        String requestjson = jsonObject.toString();
+        LOGGER.info(requestjson);
+
+        String responseString = mockMvc.perform(MockMvcRequestBuilders.post("/employee/selectEmpListbyDeptId.do").contentType(MediaType.APPLICATION_JSON).content(requestjson))
+                .andReturn().getResponse().getContentAsString();
+        LOGGER.info(responseString);
+    }
 }
