@@ -379,7 +379,9 @@ System.out.println("登录时的emp:"+emp);
 
     @RequestMapping("/selectDeptListBySession.do")
     @ResponseBody
-    public Map<String,Object>  selectDeptListBySession(@RequestBody HashMap<String, Object> param,HttpSession session)  {
+    public Map<String,Object>  selectDeptListBySession(HttpSession session)  {
+        HashMap<String, Object> param = new HashMap<String, Object>();
+        System.out.println("进入方法");
         Employee emp1 = (Employee)session.getAttribute("User");
         if(param==null||param.isEmpty()){
             param.put("DeptId",emp1.getDeptId());
