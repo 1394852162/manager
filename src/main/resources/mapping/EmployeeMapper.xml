@@ -216,13 +216,13 @@
 
 
   <select id="selectDeptListBySession" resultMap="DeptResultMap">
-    SELECT DeptId,DeptName
-    FROM Tbb_Dept
+    SELECT Tbb_Dept.DeptId,Tbb_Dept.DeptName,Tbb_Employee.EmpId, Tbb_Employee.EmpName
+    FROM Tbb_Dept JOIN  Tbb_Employee ON Tbb_Dept.DeptId = Tbb_Employee.DeptId
     WHERE
     <if test="EmpId != 1" >
-      DeptId= #{DeptId,jdbcType=INTEGER}  and
+      Tbb_Dept.DeptId= #{DeptId,jdbcType=INTEGER}  and
     </if>
-    Status !=-1
+    Tbb_Dept.Status !=-1 and Tbb_Employee.EmpId !=1
   </select>
 
 

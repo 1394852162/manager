@@ -138,7 +138,7 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
     var getEmpList = function () {
         $http({
             method: 'get',
-            url: './employee/getEmpList.do'
+            url: './employee/selectDeptListBySession.do'
         }).success(function (response) {
             $scope.empList = response.data;
             $scope.deptEmpList = response.data;
@@ -147,6 +147,7 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
         });
     };
     getEmpList();
+
 
     $scope.collarEmpChange = function(){
         $scope.collarDepName = $scope.collarEmpName.deptId;
