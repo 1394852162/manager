@@ -86,4 +86,14 @@ public class EmployeeServiceImpl implements IEmployeeService{
     public Employee getQueryEmpInfo(Employee employee) {
         return this.iEmployeeDao.getQueryEmpInfo(employee);
     }
+
+    @Override
+    public List<Employee> selectDeptListBySession(HashMap<String, Object> map) {
+        return this.iEmployeeDao.selectDeptListBySession(map);
+    }
+
+    @Override
+    public List<Employee> selectEmpListbyDeptId(HashMap<String, Object> map) {
+        return this.iEmployeeDao.selectEmpListbyDeptId(map);
+    }
 }

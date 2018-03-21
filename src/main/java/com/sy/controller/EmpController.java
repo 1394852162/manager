@@ -369,5 +369,50 @@ System.out.println("登录时的emp:"+emp);
         return resultmap;
     }
 
+    @RequestMapping("/selectDeptListBySession.do")
+    @ResponseBody
+    public Map<String,Object>  selectDeptListBySession(@RequestBody HashMap<String, Object> param,HttpSession session)  {
+        Employee emp1 = (Employee)session.getAttribute("User");
+        if(param==null||param.isEmpty()){
+            param.put("DeptId",emp1.getDeptId());
+            param.put("EmpId",emp1.getEmpId());
+        }
+
+        Map<String,Object> resultmap = new HashMap<String,Object>();
+        // HashMap<String,Object> map = new HashMap<String,Object>();
+        List<Employee> list = this.iEmpService.selectDeptListBySession(param);
+        if(list != null & list.size()>0) {
+            resultmap.put("data",list);
+            resultmap.put("code",1);
+        }else{
+            resultmap.put("data","查询部门失败了");
+            resultmap.put("code",0);
+        }
+        return resultmap;
+    }
+
+
+    @RequestMapping("/selectEmpListbyDeptId.do")
+    @ResponseBody
+    public Map<String,Object>  selectEmpListbyDeptId(@RequestBody HashMap<String, Object> param,HttpSession session)  {
+        Map<String,Object> resultmap = new HashMap<String,Object>();
+        Employee emp1 = (Employee)session.getAttribute("User");
+        param.put("EmpId",emp1.getEmpId());
+        if(param==null||param.isEmpty()){
+            param.put("DeptId",emp1.getDeptId());
+        }
+
+        // HashMap<String,Object> map = new HashMap<String,Object>();
+        List<Employee> list = this.iEmpService.selectEmpListbyDeptId(param);
+        if(list != null & list.size()>0) {
+            resultmap.put("data",list);
+            resultmap.put("code",1);
+        }else{
+            resultmap.put("data","查询人员失败");
+            resultmap.put("code",0);
+        }
+        return resultmap;
+    }
+
 
 }

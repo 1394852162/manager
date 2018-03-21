@@ -29,6 +29,15 @@
     <result property="Standbyticket" column="Standbyticket" jdbcType="INTEGER" />
   </resultMap>
 
+
+  <resultMap id="DeptResultMap" type="com.sy.pojo.Employee" >
+    <result property="EmpId" column="EmpId" jdbcType="INTEGER" />
+    <result property="EmpNo" column="EmpNo" jdbcType="VARCHAR" />
+    <result property="EmpName" column="EmpName" jdbcType="VARCHAR" />
+    <result property="DeptId" column="Standbyticket" jdbcType="INTEGER" />
+    <result property="DeptName" column="Standbyticket" jdbcType="INTEGER" />
+  </resultMap>
+
   <select id="getBatEmpInfo" resultMap="ResultMap">
     select x.EmpId,x.EmpNo,x.EmpName,isnull((x.BatTicketNum-y.Qty),x.BatTicketNum)  as Standbyticket
     from
@@ -201,6 +210,31 @@
     SELECT *
     FROM Tbb_Employee
     WHERE DeptId= #{DeptId,jdbcType=INTEGER} AND Tbb_Employee.EmpId != 1 and EmpStatus1 !=-1
+  </select>
+
+
+
+
+  <select id="selectDeptListBySession" resultMap="DeptResultMap">
+    SELECT DeptId,DeptName
+    FROM Tbb_Dept
+    WHERE
+    <if test="EmpId != 1" >
+      DeptId= #{DeptId,jdbcType=INTEGER}  and
+    </if>
+    Status !=-1
+  </select>
+
+
+  <select id="selectEmpListbyDeptId" resultMap="DeptResultMap">
+    SELECT EmpId,EmpName
+    FROM Tbb_Employee
+    WHERE
+    <if test="EmpId != 1" >
+      DeptId= #{DeptId,jdbcType=INTEGER}  and
+    </if>
+    EmpStatus1 !=-1
+    and EmpId !=1
   </select>
 
 </mapper>

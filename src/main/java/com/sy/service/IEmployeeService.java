@@ -48,4 +48,19 @@ public interface IEmployeeService {
 
 
     public Employee getQueryEmpInfo(Employee employee);
+
+
+    /**
+     * 查询该人员所在的部门列表（admin权限查询所有）
+     * @param map
+     * @return
+     */
+    public List<Employee> selectDeptListBySession(HashMap<String,Object> map);
+
+    /**
+     * 查询该部门下的人员（admin权限查询所有）
+     * @param map
+     * @return
+     */
+    public List<Employee> selectEmpListbyDeptId(HashMap<String,Object> map);
 }
