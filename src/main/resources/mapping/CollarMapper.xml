@@ -128,4 +128,43 @@
   where CollId = #{CollId,jdbcType=INTEGER}
   </delete>
 
+  <select id="getCollarTicketList" resultType="Map">
+    SELECT
+      d.DeptId,d.DeptName,
+      e.EmpId,e.EmpNo,e.EmpName,
+      c.CollId,c.CollNo,
+      b.BatId,b.BatName,b.BatBeginTime,b.BatEndTime,
+      c.CollTime,
+      b.BatTicketNum,
+      c.CollNum,
+      t.Standbyticket,
+      c.Status,
+      c.CollNote
+    FROM Tbb_Collar c
+      JOIN Tbb_Batch b ON b.BatId = c.BatId
+      JOIN Tbb_Employee e ON e.EmpId = c.EmpId
+      JOIN Tbb_Dept d ON e.DeptId = d.DeptId
+      JOIN (
+             select x.EmpId,x.EmpNo,x.EmpName,isnull((x.BatTicketNum-y.Qty),x.BatTicketNum)  as Standbyticket
+             from
+               ( select a.BatId as BatId, b.EmpId, b.EmpNo, b.EmpName, a.BatTicketNum
+                 from Tbb_Batch a, Tbb_Employee b
+               ) x,
+               (
+                 select BatId, EmpId, isnull(sum(CollNum),0)  as Qty
+                 from Tbb_Collar WHERE Tbb_Collar.Status !=-1
+                 group by EmpId, BatId
+               ) y
+             where x.BatId *= y.BatId
+                   and x.EmpId *= y.EmpId
+                   and x.BatId = #{BatId,jdbcType=INTEGER}
+                   and x.EmpId = #{EmpId,jdbcType=INTEGER}
+           ) t ON t.EmpId = e.EmpId
+    WHERE c.Status != -1 AND e.EmpStatus1 !=-1 AND b.Status = 1
+          AND d.DeptId = #{DeptId,jdbcType=INTEGER}
+          AND e.EmpId = #{EmpId,jdbcType=INTEGER}
+          AND b.BatId = #{BatId,jdbcType=INTEGER}
+  </select>
+
+
 </mapper>

@@ -117,10 +117,10 @@ public class EmpControllerTest {
     @Test
     public void testinsertVipTicket() throws Exception{
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("VipEmpID", 2);
-        jsonObject.put("VipAddNum", 3);
-       // jsonObject.put("VipAddNote", "测试备注");
-        jsonObject.put("VipAddTime", "2018-03-14");
+        jsonObject.put("VipEmpID", 441);
+        jsonObject.put("VipAddNum", 441);
+        jsonObject.put("VipAddNote", "441");
+        jsonObject.put("VipAddTime", "2018-03-16");
 
         String requestjson = jsonObject.toString();
         LOGGER.info(requestjson);

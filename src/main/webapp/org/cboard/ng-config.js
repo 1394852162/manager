@@ -30,6 +30,11 @@ angular.module('cBoard').config(['$stateProvider', function ($stateProvider) {
             templateUrl: 'org/cboard/view/config/collar.html',
             controller: 'collarCtrl'
         })
+        .state('config.empticket', {
+            url: '/empticket',
+            templateUrl: 'org/cboard/view/config/empticket.html',
+            controller: 'empticketCtrl'
+        })
         .state('config.verification', {
             url: '/verification',
             templateUrl: 'org/cboard/view/config/verification.html',

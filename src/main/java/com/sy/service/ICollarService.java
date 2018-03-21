@@ -5,6 +5,7 @@ import com.sy.pojo.Collar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by haswell on 2018/2/8.
@@ -42,4 +43,10 @@ public interface ICollarService {
      * @return
      */
    public int deleteCollar(int CollId);
+
+    /**
+     * 职工劵明细
+     * @return
+     */
+    List<Map<String, Object>> getCollarTicketList(Map<String, Object> param);
 }

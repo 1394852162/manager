@@ -10,8 +10,6 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-                            <!-- 留空 -->
-                            <div class="form-group"></div>
                             <div class="row">
                                 <!-- 部门 -->
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -101,8 +99,6 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-                            <!-- 留空 -->
-                            <div class="form-group"></div>
                             <div class="row">
                                 <!-- 领用编码 -->
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -138,8 +134,6 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-                            <!-- 留空 -->
-                            <div class="form-group"></div>
                             <div class="row">
                                 <!-- 有效日期 -->
                                 <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -209,8 +203,6 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-                            <!-- 留空 -->
-                            <div class="form-group"></div>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <!-- 领用说明 -->
@@ -256,23 +248,107 @@
                         </div>
                     </div>
 
+                    <!--<div class="row">
+                        &lt;!&ndash;pull-right&ndash;&gt;
+                        &lt;!&ndash; col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3 &ndash;&gt;
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3">
+                            <button type="submit" name="submit" ng-click="saveCollar()"
+                                    class="btn btn-success btn-lg ">
+                                {{'CONFIG.MENU_COLLAR.OK'|translate}}
+                            </button>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3  ">
+                            <button type="submit" ng-click="canelCollar()" class="btn btn-danger btn-lg">
+                                {{'CONFIG.MENU_COLLAR.CANCEL'|translate}}
+                            </button>
+                        </div>
+                    </div>-->
+
                     <div class="box-footer">
                         <div class="form-group">
-                            <div class="row">
-                                <!--pull-right-->
-                                <!-- col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3 -->
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3">
-                                    <button type="submit" name="submit" ng-click="saveCollar()"
-                                            class="btn btn-success btn-lg ">
-                                        {{'COMMON.OK'|translate}}
-                                    </button>
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3  ">
-                                    <button type="submit" ng-click="canelCollar()" class="btn btn-danger btn-lg">
-                                        {{'COMMON.CANCEL'|translate}}
-                                    </button>
+                            <div class="row" style="margin-right: 0px;">
+                                <!-- 添加 -->
+                                <div class="pull-right" style="margin-top: 0px;">
+                                    <div class="btn-group btn-group-sm">
+                                        <button type="button" class="btn btn-success btn-md" ng-click="saveCollar()">{{'CONFIG.MENU_COLLAR.OK'|translate}}</button>
+                                        <button type="button" class="btn btn-success btn-md" ng-click="canelCollar()">{{'CONFIG.MENU_COLLAR.CANCEL'|translate}}</button>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="row" style="margin-top: 10px; margin-bottom: 0px">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 column">
+                                    <table id="listCollar" class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th ng-repeat="headerInfo in headerInfos track by $index " >{{ headerInfo.name }}</th>
+                                        </tr>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="listCollarTable">
+                                            <tr ng-repeat="row in items " ng-init="outerIndex = $index">
+                                                <td>{{ row.DeptName }}</td>
+                                                <td>{{ row.EmpNo }}</td>
+                                                <td>{{ row.EmpName }}</td>
+                                                <td>{{ row.CollNo }}</td>
+                                                <td>{{ row.BatName }}</td>
+                                                <td>{{ row.BatBeginTime }}</td>
+                                                <td>{{ row.BatEndTime }}</td>
+                                                <td>{{ row.CollTime }}</td>
+                                                <td>{{ row.BatTicketNum }}</td>
+                                                <td>{{ row.CollNum }}</td>
+                                                <td>{{ row.Standbyticket }}</td>
+                                                <td>{{ row.CollNote }}</td>
+                                                <td ng-class="{true:'blackClass',false:'redClass'}[row.Status]"
+                                                    ng-disabled="{{ row.Status == '0' ? 'true' : 'false' }}">
+                                                    {{ (row.Status == '1') ? "未出票" : "已出票" }}
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-info btn-xs"
+                                                            ng-class="{true:'trueClass',false:'falseClass'}[row.Status]"
+                                                            ng-disabled="{{ row.Status == '0' ? 'true' : 'false' }}"
+                                                            ng-click="editListCollar(row, $event)">
+                                                        <span class="glyphicon glyphicon-pencil"></span>{{'CONFIG.MENU_USER.MODIFY'|translate}}
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger btn-xs"
+                                                            ng-class="{true:'trueClass',false:'falseClass'}[row.Status]"
+                                                            ng-disabled="{{ row.Status == '0' ? 'true' : 'false' }}"
+                                                            ng-click="delListCollar(row, $event)">
+                                                        <span class="glyphicon glyphicon-remove-circle"></span>{{'CONFIG.MENU_PLACE.PLACE_DEL'|translate}}
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- pagination START-->
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  column">
+                                    <div class="pull-right">
+                                        <nav>
+                                            <ul class="pagination">
+                                                <li>
+                                                    <a ng-click="Previous()" role="button">
+                                                        <!--<span role="button" >上一页</span>-->
+                                                        <span role="button">&laquo;</span>
+                                                    </a>
+                                                </li>
+                                                <li ng-repeat="page in pageList" ng-class="{active: isActivePage(page)}" role="button">
+                                                    <a ng-click="selectPage(page)" >{{ page }}</a>
+                                                </li>
+                                                <li>
+                                                    <a ng-click="Next()" role="button">
+                                                        <!--<span role="button" >下一页</span>-->
+                                                        <span role="button" >&raquo;</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- pagination END-->
                         </div>
                     </div>
                 </div>

@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by haswell on 2018/2/8.
@@ -42,5 +43,10 @@ public class CollarServiceImpl implements ICollarService {
     @Override
     public int deleteCollar(int CollId) {
         return this.iCollarDao.deleteCollar(CollId);
+    }
+
+    @Override
+    public List<Map<String, Object>> getCollarTicketList(Map<String, Object> param) {
+        return this.iCollarDao.getCollarTicketList(param);
     }
 }
