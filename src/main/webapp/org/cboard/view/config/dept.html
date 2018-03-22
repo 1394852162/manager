@@ -37,10 +37,15 @@
                     <td>{{ row.deptNote }}</td>
                     <!--<td>{{ (row.empStatus2 == '1') ? "允许" : "禁止" }}</td>-->
                     <td>
-                        <button type="button" class="btn btn-info btn-xs" ng-click="editDept(row, $event)">
+                        <button type="button" class="btn btn-info btn-xs"
+                                ng-class="{true:'trueClass',false:'falseClass'}[row.deptId]"
+                                ng-disabled="{{ row.deptId == '14' ? 'true' : 'false' }}"
+                                ng-click="editDept(row, $event)">
                             <span class="glyphicon glyphicon-pencil"></span>{{'CONFIG.MENU_USER.MODIFY'|translate}}
                         </button>
                         <button type="button" class="btn btn-danger btn-xs"
+                                ng-class="{true:'trueClass',false:'falseClass'}[row.deptId]"
+                                ng-disabled="{{ row.deptId == '14' ? 'true' : 'false' }}"
                                 ng-click="delDept(row, $event)">
                             <span class="glyphicon glyphicon-remove-circle"></span>{{'CONFIG.MENU_PLACE.PLACE_DEL'|translate}}
                         </button>
