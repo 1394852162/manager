@@ -16,7 +16,7 @@
   },
   "HEADER": {
     "SIGN_OUT": "退出系统",
-    "PLEASE_LOGIN_IN": "请重新登录系统！",
+    "PLEASE_LOGIN_IN": "请登录系统！",
     "CHANGE_PASSWORD": "更改密码",
     "CURRENT_PASSWORD": "当前密码",
     "NEW_PASSWORD": "新的密码",
