@@ -124,7 +124,11 @@
                             <div class="pull-right" style="margin-top: 0px;">
                                 <div class="btn-group btn-group-sm">
                                     <button type="button" class="btn btn-success btn-md" ng-click="searchVip()">{{'CONFIG.MENU_VIP.VIP_SEARCH_BUTTON'|translate}}</button>
-                                    <button type="button" class="btn btn-success btn-md" ng-click="addVip()">{{'CONFIG.MENU_VIP.ADD_VIP'|translate}}</button>
+                                    <button type="button" class="btn btn-success btn-md"
+                                            ng-show="vipAddFlag == '1'"
+                                            ng-click="addVip()">
+                                        {{'CONFIG.MENU_VIP.ADD_VIP'|translate}}
+                                    </button>
                                     <!--<button type="button" class="btn btn-default">Button 6</button>-->
                                 </div>
                                 <!--<button type="button" class="btn btn-primary " id='addDept' ng-click="addVip()">{{'CONFIG.MENU_VIP.ADD_VIP'|translate}}</button>-->
