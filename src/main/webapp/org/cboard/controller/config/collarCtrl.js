@@ -150,10 +150,13 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
 
 
     $scope.collarEmpChange = function(){
-        $scope.collarDepName = $scope.collarEmpName.deptId;
+        // $scope.collarDepName = $scope.collarEmpName.deptId;
+        console.log($scope.collarEmpName.split("_")[0]);
+        $scope.collarDepName = $scope.collarEmpName.split("_")[0];
     };
     $scope.collarDeptChange = function(collarDepName){
-        $scope.collarDeptId = $scope.collarDepName.deptId;
+        // $scope.collarDeptId = $scope.collarDepName.deptId;
+        // $scope.collarDeptId = $scope.collarDepName;
         $http({
             method: 'POST',
             url: './employee/QueryDeptEmp.do',
@@ -182,7 +185,7 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
             url: './employee/getBatEmpInfo.do',
             data: {
                 BatId: $scope.collarBatchName.batId,
-                EmpId: $scope.collarEmpName.empId
+                EmpId: $scope.collarEmpName.split("_")[1]
             }
         }).success(function (response) {
             if ( parseInt(response.data[0].standbyticket)  > 0 ) {
@@ -203,7 +206,8 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
                                 return new Date($scope.collarD1).Format("yyyy-MM-dd");
                             })(),
                             CollTime: $scope.collarD2,
-                            EmpId: $scope.collarEmpName.empId,
+                            // EmpId: $scope.collarEmpName.empId,
+                            EmpId: parseInt($scope.collarEmpName.split("_")[1]),
                             DeptId: $scope.collarDepName,
                             CollNum: parseInt($scope.collarNum),
                             CollNote: $scope.collarNote,
@@ -256,8 +260,9 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
             },
             url: './collar/getCollarTicketList.do',
             data: JSON.stringify({
-                DeptId: $scope.collarDepName,
-                EmpId: $scope.collarEmpName.empId,
+                DeptId: parseInt($scope.collarDepName),
+                // EmpId: $scope.collarEmpName.empId,
+                EmpId: parseInt($scope.collarEmpName.split("_")[1]),
                 BatId: $scope.collarBatchName.batId
             })
         }).success(function (response) {
@@ -347,7 +352,7 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
         var output = [],
             keys = [];
         angular.forEach(collection, function (item) {
-            if(item.deptName != null){
+            if(item.deptName != null || item.empName != null){
                 var key = item[keyname];
                 if ( (keys.indexOf(key) === -1) ) {
                     keys.push(key);

@@ -15,7 +15,15 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <div class="form-group">
                                         <span>{{'CONFIG.MENU_COLLAR.COLLAR_DEPT'|translate}}</span>
-                                        <select ng-model="collarDepName" class="form-control"
+                                        <select select2 ng-model="collarDepName" class="form-control"
+                                                id="collarDepName"
+                                                name="collarDepName"
+                                                ng-change="collarDeptChange(collarDepName)"
+                                                placeholder="{{'CONFIG.MENU_VIP.PLEASE_SELECT'|translate}}">
+                                            <option value="" selected="selected">{{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}</option>
+                                            <option ng-repeat="collarDepName in empList | unique: 'deptId'" value="{{collarDepName.deptId}}">{{collarDepName.deptName}}</option>
+                                        </select>
+                                        <!--<select ng-model="collarDepName" class="form-control"
                                                 id="collarDepName"
                                                 name="collarDepName"
                                                 placeholder="{{'CONFIG.MENU_VIP.PLEASE_SELECT'|translate}}"
@@ -23,76 +31,32 @@
                                                 ng-selected="s.deptId==collarDepName"
                                                 ng-options="s.deptId as s.deptName for s in empList  | unique: 'deptId'">
                                             <option value="" selected="selected">{{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}</option>
-                                        </select>
-                                        <!--<select ng-model="collarEmpCode" class="form-control" name="collarEmpCode"
-                                                ng-options="s.empId as s.empNo for s in empList"
-                                                ng-selected="s.empId==collarEmpCode">
-                                            <option value="" selected="selected">{{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}</option>
                                         </select>-->
-                                        <!--ng-options="collarDepName as collarDepName.deptName for collarDepName in empList  | unique: 'deptId'">-->
                                     </div>
-                                    <!--<div class="form-group">
-                                        <span>{{'CONFIG.MENU_COLLAR.COLLAR_DEPT'|translate}}</span>
-                                        &lt;!&ndash;<input type="text" class="form-control input-sm" id="collarEmpCode" name="collarEmpCode"
-                                               placeholder="{{'COMMON.PLACEHOLDER'|translate}}"
-                                               ng-model="collarEmpCode" required/>&ndash;&gt;
-                                        <select ng-model="collarEmpCode" class="form-control" name="collarEmpCode"
-                                                ng-options="s.empId as s.empNo for s in empList"
-                                                ng-selected="s.empId==collarEmpCode">
-                                            <option value="" selected="selected">{{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}</option>
-                                        </select>
-                                        &lt;!&ndash;<select ng-model="collarEmpCode" class="form-control" name="collarEmpCode"
-                                                ng-options="s.empId as s.empNo for s in empList"
-                                                ng-selected="s.empId==collarEmpCode">
-                                            <option value="" selected="selected">{{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}</option>
-                                        </select>&ndash;&gt;
-                                    </div>-->
                                 </div>
                                 <!-- 员工姓名 -->
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <div class="form-group">
                                         <span>{{'CONFIG.MENU_COLLAR.EMP_NAME'|translate}}</span>
                                         <div class="form-group">
-                                            <select ng-model="collarEmpName" class="form-control" name="collarEmpName"
+                                            <!--<select ng-model="collarEmpName" class="form-control" name="collarEmpName"
                                                     id="collarEmpName"
                                                     placeholder="{{'CONFIG.MENU_VIP.PLEASE_SELECT'|translate}}"
                                                     ng-change="collarEmpChange()"
                                                     ng-options="collarEmpName as collarEmpName.empName for collarEmpName in deptEmpList">
-                                                <!--<option value="" selected="selected">{{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}</option>-->
+                                                &lt;!&ndash;<option value="" selected="selected">{{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}</option>&ndash;&gt;
                                                 <option value="">{{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}</option>
-                                            </select>
+                                            </select>-->
 
-                                            <!--<select select2 ng-model="collarEmpName" class="form-control" name="collarEmpName"
+                                            <select select2 ng-model="collarEmpName" class="form-control" name="collarEmpName"
                                                     id="collarEmpName"
                                                     placeholder="{{'CONFIG.MENU_VIP.PLEASE_SELECT'|translate}}"
                                                     ng-change="collarEmpChange()">
                                                 <option value="">{{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}</option>
-                                                <option ng-repeat="collarEmpName in deptEmpList" value="{{collarEmpName.empId}}">{{collarEmpName.empName}}</option>
-                                            </select>-->
+                                                <option ng-repeat="collarEmpName in deptEmpList | unique: 'empId'" value="{{collarEmpName.deptId}}_{{collarEmpName.empId}}">{{collarEmpName.empName}}</option>
+                                            </select>
                                         </div>
                                     </div>
-
-                                    <!--<div class="form-group">
-                                        <span>{{'CONFIG.MENU_COLLAR.EMP_NAME'|translate}}</span>
-                                        &lt;!&ndash;<input type="text" class="form-control input-sm" id="collarEmpName" name="collarEmpName"
-                                               placeholder="{{'COMMON.PLACEHOLDER'|translate}}"
-                                               ng-model="collarEmpName"/>&ndash;&gt;
-                                        <select ng-model="collarEmpName" class="form-control" name="collarEmpName"
-                                                ng-change="collarEmpChange()"
-                                                ng-options="collarEmpName as collarEmpName.empName for collarEmpName in empList">
-                                            <option value="" selected="selected">
-                                                {{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}
-                                            </option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <select ng-model="collarEmpCode" class="form-control" name="collarEmpCode"
-                                                ng-options="s.empId as s.empNo for s in empList"
-                                                ng-selected="s.empId==collarEmpCode">
-                                            <option value="" selected="selected">{{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}</option>
-                                        </select>
-                                    </div>-->
                                 </div>
                             </div>
                         </div>
