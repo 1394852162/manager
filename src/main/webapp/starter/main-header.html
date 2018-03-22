@@ -24,6 +24,9 @@
                     <!-- hidden-xs hides the username on small devices so only the image appears. -->
                     <!--<span class="hidden-xs">{{user.username}}</span>-->
                     <span class="hidden-xs" id="user" >{{sessionUser.empName}}</span>
+                    <span ng-show="sessionUserCode == '0'"class="hidden-xs" id="user_null" >
+                        {{'HEADER.PLEASE_LOGIN_IN'|translate}}
+                    </span>
                 </a>
                 <ul class="dropdown-menu">
                     <!-- The user image in the menu -->
@@ -33,6 +36,10 @@
                         <p>
                             <!--{{user.username + ' - ' + user.company + ' ' + user.department}}-->
                             {{sessionUser.name}}
+                            <small>{{user.userId}}</small>
+                        </p>
+                        <p ng-show="sessionUserCode == '0'">
+                            {{'HEADER.PLEASE_LOGIN_IN'|translate}}
                             <small>{{user.userId}}</small>
                         </p>
                     </li>
@@ -53,7 +60,7 @@
                     <!--</li>-->
                     <!-- Menu Footer-->
                     <li class="user-footer">
-                        <div class="pull-left">
+                        <div class="pull-left" ng-show="sessionUserCode != '0'">
                             <a href="#" class="btn btn-default btn-flat" ng-click="changePwd(sessionUser,$event)">{{'HEADER.CHANGE_PASSWORD'|translate}}</a>
                         </div>
                         <div class="pull-right">

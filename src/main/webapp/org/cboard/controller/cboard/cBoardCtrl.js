@@ -37,54 +37,59 @@ cBoard.controller('cBoardCtrl', function ($rootScope, $scope, $location, $http, 
         $scope.searchTicketFlag = parseInt(response.code.empStatus8);
         $scope.adminFlag = response.code.empName;
         $scope.sessionUser = response.code;
-        // console.log(response);
+
+        $scope.sessionUserCode = response.code;
+        // console.log($scope.sessionUserCode);
     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
         ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
     });
 
     $scope.changePwd = function (current, $event) {
-        // console.log(current);
-        $uibModal.open({
-            templateUrl: 'org/cboard/view/config/modal/changePwd.html',
-            windowTemplateUrl: 'org/cboard/view/util/modal/window.html',
-            backdrop: false,
-            size: 'sm',
-            controller: function ($scope, $uibModalInstance) {
-                $scope.close = function () {
-                    $uibModalInstance.close();
-                };
-                $scope.ok = function () {
-
-                    $http({
-                        method: 'POST',
-                        url: './employee/updatepwd.do',
-                        data : {
-                            // userName : current.name,
-                            // oldPassword : $scope.curPwd,
-                            password : $scope.newPwd
-                        }
-                    }).success(function (response) {
-                        // ModalUtils.alert(translate(response.msg), "modal-success", "sm");
+        if ($scope.sessionUserCode !== 0){
+            $uibModal.open({
+                templateUrl: 'org/cboard/view/config/modal/changePwd.html',
+                windowTemplateUrl: 'org/cboard/view/util/modal/window.html',
+                backdrop: false,
+                size: 'sm',
+                controller: function ($scope, $uibModalInstance) {
+                    $scope.close = function () {
                         $uibModalInstance.close();
-                    }).error(function (XMLHttpRequest, textStatus, errorThrown) {
-                        ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-                    });
-                    // document.location.href= "login.html";
+                    };
+                    $scope.ok = function () {
 
-                    /*$http.post("commons/changePwd.do", { ./user/updatePassword.do
-                        curPwd: $scope.curPwd,
-                        newPwd: $scope.newPwd,
-                        cfmPwd: $scope.cfmPwd
-                    }).success(function (serviceStatus) {
-                        if (serviceStatus.status == '1') {
-                            ModalUtils.alert(translate("COMMON.SUCCESS"), "modal-success", "sm");
+                        $http({
+                            method: 'POST',
+                            url: './employee/updatepwd.do',
+                            data : {
+                                // userName : current.name,
+                                // oldPassword : $scope.curPwd,
+                                password : $scope.newPwd
+                            }
+                        }).success(function (response) {
+                            // ModalUtils.alert(translate(response.msg), "modal-success", "sm");
                             $uibModalInstance.close();
-                        } else {
-                            ModalUtils.alert(serviceStatus.msg, "modal-warning", "lg");
-                        }
-                    });*/
-                };
-            }
-        });
+                        }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+                            ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
+                        });
+                        // document.location.href= "login.html";
+
+                        /*$http.post("commons/changePwd.do", { ./user/updatePassword.do
+                            curPwd: $scope.curPwd,
+                            newPwd: $scope.newPwd,
+                            cfmPwd: $scope.cfmPwd
+                        }).success(function (serviceStatus) {
+                            if (serviceStatus.status == '1') {
+                                ModalUtils.alert(translate("COMMON.SUCCESS"), "modal-success", "sm");
+                                $uibModalInstance.close();
+                            } else {
+                                ModalUtils.alert(serviceStatus.msg, "modal-warning", "lg");
+                            }
+                        });*/
+                    };
+                }
+            });
+        } else {
+            alert("请重新登录系统！");
+        }
     }
 });
