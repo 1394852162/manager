@@ -117,6 +117,7 @@ cBoard.directive('auth', ['$http', '$interval', '$filter', '$log', function ($ht
                         + "<button type='button' class='diyBtn1 btn btn-primary' id='batchBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>批次</button>"
                         + "<button type='button' class='diyBtn1 btn btn-primary' id='empBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>职工劵</button>"
                         + "<button type='button' class='diyBtn1 btn btn-primary' id='vipBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>VIP劵查询</button>"
+                        + "<button type='button' class='diyBtn1 btn btn-primary' id='vipAddBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>VIP劵添加</button>"
                     + "</div>";
 
                 var pageStr = "<span class='button lastPage' id='lastBtn_" + treeNode.id
@@ -172,6 +173,9 @@ cBoard.directive('auth', ['$http', '$interval', '$filter', '$log', function ($ht
                 if(!(treeNode.empStatus8 === 1)){
                     $("#searchTicketBtn_"+treeNode.id).remove();
                 }
+                if(!(treeNode.empStatus9 === 1)){
+                    $("#vipAddBtn_"+treeNode.id).remove();
+                }
 
 
                 // var addbtn = $("#addBtn_" + treeNode.id);
@@ -226,6 +230,7 @@ cBoard.directive('auth', ['$http', '$interval', '$filter', '$log', function ($ht
                             "empStatus6": obj.EmpStatus6,
                             "empStatus7": obj.EmpStatus7,
                             "empStatus8": obj.EmpStatus8,
+                            "empStatus9": obj.EmpStatus9,
                             "level": obj.Lev,
                             "open": false
                         });

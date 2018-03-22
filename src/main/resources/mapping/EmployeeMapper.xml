@@ -19,6 +19,7 @@
     <result property="EmpStatus6" column="EmpStatus6"  jdbcType="INTEGER" />
     <result property="EmpStatus7" column="EmpStatus7"  jdbcType="INTEGER" />
     <result property="EmpStatus8" column="EmpStatus8"  jdbcType="INTEGER" />
+    <result property="EmpStatus9" column="EmpStatus9"  jdbcType="INTEGER" />
   </resultMap>
 
 

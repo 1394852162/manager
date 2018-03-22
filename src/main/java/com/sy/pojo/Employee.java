@@ -24,6 +24,7 @@ public class Employee {
     private int EmpStatus6;
     private int EmpStatus7;
     private int EmpStatus8;
+    private int EmpStatus9;
 
     public int getEmpId() {
         return EmpId;
@@ -169,6 +170,14 @@ public class Employee {
         EmpStatus8 = empStatus8;
     }
 
+    public int getEmpStatus9() {
+        return EmpStatus9;
+    }
+
+    public void setEmpStatus9(int empStatus9) {
+        EmpStatus9 = empStatus9;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -190,6 +199,7 @@ public class Employee {
                 ", EmpStatus6=" + EmpStatus6 +
                 ", EmpStatus7=" + EmpStatus7 +
                 ", EmpStatus8=" + EmpStatus8 +
+                ", EmpStatus9=" + EmpStatus9 +
                 '}';
     }
 }
