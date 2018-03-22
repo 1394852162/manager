@@ -116,7 +116,7 @@ cBoard.directive('auth', ['$http', '$interval', '$filter', '$log', function ($ht
                         + "<button type='button' class='diyBtn1 btn btn-primary' id='searchTicketBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>核销查询</button>"
                         + "<button type='button' class='diyBtn1 btn btn-primary' id='batchBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>批次</button>"
                         + "<button type='button' class='diyBtn1 btn btn-primary' id='empBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>职工劵</button>"
-                        + "<button type='button' class='diyBtn1 btn btn-primary' id='vipBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>VIP劵</button>"
+                        + "<button type='button' class='diyBtn1 btn btn-primary' id='vipBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>VIP劵查询</button>"
                     + "</div>";
 
                 var pageStr = "<span class='button lastPage' id='lastBtn_" + treeNode.id
