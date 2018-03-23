@@ -116,6 +116,7 @@ cBoard.directive('auth', ['$http', '$interval', '$filter', '$log', function ($ht
                         + "<button type='button' class='diyBtn1 btn btn-primary' id='searchTicketBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>核销查询</button>"
                         + "<button type='button' class='diyBtn1 btn btn-primary' id='batchBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>批次</button>"
                         + "<button type='button' class='diyBtn1 btn btn-primary' id='empBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>职工劵</button>"
+                        + "<button type='button' class='diyBtn1 btn btn-primary' id='empRetireBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>退休员工劵</button>"
                         + "<button type='button' class='diyBtn1 btn btn-primary' id='vipBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>VIP劵查询</button>"
                         + "<button type='button' class='diyBtn1 btn btn-primary' id='vipAddBtn_" + treeNode.id + "' title='"+treeNode.name+"' onfocus='this.blur();'>VIP劵添加</button>"
                     + "</div>";
@@ -176,6 +177,9 @@ cBoard.directive('auth', ['$http', '$interval', '$filter', '$log', function ($ht
                 if(!(treeNode.empStatus9 === 1)){
                     $("#vipAddBtn_"+treeNode.id).remove();
                 }
+                if(!(treeNode.empStatus10 === 1)){
+                    $("#empRetireBtn_"+treeNode.id).remove();
+                }
 
 
                 // var addbtn = $("#addBtn_" + treeNode.id);
@@ -231,6 +235,7 @@ cBoard.directive('auth', ['$http', '$interval', '$filter', '$log', function ($ht
                             "empStatus7": obj.EmpStatus7,
                             "empStatus8": obj.EmpStatus8,
                             "empStatus9": obj.EmpStatus9,
+                            "empStatus10": obj.EmpStatus10,
                             "level": obj.Lev,
                             "open": false
                         });
