@@ -190,11 +190,15 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
      * 确定
      */
     $scope.saveCollar = function () {
+        // var t = new Date($scope.collarBatchName.split("_")[1]).Format("yyyy-MM-dd");
+        var t = new Date($scope.collarBatchName.split("_")[1]);
+        console.log(t);
         $http({
             method: 'POST',
             url: './employee/getBatEmpInfo.do',
             data: {
-                BatId: $scope.collarBatchName.batId,
+                // BatId: $scope.collarBatchName.batId,
+                BatId: parseInt($scope.collarBatchName.split("_")[0]),
                 EmpId: $scope.collarEmpName.split("_")[1]
             }
         }).success(function (response) {
@@ -210,15 +214,18 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
                         url: './collar/insertCollarMap.do',
                         data: JSON.stringify({
                             CollNo: $scope.collarCode,
-                            BatId: $scope.collarBatchName.batId,
+                            // BatId: $scope.collarBatchName.batId,
+                            BatId: parseInt($scope.collarBatchName),
                             // BatEndTime: $scope.collarD1,
-                            BatEndTime: (function () {
-                                return new Date($scope.collarD1).Format("yyyy-MM-dd");
-                            })(),
+                            /*BatEndTime: (function () {
+
+                                // return new Date($scope.collarD1).Format("yyyy-MM-dd");
+                                return new Date($scope.collarBatchName.split("_")[1]);
+                            })(),*/
                             CollTime: $scope.collarD2,
                             // EmpId: $scope.collarEmpName.empId,
                             EmpId: parseInt($scope.collarEmpName.split("_")[1]),
-                            DeptId: $scope.collarDepName,
+                            // DeptId: parseInt($scope.collarDepName),
                             CollNum: parseInt($scope.collarNum),
                             CollNote: $scope.collarNote,
                             Status: parseInt($scope.collarStatus)
@@ -273,7 +280,8 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
                 DeptId: parseInt($scope.collarDepName),
                 // EmpId: $scope.collarEmpName.empId,
                 EmpId: parseInt($scope.collarEmpName.split("_")[1]),
-                BatId: $scope.collarBatchName.batId
+                // BatId: $scope.collarBatchName.batId
+                BatId: parseInt($scope.collarBatchName)
             })
         }).success(function (response) {
             // $scope.deptEmpList = response.data;

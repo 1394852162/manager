@@ -39,11 +39,12 @@ public class CollarControllerTest {
 //		delete 需要传的参数和insert不一样，是 BrandSeq:1 pBrandId:[2,3] 这种json格式
         JSONObject jo = new JSONObject();
         jo.put("CollNo", "TPF");
-        jo.put("BatId", 1);
-        jo.put("BatEndTime", "2018-02-11");
-        jo.put("CollTime", "2018-02-14");
-        jo.put("EmpId", 3);
-        jo.put("CollNum", 4);
+        jo.put("BatId", 26);
+//        jo.put("BatEndTime", "2018-02-11");
+        jo.put("CollTime", "2018-03-23");
+        jo.put("EmpId", 2);
+        //jo.put("DeptId", "1");
+        jo.put("CollNum", 1);
         jo.put("CollNote", "职工劵领取");
         jo.put("Status", 1);
 //   这个就是前段需要传的json的array

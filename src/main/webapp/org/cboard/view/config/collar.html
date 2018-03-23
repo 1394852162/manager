@@ -93,7 +93,10 @@
                                             <option value="" selected="selected">
                                                 {{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}
                                             </option>
-                                            <option ng-repeat="collarBatchName in batList" value="{{collarBatchName.batId}}">{{collarBatchName.batName}}</option>
+                                            <option ng-repeat="collarBatchName in batList"
+                                                    value="{{collarBatchName.batId}}_{{collarBatchName.batEndTime}}">
+                                                {{collarBatchName.batName}}
+                                            </option>
                                         </select>
 
                                         <!--<select select2 ng-model="collarBatchName" class="form-control" name="collarBatchName"
@@ -103,11 +106,11 @@
                                         </select>-->
 
                                         <!-- 隐藏的input  有效日期 -->
-                                        <input class="form-control" size="11" type="hidden" value="" id="collarD1"
+                                        <!--<input class="form-control" size="11" type="hidden" value="" id="collarD1"
                                                name="collarD1"
                                                placeholder="{{'COMMON.PLACEHOLDER'|translate}}"
                                                ng-model="collarD1=collarBatchName.batEndTime  | date:'yyyy-MM-dd' "
-                                               readonly>
+                                               readonly>-->
                                     </div>
                                 </div>
                             </div>

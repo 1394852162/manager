@@ -85,7 +85,7 @@
     select @CollId+1,
     #{CollNo,jdbcType=VARCHAR},
     #{BatId,jdbcType=INTEGER},
-    #{BatEndTime,jdbcType=DATE},
+    getdate(),
     #{CollTime,jdbcType=DATE},
     #{EmpId,jdbcType=INTEGER},
     #{CollNum,jdbcType=INTEGER},
