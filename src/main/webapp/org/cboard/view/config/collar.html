@@ -53,7 +53,7 @@
                                                     placeholder="{{'CONFIG.MENU_VIP.PLEASE_SELECT'|translate}}"
                                                     ng-change="collarEmpChange()">
                                                 <option value="">{{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}</option>
-                                                <option ng-repeat="collarEmpName in deptEmpList | unique: 'empId'" value="{{collarEmpName.deptId}}_{{collarEmpName.empId}}">{{collarEmpName.empName}}</option>
+                                                <option ng-repeat="collarEmpName in deptEmpList | unique: 'empId'" value="{{collarEmpName.deptId}}_{{collarEmpName.empId}}_{{collarEmpName.empStatus1}}">{{collarEmpName.empName}}</option>
                                             </select>
                                         </div>
                                     </div>
