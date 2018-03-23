@@ -43,4 +43,9 @@ public class BatchServiceImpl implements IBatchService{
     public int deleteBatch(int BatId) {
         return this.iBatchDao.deleteBatch(BatId);
     }
+
+    @Override
+    public List<Batch> getBatListbyDept(HashMap<String, Object> map) {
+        return this.iBatchDao.getBatListbyDept(map);
+    }
 }

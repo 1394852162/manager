@@ -85,4 +85,17 @@
   where BatId = #{BatId,jdbcType=INTEGER}
   </delete>
 
+
+  <select id="getBatListbyDept" resultMap="BaseResultMap">
+    select * from Tbb_Batch
+    where Status !=-1
+    and BatEndTime &gt;= convert(Date,getdate(),108)
+
+    <if test="EmpStatus1 == 0" >
+      and Status2=#{EmpStatus1,jdbcType=INTEGER}
+    </if>
+
+
+  </select>
+
 </mapper>

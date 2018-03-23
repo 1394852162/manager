@@ -128,7 +128,7 @@
     select @EmpId+1,#{EmpNo,jdbcType=VARCHAR},#{EmpName,jdbcType=VARCHAR},
     #{EmpPassword,jdbcType=VARCHAR},@DeptId,
     null,#{EmpStatus1,jdbcType=INTEGER},
-    #{EmpStatus2,jdbcType=INTEGER},'',
+    #{EmpStatus2,jdbcType=INTEGER},'增加人员',
     getdate(),null,0,0,0,0,0,0,0,0
     end
   </insert>

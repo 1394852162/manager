@@ -148,4 +148,28 @@ public class BatchController {
         return resultmap;
 
     }
+
+
+    /**
+     * 根据部门状态查询可看到批次
+     * @param param
+     * @return
+     * @throws ParseException
+     */
+    @RequestMapping("/getBatListbyDept.do")
+    @ResponseBody
+    public Map<String,Object>  getBatListbyDept(@RequestBody HashMap<String, Object> param
+    ) throws ParseException {
+        Map<String,Object> resultmap = new HashMap<String,Object>();
+        List<Batch> list = this.iBatchService.getBatListbyDept(param);
+        if(list != null & list.size()>0) {
+            resultmap.put("data",list);
+            resultmap.put("code",1);
+        }
+        else{
+            resultmap.put("code",0);
+            resultmap.put("data","查询不到批次信息");
+        }
+        return resultmap;
+    }
 }

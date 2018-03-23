@@ -45,4 +45,11 @@ public interface IBatchDao {
      */
     int deleteBatch(int BatId);
 
+    /**
+     * 查询批次信息根据部门Id
+     * @param map
+     * @return
+     */
+    List<Batch> getBatListbyDept(HashMap<String,Object> map);
+
 }
