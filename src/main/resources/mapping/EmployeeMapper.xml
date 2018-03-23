@@ -20,7 +20,7 @@
     <result property="EmpStatus7" column="EmpStatus7"  jdbcType="INTEGER" />
     <result property="EmpStatus8" column="EmpStatus8"  jdbcType="INTEGER" />
     <result property="EmpStatus9" column="EmpStatus9"  jdbcType="INTEGER" />
-    <result property="EmpStatus10" column="EmpStatus9"  jdbcType="INTEGER" />
+    <result property="EmpStatus10" column="EmpStatus10"  jdbcType="INTEGER" />
   </resultMap>
 
 
@@ -38,7 +38,7 @@
     <result property="EmpName" column="EmpName" jdbcType="VARCHAR" />
     <result property="DeptId" column="Standbyticket" jdbcType="INTEGER" />
     <result property="DeptName" column="Standbyticket" jdbcType="INTEGER" />
-    <result property="EmpStatus10" column="EmpStatus9"  jdbcType="INTEGER" />
+    <result property="EmpStatus10" column="EmpStatus10"  jdbcType="INTEGER" />
   </resultMap>
 
   <select id="getBatEmpInfo" resultMap="ResultMap">
@@ -222,10 +222,10 @@
     SELECT Tbb_Dept.DeptId,Tbb_Dept.DeptName,Tbb_Employee.EmpId, Tbb_Employee.EmpName
     FROM Tbb_Dept JOIN  Tbb_Employee ON Tbb_Dept.DeptId = Tbb_Employee.DeptId
     WHERE
-    <if test="EmpId != 1 and  EmpStatus10=1" >
+    <if test="EmpId != 1 and  EmpStatus10==1" >
       Tbb_Dept.DeptId in (#{DeptId,jdbcType=INTEGER},14)  and
     </if>
-    <if test="EmpId != 1 and  EmpStatus10=0" >
+    <if test="EmpId != 1 and  EmpStatus10==0" >
       Tbb_Dept.DeptId= #{DeptId,jdbcType=INTEGER}  and
     </if>
     Tbb_Dept.Status !=-1 and Tbb_Employee.EmpId !=1

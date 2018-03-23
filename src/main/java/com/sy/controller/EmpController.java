@@ -72,6 +72,7 @@ public class EmpController {
 System.out.println("登录时的emp:"+emp);
         emp.setEmpName(username);
         emp.setEmpPassword(password);
+
         boolean EmpExit = iEmpService.EmployeeLogin(emp);
         if(EmpExit==true){
             emp = iEmpService.getQueryEmpInfo(emp);
@@ -80,7 +81,7 @@ System.out.println("登录时的emp:"+emp);
         System.out.println("存入到对象的数据"+emp);
         result.put("IfExit",EmpExit+"");
         result.put("emp",emp);
-        System.out.println("存放session前的emp:"+emp);
+        System.out.println("登陆时的emp="+emp);
         session.setAttribute("User", emp);
         return result;
     }
@@ -383,6 +384,7 @@ System.out.println("登录时的emp:"+emp);
         HashMap<String, Object> param = new HashMap<String, Object>();
         System.out.println("进入方法");
         Employee emp1 = (Employee)session.getAttribute("User");
+        System.out.println("emp1是"+emp1);
         if(param==null||param.isEmpty()){
             param.put("DeptId",emp1.getDeptId());
             param.put("EmpId",emp1.getEmpId());
