@@ -90,10 +90,8 @@
     select * from Tbb_Batch
     where Status !=-1
     and BatEndTime &gt;= convert(Date,getdate(),108)
+      and Status2=#{Status2,jdbcType=INTEGER}
 
-    <if test="EmpStatus1 != null" >
-      and Status2=#{EmpStatus1,jdbcType=INTEGER}
-    </if>
 
 
   </select>
