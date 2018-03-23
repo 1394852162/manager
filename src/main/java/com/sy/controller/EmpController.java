@@ -386,6 +386,7 @@ System.out.println("登录时的emp:"+emp);
         if(param==null||param.isEmpty()){
             param.put("DeptId",emp1.getDeptId());
             param.put("EmpId",emp1.getEmpId());
+            param.put("EmpStatus10",emp1.getEmpStatus10());
         }
 
         Map<String,Object> resultmap = new HashMap<String,Object>();

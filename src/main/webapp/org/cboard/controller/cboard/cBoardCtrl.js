@@ -39,7 +39,7 @@ cBoard.controller('cBoardCtrl', function ($rootScope, $scope, $location, $http, 
         $scope.sessionUser = response.code;
 
         $scope.sessionUserCode = response.code;
-        // console.log($scope.sessionUserCode);
+        console.log(response);
     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
         ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
     });

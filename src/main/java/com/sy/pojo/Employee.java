@@ -25,6 +25,33 @@ public class Employee {
     private int EmpStatus7;
     private int EmpStatus8;
     private int EmpStatus9;
+    private int EmpStatus10;
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "EmpId=" + EmpId +
+                ", EmpNo='" + EmpNo + '\'' +
+                ", EmpName='" + EmpName + '\'' +
+                ", EmpPassword='" + EmpPassword + '\'' +
+                ", DeptId=" + DeptId +
+                ", EmpBirth='" + EmpBirth + '\'' +
+                ", EmpStatus1=" + EmpStatus1 +
+                ", EmpStatus2=" + EmpStatus2 +
+                ", CreateTime=" + CreateTime +
+                ", UpdateTime=" + UpdateTime +
+                ", DeptName='" + DeptName + '\'' +
+                ", Standbyticket=" + Standbyticket +
+                ", EmpStatus3=" + EmpStatus3 +
+                ", EmpStatus4=" + EmpStatus4 +
+                ", EmpStatus5=" + EmpStatus5 +
+                ", EmpStatus6=" + EmpStatus6 +
+                ", EmpStatus7=" + EmpStatus7 +
+                ", EmpStatus8=" + EmpStatus8 +
+                ", EmpStatus9=" + EmpStatus9 +
+                ", EmpStatus10=" + EmpStatus10 +
+                '}';
+    }
 
     public int getEmpId() {
         return EmpId;
@@ -178,28 +205,11 @@ public class Employee {
         EmpStatus9 = empStatus9;
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "EmpId=" + EmpId +
-                ", EmpNo='" + EmpNo + '\'' +
-                ", EmpName='" + EmpName + '\'' +
-                ", EmpPassword='" + EmpPassword + '\'' +
-                ", DeptId=" + DeptId +
-                ", EmpBirth='" + EmpBirth + '\'' +
-                ", EmpStatus1=" + EmpStatus1 +
-                ", EmpStatus2=" + EmpStatus2 +
-                ", CreateTime=" + CreateTime +
-                ", UpdateTime=" + UpdateTime +
-                ", DeptName='" + DeptName + '\'' +
-                ", Standbyticket=" + Standbyticket +
-                ", EmpStatus3=" + EmpStatus3 +
-                ", EmpStatus4=" + EmpStatus4 +
-                ", EmpStatus5=" + EmpStatus5 +
-                ", EmpStatus6=" + EmpStatus6 +
-                ", EmpStatus7=" + EmpStatus7 +
-                ", EmpStatus8=" + EmpStatus8 +
-                ", EmpStatus9=" + EmpStatus9 +
-                '}';
+    public int getEmpStatus10() {
+        return EmpStatus10;
+    }
+
+    public void setEmpStatus10(int empStatus10) {
+        EmpStatus10 = empStatus10;
     }
 }

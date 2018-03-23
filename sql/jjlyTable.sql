@@ -17,7 +17,8 @@ CREATE TABLE Tbb_Employee (
   EmpStatus6 int,                /*是否赋予人员维护权限 1.是 0.否 新加字段*/
   EmpStatus7 int,                /*是否赋予部门维护权限 1.是 0.否 新加字段*/
   EmpStatus8 int,                /*是否赋予核销查询权限 1.是 0.否 新加字段*/
-  EmpStatus9 int                /*是否赋予VIP劵添加权限 1.是 0.否 新加字段*/
+  EmpStatus9 int,               /*是否赋予VIP劵添加权限 1.是 0.否 新加字段*/
+  EmpStatus10 int                /*是否赋予给退休员工添加领票权限*/
 )
 
 /*部门表*/
