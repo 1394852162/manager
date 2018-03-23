@@ -121,7 +121,7 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
     var getBatList = function () {
         var d2 = new Date().Format("yyyy-MM-dd");
         // console.log(d2);
-        $scope.collarD2 = d2;
+        // $scope.collarD2 = d2;
 
         $http({
             method: 'get',

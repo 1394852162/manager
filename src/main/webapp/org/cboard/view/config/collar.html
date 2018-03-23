@@ -78,13 +78,30 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <div class="form-group">
                                         <span>{{'CONFIG.MENU_COLLAR.BAT_NAME'|translate}}</span>
-                                        <select ng-model="collarBatchName" class="form-control" name="collarBatchName"
+                                        <!--<select select2 ng-model="collarBatchName" class="form-control" name="collarBatchName"
+                                                placeholder="{{'CONFIG.MENU_VIP.PLEASE_SELECT'|translate}}"
                                                 ng-options="collarBatchName as collarBatchName.batName for collarBatchName in batList">
-                                            <!--ng-options="collarBatchName.batId as collarBatchName.batName for collarBatchName in batList">-->
+                                            &lt;!&ndash;ng-options="collarBatchName.batId as collarBatchName.batName for collarBatchName in batList">&ndash;&gt;
                                             <option value="" selected="selected">
                                                 {{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}
                                             </option>
+                                        </select>-->
+
+                                        <select select2 ng-model="collarBatchName" class="form-control" name="collarBatchName"
+                                                id="collarBatchName"
+                                                placeholder="{{'CONFIG.MENU_VIP.PLEASE_SELECT'|translate}}">
+                                            <option value="" selected="selected">
+                                                {{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}
+                                            </option>
+                                            <option ng-repeat="collarBatchName in batList" value="{{collarBatchName.batId}}">{{collarBatchName.batName}}</option>
                                         </select>
+
+                                        <!--<select select2 ng-model="collarBatchName" class="form-control" name="collarBatchName"
+                                                id="collarBatchName" placeholder="{{'CONFIG.MENU_VIP.PLEASE_SELECT'|translate}}">
+                                            <option value="">{{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}</option>
+                                            <option ng-repeat="collarBatchName in batList | unique: 'batId'" value="{{collarBatchName.batId}}">{{collarBatchName.batName}}</option>
+                                        </select>-->
+
                                         <!-- 隐藏的input  有效日期 -->
                                         <input class="form-control" size="11" type="hidden" value="" id="collarD1"
                                                name="collarD1"
