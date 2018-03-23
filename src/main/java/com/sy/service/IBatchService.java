@@ -19,4 +19,6 @@ public interface IBatchService {
 
     public int deleteBatch(int BatId);
 
+    public List<Batch> getBatListbyDept(HashMap<String,Object> map);
+
 }

@@ -69,4 +69,28 @@ public class BatchControllerTest {
     }
 
 
+    /**
+     * 根据人员状态查询批次
+     * @throws Exception
+     */
+    @Test
+    public void testgetBatListbyDept() throws  Exception  {
+//		delete 需要传的参数和insert不一样，是 BrandSeq:1 pBrandId:[2,3] 这种json格式
+        JSONObject jo = new JSONObject();
+
+
+        jo.put("EmpStatus1", 1);
+//   这个就是前段需要传的json的array
+        /*
+        {"CollNum":10,"CollTime":"2018-03-10","CollNote":"测试领用修改","CollId":1}
+         */
+        String requestjson = jo.toString();
+        System.out.println(requestjson);
+//json格式的传输不能使用get方法中的paran这样的方法来处理了，必须是下面的方式
+        String responseString = mockMvc.perform(MockMvcRequestBuilders.post("/batch/getBatListbyDept.do").contentType(MediaType.APPLICATION_JSON).content(requestjson))
+                .andReturn().getResponse().getContentAsString();
+        System.out.println(responseString);
+    }
+
+
 }
