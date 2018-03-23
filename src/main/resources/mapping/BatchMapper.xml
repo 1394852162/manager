@@ -89,7 +89,7 @@
   <select id="getBatListbyDept" resultMap="BaseResultMap">
     select * from Tbb_Batch
     where Status !=-1
-    and BatEndTime &gt;= convert(Date,getdate(),108)
+    and BatEndTime >= convert(Date,getdate(),108)
       and Status2=#{Status2,jdbcType=INTEGER}
 
 

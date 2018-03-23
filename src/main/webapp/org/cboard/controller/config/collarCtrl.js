@@ -124,16 +124,25 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
         $scope.collarD2 = d2;
 
         $http({
-            method: 'get',
-            url: './batch/GetBatList.do'
+            /*method: 'get',
+            url: './batch/GetBatList.do'*/
+            method: 'POST',
+            headers : {
+                'Content-Type' : 'application/json;charset=UTF-8',
+                'Accept': 'application/json'
+            },
+            url: './batch/getBatListbyDept.do',
+            data: JSON.stringify({
+                Status2: parseInt($scope.collarEmpName.split("_")[2])
+            })
         }).success(function (response) {
             $scope.batList = response.data;
-            // console.log($scope.batList);
+            console.log($scope.batList);
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
         });
     };
-    getBatList();
+
 
     var getEmpList = function () {
         $http({
@@ -153,6 +162,7 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
         // $scope.collarDepName = $scope.collarEmpName.deptId;
         console.log($scope.collarEmpName.split("_")[0]);
         $scope.collarDepName = $scope.collarEmpName.split("_")[0];
+        getBatList();
     };
     $scope.collarDeptChange = function(collarDepName){
         // $scope.collarDeptId = $scope.collarDepName.deptId;
