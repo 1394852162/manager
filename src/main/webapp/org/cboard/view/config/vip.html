@@ -151,7 +151,7 @@
                                         <td>{{ row.operaName }}</td>
                                         <td>{{ row.vipAddTime | date:'yyyy-MM-dd' }}</td>
                                         <td>{{ row.vipAddNote }}</td>
-                                        <td>
+                                        <td ng-show="vipAddFlag == '1'">
                                             <!--<button type="button" class="btn btn-info btn-xs" ng-click="editVip(row, $event)">
                                                 <span class="glyphicon glyphicon-pencil"></span>{{'CONFIG.MENU_USER.MODIFY'|translate}}
                                             </button>-->
@@ -160,6 +160,7 @@
                                                 <span class="glyphicon glyphicon-remove-circle"></span>{{'CONFIG.MENU_PLACE.PLACE_DEL'|translate}}
                                             </button>
                                         </td>
+                                        <td ng-hide="vipAddFlag == '1'">--</td>
                                     </tr>
                                     </tbody>
                                     <tfoot>

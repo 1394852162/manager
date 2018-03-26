@@ -35,6 +35,9 @@ cBoard.controller('cBoardCtrl', function ($rootScope, $scope, $location, $http, 
         $scope.empFlag = parseInt(response.code.empStatus6);
         $scope.deptFlag = parseInt(response.code.empStatus7);
         $scope.searchTicketFlag = parseInt(response.code.empStatus8);
+        $scope.empStatus9Flag = parseInt(response.code.empStatus9);
+        $scope.empStatus10Flag = parseInt(response.code.empStatus10);
+
         $scope.adminFlag = response.code.empName;
         $scope.sessionUser = response.code;
 
