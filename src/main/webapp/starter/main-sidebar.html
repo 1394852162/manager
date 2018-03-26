@@ -66,7 +66,7 @@
                     <a ui-sref="config.verification"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_VERIFICATION'|translate}}</a>
                 </li>
                 <!-- VIP -->
-                <li ui-sref-active="active" ng-show="vipFlag == '1'">
+                <li ui-sref-active="active" ng-show="vipFlag == '1' || empStatus9Flag == '1'">
                     <a ui-sref="config.vip"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_VIP'|translate}}</a>
                 </li>
                 <!-- 权限 -->
