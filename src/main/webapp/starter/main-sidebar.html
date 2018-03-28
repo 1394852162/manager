@@ -57,10 +57,7 @@
                 <li ui-sref-active="active" ng-show="collarFlag == '1' || empStatus10Flag == '1'">
                     <a ui-sref="config.collar"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_COLLAR'|translate}}</a>
                 </li>
-                <!-- empticket -->
-                <!--<li ui-sref-active="active">
-                    <a ui-sref="config.empticket"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_EMPTICKET'|translate}}</a>
-                </li>-->
+
                 <!-- 职工劵领用情况查询 -->
                 <li ui-sref-active="active" ng-show="searchTicketFlag == '1'">
                     <a ui-sref="config.verification"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_VERIFICATION'|translate}}</a>
@@ -69,10 +66,15 @@
                 <li ui-sref-active="active" ng-show="vipFlag == '1' || empStatus9Flag == '1'">
                     <a ui-sref="config.vip"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_VIP'|translate}}</a>
                 </li>
+                <!--empticket -->
+                <li ui-sref-active="active">
+                    <a ui-sref="config.empticket"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_EMPTICKET'|translate}}</a>
+                </li>
                 <!-- 权限 -->
                 <li ui-sref-active="active" ng-show="adminFlag == 'admin'">
                     <a ui-sref="config.authority"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_AUTH'|translate}}</a>
                 </li>
+
             </ul>
         </li>
         <!--<li class="treeview" ui-sref-active="active">

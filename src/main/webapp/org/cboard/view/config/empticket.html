@@ -1,10 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <span>empticketCtrl</span>
-</body>
-</html>
+<!-- Content Wrapper. Contains page content -->
+<div id="inner-container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="box box-solid">
+                <div class="box-header with-border text-center">
+                    <label class="box-title">Pentaho Reporter</label>
+                </div>
+                <!--no-padding-->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group has-feedback">
+                                        <span>{{'CONFIG.MENU_VIP.START_DAY'|translate}}</span>
+                                        <div ng-model='timepickerTest' ng-time
+                                             class="input-group date form_date col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                                             data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
+                                             data-link-format="yyyy-mm-dd">
+                                            <!--<span class="input-group-addon">{{'CONFIG.MENU_COLLAR.D1'|translate}}</span>-->
+                                            <input class="form-control" size="11" type="text" value="" id="prdD1"
+                                                   name="prdD1"
+                                                   placeholder="{{'COMMON.PLACEHOLDER'|translate}}"
+                                                   ng-model="prdD1" readonly>
+                                            <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
+                                            <span class="input-group-addon"
+                                                  style="background-color: white; border: 0px solid #ccc;border-radius: 0px;">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                        <!--<input type="hidden" id="dtp_input2" value="" /><br/>-->
+                                    </div>
+                                </div>
+                                <!-- 结束日期 -->
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group has-feedback">
+                                        <span>{{'CONFIG.MENU_VIP.END_DAY'|translate}}</span>
+                                        <div ng-model='timepickerTest' ng-time
+                                             class="input-group date form_date col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                                             data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2"
+                                             data-link-format="yyyy-mm-dd">
+                                            <!--<span class="input-group-addon">{{'CONFIG.MENU_COLLAR.D1'|translate}}</span>-->
+                                            <input class="form-control" size="11" type="text" value="" id="prdD2"
+                                                   name="prdD2"
+                                                   placeholder="{{'COMMON.PLACEHOLDER'|translate}}"
+                                                   ng-model="prdD2" readonly>
+                                            <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
+                                            <span class="input-group-addon"
+                                                  style="background-color: white; border: 0px solid #ccc;border-radius: 0px;">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                        <!--<input type="hidden" id="dtp_input2" value="" /><br/>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                            <div class="row">
+                                <!-- 报表名称 -->
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <span>报表名称</span>
+                                        <input type="text" placeholder = "{{'CONFIG.MENU_VIP.VIP_SEARCH'|translate}}" class="form-control glyphicon-remove"
+                                               id="prdName"
+                                               name="prdName"
+                                               ng-model="prdName">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <span>输出格式</span>
+                                        <input type="text" placeholder = "{{'CONFIG.MENU_VIP.VIP_SEARCH'|translate}}" class="form-control glyphicon-remove"
+                                               id="outputType"
+                                               name="outputType"
+                                               ng-model="outputType">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                            <button type="button" class="btn btn-success btn-md btn-block" ng-click="testTicket()">
+                                查询报表
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <iframe id="report" width="100%"   title="报表预览" frameborder=no style="width:100%;height:800px;padding:0px 0px;"  ></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

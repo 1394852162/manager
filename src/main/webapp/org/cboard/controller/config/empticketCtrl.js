@@ -7,42 +7,36 @@ cBoard.controller("empticketCtrl",function ($rootScope, $scope, $http, dataServi
     $scope.optFlag = 'none'; //editAuth
     $scope.editAuth = {};
 
-    /**
-     * 修改项保存
-     */
-    $scope.saveEdit = function () {
-        /*$http({
+
+    $scope.testTicket = function () {
+        $http({
             method: 'POST',
             headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-            url: './employee/updateDeptEmpTree.do',
+            // headers: {'Content-Type': 'application/vnd.ms-excel', 'Accept': 'application/vnd.ms-excel'},
+            // url: './reporter/getReporter',
+            url: './getReporter',
+            dataType:"json",
             data: JSON.stringify({
-                EmpId: parseInt($scope.curEmpId),
-                DeptId: parseInt($scope.curDeptId),
-                EmpStatus3: $scope.editAuth.editEmpStatus3,
-                EmpStatus4: $scope.editAuth.editEmpStatus4,
-                EmpStatus5: $scope.editAuth.editEmpStatus5,
-                EmpStatus6: $scope.editAuth.editEmp1Status6,
-                EmpStatus7: $scope.editAuth.editDeptStatus7,
-                EmpStatus8: $scope.editAuth.editSearchTicketStatus8
+                Title: $scope.prdName,
+                StartDay : $scope.prdD1,
+                EndDay : $scope.prdD2,
+                outputType : $scope.outputType
             })
         }).success(function (response) {
-            if (response.code === 0) {
+            console.log(response);
+            // $("#report").attr("src", response);
+            // $("#report").attr("src", "http://192.168.126.146:8080/manager/out/Reporter.html");
+            /*if (response.code === 0) {
                 ModalUtils.alert(translate("设置失败!"), "modal-danger", "md");
             } else if (response.code === 1) {
                 ModalUtils.alert(translate("设置成功!"), "modal-success", "md");
                 $scope.treeStatusArea = response.code;
             } else if (response.code === -1) {
                 ModalUtils.alert(translate("设置失败!"), "modal-danger", "md");
-            }
+            }*/
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
-        });*/
+        });
     }
 
-    /**
-     * 取消
-     */
-    $scope.canel = function () {
-        $scope.optFlag = 'none';
-    }
 })

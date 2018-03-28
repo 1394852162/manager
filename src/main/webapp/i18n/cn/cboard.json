@@ -32,7 +32,7 @@
       "MENU_DEPT": "部门维护",
       "MENU_BATCH": "批次维护",
       "MENU_COLLAR": "职工劵领取及查询",
-      "MENU_EMPTICKET": "职工票发放明细",
+      "MENU_EMPTICKET": "Pentaho Report",
       "MENU_VERIFICATION": "职工劵领取核销查询",
       "MENU_VIP": "VIP劵补录",
       "MENU_AUTH": "开票权限设置",

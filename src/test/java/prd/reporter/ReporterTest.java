@@ -27,7 +27,8 @@ public class ReporterTest {
     public void test2() throws IOException, ReportProcessingException {
         final File outputFilename = new File(Reporter.class.getSimpleName() + ".pdf");
         final MasterReport report = new Reporter().getReportDefinition();
-        report.getParameterValues().put("Title","1111");
+        report.getParameterValues().put("Title","222");
+        report.getParameterValues().put("Title1","222");
 //        HtmlReportUtil.createStreamHTML(report, outputFilename.getAbsolutePath());
         PdfReportUtil.createPDF(report,outputFilename.getAbsolutePath());
     }

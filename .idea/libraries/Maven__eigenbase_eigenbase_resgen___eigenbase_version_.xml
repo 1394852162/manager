@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: eigenbase:eigenbase-resgen:${eigenbase.version}">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/eigenbase/eigenbase-resgen/${eigenbase.version}/eigenbase-resgen-${eigenbase.version}.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/eigenbase/eigenbase-resgen/${eigenbase.version}/eigenbase-resgen-${eigenbase.version}-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/eigenbase/eigenbase-resgen/${eigenbase.version}/eigenbase-resgen-${eigenbase.version}-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
