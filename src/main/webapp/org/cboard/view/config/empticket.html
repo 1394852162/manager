@@ -51,7 +51,6 @@
                                                 <span class="glyphicon glyphicon-calendar"></span>
                                             </span>
                                         </div>
-                                        <!--<input type="hidden" id="dtp_input2" value="" /><br/>-->
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +64,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <div class="form-group">
                                         <span>报表名称</span>
-                                        <input type="text" placeholder = "{{'CONFIG.MENU_VIP.VIP_SEARCH'|translate}}" class="form-control glyphicon-remove"
+                                        <input type="text" placeholder = "{{'COMMON.PLACEHOLDER'|translate}}" class="form-control glyphicon-remove"
                                                id="prdName"
                                                name="prdName"
                                                ng-model="prdName">
@@ -74,10 +73,13 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <div class="form-group">
                                         <span>输出格式</span>
-                                        <input type="text" placeholder = "{{'CONFIG.MENU_VIP.VIP_SEARCH'|translate}}" class="form-control glyphicon-remove"
-                                               id="outputType"
-                                               name="outputType"
-                                               ng-model="outputType">
+                                        <select select2 ng-model="outputType" class="form-control"
+                                                id="outputType"
+                                                name="outputType"
+                                                placeholder="{{'CONFIG.MENU_VIP.PLEASE_SELECT'|translate}}">
+                                            <option value="" selected="selected">{{'CONFIG.MENU_COLLAR.BATCH_SELECT'|translate}}</option>
+                                            <option ng-repeat="outputType in oTypeInfos" value="{{outputType.id}}">{{outputType.name}}</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

@@ -66,13 +66,13 @@
                 <li ui-sref-active="active" ng-show="vipFlag == '1' || empStatus9Flag == '1'">
                     <a ui-sref="config.vip"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_VIP'|translate}}</a>
                 </li>
-                <!--empticket -->
-                <li ui-sref-active="active">
-                    <a ui-sref="config.empticket"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_EMPTICKET'|translate}}</a>
-                </li>
                 <!-- 权限 -->
                 <li ui-sref-active="active" ng-show="adminFlag == 'admin'">
                     <a ui-sref="config.authority"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_AUTH'|translate}}</a>
+                </li>
+                <!--empticket -->
+                <li ui-sref-active="active">
+                    <a ui-sref="config.empticket"><i class="fa fa fa-circle-o"></i>{{'SIDEBAR.CONFIG.MENU_EMPTICKET'|translate}}</a>
                 </li>
 
             </ul>
