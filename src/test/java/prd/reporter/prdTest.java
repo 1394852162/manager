@@ -37,7 +37,7 @@ public class prdTest {
         jo.put("Title", "html");
         jo.put("w", "w");
         jo.put("w1", "w1");
-        jo.put("outputType", "html");
+        jo.put("outputType", "pdf");
 
         String requestjson = jo.toString();
 //        System.out.println(requestjson);

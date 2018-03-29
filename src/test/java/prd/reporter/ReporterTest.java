@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.pentaho.reporting.engine.classic.core.MasterReport;
 import org.pentaho.reporting.engine.classic.core.ReportProcessingException;
 import org.pentaho.reporting.engine.classic.core.modules.output.pageable.pdf.PdfReportUtil;
-import org.pentaho.reporting.engine.classic.core.modules.output.table.html.HtmlReportUtil;
 import prd.reporter.prdpojo.Reporter;
 
 import java.io.File;
