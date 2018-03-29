@@ -1,4 +1,4 @@
-/*人员表*/
+/*人员表的*/
 CREATE TABLE Tbb_Employee (
   EmpId       INT         NOT NULL PRIMARY KEY,
   EmpNo       VARCHAR(20) NULL, /*可以为NULL*/
