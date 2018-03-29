@@ -47,7 +47,7 @@ public class Reporter extends AbstractReportGenerator {
         return null;
     }
 
-    /**
+    /**prpt
      * 定义生存报表
      * @return
      */

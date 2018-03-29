@@ -38,6 +38,15 @@
     <result property="EmpName" column="EmpName" jdbcType="VARCHAR" />
     <result property="DeptId" column="Standbyticket" jdbcType="INTEGER" />
     <result property="DeptName" column="Standbyticket" jdbcType="INTEGER" />
+    <result property="EmpStatus1" column="EmpStatus1"  jdbcType="INTEGER" />
+    <result property="EmpStatus2" column="EmpStatus2"  jdbcType="INTEGER" />
+    <result property="EmpStatus3" column="EmpStatus3"  jdbcType="INTEGER" />
+    <result property="EmpStatus4" column="EmpStatus4"  jdbcType="INTEGER" />
+    <result property="EmpStatus5" column="EmpStatus5"  jdbcType="INTEGER" />
+    <result property="EmpStatus6" column="EmpStatus6"  jdbcType="INTEGER" />
+    <result property="EmpStatus7" column="EmpStatus7"  jdbcType="INTEGER" />
+    <result property="EmpStatus8" column="EmpStatus8"  jdbcType="INTEGER" />
+    <result property="EmpStatus9" column="EmpStatus9"  jdbcType="INTEGER" />
     <result property="EmpStatus10" column="EmpStatus10"  jdbcType="INTEGER" />
   </resultMap>
 
@@ -219,7 +228,17 @@
 
 
   <select id="selectDeptListBySession" resultMap="DeptResultMap">
-    SELECT Tbb_Dept.DeptId,Tbb_Dept.DeptName,Tbb_Employee.EmpId, Tbb_Employee.EmpName
+    SELECT Tbb_Dept.DeptId,Tbb_Dept.DeptName,Tbb_Employee.EmpId, Tbb_Employee.EmpName,
+    Tbb_Employee.EmpStatus1,
+    Tbb_Employee.EmpStatus2,
+    Tbb_Employee.EmpStatus3,
+    Tbb_Employee.EmpStatus4,
+    Tbb_Employee.EmpStatus5,
+    Tbb_Employee.EmpStatus6,
+    Tbb_Employee.EmpStatus7,
+    Tbb_Employee.EmpStatus8,
+    Tbb_Employee.EmpStatus9,
+    Tbb_Employee.EmpStatus10
     FROM Tbb_Dept JOIN  Tbb_Employee ON Tbb_Dept.DeptId = Tbb_Employee.DeptId
     WHERE
     <if test="EmpId != 1 and  EmpStatus10==1" >

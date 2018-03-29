@@ -151,6 +151,7 @@ cBoard.controller("collarCtrl",function ($rootScope, $scope, $http, dataService,
         }).success(function (response) {
             $scope.empList = response.data;
             $scope.deptEmpList = response.data;
+            console.log($scope.deptEmpList);
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             ModalUtils.alert(translate(errorThrown + "!"), "modal-danger", "sm");
         });
