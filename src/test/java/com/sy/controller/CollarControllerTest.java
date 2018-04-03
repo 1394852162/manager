@@ -47,6 +47,7 @@ public class CollarControllerTest {
         jo.put("CollNum", 1);
         jo.put("CollNote", "职工劵领取");
         jo.put("Status", 1);
+
 //   这个就是前段需要传的json的array
         /*
 
